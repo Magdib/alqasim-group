@@ -39,7 +39,12 @@ dependencies:
   smooth_page_indicator: ^1.2.0+3
   persistent_bottom_nav_bar: ^6.2.1
   icons_plus: ^5.0.0
-  flutter_swiper_plus: ^2.0.4
+  fluttertoast: ^8.2.5
+  dio: ^5.5.0+1
+  hive: ^2.2.3
+  dartz: ^0.10.1
+  hive_flutter: ^1.1.0
+  # flutter_screenutil: ^5.9.3
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -79,7 +84,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Schyler
+    - family: DroidArabicKufi
       fonts:
         - asset: assets/fonts/Droid Arabic Kufi Regular.ttf
         # - asset: fonts/Schyler-Italic.ttf

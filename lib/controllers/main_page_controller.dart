@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:proj/view/pages/home/cars_page.dart';
-import 'package:proj/view/pages/home/favorite_page.dart';
-import 'package:proj/view/pages/home/home_page.dart';
-import 'package:proj/view/pages/home/settings_page.dart';
+import 'package:proj/local/modules/carspage/cars_page.dart';
+import 'package:proj/local/modules/favoritepage/favorite_page.dart';
+import 'package:proj/local/modules/home/view/pages/home_page.dart';
+import 'package:proj/local/modules/settings/settings_page.dart';
 
 class CategoryModel {
   final String image;

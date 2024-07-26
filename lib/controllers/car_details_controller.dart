@@ -13,7 +13,7 @@ class CarDetailsController extends GetxController {
   ];
   List<String> carDetailsTitle = [
     "سنة الصنع",
-    "الأميال المفطوعة",
+    "الأميال المقطوعة",
     "السرعة القصوى",
     "ماركة",
     "نوع التحويل",

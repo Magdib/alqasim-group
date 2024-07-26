@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:proj/core/routes/routes.dart';
+import 'package:proj/local/core/routes/routes.dart';
 
 class OnBoardingController extends GetxController {
   late PageController pageController;
