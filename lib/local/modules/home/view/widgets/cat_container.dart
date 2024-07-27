@@ -42,15 +42,11 @@ class CatContainer extends StatelessWidget {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
                 )),
-            child: Text(
-              title,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: AppColors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w900,
-                  fontFamily: "Schyler"),
-            ),
+            child: Text(title,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                      fontWeight: FontWeight.w900,
+                    )),
           )
         ],
       ),

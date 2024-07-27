@@ -23,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onLeadingTap,
     this.radius,
     this.contentPadding,
+    this.focusedColor,
   });
   final Widget? icon;
   final String? label;
@@ -43,7 +44,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool isField;
   final double? radius;
   final EdgeInsetsGeometry? contentPadding;
-
+  final Color? focusedColor;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -51,11 +52,10 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChange,
       controller: textEditingController,
       validator: validator,
-      style: const TextStyle(
-          fontSize: 15,
-          color: AppColors.primaryColor,
-          fontWeight: FontWeight.bold,
-          fontFamily: "Schyler"),
+      style: Theme.of(context)
+          .textTheme
+          .displayMedium!
+          .copyWith(color: AppColors.primaryColor, fontWeight: FontWeight.bold),
       obscureText: obscure,
       enabled: isEnable,
       onFieldSubmitted: onFieldSubmitted,
@@ -70,22 +70,31 @@ class CustomTextFormField extends StatelessWidget {
           filled: isField,
           suffixIcon: suffixIcon,
           prefixIcon: icon,
+          prefixIconColor: WidgetStateColor.resolveWith((states) =>
+              states.contains(WidgetState.focused)
+                  ? AppColors.primaryColor
+                  : Colors.grey),
+          suffixIconColor: WidgetStateColor.resolveWith((states) =>
+              states.contains(WidgetState.focused)
+                  ? AppColors.primaryColor
+                  : Colors.grey),
           contentPadding: contentPadding ??
               const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: hint,
-          hintStyle: const TextStyle(
-              color: AppColors.grey, fontSize: 15, fontFamily: "Schyler"),
+          hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+                color: AppColors.grey,
+              ),
           labelText: label,
-          labelStyle: const TextStyle(
-              fontSize: 15,
-              color: AppColors.primaryColor,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Schyler"),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(radius ?? 8),
+              borderSide: const BorderSide(color: AppColors.black, width: 1)),
+          labelStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
+              color: AppColors.primaryColor, fontWeight: FontWeight.bold),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius ?? 8),
-              borderSide:
-                  const BorderSide(color: AppColors.primaryColor, width: 2)),
+              borderSide: BorderSide(
+                  color: focusedColor ?? AppColors.primaryColor, width: 2)),
           disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(radius ?? 8),
               borderSide: const BorderSide(color: AppColors.primaryColor)),
@@ -93,8 +102,8 @@ class CustomTextFormField extends StatelessWidget {
               borderRadius: BorderRadius.circular(radius ?? 8),
               borderSide: const BorderSide(color: AppColors.red, width: 2)),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(radius ?? 8),
-          )),
+              borderRadius: BorderRadius.circular(radius ?? 8),
+              borderSide: const BorderSide(color: AppColors.grey, width: 2))),
     );
   }
 }

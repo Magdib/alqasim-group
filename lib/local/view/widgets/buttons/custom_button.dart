@@ -52,14 +52,13 @@ class CustomButton extends StatelessWidget {
                 child:
                     //  isLoading == false
                     //     ?
-                    Text(
-              buttonBody,
-              style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Schyler"),
-            )
+                    Text(buttonBody,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                color: textColor ?? AppColors.white,
+                                fontWeight: FontWeight.bold))
                 // : const LoadingPoint(),
                 ),
       ),

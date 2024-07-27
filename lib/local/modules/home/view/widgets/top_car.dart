@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proj/controllers/main_page_controller.dart';
+import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
@@ -67,38 +67,43 @@ class TopCar extends StatelessWidget {
                         ),
                         Text(
                           topCar.price,
-                          style: const TextStyle(
-                              color: AppColors.primaryColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Schyler"),
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.bold,
+                              ),
                         ),
                         const SizedBox(
-                          height: 2.5,
+                          height: 5,
                         ),
                         Text(
                           topCar.type,
-                          style: const TextStyle(
-                              color: AppColors.grey,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: "Schyler"),
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(
+                                  color: AppColors.grey,
+                                  fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
-                          height: 2.5,
+                          height: 5,
                         ),
                         FittedBox(
                           child: Text(
                             topCar.name,
-                            style: const TextStyle(
-                                color: AppColors.black,
-                                fontSize: 11.5,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: "Schyler"),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displaySmall!
+                                .copyWith(
+                                  fontSize: 11.5,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ),
                         const SizedBox(
-                          height: 2.5,
+                          height: 5,
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -113,11 +118,13 @@ class TopCar extends StatelessWidget {
                             ),
                             Text(
                               "بواسطة ${topCar.user}",
-                              style: const TextStyle(
-                                  color: AppColors.black,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Schyler"),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                             ),
                           ],
                         ),

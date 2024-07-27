@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:proj/controllers/car_details_controller.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_forms.dart';
@@ -21,16 +21,14 @@ class CarDetails extends StatelessWidget {
             snap: false,
             pinned: true,
             floating: false,
+            centerTitle: true,
             flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                title: const Text(
-                  "تفاصيل السيارة",
-                  style: TextStyle(
-                      color: AppColors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: "Schyler"),
-                ),
+                title: Text("تفاصيل السيارة",
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          color: AppColors.white,
+                          fontSize: 20,
+                        )),
                 background: Image.asset(
                   "assets/images/sliver.webp",
                   fit: BoxFit.cover,

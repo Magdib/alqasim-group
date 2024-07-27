@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proj/controllers/sign_up_controller.dart';
+import 'package:proj/local/modules/auth/signup/controller/sign_up_controller.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';

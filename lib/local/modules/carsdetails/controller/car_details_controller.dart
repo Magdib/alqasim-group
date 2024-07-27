@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
 
 class CarDetailsController extends GetxController {
   late PageController pageController;

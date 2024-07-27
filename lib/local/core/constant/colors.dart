@@ -17,6 +17,7 @@ class AppColors {
   static const Color playButtonGrey = Color(0xff8D8D8D);
   static const Color lBlack = Color(0xff2B2B2B);
   static const Color lGrey = Color(0xffF7F9FC);
+  static const Color lGreyD = Color.fromARGB(255, 209, 210, 211);
   // static const Color lightGreen = Color(0xffE1FBDC);
   static const Color lightGreen = Color(0xff0378A6);
   static const Color gradientDGreen = Color(0xff066C58);

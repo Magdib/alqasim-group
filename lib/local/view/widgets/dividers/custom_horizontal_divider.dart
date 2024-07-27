@@ -21,7 +21,7 @@ class CustomHorizontalDivider extends StatelessWidget {
       indent: leftPadding,
       endIndent: rightPadding,
       height: height,
-      color: color ?? AppColors.lGrey,
+      color: color ?? const Color.fromARGB(255, 228, 229, 231),
       thickness: thickness,
     );
   }

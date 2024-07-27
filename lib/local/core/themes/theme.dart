@@ -21,7 +21,7 @@ class AppTheme {
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       elevation: 0,
       scrolledUnderElevation: 0,
-      iconTheme: IconThemeData(color: AppColors.white),
+      iconTheme: IconThemeData(color: AppColors.primaryColor),
       centerTitle: true,
     ),
     pageTransitionsTheme: const PageTransitionsTheme(
@@ -30,11 +30,11 @@ class AppTheme {
         TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
       },
     ),
-    textTheme: TextTheme(
-      displaySmall: displaySmallLight(),
-      displayMedium: displayMediumLight(),
-      displayLarge: displayLargeLight(),
-    ),
+    textTheme: ThemeData.light().textTheme.copyWith(
+          displaySmall: displaySmallLight(),
+          displayMedium: displayMediumLight(),
+          displayLarge: displayLargeLight(),
+        ),
     sliderTheme: SliderThemeData(trackHeight: 7
         // .h,
         ),

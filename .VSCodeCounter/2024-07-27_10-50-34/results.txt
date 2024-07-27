@@ -1,0 +1,140 @@
+Date : 2024-07-27 10:50:34
+Directory : d:\Flutter\Flutter Projects    (Magd)\proj\lib
+Total : 63 files,  2706 codes, 151 comments, 186 blanks, all 3043 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |         63 |      2,706 |        151 |        186 |      3,043 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                               | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                  |         63 |      2,706 |        151 |        186 |      3,043 |
+| . (Files)                                                                                                          |          1 |         21 |          0 |          4 |         25 |
+| controllers                                                                                                        |          2 |        118 |          0 |          7 |        125 |
+| global                                                                                                             |          9 |        281 |         18 |         33 |        332 |
+| global\binding                                                                                                     |          1 |          8 |          1 |          2 |         11 |
+| global\core                                                                                                        |          8 |        273 |         17 |         31 |        321 |
+| global\core\api                                                                                                    |          4 |        179 |         10 |         21 |        210 |
+| global\core\class                                                                                                  |          1 |         25 |          0 |          3 |         28 |
+| global\core\functions                                                                                              |          2 |         50 |          1 |          4 |         55 |
+| global\core\services                                                                                               |          1 |         19 |          6 |          3 |         28 |
+| local                                                                                                              |         51 |      2,286 |        133 |        142 |      2,561 |
+| local\core                                                                                                         |         20 |        358 |         47 |         49 |        454 |
+| local\core\api                                                                                                     |          1 |         25 |          5 |          3 |         33 |
+| local\core\class                                                                                                   |          3 |         25 |         20 |          6 |         51 |
+| local\core\constant                                                                                                |          7 |         92 |          7 |         16 |        115 |
+| local\core\functions                                                                                               |          4 |         39 |         13 |          8 |         60 |
+| local\core\middleware                                                                                              |          1 |         22 |          0 |          2 |         24 |
+| local\core\routes                                                                                                  |          1 |         44 |          0 |          3 |         47 |
+| local\core\themes                                                                                                  |          3 |        111 |          2 |         11 |        124 |
+| local\core\themes (Files)                                                                                          |          1 |         65 |          2 |          3 |         70 |
+| local\core\themes\dark                                                                                             |          1 |         23 |          0 |          4 |         27 |
+| local\core\themes\light                                                                                            |          1 |         23 |          0 |          4 |         27 |
+| local\modules                                                                                                      |         20 |      1,589 |          1 |         67 |      1,657 |
+| local\modules\OnBoarding                                                                                           |          2 |        123 |          0 |         10 |        133 |
+| local\modules\OnBoarding\controller                                                                                |          1 |         44 |          0 |          6 |         50 |
+| local\modules\OnBoarding\view                                                                                      |          1 |         79 |          0 |          4 |         83 |
+| local\modules\OnBoarding\view\pages                                                                                |          1 |         79 |          0 |          4 |         83 |
+| local\modules\auth                                                                                                 |          1 |        110 |          0 |          3 |        113 |
+| local\modules\auth\signup                                                                                          |          1 |        110 |          0 |          3 |        113 |
+| local\modules\carsdetails                                                                                          |          3 |        573 |          0 |          9 |        582 |
+| local\modules\carsdetails\view                                                                                     |          3 |        573 |          0 |          9 |        582 |
+| local\modules\carsdetails\view\pages                                                                               |          1 |        338 |          0 |          3 |        341 |
+| local\modules\carsdetails\view\widgets                                                                             |          2 |        235 |          0 |          6 |        241 |
+| local\modules\carspage                                                                                             |          1 |          8 |          0 |          3 |         11 |
+| local\modules\carspage\view                                                                                        |          1 |          8 |          0 |          3 |         11 |
+| local\modules\carspage\view\pages                                                                                  |          1 |          8 |          0 |          3 |         11 |
+| local\modules\favoritepage                                                                                         |          1 |          8 |          0 |          3 |         11 |
+| local\modules\home                                                                                                 |         11 |        759 |          1 |         36 |        796 |
+| local\modules\home\controller                                                                                      |          1 |        141 |          0 |         11 |        152 |
+| local\modules\home\model                                                                                           |          1 |          6 |          0 |          1 |          7 |
+| local\modules\home\view                                                                                            |          9 |        612 |          1 |         24 |        637 |
+| local\modules\home\view\pages                                                                                      |          2 |        178 |          1 |          7 |        186 |
+| local\modules\home\view\widgets                                                                                    |          7 |        434 |          0 |         17 |        451 |
+| local\modules\settings                                                                                             |          1 |          8 |          0 |          3 |         11 |
+| local\view                                                                                                         |         11 |        339 |         85 |         26 |        450 |
+| local\view\shared                                                                                                  |          2 |         58 |          3 |          5 |         66 |
+| local\view\shared (Files)                                                                                          |          1 |         43 |          3 |          3 |         49 |
+| local\view\shared\models                                                                                           |          1 |         15 |          0 |          2 |         17 |
+| local\view\widgets                                                                                                 |          9 |        281 |         82 |         21 |        384 |
+| local\view\widgets\app_bar                                                                                         |          1 |         30 |          0 |          2 |         32 |
+| local\view\widgets\buttons                                                                                         |          3 |         85 |         46 |          6 |        137 |
+| local\view\widgets\dividers                                                                                        |          2 |         52 |          0 |          5 |         57 |
+| local\view\widgets\fields                                                                                          |          1 |         98 |          0 |          3 |        101 |
+| local\view\widgets\pop_up                                                                                          |          2 |         16 |         36 |          5 |         57 |
++--------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                           | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\controllers\car_details_controller.dart                             | Dart     |         75 |          0 |          4 |         79 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\controllers\sign_up_controller.dart                                 | Dart     |         43 |          0 |          3 |         46 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\binding\app_binding.dart                                     | Dart     |          8 |          1 |          2 |         11 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\api\api_errors.dart                                     | Dart     |         29 |          0 |          9 |         38 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\api\dio_crud.dart                                       | Dart     |         91 |          3 |          5 |         99 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\api\dio_exceptions.dart                                 | Dart     |         49 |          6 |          6 |         61 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\api\status_request.dart                                 | Dart     |         10 |          1 |          1 |         12 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\class\app_toast.dart                                    | Dart     |         25 |          0 |          3 |         28 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\functions\check_internet_connection.dart                | Dart     |         12 |          1 |          1 |         14 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\functions\validation.dart                               | Dart     |         38 |          0 |          3 |         41 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\global\core\services\services.dart                                  | Dart     |         19 |          6 |          3 |         28 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\api\api_links.dart                                       | Dart     |         25 |          5 |          3 |         33 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\class\custom_icons.dart                                  | Dart     |         18 |         18 |          4 |         40 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\class\hive_box.dart                                      | Dart     |          3 |          1 |          1 |          5 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\class\hive_keys.dart                                     | Dart     |          4 |          1 |          1 |          6 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\app_size.dart                                   | Dart     |          8 |          0 |          2 |         10 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\app_statics.dart                                | Dart     |         16 |          0 |          1 |         17 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\arguments_names.dart                            | Dart     |          6 |          0 |          1 |          7 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\colors.dart                                     | Dart     |         19 |          5 |          2 |         26 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\custom_icons.dart                               | Dart     |          8 |          0 |          4 |         12 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\images.dart                                     | Dart     |          3 |          0 |          1 |          4 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\constant\text_styles.dart                                | Dart     |         32 |          2 |          5 |         39 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\functions\close_key_board.dart                           | Dart     |          4 |          0 |          1 |          5 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\functions\convert_to_arabic_number.dart                  | Dart     |         13 |          0 |          1 |         14 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\functions\left_right_lang_pad.dart                       | Dart     |         22 |          0 |          2 |         24 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\functions\lunch_url.dart                                 | Dart     |          0 |         13 |          4 |         17 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\middleware\middleware.dart                               | Dart     |         22 |          0 |          2 |         24 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\routes\routes.dart                                       | Dart     |         44 |          0 |          3 |         47 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\themes\dark\dark_theme_text.dart                         | Dart     |         23 |          0 |          4 |         27 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\themes\light\light_theme_text.dart                       | Dart     |         23 |          0 |          4 |         27 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\core\themes\theme.dart                                        | Dart     |         65 |          2 |          3 |         70 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\OnBoarding\controller\on_boarding_controller.dart     | Dart     |         44 |          0 |          6 |         50 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\OnBoarding\view\pages\OnBoarding.dart                 | Dart     |         79 |          0 |          4 |         83 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\auth\signup\sign_up.dart                              | Dart     |        110 |          0 |          3 |        113 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\carsdetails\view\pages\car_details.dart               | Dart     |        338 |          0 |          3 |        341 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\carsdetails\view\widgets\car_forms.dart               | Dart     |         92 |          0 |          3 |         95 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\carsdetails\view\widgets\cat_details_linked_cars.dart | Dart     |        143 |          0 |          3 |        146 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\carspage\view\pages\cars_page.dart                    | Dart     |          8 |          0 |          3 |         11 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\favoritepage\favorite_page.dart                       | Dart     |          8 |          0 |          3 |         11 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\controller\main_page_controller.dart             | Dart     |        141 |          0 |         11 |        152 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\model\drawer_model.dart                          | Dart     |          6 |          0 |          1 |          7 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\pages\home_page.dart                        | Dart     |        105 |          1 |          4 |        110 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\pages\main_page.dart                        | Dart     |         73 |          0 |          3 |         76 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\cars_brands.dart                    | Dart     |         36 |          0 |          3 |         39 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\cat_container.dart                  | Dart     |         54 |          0 |          2 |         56 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\home_app_bar.dart                   | Dart     |         23 |          0 |          2 |         25 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\home_drawer.dart                    | Dart     |        111 |          0 |          3 |        114 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\home_slider.dart                    | Dart     |         38 |          0 |          3 |         41 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\home_title.dart                     | Dart     |         18 |          0 |          2 |         20 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\home\view\widgets\top_car.dart                        | Dart     |        154 |          0 |          2 |        156 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\modules\settings\settings_page.dart                           | Dart     |          8 |          0 |          3 |         11 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\shared\handiling_data_widget.dart                        | Dart     |         43 |          3 |          3 |         49 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\shared\models\social_media_auth_model.dart               | Dart     |         15 |          0 |          2 |         17 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\app_bar\custom_app_bar.dart                      | Dart     |         30 |          0 |          2 |         32 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\buttons\custom_back_button.dart                  | Dart     |         22 |          0 |          2 |         24 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\buttons\custom_button.dart                       | Dart     |         63 |          3 |          2 |         68 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\buttons\custom_delete_button.dart                | Dart     |          0 |         43 |          2 |         45 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\dividers\custom_horizontal_divider.dart          | Dart     |         26 |          0 |          3 |         29 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\dividers\custom_vertical_divider.dart            | Dart     |         26 |          0 |          2 |         28 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\fields\custom_text_form_field.dart               | Dart     |         98 |          0 |          3 |        101 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\pop_up\custom_bottom_sheet.dart                  | Dart     |         16 |          0 |          2 |         18 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\local\view\widgets\pop_up\custom_dialog.dart                        | Dart     |          0 |         36 |          3 |         39 |
+| d:\Flutter\Flutter Projects    (Magd)\proj\lib\main.dart                                                           | Dart     |         21 |          0 |          4 |         25 |
+| Total                                                                                                              |          |      2,706 |        151 |        186 |      3,043 |
++--------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

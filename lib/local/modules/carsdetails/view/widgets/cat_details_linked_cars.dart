@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proj/controllers/car_details_controller.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 

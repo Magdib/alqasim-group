@@ -12,7 +12,7 @@ TextStyle displaySmallLight() {
 TextStyle displayMediumLight() {
   return const TextStyle(
       color: AppColors.black,
-      fontSize: 16,
+      fontSize: 15,
       fontWeight: FontWeight.w500,
       fontFamily: "DroidArabicKufi");
 }
@@ -20,7 +20,7 @@ TextStyle displayMediumLight() {
 TextStyle displayLargeLight() {
   return const TextStyle(
       color: AppColors.black,
-      fontSize: 20,
-      fontWeight: FontWeight.bold,
+      fontSize: 25,
+      fontWeight: FontWeight.w900,
       fontFamily: "DroidArabicKufi");
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:proj/controllers/on_boarding_controller.dart';
+import 'package:proj/local/modules/OnBoarding/controller/on_boarding_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -45,11 +45,10 @@ class OnBoarding extends StatelessWidget {
                           child: Text(
                             AppStatics.slidablePages[index]['text']!,
                             textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                color: AppColors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.w900,
-                                fontFamily: "Schyler"),
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(color: AppColors.white),
                           ),
                         )
                       ],
@@ -70,8 +69,7 @@ class OnBoarding extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: CustomButton(
-                      buttonBody:
-                          controller.index < 1 ? "التالي" : "اشترك الآن",
+                      buttonBody: controller.index < 1 ? "التالي" : "ابدأ",
                       onTap: () => controller.moveToNextPage()),
                 )
               ],

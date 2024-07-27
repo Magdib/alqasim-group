@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
-import 'package:proj/controllers/car_details_controller.dart';
-import 'package:proj/controllers/main_page_controller.dart';
-import 'package:proj/controllers/on_boarding_controller.dart';
-import 'package:proj/controllers/sign_up_controller.dart';
-import 'package:proj/local/core/middleware/middleware.dart';
-import 'package:proj/local/modules/OnBoarding/OnBoarding.dart';
-import 'package:proj/local/modules/auth/signup/sign_up.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/modules/home/view/pages/main_page.dart';
+import 'package:proj/local/modules/OnBoarding/controller/on_boarding_controller.dart';
+import 'package:proj/local/modules/auth/signup/controller/sign_up_controller.dart';
+import 'package:proj/local/core/middleware/middleware.dart';
+import 'package:proj/local/modules/OnBoarding/view/pages/OnBoarding.dart';
+import 'package:proj/local/modules/auth/signup/sign_up.dart';
+import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/modules/carsdetails/view/pages/car_details.dart';
 
 class AppRoutes {
