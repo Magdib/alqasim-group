@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/dividers/custom_horizontal_divider.dart';
@@ -111,7 +112,7 @@ class HomeDrawer extends GetView<MainPageController> {
                   buttonColor: AppColors.white,
                   textColor: AppColors.primaryColor,
                   isReverseColor: true,
-                  onTap: () {}),
+                  onTap: () => Get.toNamed(AppRoutes.signInPageRoute)),
               const SizedBox(
                 width: 12,
               ),
@@ -121,7 +122,7 @@ class HomeDrawer extends GetView<MainPageController> {
                   buttonColor: AppColors.white,
                   textColor: AppColors.primaryColor,
                   isReverseColor: true,
-                  onTap: () {}),
+                  onTap: () => Get.toNamed(AppRoutes.signUpPageRoute)),
             ],
           )
         ]));

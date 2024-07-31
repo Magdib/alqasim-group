@@ -11,7 +11,7 @@ class TopCar extends StatelessWidget {
     required this.topCar,
     required this.index,
   });
-  final TopCarsModel topCar;
+  final CarModel topCar;
   final int index;
   @override
   Widget build(BuildContext context) {

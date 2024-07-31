@@ -23,7 +23,6 @@ class CustomIcons {
 
   // static const IconData gas =
   //     IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  // Icons.local_gas_station_outlined
   static const IconData engine =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData filter =
@@ -32,7 +31,7 @@ class CustomIcons {
       IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData seat =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData filter2 =
+  static const IconData gear =
       IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData meter =
       IconData(0xe806, fontFamily: _kFontFam, fontPackage: _kFontPkg);

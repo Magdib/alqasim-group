@@ -14,15 +14,14 @@ class CarsPageController extends GetxController {
   TextEditingController? carLocation;
   TextEditingController? lowestPrice;
   TextEditingController? highestPrice;
+
   changeFilterValue(int index, String selectedValue) {
     filters[index].selectedValue = selectedValue;
-    handleFilters();
     update();
   }
 
   brandCheckValue(int index, bool value) {
     brands[index].value = value;
-    handleFilters();
     update();
   }
 
@@ -196,12 +195,12 @@ class CarsPageController extends GetxController {
         filterValues: ["الجميع", "300-399", "700-799"],
       ),
       FilterModel(
-          filterName: "مجربه",
+          filterName: "مجربة",
           filterValues: ["الجميع", "لا", "نعم"],
           selectedValue: "الجميع"),
       FilterModel(
-          filterName: "الورينتي",
-          filterValues: ["الجميع", "نعم", "لا", "غير منسجم"],
+          filterName: "التأمين",
+          filterValues: ["الجميع", "نعم", "لا"],
           selectedValue: "الجميع"),
       FilterModel(
         filterName: "أنواع الوقود",

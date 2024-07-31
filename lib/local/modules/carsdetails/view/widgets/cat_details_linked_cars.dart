@@ -11,133 +11,152 @@ class CatDetailsLinkedCars extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: AppSize.screenWidth,
-      padding: const EdgeInsets.symmetric(horizontal: 3),
-      height: 300,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          color: AppColors.white,
-          boxShadow: const [BoxShadow(color: AppColors.lBlack, blurRadius: 5)]),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 3),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 5,
-            ),
-            Container(
-              width: AppSize.screenWidth,
-              height: 140,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      "assets/images/car1.webp",
-                    ),
-                    fit: BoxFit.fitWidth,
-                  )),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+    return SizedBox(
+      height: 310,
+      child: PageView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) => Container(
+          width: AppSize.screenWidth,
+          margin: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 3),
+          height: 300,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: AppColors.white,
+              boxShadow: const [
+                BoxShadow(color: AppColors.lBlack, blurRadius: 5)
+              ]),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
+            child: Column(
               children: [
                 const SizedBox(
                   height: 5,
                 ),
-                const Text(
-                  "بينتلي 2020",
-                  style: TextStyle(
-                      color: AppColors.grey,
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: "Schyler"),
+                Container(
+                  width: AppSize.screenWidth,
+                  height: 140,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: const DecorationImage(
+                        image: AssetImage(
+                          "assets/images/car1.webp",
+                        ),
+                        fit: BoxFit.fitWidth,
+                      )),
                 ),
                 const SizedBox(
-                  height: 2.5,
+                  height: 10,
                 ),
-                const FittedBox(
-                  child: Text(
-                    "Bentley Bentayga Speed",
-                    style: TextStyle(
-                        color: AppColors.black,
-                        fontSize: 11.5,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: "Schyler"),
-                  ),
-                ),
-                const SizedBox(
-                  height: 2.5,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/images/logo.webp",
-                      width: 30,
-                      fit: BoxFit.fitWidth,
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "بينتلي 2020",
+                      style:
+                          Theme.of(context).textTheme.displayMedium!.copyWith(
+                                color: AppColors.grey,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
                     ),
                     const SizedBox(
-                      width: 5,
+                      height: 5,
                     ),
-                    const Text(
-                      "بواسطة admin",
-                      style: TextStyle(
-                          color: AppColors.black,
-                          fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Schyler"),
+                    FittedBox(
+                      child: Text(
+                        "Bentley Bentayga Speed",
+                        style:
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                  fontSize: 11.5,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 2.5,
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          "assets/images/logo.webp",
+                          width: 30,
+                          fit: BoxFit.fitWidth,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          "بواسطة admin",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(
+                                color: AppColors.black,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold,
+                              ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 2.5,
+                    ),
+                    SizedBox(
+                      height: 40,
+                      width: AppSize.screenWidth,
+                      child: GetBuilder<CarDetailsController>(
+                        builder: (controller) => ListView.separated(
+                          itemCount: controller.linkedCarsIconText.length,
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          separatorBuilder: (context, index) => SizedBox(
+                            width: index == 1 ? 20 : 30,
+                          ),
+                          itemBuilder: (context, index) => Row(
+                            children: [
+                              Icon(
+                                controller.linkedCarsIconText[index].icon,
+                                size: controller.linkedCarsIconText[index].size,
+                                color: AppColors.primaryColor,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(controller.linkedCarsIconText[index].title,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayMedium!
+                                      .copyWith(
+                                        color: AppColors.grey,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                      ))
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 2.5,
+                    ),
+                    Text(
+                      "5844480AED",
+                      style:
+                          Theme.of(context).textTheme.displayMedium!.copyWith(
+                                fontWeight: FontWeight.w900,
+                              ),
                     ),
                   ],
-                ),
-                const SizedBox(
-                  height: 2.5,
-                ),
-                SizedBox(
-                  height: 40,
-                  width: AppSize.screenWidth,
-                  child: GetBuilder<CarDetailsController>(
-                    builder: (controller) => ListView.separated(
-                      itemCount: controller.linkedCarsicotex.length,
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 30,
-                      ),
-                      itemBuilder: (context, index) => Row(
-                        children: [
-                          Icon(
-                            controller.linkedCarsicotex[index]["icon"],
-                            color: AppColors.primaryColor,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(controller.linkedCarsicotex[index]["text"],
-                              style: TextStyle(
-                                  color: AppColors.grey,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  fontFamily: "Schyler"))
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                const Text(
-                  "5844480AED",
-                  style: TextStyle(
-                      color: AppColors.black,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w900,
-                      fontFamily: "Schyler"),
-                ),
+                )
               ],
-            )
-          ],
+            ),
+          ),
         ),
       ),
     );

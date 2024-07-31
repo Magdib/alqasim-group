@@ -1,9 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/modules/auth/signup/controller/sign_up_controller.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
@@ -15,29 +15,7 @@ class SignUp extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        SliverAppBar(
-          snap: false,
-          pinned: true,
-          floating: false,
-          flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              title: const Text(
-                "اشتراك",
-                style: TextStyle(
-                    color: AppColors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w900,
-                    fontFamily: "Schyler"),
-              ),
-              background: Image.asset(
-                "assets/images/sliver.webp",
-                fit: BoxFit.cover,
-              )),
-          expandedHeight: 150,
-          collapsedHeight: 60,
-          backgroundColor: AppColors.primaryColor,
-          leading: const SizedBox(),
-        ),
+        const CarSliverAppBar(title: "اشتراك"),
         GetBuilder<SignUpController>(
           builder: (controller) => SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -59,51 +37,43 @@ class SignUp extends StatelessWidget {
         ),
         GetBuilder<SignUpController>(
           builder: (controller) => SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Padding(
+            delegate: SliverChildListDelegate([
+              Padding(
                 padding: const EdgeInsets.all(10),
                 child: RichText(
                     text: TextSpan(children: [
-                  const TextSpan(
+                  TextSpan(
                     text: "هل لديك حساب؟ ",
-                    style: TextStyle(
-                        color: AppColors.grey,
-                        fontSize: 15,
-                        fontFamily: "Schyler"),
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          color: AppColors.grey,
+                        ),
                   ),
                   TextSpan(
                     text: "أنقر هنا ",
-                    recognizer: controller.signInButton,
-                    style: const TextStyle(
-                        color: AppColors.primaryColor,
-                        fontSize: 15,
-                        fontFamily: "Schyler"),
+                    recognizer: controller.signInButtonGesture,
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          color: AppColors.primaryColor,
+                        ),
                   ),
-                  const TextSpan(
+                  TextSpan(
                     text: "لتسجيل الدخول",
-                    style: TextStyle(
-                        color: AppColors.grey,
-                        fontSize: 15,
-                        fontFamily: "Schyler"),
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                          color: AppColors.grey,
+                        ),
                   ),
                 ])),
               ),
-              childCount: 1,
-            ),
-          ),
-        ),
-        GetBuilder<SignUpController>(
-          builder: (controller) => SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => Padding(
+              Padding(
                 padding: const EdgeInsets.all(10),
-                child: CustomButton(
-                  buttonBody: "اشتراك",
-                  onTap: () => Get.toNamed(AppRoutes.homePageRoute),
+                child: Hero(
+                  tag: "SubmitAuth",
+                  child: CustomButton(
+                    buttonBody: "اشتراك",
+                    onTap: () => Get.toNamed(AppRoutes.homePageRoute),
+                  ),
                 ),
               ),
-              childCount: 1,
-            ),
+            ]),
           ),
         )
       ],

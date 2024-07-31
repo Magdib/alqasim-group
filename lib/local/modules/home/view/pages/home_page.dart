@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:proj/local/core/functions/left_right_lang_pad.dart';
+import 'package:proj/local/core/functions/language/left_right_lang_pad.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/home/view/widgets/cars_brands.dart';

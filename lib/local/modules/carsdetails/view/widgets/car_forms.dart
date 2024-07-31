@@ -28,22 +28,22 @@ class CarForms extends StatelessWidget {
             ),
             Text(
               "admin",
-              style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Schyler"),
+              style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    color: AppColors.grey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             SizedBox(
               height: 15,
             ),
             Text(
               "info@alqassimgroup.net",
-              style: const TextStyle(
-                  color: AppColors.grey,
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Schyler"),
+              style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                    color: AppColors.grey,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
             ),
             SizedBox(
               height: 15,
