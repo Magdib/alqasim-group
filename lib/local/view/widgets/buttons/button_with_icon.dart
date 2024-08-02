@@ -25,7 +25,7 @@ class ButtonWithIcon extends StatelessWidget {
     return CustomButton(
         buttonBody: "",
         buttonColor: color,
-        buttonWidth: minWidth ?? AppSize.screenWidth / 2.2,
+        buttonWidth: minWidth ?? AppSize.screenWidth(context) / 2.2,
         onTap: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

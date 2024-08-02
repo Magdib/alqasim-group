@@ -20,7 +20,7 @@ class TopCar extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: AppSize.screenWidth / 2 - 30,
+            width: AppSize.screenWidth(context) / 2 - 30,
             padding: const EdgeInsets.symmetric(horizontal: 3),
             height: 200,
             decoration: BoxDecoration(
@@ -35,7 +35,7 @@ class TopCar extends StatelessWidget {
                     height: 5,
                   ),
                   Container(
-                    width: AppSize.screenWidth / 2 - 45,
+                    width: AppSize.screenWidth(context) / 2 - 45,
                     height: 80,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
@@ -50,7 +50,7 @@ class TopCar extends StatelessWidget {
                     height: 10,
                   ),
                   Container(
-                    width: AppSize.screenWidth / 2 - 40,
+                    width: AppSize.screenWidth(context) / 2 - 40,
                     height: 100,
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(

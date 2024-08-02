@@ -50,7 +50,7 @@ class CarsPage extends StatelessWidget {
                       height: 5,
                     ),
                     Container(
-                      width: AppSize.screenWidth / 2 - 15,
+                      width: AppSize.screenWidth(context) / 2 - 15,
                       height: 100,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -65,7 +65,7 @@ class CarsPage extends StatelessWidget {
                       height: 10,
                     ),
                     SizedBox(
-                      width: AppSize.screenWidth / 2 - 15,
+                      width: AppSize.screenWidth(context) / 2 - 15,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

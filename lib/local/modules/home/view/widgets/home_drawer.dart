@@ -108,7 +108,7 @@ class HomeDrawer extends GetView<MainPageController> {
             children: [
               CustomButton(
                   buttonBody: "تسجيل الدخول",
-                  buttonWidth: AppSize.screenWidth / 2.5,
+                  buttonWidth: AppSize.screenWidth(context) / 2.5,
                   buttonColor: AppColors.white,
                   textColor: AppColors.primaryColor,
                   isReverseColor: true,
@@ -118,7 +118,7 @@ class HomeDrawer extends GetView<MainPageController> {
               ),
               CustomButton(
                   buttonBody: "اشتراك",
-                  buttonWidth: AppSize.screenWidth / 4,
+                  buttonWidth: AppSize.screenWidth(context) / 4,
                   buttonColor: AppColors.white,
                   textColor: AppColors.primaryColor,
                   isReverseColor: true,

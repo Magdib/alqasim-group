@@ -23,7 +23,7 @@ TextStyle buttonTextStyle({required BuildContext context}) {
 TextStyle textFormStyle({required BuildContext context}) {
   return Theme.of(context).textTheme.displayLarge!.copyWith(
         color: AppColors.black,
-        fontSize: AppSize.screenWidth >= AppSize.tabletBreakPoint
+        fontSize: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
             ? 13
             // .sp
             : 15,

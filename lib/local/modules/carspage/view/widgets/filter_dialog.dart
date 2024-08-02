@@ -68,7 +68,7 @@ filterDialog(BuildContext context) {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(
-                  width: AppSize.screenWidth / 3,
+                  width: AppSize.screenWidth(context) / 3,
                   child: CustomTextFormField(
                     hint: "أقل سعر",
                     textEditingController: controller.lowestPrice,
@@ -78,7 +78,7 @@ filterDialog(BuildContext context) {
                   ),
                 ),
                 SizedBox(
-                  width: AppSize.screenWidth / 3,
+                  width: AppSize.screenWidth(context) / 3,
                   child: CustomTextFormField(
                     hint: "أعلى سعر",
                     textEditingController: controller.highestPrice,
@@ -95,7 +95,7 @@ filterDialog(BuildContext context) {
             Center(
               child: CustomButton(
                   buttonBody: "",
-                  buttonWidth: AppSize.screenWidth / 2,
+                  buttonWidth: AppSize.screenWidth(context) / 2,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

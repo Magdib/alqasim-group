@@ -36,8 +36,8 @@ class AccountImageView extends StatelessWidget {
                 BoxShadow(color: AppColors.lBlack, blurRadius: 5)
               ],
             ),
-            height: AppSize.screenHight / 4,
-            width: AppSize.screenWidth,
+            height: AppSize.screenHight(context) / 4,
+            width: AppSize.screenWidth(context),
             alignment: Alignment.center,
             child: Stack(
               children: [

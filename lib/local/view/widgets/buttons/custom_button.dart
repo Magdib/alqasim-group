@@ -46,7 +46,7 @@ class CustomButton extends StatelessWidget {
               ? const BorderSide(color: AppColors.primaryColor)
               : BorderSide(color: buttonColor ?? AppColors.primaryColor)),
       child: SizedBox(
-        width: buttonWidth ?? AppSize.screenWidth * 0.8,
+        width: buttonWidth ?? AppSize.screenWidth(context) * 0.8,
         child: child ??
             Center(
                 child:

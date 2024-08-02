@@ -41,27 +41,30 @@ class CarSubDetails extends StatelessWidget {
             const SizedBox(
               width: 5,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "بواسطة admin",
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium!
-                      .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
-                Text(
-                  "مجموع السيارات : 2",
-                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                      fontSize: 12,
-                      color: AppColors.grey,
-                      fontWeight: FontWeight.bold),
-                ),
-              ],
+            GestureDetector(
+              // onTap: () => Get.toNamed(AppRoutes.adminCarsPageRoute),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "بواسطة admin",
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayMedium!
+                        .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    "مجموع السيارات : 2",
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                        fontSize: 12,
+                        color: AppColors.grey,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

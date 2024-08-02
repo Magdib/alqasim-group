@@ -23,7 +23,7 @@ class HomePage extends GetView<MainPageController> {
           const SizedBox(height: 20),
           const HomeTitle(title: "التصنيفات المشهورة"),
           Container(
-            width: AppSize.screenWidth,
+            width: AppSize.screenWidth(context),
             height: 170,
             margin: const EdgeInsets.all(10),
             child: PageView.builder(
@@ -61,7 +61,7 @@ class HomePage extends GetView<MainPageController> {
                         )
                       //handle when translate
                       : Padding(
-                          padding: leftRightLangPad(),
+                          padding: leftRightLangPad(context),
                           child: CatContainer(
                             image: index == 0
                                 ? controller.categories[index + 1].image

@@ -71,7 +71,7 @@ class LoginPage extends StatelessWidget {
                 alignment: leftRightLangAlign(),
                 child: TextButton(
                     onPressed: () =>
-                        Get.toNamed(AppRoutes.forgotPasswordEmailPageRoute),
+                        Get.toNamed(AppRoutes.forgotPassEmailPageRoute),
                     child: Text(
                       "هل نسيت كلمة المرور؟",
                       style:
@@ -86,18 +86,18 @@ class LoginPage extends StatelessWidget {
                   tag: "SubmitAuth",
                   child: CustomButton(
                     buttonBody: "تسجيل الدخول",
-                    onTap: () => Get.toNamed(AppRoutes.homePageRoute),
+                    onTap: () {},
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: ButtonWithIcon(
-                  minWidth: AppSize.screenWidth,
+                  minWidth: AppSize.screenWidth(context),
                   title: "تسجيل الدخول مع غوغل",
                   image: AppImages.googleLogo,
                   color: AppColors.deepGreen,
-                  onPressed: () => Get.toNamed(AppRoutes.homePageRoute),
+                  onPressed: () {},
                 ),
               ),
             ]),

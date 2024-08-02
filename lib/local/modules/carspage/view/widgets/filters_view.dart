@@ -24,7 +24,7 @@ class FiltersView extends StatelessWidget {
                       ),
                       SizedBox(
                         height: 35,
-                        width: AppSize.screenWidth,
+                        width: AppSize.screenWidth(context),
                         child: ListView.separated(
                           itemCount: controller.filterValues.length,
                           scrollDirection: Axis.horizontal,

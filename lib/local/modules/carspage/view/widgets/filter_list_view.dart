@@ -33,7 +33,7 @@ class FilterGridView extends StatelessWidget {
             ),
             DropdownButtonHideUnderline(
               child: Container(
-                width: AppSize.screenWidth / 2.2,
+                width: AppSize.screenWidth(context) / 2.2,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
                 decoration: BoxDecoration(

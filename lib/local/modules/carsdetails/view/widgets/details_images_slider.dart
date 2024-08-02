@@ -13,7 +13,7 @@ class DetailsImagesSlider extends StatelessWidget {
     return GetBuilder<CarDetailsController>(
       builder: (controller) => SizedBox(
         height: 200,
-        width: AppSize.screenWidth / 1.5,
+        width: AppSize.screenWidth(context) / 1.5,
         child: PageView.builder(
           controller: controller.pageController,
           itemCount: controller.images.length,

@@ -69,7 +69,7 @@ class SignUp extends StatelessWidget {
                   tag: "SubmitAuth",
                   child: CustomButton(
                     buttonBody: "اشتراك",
-                    onTap: () => Get.toNamed(AppRoutes.homePageRoute),
+                    onTap: () {},
                   ),
                 ),
               ),

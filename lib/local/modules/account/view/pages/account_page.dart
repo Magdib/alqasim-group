@@ -18,8 +18,9 @@ class SettingsPage extends StatelessWidget {
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
-                  margin: EdgeInsets.only(top: AppSize.screenHight / 4.6),
-                  width: AppSize.screenWidth / 1.1,
+                  margin:
+                      EdgeInsets.only(top: AppSize.screenHight(context) / 4.6),
+                  width: AppSize.screenWidth(context) / 1.1,
                   child: Column(
                     children: [
                       AccountCard(
@@ -37,7 +38,7 @@ class SettingsPage extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: AppSize.screenWidth * 0.05,
+            horizontal: AppSize.screenWidth(context) * 0.05,
           ),
           child: SizedBox(
             child: AccountCard(

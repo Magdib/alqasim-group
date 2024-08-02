@@ -25,8 +25,10 @@ AppBar customAppBar(
       leading: leading,
       automaticallyImplyLeading: isBack,
       toolbarHeight:
-          AppSize.screenWidth >= AppSize.tabletBreakPoint ? 90 : null,
+          AppSize.screenWidth(context) >= AppSize.tabletBreakPoint ? 90 : null,
       iconTheme: IconThemeData(
-          size: AppSize.screenWidth >= AppSize.tabletBreakPoint ? 20 : null,
+          size: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+              ? 20
+              : null,
           color: AppColors.white));
 }

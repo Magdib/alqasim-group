@@ -34,7 +34,7 @@
 //             :  Center(
 //                 child: Icon(
 //                  iconData?? Icons.close,
-//                  size: AppSize.screenWidth >= AppSize.tabletBreakPoint?20.sp:null,
+//                  size: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint?20.sp:null,
 //                   color:iconColor?? AppColors.white,
 //                 ),
 //               ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
@@ -7,22 +6,22 @@ import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
-class ForgotPasswordEmailPage extends StatelessWidget {
-  const ForgotPasswordEmailPage({super.key});
+class OtpPage extends StatelessWidget {
+  const OtpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        const CarSliverAppBar(title: "التحقق من الحساب"),
+        const CarSliverAppBar(title: "رمز التحقق"),
         SliverList(
             delegate: SliverChildListDelegate([
-          SizedBox(
-            height: AppSize.screenHight / 10,
+          const SizedBox(
+            height: 80,
           ),
           Image.asset(
-            AppImages.otpFImage,
+            AppImages.otpSImage,
             height: 120,
             width: 60,
             fit: BoxFit.fitHeight,
@@ -31,7 +30,7 @@ class ForgotPasswordEmailPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "تحقق من الحساب",
+            "التحقق من الرمز",
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -44,7 +43,7 @@ class ForgotPasswordEmailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "الرجاء إدخال الحساب المراد استعادة كلمة المرور له في الحقل التالي:",
+              "الرجاء إدخال رمز التحقق الذي أرسلناه إلى حسابك في الحقل التالي:",
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -57,19 +56,24 @@ class ForgotPasswordEmailPage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: CustomTextFormField(
-              hint: "أدخل الحساب هنا من فضلك...",
+              hint: "أدخل الرمز هنا من فضلك...",
               textAlign: TextAlign.center,
+              inputType: TextInputType.number,
             ),
           ),
           const SizedBox(
             height: 20,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: AppSize.screenWidth / 4),
+            padding: EdgeInsets.symmetric(
+                horizontal: AppSize.screenWidth(context) / 4),
             child: ButtonWithIcon(
-                title: "إرسال الرمز ",
-                icon: MingCute.telegram_line,
+                title: "تحقق من الرمز ",
+                icon: Icons.check_circle_outline_sharp,
                 onPressed: () {}),
+          ),
+          const SizedBox(
+            height: 40,
           )
         ]))
       ],

@@ -16,7 +16,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
       child: PageView.builder(
         itemCount: 3,
         itemBuilder: (context, index) => Container(
-          width: AppSize.screenWidth,
+          width: AppSize.screenWidth(context),
           margin: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),
           padding: const EdgeInsets.symmetric(horizontal: 3),
           height: 300,
@@ -34,7 +34,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
                   height: 5,
                 ),
                 Container(
-                  width: AppSize.screenWidth,
+                  width: AppSize.screenWidth(context),
                   height: 140,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -108,7 +108,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 40,
-                      width: AppSize.screenWidth,
+                      width: AppSize.screenWidth(context),
                       child: GetBuilder<CarDetailsController>(
                         builder: (controller) => ListView.separated(
                           itemCount: controller.linkedCarsIconText.length,

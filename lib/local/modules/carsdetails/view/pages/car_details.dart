@@ -67,7 +67,7 @@ class CarDetails extends StatelessWidget {
                   ),
                   SizedBox(
                     height: 350,
-                    width: AppSize.screenWidth,
+                    width: AppSize.screenWidth(context),
                     child: const GoogleMap(
                       initialCameraPosition: CameraPosition(
                           target: LatLng(25.347681, 55.455117), zoom: 12),

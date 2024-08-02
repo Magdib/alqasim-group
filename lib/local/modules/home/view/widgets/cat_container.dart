@@ -13,7 +13,7 @@ class CatContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSize.screenWidth / 2 - 30,
+      width: AppSize.screenWidth(context) / 2 - 30,
       height: 160,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -26,14 +26,14 @@ class CatContainer extends StatelessWidget {
           ),
           Image.asset(
             image,
-            width: AppSize.screenWidth / 2 - 40,
+            width: AppSize.screenWidth(context) / 2 - 40,
             fit: BoxFit.fitWidth,
           ),
           const SizedBox(
             height: 30,
           ),
           Container(
-            width: AppSize.screenWidth / 2 - 40,
+            width: AppSize.screenWidth(context) / 2 - 40,
             height: 50,
             alignment: Alignment.center,
             decoration: const BoxDecoration(

@@ -12,7 +12,7 @@ class CarsBrands extends GetView<MainPageController> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
-      width: AppSize.screenWidth,
+      width: AppSize.screenWidth(context),
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         scrollDirection: Axis.horizontal,
@@ -21,7 +21,7 @@ class CarsBrands extends GetView<MainPageController> {
           width: 30,
         ),
         itemBuilder: (context, index) => Container(
-          width: AppSize.screenWidth / 5,
+          width: AppSize.screenWidth(context) / 5,
           height: 80,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),

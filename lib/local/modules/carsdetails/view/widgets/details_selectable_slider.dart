@@ -12,7 +12,7 @@ class DetailsSelectableSlider extends GetView<CarDetailsController> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      width: AppSize.screenWidth,
+      width: AppSize.screenWidth(context),
       child: ListView.builder(
         itemCount: controller.images.length,
         scrollDirection: Axis.horizontal,

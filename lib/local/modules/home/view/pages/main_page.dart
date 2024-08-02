@@ -15,13 +15,13 @@ class MainPage extends StatelessWidget {
     return SafeArea(
       child: GetBuilder<MainPageController>(
         builder: (controller) => Scaffold(
-            appBar: homeAppBar(),
+            appBar: homeAppBar(context),
             drawer: const HomeDrawer(),
             bottomNavigationBar: Container(
               color: AppColors.primaryColor,
               height: 60,
               padding: const EdgeInsets.symmetric(horizontal: 5),
-              width: AppSize.screenWidth,
+              width: AppSize.screenWidth(context),
               child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

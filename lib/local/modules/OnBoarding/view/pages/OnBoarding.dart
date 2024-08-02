@@ -28,14 +28,14 @@ class OnBoarding extends StatelessWidget {
                     itemBuilder: (context, index) => Stack(
                       children: [
                         Container(
-                          height: AppSize.screenHight / 1.3,
+                          height: AppSize.screenHight(context) / 1.3,
                           color: AppColors.black,
                         ),
                         Image.asset(
                           AppStatics.slidablePages[index]['image']!,
-                          height: AppSize.screenHight / 1.3,
+                          height: AppSize.screenHight(context) / 1.3,
                           opacity: const AlwaysStoppedAnimation(0.9),
-                          width: AppSize.screenWidth,
+                          width: AppSize.screenWidth(context),
                           fit: BoxFit.cover,
                         ),
                         Positioned(
