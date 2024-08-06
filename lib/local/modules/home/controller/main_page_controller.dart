@@ -1,18 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/global/core/class/app_toast.dart';
-import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/core/class/hive_box.dart';
+import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 import 'package:proj/local/modules/carspage/view/pages/cars_page.dart';
 import 'package:proj/local/modules/favoritepage/controller/favorite_Page_controller.dart';
 import 'package:proj/local/modules/favoritepage/view/pages/favorite_page.dart';
-import 'package:proj/local/modules/home/model/bottom_nav_bar_model.dart';
 import 'package:proj/local/modules/home/model/drawer_model.dart';
 import 'package:proj/local/modules/home/view/pages/home_page.dart';
 import 'package:proj/local/modules/account/view/pages/account_page.dart';
@@ -33,59 +32,50 @@ class CarModel {
   final String user;
   final String? category;
   final bool removeCarWord;
+  final String? date;
+  final String? meters;
+  final int? speed;
   bool isFav;
-  CarModel(
-      {required this.image,
-      required this.price,
-      required this.type,
-      required this.name,
-      required this.user,
-      this.category,
-      this.removeCarWord = false,
-      this.isFav = false});
+  CarModel({
+    required this.image,
+    required this.price,
+    required this.type,
+    required this.name,
+    required this.user,
+    this.category,
+    this.removeCarWord = false,
+    this.isFav = false,
+    this.date,
+    this.meters,
+    this.speed,
+  });
 }
 
 class MainPageController extends GetxController {
-  int index = 0;
+  int index = 2;
+  int? selectedServices;
+  int? drawerSelectedServices;
+  double carPadding = Get.size.width;
   PageController sliderController = PageController();
-  PageController pageController = PageController();
+  PageController pageController = PageController(initialPage: 2);
+  late ScrollController scrollController;
   late Box authBox;
   List<Widget> pages = [
+    const SizedBox(),
+    const FavoritePage(),
     const HomePage(),
     const CarsPage(),
-    const FavoritePage(),
-    const SizedBox(),
     const SettingsPage(),
   ];
   List<DrawerModel> drawerItems = [
-    DrawerModel(title: "الرئيسية", route: AppRoutes.mainRoute, index: 0),
-    DrawerModel(title: "السيارات", route: AppRoutes.mainRoute, index: 1),
+    DrawerModel(title: "الرئيسية", route: AppRoutes.mainRoute, index: 2),
+    DrawerModel(title: "السيارات", route: AppRoutes.mainRoute, index: 3),
     DrawerModel(title: "معلومات عنا", route: AppRoutes.mainRoute),
+    DrawerModel(title: "خدماتنا", isDropDown: true, route: AppRoutes.mainRoute),
     DrawerModel(title: "مدوّنة", route: AppRoutes.mainRoute),
     DrawerModel(title: "اتّصال", route: AppRoutes.mainRoute)
   ];
-  List<BottomNavBarModel> navBarData = [
-    BottomNavBarModel(
-      title: "الرئيسية",
-      icon: Icons.home,
-    ),
-    BottomNavBarModel(
-      title: "السيارات",
-      icon: CustomIcons.filter,
-    ),
-    BottomNavBarModel(
-      title: "الرغبات",
-      icon: Icons.favorite,
-    ),
-    BottomNavBarModel(
-      title: "واتساب",
-      icon: FontAwesome.whatsapp_brand,
-    ),
-    BottomNavBarModel(
-      title: "المستخدم",
-      icon: Icons.person,
-    ),
-  ];
+
   List<IconData> pagesIcons = [Icons.home, Icons.favorite, Icons.person];
   List<CategoryModel> categories = [
     CategoryModel(image: "assets/images/sport.webp", title: "رياضيّة"),
@@ -112,41 +102,48 @@ class MainPageController extends GetxController {
         name: "Bentley Bentayga Speed",
         user: "admin"),
   ];
-  List<String> brandsImages = [
-    "assets/images/bmw.webp",
-    "assets/images/nissan.webp",
-    "assets/images/toyota.webp",
-    "assets/images/audi.webp",
-    "assets/images/range-rover.webp",
-    "assets/images/rolls-royce.webp",
-    "assets/images/hyundai.webp"
-  ];
   onPageChanged(value) async {
-    if (value != 3) {
-      if (value == (index + 1) || value == (index - 1)) {
-        pageController.animateToPage(value,
-            curve: Curves.easeIn, duration: const Duration(milliseconds: 500));
-      } else {
-        pageController.jumpToPage(
-          value,
-        );
-      }
-      index = value;
-      if (value == 1 && !CarsPageController().initialized) {
-        Get.put(CarsPageController());
-      }
-      if (value == 2 && !FavoritePageController().initialized) {
-        Get.put(FavoritePageController());
-      }
-      if (value == 4 && !AccountController().initialized) {
-        Get.put(AccountController());
-      }
+    if ((value == (index + 1) || value == (index - 1)) &&
+        Get.currentRoute == AppRoutes.homePageRoute) {
+      pageController.animateToPage(value,
+          curve: Curves.easeIn, duration: const Duration(milliseconds: 500));
     } else {
-      if (!await launchUrl(Uri.parse("https://wa.me/+963937386785"))) {
-        AppToasts.errorToast("حدث خطأ ما!");
-      }
+      pageController.jumpToPage(
+        value,
+      );
+    }
+    index = value;
+    if (value == 3 && !CarsPageController().initialized) {
+      Get.put(CarsPageController());
+    }
+    if (value == 1 && !FavoritePageController().initialized) {
+      Get.put(FavoritePageController());
+    }
+    if (value == 4 && !AccountController().initialized) {
+      Get.put(AccountController());
     }
     update();
+    Get.until(
+      (route) => route.isFirst,
+    );
+  }
+
+  bool handleMainOpenWhatsApp(int index) {
+    if (index != 0) {
+      return true;
+    } else {
+      openWhatsApp();
+      return false;
+    }
+  }
+
+  openWhatsApp() async {
+    if (!await launchUrl(
+      Uri.parse("https://wa.me/+963937386785"),
+      mode: LaunchMode.externalApplication,
+    )) {
+      AppToasts.errorToast("حدث خطأ ما!");
+    }
   }
 
   handleDrawerNavigation(int value) {
@@ -177,7 +174,7 @@ class MainPageController extends GetxController {
   swipeImages() async {
     while (true) {
       await Future.delayed(const Duration(seconds: 6));
-      if (index == 0 && Get.currentRoute == AppRoutes.homePageRoute) {
+      if (index == 2 && Get.currentRoute == AppRoutes.homePageRoute) {
         if (sliderController.page! < 2) {
           sliderController.nextPage(
               duration: const Duration(seconds: 1), curve: Curves.easeIn);
@@ -194,9 +191,40 @@ class MainPageController extends GetxController {
     update();
   }
 
+  selectService(int index) {
+    if (selectedServices == index) {
+      selectedServices = null;
+    } else {
+      selectedServices = index;
+    }
+    update();
+  }
+
+  drawerSelectService(int index) {
+    if (drawerSelectedServices == index) {
+      drawerSelectedServices = null;
+    } else {
+      drawerSelectedServices = index;
+    }
+    update();
+  }
+
+  openSocial(int index) async {
+    if (!await launchUrl(Uri.parse(AppStatics.alQassimSocials[index].link))) {
+      AppToasts.errorToast("حدث خطأ ما!");
+    }
+  }
+
   @override
   void onInit() {
     swipeImages();
+    scrollController = ScrollController()
+      ..addListener(() {
+        if (scrollController.offset > 350) {
+          carPadding = 0;
+          update();
+        }
+      });
     super.onInit();
   }
 

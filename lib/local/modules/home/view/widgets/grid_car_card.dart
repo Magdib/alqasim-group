@@ -5,14 +5,16 @@ import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
 
-class TopCar extends StatelessWidget {
-  const TopCar({
+class GridCarCard extends StatelessWidget {
+  const GridCarCard({
     super.key,
-    required this.topCar,
+    required this.car,
     required this.index,
+    required this.addToFav,
   });
-  final CarModel topCar;
+  final CarModel car;
   final int index;
+  final VoidCallback addToFav;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -26,7 +28,10 @@ class TopCar extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: AppColors.white,
-                border: Border.all(color: AppColors.primaryColor, width: 2)),
+                boxShadow: [
+                  BoxShadow(
+                      color: AppColors.grey.withOpacity(0.8), blurRadius: 4)
+                ]),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 3),
               child: Column(
@@ -41,7 +46,7 @@ class TopCar extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                         image: DecorationImage(
                           image: AssetImage(
-                            topCar.image,
+                            car.image,
                           ),
                           fit: BoxFit.fitWidth,
                         )),
@@ -66,7 +71,7 @@ class TopCar extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          topCar.price,
+                          car.price,
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -79,7 +84,7 @@ class TopCar extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          topCar.type,
+                          car.type,
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -92,7 +97,7 @@ class TopCar extends StatelessWidget {
                         ),
                         FittedBox(
                           child: Text(
-                            topCar.name,
+                            car.name,
                             style: Theme.of(context)
                                 .textTheme
                                 .displaySmall!
@@ -117,7 +122,7 @@ class TopCar extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              "بواسطة ${topCar.user}",
+                              "بواسطة ${car.user}",
                               style: Theme.of(context)
                                   .textTheme
                                   .displaySmall!
@@ -135,19 +140,15 @@ class TopCar extends StatelessWidget {
               ),
             ),
           ),
-          GetBuilder<MainPageController>(
-            builder: (controller) => Positioned(
-                top: 7,
-                right: 7,
-                child: InkWell(
-                    onTap: () => controller.handleFav(index),
-                    child: Icon(
-                      controller.topCars[index].isFav
-                          ? Icons.favorite
-                          : Icons.favorite_border_outlined,
-                      color: AppColors.primaryColor,
-                    ))),
-          ),
+          Positioned(
+              top: 7,
+              right: 7,
+              child: InkWell(
+                  onTap: addToFav,
+                  child: Icon(
+                    car.isFav ? Icons.favorite : Icons.favorite_border_outlined,
+                    color: AppColors.primaryColor,
+                  ))),
         ],
       ),
     );

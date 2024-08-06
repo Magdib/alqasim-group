@@ -30,7 +30,7 @@ class FavoritePage extends GetView<FavoritePageController> {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               separatorBuilder: (context, index) => const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
               itemCount: controller.viewCars.length,
               itemBuilder: (context, index) => Column(
@@ -43,10 +43,10 @@ class FavoritePage extends GetView<FavoritePageController> {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 18),
+                              .copyWith(fontSize: 16),
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 10,
                         ),
                         SizedBox(
                           height: 160,

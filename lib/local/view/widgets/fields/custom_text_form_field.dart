@@ -27,7 +27,8 @@ class CustomTextFormField extends StatelessWidget {
       this.focusedColor,
       this.textColor,
       this.textInputAction,
-      this.textAlign});
+      this.textAlign,
+      this.maxLength});
   final Widget? icon;
   final String? label;
   final String? hint;
@@ -51,6 +52,7 @@ class CustomTextFormField extends StatelessWidget {
   final Color? textColor;
   final TextInputAction? textInputAction;
   final TextAlign? textAlign;
+  final int? maxLength;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -59,6 +61,12 @@ class CustomTextFormField extends StatelessWidget {
       controller: textEditingController,
       textInputAction: textInputAction,
       validator: validator,
+      maxLength: maxLength,
+      buildCounter: (context,
+              {required currentLength,
+              required isFocused,
+              required maxLength}) =>
+          const SizedBox(),
       style: Theme.of(context).textTheme.displayMedium!.copyWith(
           color: textColor ?? AppColors.primaryColor,
           fontWeight: FontWeight.bold),

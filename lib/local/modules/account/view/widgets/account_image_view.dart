@@ -33,7 +33,7 @@ class AccountImageView extends StatelessWidget {
                     )
                   : null,
               boxShadow: const [
-                BoxShadow(color: AppColors.lBlack, blurRadius: 5)
+                BoxShadow(color: AppColors.lBlack, blurRadius: 4)
               ],
             ),
             height: AppSize.screenHight(context) / 4,
@@ -55,7 +55,7 @@ class AccountImageView extends StatelessWidget {
                               ? AppColors.primaryColor
                               : AppColors.white,
                           boxShadow: const [
-                            BoxShadow(color: AppColors.lBlack, blurRadius: 5)
+                            BoxShadow(color: AppColors.lBlack, blurRadius: 4)
                           ],
                           image: controller.accountImage != null
                               ? DecorationImage(

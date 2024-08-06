@@ -33,12 +33,12 @@ class ForgotPassEmailPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "تحقق من الحساب",
+            "التحقق من الحساب",
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(fontSize: 20),
+                .copyWith(color: AppColors.primaryColor, fontSize: 18),
           ),
           const SizedBox(
             height: 10,
@@ -65,7 +65,7 @@ class ForgotPassEmailPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 15,
           ),
           Padding(
             padding: EdgeInsets.symmetric(

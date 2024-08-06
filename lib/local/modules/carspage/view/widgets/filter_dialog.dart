@@ -4,6 +4,7 @@ import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 import 'package:proj/local/view/widgets/app_bar/custom_app_bar.dart';
+import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
@@ -44,22 +45,22 @@ filterDialog(BuildContext context) {
               hint: "البحث بالموقع",
             ),
             Text(
-              "العلامات التجارية",
+              "العلامات التجارية:",
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
-                  .copyWith(fontSize: 18),
+                  .copyWith(fontSize: 14),
             ),
             const BrandGridViewFilter(),
             const SizedBox(
               height: 10,
             ),
             Text(
-              "التسعير",
+              "التسعير:",
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
-                  .copyWith(fontSize: 18),
+                  .copyWith(fontSize: 14),
             ),
             const SizedBox(
               height: 20,
@@ -93,26 +94,13 @@ filterDialog(BuildContext context) {
               height: 20,
             ),
             Center(
-              child: CustomButton(
-                  buttonBody: "",
-                  buttonWidth: AppSize.screenWidth(context) / 2,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(
-                        Icons.sync_outlined,
-                        color: AppColors.white,
-                      ),
-                      Text(
-                        "إعادة ضبط الجميع",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium!
-                            .copyWith(color: AppColors.white),
-                      )
-                    ],
-                  ),
-                  onTap: () => controller.initializeData()),
+              child: ButtonWithIcon(
+                minWidth: AppSize.screenWidth(context) / 2,
+                icon: Icons.sync_outlined,
+                title: "إعادة ضبط الجميع",
+                reverse: true,
+                onPressed: () => controller.initializeData(),
+              ),
             )
           ],
         ),

@@ -35,7 +35,7 @@ class OtpPage extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(fontSize: 20),
+                .copyWith(fontSize: 18, color: AppColors.primaryColor),
           ),
           const SizedBox(
             height: 10,
@@ -56,13 +56,14 @@ class OtpPage extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: CustomTextFormField(
-              hint: "أدخل الرمز هنا من فضلك...",
+              hint: "XXXXXX",
+              maxLength: 6,
               textAlign: TextAlign.center,
               inputType: TextInputType.number,
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 15,
           ),
           Padding(
             padding: EdgeInsets.symmetric(

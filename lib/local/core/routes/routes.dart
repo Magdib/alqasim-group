@@ -4,7 +4,8 @@ import 'package:proj/local/modules/auth/login/view/pages/forgot_pas_email_page.d
 import 'package:proj/local/modules/auth/login/view/pages/login_page.dart';
 import 'package:proj/local/modules/auth/shared/pages/otp_page.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
-import 'package:proj/local/modules/carspage/view/pages/admin_cars_page.dart';
+import 'package:proj/local/modules/carspage/controller/seller_page_controller.dart';
+import 'package:proj/local/modules/carspage/view/pages/seller_cars_page.dart';
 import 'package:proj/local/modules/home/view/pages/main_page.dart';
 import 'package:proj/local/modules/OnBoarding/controller/on_boarding_controller.dart';
 import 'package:proj/local/modules/auth/signup/controller/sign_up_controller.dart';
@@ -22,7 +23,7 @@ class AppRoutes {
   static const String carDetailsPageRoute = "/carDetailsPage";
   static const String forgotPassEmailPageRoute = "/ForgotPassEmailPage";
   static const String otpPageRoute = "/otpPage";
-  static const String adminCarsPageRoute = "/AdminCarsPage";
+  static const String sellerCarsPageRoute = "/SellerCarsPage";
 }
 
 List<GetPage> pages = [
@@ -66,7 +67,9 @@ List<GetPage> pages = [
     page: () => const OtpPage(),
   ),
   GetPage(
-    name: AppRoutes.adminCarsPageRoute,
-    page: () => const AdminCarsPage(),
-  )
+      name: AppRoutes.sellerCarsPageRoute,
+      page: () => const SellerCarsPage(),
+      binding: BindingsBuilder.put(
+        () => SellerPageController(),
+      ))
 ];

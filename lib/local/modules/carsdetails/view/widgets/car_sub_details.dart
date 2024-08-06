@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:get/get.dart';
+import 'package:proj/local/core/routes/routes.dart';
 
 class CarSubDetails extends StatelessWidget {
   const CarSubDetails({
@@ -18,15 +20,20 @@ class CarSubDetails extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        Text("bently", style: Theme.of(context).textTheme.displayLarge),
+        Text("bently",
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(fontSize: 16)),
         const SizedBox(
           height: 5,
         ),
         Text("234,500 AED",
-            style: Theme.of(context)
-                .textTheme
-                .displayLarge!
-                .copyWith(color: AppColors.primaryColor)),
+            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                )),
         const SizedBox(
           height: 5,
         ),
@@ -42,7 +49,7 @@ class CarSubDetails extends StatelessWidget {
               width: 5,
             ),
             GestureDetector(
-              // onTap: () => Get.toNamed(AppRoutes.adminCarsPageRoute),
+              onTap: () => Get.toNamed(AppRoutes.sellerCarsPageRoute),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -51,13 +58,13 @@ class CarSubDetails extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .displayMedium!
-                        .copyWith(fontSize: 14, fontWeight: FontWeight.bold),
+                        .copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 4,
                   ),
                   Text(
-                    "مجموع السيارات : 2",
+                    "مجموع السيارات: 2",
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                         fontSize: 12,
                         color: AppColors.grey,

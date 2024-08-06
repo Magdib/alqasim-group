@@ -24,7 +24,7 @@ class FilterFormColumn extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
-                  .copyWith(fontSize: 18),
+                  .copyWith(fontSize: 14),
             ),
           ),
           const SizedBox(

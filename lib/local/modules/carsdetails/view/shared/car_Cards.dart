@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
+import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 
-class CatDetailsLinkedCars extends StatelessWidget {
-  const CatDetailsLinkedCars({
+import '../widgets/icon_title_row.dart';
+
+class CarCards extends StatelessWidget {
+  const CarCards({
     super.key,
+    required this.cars,
   });
-
+  final List<CarModel> cars;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 310,
+      height: 305,
       child: PageView.builder(
-        itemCount: 3,
+        itemCount: cars.length,
         itemBuilder: (context, index) => Container(
           width: AppSize.screenWidth(context),
           margin: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),
@@ -24,7 +27,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: AppColors.white,
               boxShadow: const [
-                BoxShadow(color: AppColors.lBlack, blurRadius: 5)
+                BoxShadow(color: AppColors.lBlack, blurRadius: 4)
               ]),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3),
@@ -38,9 +41,9 @@ class CatDetailsLinkedCars extends StatelessWidget {
                   height: 140,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      image: const DecorationImage(
+                      image: DecorationImage(
                         image: AssetImage(
-                          "assets/images/car1.webp",
+                          cars[index].image,
                         ),
                         fit: BoxFit.fitWidth,
                       )),
@@ -55,7 +58,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      "بينتلي 2020",
+                      cars[index].type,
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.grey,
@@ -68,7 +71,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
                     ),
                     FittedBox(
                       child: Text(
-                        "Bentley Bentayga Speed",
+                        cars[index].name,
                         style:
                             Theme.of(context).textTheme.displayMedium!.copyWith(
                                   fontSize: 11.5,
@@ -91,7 +94,7 @@ class CatDetailsLinkedCars extends StatelessWidget {
                           width: 5,
                         ),
                         Text(
-                          "بواسطة admin",
+                          "بواسطة ${cars[index].user}",
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
@@ -106,50 +109,39 @@ class CatDetailsLinkedCars extends StatelessWidget {
                     const SizedBox(
                       height: 2.5,
                     ),
-                    SizedBox(
-                      height: 40,
-                      width: AppSize.screenWidth(context),
-                      child: GetBuilder<CarDetailsController>(
-                        builder: (controller) => ListView.separated(
-                          itemCount: controller.linkedCarsIconText.length,
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          separatorBuilder: (context, index) => SizedBox(
-                            width: index == 1 ? 20 : 30,
-                          ),
-                          itemBuilder: (context, index) => Row(
-                            children: [
-                              Icon(
-                                controller.linkedCarsIconText[index].icon,
-                                size: controller.linkedCarsIconText[index].size,
-                                color: AppColors.primaryColor,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(controller.linkedCarsIconText[index].title,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium!
-                                      .copyWith(
-                                        color: AppColors.grey,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ))
-                            ],
-                          ),
+                    Row(
+                      children: [
+                        IconTitleRow(
+                          icon: AppStatics.carCardIcons[0],
+                          text: cars[index].date!,
+                          index: 0,
                         ),
-                      ),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        IconTitleRow(
+                          icon: AppStatics.carCardIcons[1],
+                          text: cars[index].meters!,
+                          index: 1,
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        IconTitleRow(
+                          icon: AppStatics.carCardIcons[2],
+                          text: "${cars[index].speed!}",
+                          index: 2,
+                        ),
+                      ],
                     ),
                     const SizedBox(
-                      height: 2.5,
+                      height: 5,
                     ),
                     Text(
-                      "5844480AED",
+                      cars[index].price,
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
-                                fontWeight: FontWeight.w900,
+                                fontWeight: FontWeight.bold,
                               ),
                     ),
                   ],

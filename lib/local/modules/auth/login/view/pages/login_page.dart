@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/constant/Colors.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/images.dart';
@@ -25,7 +26,7 @@ class LoginPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                 padding: EdgeInsets.only(
-                    left: 10, right: 10, top: index == 0 ? 20 : 10, bottom: 10),
+                    left: 10, right: 10, top: index == 0 ? 20 : 0, bottom: 5),
                 child: CustomTextFormField(
                   textEditingController:
                       controller.formsData[index].textEditingController,
@@ -43,7 +44,10 @@ class LoginPage extends StatelessWidget {
           builder: (controller) => SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+                padding: const EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                ),
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
@@ -87,6 +91,7 @@ class LoginPage extends StatelessWidget {
                   child: CustomButton(
                     buttonBody: "تسجيل الدخول",
                     onTap: () {},
+                    buttonColor: const Color.fromARGB(255, 4, 40, 103),
                   ),
                 ),
               ),
@@ -96,7 +101,18 @@ class LoginPage extends StatelessWidget {
                   minWidth: AppSize.screenWidth(context),
                   title: "تسجيل الدخول مع غوغل",
                   image: AppImages.googleLogo,
-                  color: AppColors.deepGreen,
+                  color: const Color.fromARGB(255, 6, 36, 87),
+                  onPressed: () {},
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: ButtonWithIcon(
+                  minWidth: AppSize.screenWidth(context),
+                  title: "تسجيل الدخول مع فيسبوك",
+                  icon: FontAwesome.facebook_brand,
+                  iconTextDist: 10,
+                  color: const Color.fromARGB(255, 1, 26, 68),
                   onPressed: () {},
                 ),
               ),

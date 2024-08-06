@@ -20,7 +20,6 @@ class CarSliverAppBar extends StatelessWidget {
           title: Text(title,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
                     color: AppColors.white,
-                    fontSize: 20,
                   )),
           background: Image.asset(
             "assets/images/sliver.webp",

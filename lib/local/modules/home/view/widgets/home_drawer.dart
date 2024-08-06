@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
-import 'package:proj/local/core/constant/images.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
+import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/dividers/custom_horizontal_divider.dart';
+
+import 'al_qassim_logo_card.dart';
+import 'services_drawer_row.dart';
 
 class HomeDrawer extends GetView<MainPageController> {
   const HomeDrawer({
@@ -23,42 +26,85 @@ class HomeDrawer extends GetView<MainPageController> {
           const SizedBox(
             height: 20,
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 5),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(6),
-                color: AppColors.lGreyD),
-            child: Image.asset(
-              AppImages.logo,
-              height: 40,
-              fit: BoxFit.fitHeight,
-              color: AppColors.primaryColor,
-            ),
-          ),
+          const AlQassemLogoCard(),
           const SizedBox(
             height: 20,
           ),
           ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemBuilder: (context, index) => InkWell(
-                    onTap: () => controller.handleDrawerNavigation(index),
-                    child: Text(
-                      controller.drawerItems[index].title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium!
-                          .copyWith(fontWeight: FontWeight.w500),
+              itemBuilder: (context, index) => controller
+                          .drawerItems[index].isDropDown ==
+                      null
+                  ? InkWell(
+                      onTap: () => controller.handleDrawerNavigation(index),
+                      child: Text(
+                        controller.drawerItems[index].title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                    )
+                  : ExpansionTile(
+                      tilePadding: EdgeInsets.zero,
+                      minTileHeight: 30,
+                      title: Text(
+                        controller.drawerItems[index].title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontWeight: FontWeight.w500),
+                      ),
+                      shape: const Border(),
+                      childrenPadding: const EdgeInsets.symmetric(vertical: 10),
+                      children: [
+                        const ServicesDrawerRow(
+                          index: 0,
+                        ),
+                        const ServicesDrawerRow(
+                          index: 1,
+                        ),
+                        const ServicesDrawerRow(
+                          index: 2,
+                        ),
+                        const ServicesDrawerRow(
+                          index: 3,
+                        ),
+                        const ServicesDrawerRow(
+                          index: 4,
+                        ),
+                        GetBuilder<MainPageController>(
+                          builder: (controller) => AnimatedContainer(
+                            duration: const Duration(milliseconds: 400),
+                            margin: EdgeInsets.only(
+                                top: controller.drawerSelectedServices == null
+                                    ? 0
+                                    : 20),
+                            height: controller.drawerSelectedServices == null
+                                ? 0
+                                : 50,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 60),
+                              child: ButtonWithIcon(
+                                  title: "طلب الخدمة",
+                                  icon: Icons.telegram_outlined,
+                                  onPressed: () {}),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-              separatorBuilder: (context, index) => const Column(
+              separatorBuilder: (context, index) => Column(
                     children: [
                       SizedBox(
-                        height: 5,
+                        height: controller.drawerItems[index].isDropDown == null
+                            ? 5
+                            : 0,
                       ),
-                      CustomHorizontalDivider(),
+                      const CustomHorizontalDivider(),
                       SizedBox(
-                        height: 5,
+                        height: index != 2 ? 5 : 0,
                       ),
                     ],
                   ),

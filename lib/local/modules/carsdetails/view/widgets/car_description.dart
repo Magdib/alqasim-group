@@ -13,16 +13,12 @@ class CarDescription extends GetView<CarDetailsController> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
-          height: 10,
-        ),
         Text(
           "المواصفات:",
-          style:
-              Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 20),
+          style: Theme.of(context).textTheme.displayLarge,
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         SizedBox(
           height: 625,
@@ -60,6 +56,7 @@ class CarDescription extends GetView<CarDetailsController> {
                     SizedBox(
                       width: controller.carDetailsTitle[index].title.length * 6,
                       child: FittedBox(
+                        alignment: Alignment.centerRight,
                         fit: BoxFit.scaleDown,
                         child: Text(
                           controller.carDetailsTitle[index].title,
@@ -67,7 +64,7 @@ class CarDescription extends GetView<CarDetailsController> {
                               .textTheme
                               .displayMedium!
                               .copyWith(
-                                fontSize: 14,
+                                fontSize: 12,
                                 height: 1.3,
                               ),
                         ),
@@ -82,7 +79,7 @@ class CarDescription extends GetView<CarDetailsController> {
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.grey,
-                                fontSize: 12,
+                                fontSize: 11,
                               ),
                     ),
                   ],
@@ -91,20 +88,16 @@ class CarDescription extends GetView<CarDetailsController> {
             ),
           ),
         ),
-        Text(
-          "الوصف:",
-          style:
-              Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 20),
-        ),
+        Text("الوصف:", style: Theme.of(context).textTheme.displayLarge),
         const SizedBox(
-          height: 15,
+          height: 10,
         ),
         Text(
           "Current Price : 234500.00 - Previous Price : - Top Speed (KMH) : 306 - Year : 2020 - Mileage : 5456898 - Is Featured : Yes - Latitude : Sharjah - Longitude : - Longitude : - Latitude : Sharjah - Longitude : - Latitude : çΩΩΩ - Latitude : sharjah - Longitude : sharjah - Exterior 3D View Video Link : - Interior 3D View Video Link : - Vendor : admin - Title : bently - Category : Convertible - Condition : Used - Brand : Bentley - Fuel Type : Diesel - Transmission Type : Automatic - Address : sharjah - City : Sharjah - Regional Specifications : GCC Spaces - Door Numbers : 4 - Seat Numbers : 6 - Cylinder Numbers : 6 - Horse Power : 700-799 - Is Warranty : True",
           style: Theme.of(context)
               .textTheme
               .displayMedium!
-              .copyWith(color: AppColors.grey, fontSize: 14),
+              .copyWith(color: AppColors.grey, fontSize: 12),
         ),
         const SizedBox(
           height: 15,

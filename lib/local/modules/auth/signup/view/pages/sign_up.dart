@@ -21,7 +21,10 @@ class SignUp extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                 padding: EdgeInsets.only(
-                    left: 10, right: 10, top: index == 0 ? 20 : 10, bottom: 10),
+                  left: 10,
+                  right: 10,
+                  top: index == 0 ? 20 : 10,
+                ),
                 child: CustomTextFormField(
                   textEditingController:
                       controller.formsData[index].textEditingController,
@@ -39,7 +42,8 @@ class SignUp extends StatelessWidget {
           builder: (controller) => SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.only(
+                    left: 10, right: 10, bottom: 10, top: 5),
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(

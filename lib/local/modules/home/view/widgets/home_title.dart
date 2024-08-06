@@ -11,9 +11,9 @@ class HomeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(title,
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.displayLarge!.copyWith(
-              color: AppColors.primaryColor,
-              fontSize: 20,
-            ));
+        style: Theme.of(context)
+            .textTheme
+            .displayLarge!
+            .copyWith(color: AppColors.primaryColor, fontSize: 17));
   }
 }

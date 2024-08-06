@@ -4,6 +4,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/modules/carsdetails/model/details_titles_model.dart';
+import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CarDetailsController extends GetxController {
@@ -71,20 +72,43 @@ class CarDetailsController extends GetxController {
     "أسود",
     "لا يوجد"
   ];
-  List<DetailsTitlesModel> linkedCarsIconText = [
-    DetailsTitlesModel(
-      title: "2020",
-      icon: Icons.date_range_outlined,
-    ),
-    DetailsTitlesModel(
-      title: "51,402",
-      icon: Icons.add_road,
-    ),
-    DetailsTitlesModel(title: "306", icon: CustomIcons.meter, size: 30),
+  List<CarModel> linkedCars = [
+    CarModel(
+        image: "assets/images/car1.webp",
+        price: "5844480AED",
+        type: "بينتلي 2020",
+        name: "Bentley Bentayga Speed",
+        user: "admin",
+        date: "2020",
+        meters: "51,402",
+        speed: 306),
+    CarModel(
+        image: "assets/images/car1.webp",
+        price: "5844480AED",
+        type: "بينتلي 2020",
+        name: "Bentley Bentayga Speed",
+        user: "admin",
+        date: "2020",
+        meters: "51,402",
+        speed: 306),
+    CarModel(
+        image: "assets/images/car1.webp",
+        price: "5844480AED",
+        type: "بينتلي 2020",
+        name: "Bentley Bentayga Speed",
+        user: "admin",
+        date: "2020",
+        meters: "51,402",
+        speed: 306),
   ];
   bool isFav = false;
   addToFav() {
     isFav = !isFav;
+    if (isFav) {
+      AppToasts.successToast("تمت الإضافة إلى قائمة الرغبات");
+    } else {
+      AppToasts.successToast("تم الحذف من قائمة الرغبات");
+    }
     update();
   }
 
@@ -107,7 +131,9 @@ class CarDetailsController extends GetxController {
   }
 
   openWhatsApp() async {
-    if (!await launchUrl(Uri.parse("https://wa.me/+963937386785"))) {
+    String carText = "Hello";
+    if (!await launchUrl(Uri.parse("https://wa.me/+963937386785?text=$carText"),
+        mode: LaunchMode.externalApplication)) {
       AppToasts.errorToast("حدث خطأ ما!");
     }
   }

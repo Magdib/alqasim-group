@@ -17,7 +17,7 @@ class AccountCard extends StatelessWidget {
       decoration: BoxDecoration(
           color: AppColors.white,
           borderRadius: BorderRadius.circular(6),
-          boxShadow: const [BoxShadow(color: AppColors.lBlack, blurRadius: 5)]),
+          boxShadow: const [BoxShadow(color: AppColors.lBlack, blurRadius: 4)]),
       child: Column(
         children: [
           ListView.separated(

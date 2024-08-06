@@ -9,9 +9,11 @@ import 'package:proj/local/modules/carsdetails/view/widgets/car_forms.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_sub_details.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/details_images_slider.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/details_selectable_slider.dart';
+import 'package:proj/local/modules/carsdetails/view/widgets/floating_action_dial.dart';
+import 'package:proj/local/view/shared/app_bottom_nav_bar.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
-import 'package:proj/local/modules/carsdetails/view/widgets/cat_details_linked_cars.dart';
+import 'package:proj/local/modules/carsdetails/view/shared/car_Cards.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class CarDetails extends StatelessWidget {
@@ -20,18 +22,8 @@ class CarDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: GetBuilder<CarDetailsController>(
-          builder: (controller) => FloatingActionButton(
-                onPressed: () => controller.addToFav(),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(35)),
-                backgroundColor: AppColors.white,
-                child: Icon(
-                  controller.isFav ? Icons.favorite : Icons.favorite_border,
-                  color: AppColors.red,
-                  size: 28,
-                ),
-              )),
+      floatingActionButton: const FloatingActionDial(),
+      bottomNavigationBar: const AppBottomNavBar(),
       body: GetBuilder<CarDetailsController>(
         builder: (controller) => CustomScrollView(slivers: <Widget>[
           const CarSliverAppBar(title: "تفاصيل السيارة"),
@@ -55,13 +47,8 @@ class CarDetails extends StatelessWidget {
                 children: [
                   const CarSubDetails(),
                   const CarDescription(),
-                  Text(
-                    "الموقع:",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(fontSize: 20),
-                  ),
+                  Text("الموقع:",
+                      style: Theme.of(context).textTheme.displayLarge!),
                   const SizedBox(
                     height: 15,
                   ),
@@ -76,27 +63,19 @@ class CarDetails extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "السيارات ذات الصلة:",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(fontSize: 20),
-                  ),
+                  Text("السيارات ذات الصلة:",
+                      style: Theme.of(context).textTheme.displayLarge!),
                   const SizedBox(
-                    height: 15,
+                    height: 7.5,
                   ),
-                  const CatDetailsLinkedCars(),
+                  CarCards(
+                    cars: controller.linkedCars,
+                  ),
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "اتصل بالبائع:",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayLarge!
-                        .copyWith(fontSize: 20),
-                  ),
+                  Text("اتصل بالبائع:",
+                      style: Theme.of(context).textTheme.displayLarge),
                   const SizedBox(
                     height: 15,
                   ),

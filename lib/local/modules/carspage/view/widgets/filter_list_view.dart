@@ -16,17 +16,16 @@ class FilterGridView extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 20, childAspectRatio: 1.2),
+            crossAxisCount: 2, crossAxisSpacing: 20, childAspectRatio: 1.3),
         itemCount: controller.filters.length,
         itemBuilder: (context, index) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               controller.filters[index].filterName,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayLarge!
-                  .copyWith(fontSize: 18),
+              style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                    fontSize: 14,
+                  ),
             ),
             const SizedBox(
               height: 10,
@@ -34,8 +33,9 @@ class FilterGridView extends StatelessWidget {
             DropdownButtonHideUnderline(
               child: Container(
                 width: AppSize.screenWidth(context) / 2.2,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                ),
                 decoration: BoxDecoration(
                     border: Border.all(
                       color: AppColors.grey,

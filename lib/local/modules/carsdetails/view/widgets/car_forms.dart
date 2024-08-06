@@ -16,7 +16,7 @@ class CarForms extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             color: AppColors.white,
             boxShadow: const [
-              BoxShadow(color: AppColors.lBlack, blurRadius: 5)
+              BoxShadow(color: AppColors.lBlack, blurRadius: 4)
             ]),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

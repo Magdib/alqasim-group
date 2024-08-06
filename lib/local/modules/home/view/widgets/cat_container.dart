@@ -17,27 +17,28 @@ class CatContainer extends StatelessWidget {
       height: 160,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: AppColors.white,
-          border: Border.all(color: AppColors.primaryColor, width: 2)),
+          color: AppColors.lGrey,
+          boxShadow: [
+            BoxShadow(color: AppColors.grey.withOpacity(0.8), blurRadius: 4)
+          ]),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SizedBox(
-            height: 10,
-          ),
-          Image.asset(
-            image,
-            width: AppSize.screenWidth(context) / 2 - 40,
-            fit: BoxFit.fitWidth,
-          ),
-          const SizedBox(
-            height: 30,
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: Image.asset(
+              image,
+              width: AppSize.screenWidth(context) / 2 - 40,
+              fit: BoxFit.fitWidth,
+            ),
           ),
           Container(
             width: AppSize.screenWidth(context) / 2 - 40,
             height: 50,
+            margin: const EdgeInsets.only(bottom: 5),
             alignment: Alignment.center,
             decoration: const BoxDecoration(
-                color: AppColors.lGrey,
+                color: AppColors.white,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20),
@@ -45,9 +46,9 @@ class CatContainer extends StatelessWidget {
             child: Text(title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.bold,
                     )),
-          )
+          ),
         ],
       ),
     );

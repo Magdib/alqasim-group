@@ -2,5 +2,6 @@ class DrawerModel {
   final String title;
   final String? route;
   final int? index;
-  DrawerModel({required this.title, this.route, this.index});
+  final bool? isDropDown;
+  DrawerModel({required this.title, this.route, this.isDropDown, this.index});
 }

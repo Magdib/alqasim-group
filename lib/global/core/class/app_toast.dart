@@ -20,7 +20,7 @@ class AppToasts {
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 3,
-        backgroundColor: AppColors.green.withOpacity(0.6),
+        backgroundColor: AppColors.primaryColor,
         textColor: AppColors.white,
         fontSize: 16.0);
   }

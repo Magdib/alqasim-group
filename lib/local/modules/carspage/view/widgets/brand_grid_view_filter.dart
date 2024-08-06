@@ -32,7 +32,7 @@ class BrandGridViewFilter extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
-                      .copyWith(fontWeight: FontWeight.bold),
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
                 ),
               ),
             )
