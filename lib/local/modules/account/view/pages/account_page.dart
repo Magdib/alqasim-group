@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
-import 'package:proj/local/modules/account/data/account_view_data.dart';
+import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/account/view/widgets/account_card.dart';
 import 'package:proj/local/modules/account/view/widgets/account_image_view.dart';
 
@@ -23,8 +24,10 @@ class SettingsPage extends StatelessWidget {
                   width: AppSize.screenWidth(context) / 1.1,
                   child: Column(
                     children: [
-                      AccountCard(
-                        dataList: AccountViewData.upperList,
+                      GetBuilder<AccountController>(
+                        builder: (controller) => AccountCard(
+                          dataList: controller.upperList,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -41,8 +44,10 @@ class SettingsPage extends StatelessWidget {
             horizontal: AppSize.screenWidth(context) * 0.05,
           ),
           child: SizedBox(
-            child: AccountCard(
-              dataList: AccountViewData.lowerList,
+            child: GetBuilder<AccountController>(
+              builder: (controller) => AccountCard(
+                dataList: controller.lowerList,
+              ),
             ),
           ),
         ),

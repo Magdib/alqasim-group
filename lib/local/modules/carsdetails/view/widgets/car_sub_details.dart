@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 
-class CarSubDetails extends StatelessWidget {
+class CarSubDetails extends GetView<CarDetailsController> {
   const CarSubDetails({
     super.key,
   });
@@ -14,13 +15,13 @@ class CarSubDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "قابلة للتحويل",
+          controller.car.category!,
           style: Theme.of(context).textTheme.displayMedium,
         ),
         const SizedBox(
           height: 10,
         ),
-        Text("bently",
+        Text(controller.car.type,
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
@@ -28,7 +29,7 @@ class CarSubDetails extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        Text("234,500 AED",
+        Text(controller.car.price,
             style: Theme.of(context).textTheme.displayLarge!.copyWith(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold,

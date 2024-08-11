@@ -6,7 +6,6 @@ class SellerPageController extends GetxController {
   List<String> fixedTabBarItems = [
     "جميع السيارات",
     "قابلة للتحويل",
-    "دفع رباعي",
   ];
   late PageController pageController;
   int selectedIndex = 0;

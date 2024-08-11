@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
 class HomeTitle extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomeTitle extends StatelessWidget {
   final String title;
   @override
   Widget build(BuildContext context) {
-    return Text(title,
+    return Text(title.tr,
         textAlign: TextAlign.center,
         style: Theme.of(context)
             .textTheme

@@ -20,7 +20,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        const CarSliverAppBar(title: "تسجيل الدخول"),
+        CarSliverAppBar(title: "تسجيل الدخول".tr),
         GetBuilder<LoginController>(
           builder: (controller) => SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
                       controller.formsData[index].textEditingController,
                   obscure: controller.formsData[index].isPassword,
                   contentPadding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                   hint: controller.formsData[index].hint,
                 ),
               ),
@@ -51,20 +51,20 @@ class LoginPage extends StatelessWidget {
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                    text: "ليس لديك حساب؟ ",
+                    text: "ليس لديك حساب؟ ".tr,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.grey,
                         ),
                   ),
                   TextSpan(
-                    text: "أنقر هنا ",
+                    text: "أنقر هنا ".tr,
                     recognizer: controller.signUpButtonGesture,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.primaryColor,
                         ),
                   ),
                   TextSpan(
-                    text: "للتسجيل",
+                    text: "للتسجيل".tr,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.grey,
                         ),
@@ -72,12 +72,13 @@ class LoginPage extends StatelessWidget {
                 ])),
               ),
               Align(
-                alignment: leftRightLangAlign(),
+                //Fix On Translate
+                alignment: leftRightLangAlign(controller.selectedLocal),
                 child: TextButton(
                     onPressed: () =>
                         Get.toNamed(AppRoutes.forgotPassEmailPageRoute),
                     child: Text(
-                      "هل نسيت كلمة المرور؟",
+                      "هل نسيت كلمة المرور؟".tr,
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.primaryColor,
@@ -89,7 +90,7 @@ class LoginPage extends StatelessWidget {
                 child: Hero(
                   tag: "SubmitAuth",
                   child: CustomButton(
-                    buttonBody: "تسجيل الدخول",
+                    buttonBody: "تسجيل الدخول".tr,
                     onTap: () {},
                     buttonColor: const Color.fromARGB(255, 4, 40, 103),
                   ),
@@ -99,7 +100,7 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: ButtonWithIcon(
                   minWidth: AppSize.screenWidth(context),
-                  title: "تسجيل الدخول مع غوغل",
+                  title: "تسجيل الدخول مع غوغل".tr,
                   image: AppImages.googleLogo,
                   color: const Color.fromARGB(255, 6, 36, 87),
                   onPressed: () {},
@@ -109,7 +110,7 @@ class LoginPage extends StatelessWidget {
                 padding: const EdgeInsets.all(10),
                 child: ButtonWithIcon(
                   minWidth: AppSize.screenWidth(context),
-                  title: "تسجيل الدخول مع فيسبوك",
+                  title: "تسجيل الدخول مع فيسبوك".tr,
                   icon: FontAwesome.facebook_brand,
                   iconTextDist: 10,
                   color: const Color.fromARGB(255, 1, 26, 68),

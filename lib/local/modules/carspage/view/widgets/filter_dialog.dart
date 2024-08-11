@@ -5,7 +5,6 @@ import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 import 'package:proj/local/view/widgets/app_bar/custom_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
-import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
 import 'brand_grid_view_filter.dart';
@@ -19,7 +18,7 @@ filterDialog(BuildContext context) {
       child: Scaffold(
         appBar: customAppBar(
             context: context,
-            title: "الفلاتر",
+            title: "الفلاتر".tr,
             leading: IconButton(
                 onPressed: () {
                   controller.handlePop();
@@ -37,15 +36,18 @@ filterDialog(BuildContext context) {
             ),
             FilterGridView(),
             FilterFormColumn(
-              title: "عنوان السيارة",
-              hint: "البحث عن طريق عنوان السيارة",
+              title: "عنوان السيارة".tr,
+              hint: "البحث عن طريق عنوان السيارة".tr,
             ),
             FilterFormColumn(
-              title: "موقع",
-              hint: "البحث بالموقع",
+              title: "موقع".tr,
+              hint: "البحث بالموقع".tr,
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Text(
-              "العلامات التجارية:",
+              "العلامات التجارية:".tr,
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
@@ -56,7 +58,7 @@ filterDialog(BuildContext context) {
               height: 10,
             ),
             Text(
-              "التسعير:",
+              "التسعير:".tr,
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
@@ -71,7 +73,7 @@ filterDialog(BuildContext context) {
                 SizedBox(
                   width: AppSize.screenWidth(context) / 3,
                   child: CustomTextFormField(
-                    hint: "أقل سعر",
+                    hint: "أقل سعر".tr,
                     textEditingController: controller.lowestPrice,
                     inputType: TextInputType.number,
                     focusedColor: AppColors.green,
@@ -81,7 +83,7 @@ filterDialog(BuildContext context) {
                 SizedBox(
                   width: AppSize.screenWidth(context) / 3,
                   child: CustomTextFormField(
-                    hint: "أعلى سعر",
+                    hint: "أعلى سعر".tr,
                     textEditingController: controller.highestPrice,
                     inputType: TextInputType.number,
                     focusedColor: AppColors.red,
@@ -97,7 +99,7 @@ filterDialog(BuildContext context) {
               child: ButtonWithIcon(
                 minWidth: AppSize.screenWidth(context) / 2,
                 icon: Icons.sync_outlined,
-                title: "إعادة ضبط الجميع",
+                title: "إعادة ضبط الجميع".tr,
                 reverse: true,
                 onPressed: () => controller.initializeData(),
               ),

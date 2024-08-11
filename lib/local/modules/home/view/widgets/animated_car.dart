@@ -12,17 +12,22 @@ class AnimatedCar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainPageController>(
-      builder: (controller) => Transform.flip(
-        flipX: true,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 1800),
-          padding: EdgeInsets.only(left: controller.carPadding),
-          //Handle on Translate
-          alignment: leftRightLangAlign(),
-          child: Image.asset(
-            "${AppImages.imageRoute}/sideCar.png",
-            height: 200,
-            fit: BoxFit.fitHeight,
+      builder: (controller) => Directionality(
+        textDirection: controller.selectedLocal == "ar"
+            ? TextDirection.ltr
+            : TextDirection.rtl,
+        child: Transform.flip(
+          flipX: controller.selectedLocal == "en" ? true : false,
+          child: AnimatedContainer(
+            duration: const Duration(seconds: 1),
+            padding: EdgeInsets.only(left: controller.carPadding),
+            //Handle on Translate
+            alignment: leftRightLangAlign("ar"),
+            child: Image.asset(
+              "${AppImages.imageRoute}/sideCar.png",
+              height: 200,
+              fit: BoxFit.fitHeight,
+            ),
           ),
         ),
       ),

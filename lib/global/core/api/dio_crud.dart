@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../local/core/api/api_links.dart';
 import '../functions/check_internet_connection.dart';
 import '../api/api_errors.dart';
@@ -41,14 +42,14 @@ class DioCrud {
           ));
         }
       } else {
-        return Left(NetworkError(message: "لا يوجد اتصال بالانترنت"));
+        return Left(NetworkError(message: "...لا يوجد اتصال بالإنترنت".tr));
       }
     } on TimeoutException catch (e) {
       log('TimeOut for the request $e');
-      return left(TimeOutError(message: "لا يوجد اتصال بالانترنت"));
+      return left(TimeOutError(message: "...لا يوجد اتصال بالإنترنت".tr));
     } on SocketException catch (e) {
       log('No internet connection | $e');
-      return Left(NetworkError(message: "لا يوجد اتصال بالانترنت"));
+      return Left(NetworkError(message: "...لا يوجد اتصال بالإنترنت".tr));
     } on DioException catch (e) {
       log("Catch error $e");
       return Left(DioExceptions.showDioExceptionMessage(dioException: e));
@@ -61,11 +62,13 @@ class DioCrud {
   Future<Either<ApiErrors, Map>> get({
     required String linkUrl,
     required bool isAuthorized,
+    Map<String, String>? parameters,
   }) async {
     try {
       if (await checkInternet()) {
         debugPrint("url link is $linkUrl");
         final response = await dio.get(linkUrl,
+            queryParameters: parameters,
             options: Options(
                 receiveTimeout: const Duration(seconds: 30),
                 sendTimeout: const Duration(seconds: 30),
@@ -82,14 +85,14 @@ class DioCrud {
           ));
         }
       } else {
-        return Left(NetworkError(message: "لا يوجد اتصال بالانترنت"));
+        return Left(NetworkError(message: "...لا يوجد اتصال بالإنترنت".tr));
       }
     } on TimeoutException catch (e) {
       log('TimeOut for the request $e');
-      return left(TimeOutError(message: "لا يوجد اتصال بالانترنت"));
+      return left(TimeOutError(message: "انتهت مهلة التنفيذ".tr));
     } on SocketException catch (e) {
       log('No internet connection | $e');
-      return Left(NetworkError(message: "لا يوجد اتصال بالانترنت"));
+      return Left(NetworkError(message: "...لا يوجد اتصال بالإنترنت".tr));
     } on DioException catch (e) {
       log("Catch error $e");
       return Left(DioExceptions.showDioExceptionMessage(dioException: e));

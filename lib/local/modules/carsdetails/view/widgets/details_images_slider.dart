@@ -16,13 +16,13 @@ class DetailsImagesSlider extends StatelessWidget {
         width: AppSize.screenWidth(context) / 1.5,
         child: PageView.builder(
           controller: controller.pageController,
-          itemCount: controller.images.length,
+          itemCount: controller.car.images!.length,
           itemBuilder: (context, index) => Container(
             margin: const EdgeInsets.symmetric(horizontal: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
-                  image: AssetImage(controller.images[index]),
+                  image: AssetImage(controller.car.images![index]),
                   fit: BoxFit.cover),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 
 class CatContainer extends StatelessWidget {
   const CatContainer({
@@ -26,10 +27,13 @@ class CatContainer extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 10),
-            child: Image.asset(
-              image,
+            child: CustomCachedNetImage(
+              canReDownload: false,
               width: AppSize.screenWidth(context) / 2 - 40,
+              height: 60,
               fit: BoxFit.fitWidth,
+              borderRadius: 6,
+              imageUrl: image,
             ),
           ),
           Container(

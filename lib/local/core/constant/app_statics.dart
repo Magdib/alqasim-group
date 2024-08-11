@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/modules/home/model/al_qassem_socials_model.dart';
 import 'package:proj/local/modules/home/model/bottom_nav_bar_model.dart';
-import 'package:proj/local/modules/home/model/home_services_model.dart';
 
 class AppStatics {
   static final List<Map<String, String>> slidablePages = [
     {
       "image": "assets/images/onboarding3.webp",
-      "text": "انطلق في رحلة سيارتك مع قائمة السيارات"
+      "text": "انطلق في رحلة سيارتك مع قائمة السيارات".tr
     },
     {
       "image": "assets/images/onboarding1.webp",
-      "text": "اكتشف سيارتك المثالية مع قائمة السيارات"
+      "text": "اكتشف سيارتك المثالية مع قائمة السيارات".tr
     },
     {
       "image": "assets/images/onboarding2.jpg",
-      "text": "خدماتنا متميزة ومتنوعة"
+      "text": "خدماتنا متميزة ومتنوعة".tr
     },
   ];
   static final List<IconData> carCardIcons = [
@@ -47,28 +47,7 @@ class AppStatics {
       icon: Icons.person,
     ),
   ];
-  static final List<HomeServicesModel> homeServicesList = [
-    HomeServicesModel(
-        title: "شراء سيارة",
-        icon: Icons.monetization_on_outlined,
-        text: "أريد شراء سيارة من فضلك"),
-    HomeServicesModel(
-        title: "تصدير سيارة",
-        icon: Icons.shopping_cart_checkout,
-        text: "أريد شراء سيارة من فضلك"),
-    HomeServicesModel(
-        title: "بيع سيارة",
-        icon: Icons.sell_outlined,
-        text: "أريد شراء سيارة من فضلك"),
-    HomeServicesModel(
-        title: "بيع سيارة",
-        icon: Icons.sell_outlined,
-        text: "أريد شراء سيارة من فضلك"),
-    HomeServicesModel(
-        title: "بيع سيارة",
-        icon: Icons.sell_outlined,
-        text: "أريد شراء سيارة من فضلك"),
-  ];
+
   static final List<AlQassemSocialsModel> alQassimSocials = [
     AlQassemSocialsModel(
         FontAwesome.tiktok_brand, "https://www.tiktok.com/@alqassemgroup"),

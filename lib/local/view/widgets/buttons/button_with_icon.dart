@@ -15,6 +15,7 @@ class ButtonWithIcon extends StatelessWidget {
     this.reverse,
     required this.onPressed,
     this.iconTextDist,
+    this.iconSize,
   });
   final IconData? icon;
   final String? image;
@@ -24,6 +25,7 @@ class ButtonWithIcon extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool? reverse;
   final double? iconTextDist;
+  final double? iconSize;
   @override
   Widget build(BuildContext context) {
     return CustomButton(
@@ -39,6 +41,7 @@ class ButtonWithIcon extends StatelessWidget {
                       ? Icon(
                           icon,
                           color: AppColors.white,
+                          size: iconSize,
                         )
                       : Image.asset(
                           image!,
@@ -74,6 +77,7 @@ class ButtonWithIcon extends StatelessWidget {
                       ? Icon(
                           icon,
                           color: AppColors.white,
+                          size: iconSize,
                         )
                       : Image.asset(
                           image!,

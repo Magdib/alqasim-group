@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-Alignment leftRightLangAlign([bool isReversed = false]) {
-  return isReversed ? Alignment.centerLeft : Alignment.centerRight;
+Alignment leftRightLangAlign(String selectedLocale) {
+  return selectedLocale == "en" ? Alignment.centerLeft : Alignment.centerRight;
 }

@@ -35,8 +35,8 @@ class FilterFormColumn extends StatelessWidget {
             textEditingController:
                 title == "موقع" ? controller.carLocation : controller.carTitle,
           ),
-          SizedBox(
-            height: 30,
+          const SizedBox(
+            height: 10,
           ),
         ],
       ),

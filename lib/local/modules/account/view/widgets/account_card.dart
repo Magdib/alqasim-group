@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/model/account_pages_model.dart';
 import 'package:proj/local/view/widgets/dividers/custom_horizontal_divider.dart';
 
@@ -35,21 +39,32 @@ class AccountCard extends StatelessWidget {
               ],
             ),
             itemCount: dataList.length,
-            itemBuilder: (context, index) => Row(
-              children: [
-                Icon(
-                  dataList[index].icon,
-                  color: AppColors.primaryColor,
-                  size: 25,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(dataList[index].title,
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                        color: AppColors.primaryColor,
-                        fontWeight: FontWeight.bold))
-              ],
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: dataList[index].link == null
+                  ? () => Get.toNamed(dataList[index].route!)
+                  : () =>
+                      Get.toNamed(AppRoutes.inAppWebViewPageRoute, arguments: {
+                        ArgumentsNames.webViewLink: dataList[index].link,
+                      }),
+              child: Row(
+                children: [
+                  Icon(
+                    dataList[index].icon,
+                    color: AppColors.primaryColor,
+                    size: 25,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Text(dataList[index].title,
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayMedium!
+                          .copyWith(
+                              color: AppColors.primaryColor,
+                              fontWeight: FontWeight.bold))
+                ],
+              ),
             ),
           ),
           const CustomHorizontalDivider()

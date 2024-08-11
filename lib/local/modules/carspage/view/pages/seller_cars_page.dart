@@ -54,9 +54,9 @@ class SellerCarsPage extends StatelessWidget {
                     child: DynamicHeightGridView(
                         itemCount: controller.sellerCars.length,
                         crossAxisCount: 2,
-                        builder: (context, index) => GridCarCard(
-                            car: controller.sellerCars[index],
-                            index: index,
+                        builder: (context, subIndex) => GridCarCard(
+                            car: controller.sellerCars[subIndex],
+                            index: subIndex,
                             addToFav: () {})),
                   ),
                 ),

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
-import 'package:proj/local/core/constant/app_statics.dart';
 
 class ServicesDrawerRow extends StatelessWidget {
   const ServicesDrawerRow({
@@ -33,14 +32,14 @@ class ServicesDrawerRow extends StatelessWidget {
                       borderRadius:
                           BorderRadius.circular(AppSize.appCustomRadius)),
                   child: Icon(
-                    AppStatics.homeServicesList[index].icon,
+                    controller.homeServicesList[index].icon,
                     color: controller.drawerSelectedServices == index
                         ? AppColors.white
                         : AppColors.primaryColor,
                   ),
                 ),
                 Text(
-                  AppStatics.homeServicesList[index].title,
+                  controller.homeServicesList[index].title,
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                       color: AppColors.primaryColor,
                       fontSize: 14,

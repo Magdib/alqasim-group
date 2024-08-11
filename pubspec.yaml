@@ -34,6 +34,8 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
+  flutter_localizations:
+    sdk: flutter  
   cupertino_icons: ^1.0.6
   get: ^4.6.6
   smooth_page_indicator: ^1.2.0+3
@@ -51,9 +53,23 @@ dependencies:
   dynamic_height_grid_view: ^0.0.4
   curved_navigation_bar: ^1.0.6
   flutter_speed_dial: ^7.0.0
+  flutter_inappwebview: ^6.0.0
+  file_picker: ^8.0.7
+  shimmer: ^3.0.0
+  lottie: ^3.1.2
+  cached_network_image: ^3.4.0
+  flutter_spinkit: ^5.2.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.13.1"    
+flutter_launcher_icons: 
+  # android: "launcher_icon"
+  # ios: true
+  android: true
+  image_path: "assets/images/logo.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/logo.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -77,7 +93,8 @@ flutter:
   assets:
     - assets/fonts/
     - assets/images/
-    - assets/icons/    
+    - assets/icons/  
+    - assets/lottie/        
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

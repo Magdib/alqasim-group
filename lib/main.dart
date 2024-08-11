@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/global/binding/app_binding.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
+import 'package:proj/local/core/localization/localization.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/core/themes/theme.dart';
 
@@ -23,8 +27,17 @@ class MyApp extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
           return GetMaterialApp(
               debugShowCheckedModeBanner: false,
+              translations: AppLocalization(),
               getPages: pages,
-              textDirection: TextDirection.rtl,
+              initialBinding: AppBindings(),
+              locale: getLanguage(),
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              localeResolutionCallback: (deviceLocale, supportedLocales) =>
+                  const Locale("en"),
               theme: AppTheme.lightsTheme);
         });
   }

@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
 class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
-
+  const OtpPage({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        const CarSliverAppBar(title: "رمز التحقق"),
+        CarSliverAppBar(title: "رمز التحقق".tr),
         SliverList(
             delegate: SliverChildListDelegate([
           const SizedBox(
@@ -30,7 +33,7 @@ class OtpPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "التحقق من الرمز",
+            "التحقق من الرمز".tr,
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -43,7 +46,8 @@ class OtpPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "الرجاء إدخال رمز التحقق الذي أرسلناه إلى حسابك في الحقل التالي:",
+              "الرجاء إدخال رمز التحقق الذي أرسلناه إلى حسابك في الحقل التالي:"
+                  .tr,
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -69,9 +73,14 @@ class OtpPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: AppSize.screenWidth(context) / 4),
             child: ButtonWithIcon(
-                title: "تحقق من الرمز ",
+                title: "تحقق من الرمز ".tr,
                 icon: Icons.check_circle_outline_sharp,
-                onPressed: () {}),
+                onPressed: Get.previousRoute == AppRoutes.signUpPageRoute
+                    ? () => Get.offNamedUntil(
+                          AppRoutes.signInPageRoute,
+                          (route) => route.isFirst,
+                        )
+                    : () => Get.toNamed(AppRoutes.resetPasswordPageRoute)),
           ),
           const SizedBox(
             height: 40,

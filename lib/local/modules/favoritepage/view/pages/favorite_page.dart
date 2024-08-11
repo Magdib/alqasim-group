@@ -15,7 +15,7 @@ class FavoritePage extends GetView<FavoritePageController> {
         height: 10,
       ),
       CustomTextFormField(
-        hint: "أدخل اسم السيارة هنا...",
+        hint: "أدخل اسم السيارة هنا...".tr,
         icon: const Icon(
           Icons.search,
         ),
@@ -37,9 +37,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          controller.viewCars[index].removeCarWord
-                              ? "${controller.viewCars[index].filterTitle}:"
-                              : "سيارات ${controller.viewCars[index].filterTitle}:",
+                          "${controller.viewCars[index].filterTitle}:",
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!

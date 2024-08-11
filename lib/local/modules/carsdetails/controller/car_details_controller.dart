@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/class/custom_icons.dart';
+import 'package:proj/local/core/constant/arguments_names.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carsdetails/model/details_titles_model.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CarDetailsController extends GetxController {
   late PageController pageController;
-  List<String> images = [
-    "assets/images/car11.webp",
-    "assets/images/car13.webp",
-    "assets/images/car14.webp",
-    "assets/images/car15.webp",
-    "assets/images/car12.webp",
-  ];
+  late ScrollController scrollController;
+  late GoogleMapController googleMapsControl;
+  CarModel car = Get.arguments[ArgumentsNames.carData];
   List<DetailsTitlesModel> carDetailsTitle = [
     DetailsTitlesModel(title: "سنة الصنع", icon: Icons.date_range_outlined),
     DetailsTitlesModel(
@@ -78,6 +77,8 @@ class CarDetailsController extends GetxController {
         price: "5844480AED",
         type: "بينتلي 2020",
         name: "Bentley Bentayga Speed",
+        carDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         user: "admin",
         date: "2020",
         meters: "51,402",
@@ -87,6 +88,8 @@ class CarDetailsController extends GetxController {
         price: "5844480AED",
         type: "بينتلي 2020",
         name: "Bentley Bentayga Speed",
+        carDesc:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
         user: "admin",
         date: "2020",
         meters: "51,402",
@@ -120,26 +123,31 @@ class CarDetailsController extends GetxController {
   swipeImages() async {
     while (true) {
       await Future.delayed(const Duration(seconds: 10));
-      if (pageController.page! < images.length - 1) {
-        pageController.nextPage(
-            duration: const Duration(seconds: 1), curve: Curves.easeIn);
-      } else {
-        pageController.animateToPage(0,
-            duration: const Duration(seconds: 1), curve: Curves.easeIn);
+      if (Get.currentRoute == AppRoutes.carDetailsPageRoute) {
+        if (scrollController.offset < 300) {
+          if (pageController.page! < car.images!.length - 1) {
+            pageController.nextPage(
+                duration: const Duration(seconds: 1), curve: Curves.easeIn);
+          } else {
+            pageController.animateToPage(0,
+                duration: const Duration(seconds: 1), curve: Curves.easeIn);
+          }
+        }
       }
     }
   }
 
   openWhatsApp() async {
-    String carText = "Hello";
-    if (!await launchUrl(Uri.parse("https://wa.me/+963937386785?text=$carText"),
+    String carText =
+        "اسم السيارة: ${car.name}\nتصنيف السيارة: ${car.category}\nنوع السيارة: ${car.type}\nوصف السيارة: ${car.carDesc}\nالسعر: ${car.price}";
+    if (!await launchUrl(Uri.parse("https://wa.me/+971542222307?text=$carText"),
         mode: LaunchMode.externalApplication)) {
       AppToasts.errorToast("حدث خطأ ما!");
     }
   }
 
   openCallApp() async {
-    if (!await launchUrl(Uri.parse("tel:+963937386785"))) {
+    if (!await launchUrl(Uri.parse("tel:+971542222307"))) {
       AppToasts.errorToast("حدث خطأ ما!");
     }
   }
@@ -147,6 +155,7 @@ class CarDetailsController extends GetxController {
   @override
   void onInit() {
     pageController = PageController();
+    scrollController = ScrollController();
     swipeImages();
     super.onInit();
   }
@@ -154,6 +163,8 @@ class CarDetailsController extends GetxController {
   @override
   void dispose() {
     pageController.dispose();
+    scrollController.dispose();
+    googleMapsControl.dispose();
     super.dispose();
   }
 }

@@ -1,7 +1,15 @@
 import 'package:get/get.dart';
+import 'package:proj/local/modules/account/controller/account_web_view_controller.dart';
+import 'package:proj/local/modules/account/controller/edit_account_controller.dart';
+import 'package:proj/local/modules/account/controller/tickets_page_controller.dart';
+import 'package:proj/local/modules/account/view/pages/add_ticket_page.dart';
+import 'package:proj/local/modules/account/view/pages/edit_account_page.dart';
+import 'package:proj/local/modules/account/view/pages/in_app_web_view_page.dart';
+import 'package:proj/local/modules/account/view/pages/tickets_page.dart';
 import 'package:proj/local/modules/auth/login/controller/login_controller.dart';
 import 'package:proj/local/modules/auth/login/view/pages/forgot_pas_email_page.dart';
 import 'package:proj/local/modules/auth/login/view/pages/login_page.dart';
+import 'package:proj/local/modules/auth/login/view/pages/reset_password_page.dart';
 import 'package:proj/local/modules/auth/shared/pages/otp_page.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/modules/carspage/controller/seller_page_controller.dart';
@@ -24,6 +32,11 @@ class AppRoutes {
   static const String forgotPassEmailPageRoute = "/ForgotPassEmailPage";
   static const String otpPageRoute = "/otpPage";
   static const String sellerCarsPageRoute = "/SellerCarsPage";
+  static const String resetPasswordPageRoute = "/resetPasswordPage";
+  static const String editAccountPageRoute = "/EditAccountPage";
+  static const String inAppWebViewPageRoute = "/InAppWebViewPage";
+  static const String ticketsPageRoute = "/TicketsPage";
+  static const String addTicketPageRoute = "/AddTicketPage";
 }
 
 List<GetPage> pages = [
@@ -71,5 +84,33 @@ List<GetPage> pages = [
       page: () => const SellerCarsPage(),
       binding: BindingsBuilder.put(
         () => SellerPageController(),
-      ))
+      )),
+  GetPage(
+    name: AppRoutes.resetPasswordPageRoute,
+    page: () => const ResetPasswordPage(),
+    transition: Transition.rightToLeft,
+    transitionDuration: const Duration(milliseconds: 500),
+  ),
+  GetPage(
+      name: AppRoutes.editAccountPageRoute,
+      page: () => const EditAccountPage(),
+      binding: BindingsBuilder.put(
+        () => EditAccountController(),
+      )),
+  GetPage(
+      name: AppRoutes.inAppWebViewPageRoute,
+      page: () => const InAppWebViewPage(),
+      binding: BindingsBuilder.put(
+        () => AccountWebViewController(),
+      )),
+  GetPage(
+      name: AppRoutes.ticketsPageRoute,
+      page: () => const TicketsPage(),
+      binding: BindingsBuilder.put(
+        () => TicketsPageController(),
+      )),
+  GetPage(
+    name: AppRoutes.addTicketPageRoute,
+    page: () => const AddTicketPage(),
+  )
 ];

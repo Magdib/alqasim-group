@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
-import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 
@@ -18,7 +17,7 @@ class ServicesListView extends StatelessWidget {
         width: AppSize.screenWidth(context),
         child: ListView.separated(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          itemCount: AppStatics.homeServicesList.length,
+          itemCount: controller.homeServicesList.length,
           scrollDirection: Axis.horizontal,
           separatorBuilder: (context, index) => const SizedBox(
             width: 15,
@@ -37,7 +36,7 @@ class ServicesListView extends StatelessWidget {
                     borderRadius:
                         BorderRadius.circular(AppSize.appCustomRadius)),
                 child: Icon(
-                  AppStatics.homeServicesList[index].icon,
+                  controller.homeServicesList[index].icon,
                   color: controller.selectedServices == index
                       ? AppColors.white
                       : AppColors.primaryColor,
@@ -47,7 +46,7 @@ class ServicesListView extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                AppStatics.homeServicesList[index].title,
+                controller.homeServicesList[index].title,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     color: AppColors.primaryColor,
                     fontSize: 12,

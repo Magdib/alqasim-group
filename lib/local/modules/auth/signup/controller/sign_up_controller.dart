@@ -21,15 +21,15 @@ class SignUpController extends GetxController {
       ..onTap = () => Get.offNamed(AppRoutes.signInPageRoute);
     formsData = [
       FormsDataModel(
-          hint: "اسم المستخدم", textEditingController: userNameController),
+          hint: "اسم المستخدم".tr, textEditingController: userNameController),
       FormsDataModel(
-          hint: "البريد الإلكتروني", textEditingController: emailController),
+          hint: "البريد الإلكتروني".tr, textEditingController: emailController),
       FormsDataModel(
-          hint: "كلمة المرور",
+          hint: "كلمة المرور".tr,
           isPassword: true,
           textEditingController: passwordController),
       FormsDataModel(
-          hint: "تأكيد كلمة المرور",
+          hint: "تأكيد كلمة المرور".tr,
           isPassword: true,
           textEditingController: confirmPasswordController),
     ];

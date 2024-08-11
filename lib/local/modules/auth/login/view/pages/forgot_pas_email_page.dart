@@ -17,7 +17,7 @@ class ForgotPassEmailPage extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        const CarSliverAppBar(title: "التحقق من الحساب"),
+        CarSliverAppBar(title: "التحقق من الحساب".tr),
         SliverList(
             delegate: SliverChildListDelegate([
           const SizedBox(
@@ -33,7 +33,7 @@ class ForgotPassEmailPage extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "التحقق من الحساب",
+            "التحقق من الحساب".tr,
             textAlign: TextAlign.center,
             style: Theme.of(context)
                 .textTheme
@@ -46,7 +46,8 @@ class ForgotPassEmailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "الرجاء إدخال الحساب المراد استعادة كلمة المرور له في الحقل التالي:",
+              "الرجاء إدخال الحساب المراد استعادة كلمة المرور له في الحقل التالي:"
+                  .tr,
               style: Theme.of(context)
                   .textTheme
                   .displayMedium!
@@ -56,10 +57,10 @@ class ForgotPassEmailPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: CustomTextFormField(
-              hint: "أدخل الحساب هنا من فضلك...",
+              hint: "أدخل الحساب هنا من فضلك...".tr,
               textAlign: TextAlign.center,
               inputType: TextInputType.emailAddress,
             ),
@@ -71,7 +72,7 @@ class ForgotPassEmailPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(
                 horizontal: AppSize.screenWidth(context) / 4),
             child: ButtonWithIcon(
-                title: "إرسال الرمز ",
+                title: "إرسال الرمز ".tr,
                 icon: MingCute.telegram_line,
                 onPressed: () => Get.toNamed(AppRoutes.otpPageRoute)),
           ),

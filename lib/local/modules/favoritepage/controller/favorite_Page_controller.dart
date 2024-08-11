@@ -35,7 +35,6 @@ class FavoritePageController extends GetxController {
       type: "",
       name: "Car Name",
       user: "",
-      removeCarWord: true,
     ),
   ];
   filterCars(String value) {
@@ -61,9 +60,9 @@ class FavoritePageController extends GetxController {
         viewCars[categoryIndex].cars.add(selectedCars[i]);
       } else {
         viewCars.add(FilteredCarsModel(
-            cars: [selectedCars[i]],
-            filterTitle: selectedCars[i].category!,
-            removeCarWord: selectedCars[i].removeCarWord));
+          cars: [selectedCars[i]],
+          filterTitle: selectedCars[i].category!,
+        ));
       }
     }
   }

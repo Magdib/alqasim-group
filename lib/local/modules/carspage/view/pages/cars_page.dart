@@ -22,7 +22,7 @@ class CarsPage extends StatelessWidget {
             height: 10,
           ),
           CustomTextFormField(
-            hint: "أدخل اسم السيارة هنا...",
+            hint: "أدخل اسم السيارة هنا...".tr,
             icon: const Icon(
               Icons.search,
             ),
@@ -43,71 +43,74 @@ class CarsPage extends StatelessWidget {
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10),
-                itemBuilder: (context, index) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Container(
-                      width: AppSize.screenWidth(context) / 2 - 15,
-                      height: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          image: DecorationImage(
-                            image: AssetImage(
-                              controller.topCars[index].image,
+                itemBuilder: (context, index) => GestureDetector(
+                  onTap: () => controller.goToCarDetailsPage(index),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Container(
+                        width: AppSize.screenWidth(context) / 2 - 15,
+                        height: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            image: DecorationImage(
+                              image: AssetImage(
+                                controller.topCars[index].image,
+                              ),
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: AppSize.screenWidth(context) / 2 - 15,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  controller.topCars[index].price,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall!
+                                      .copyWith(
+                                        color: AppColors.primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                ),
+                                InkWell(
+                                    onTap: () => controller.handleFav(index),
+                                    child: Icon(
+                                      controller.topCars[index].isFav
+                                          ? Icons.favorite
+                                          : Icons.favorite_border_outlined,
+                                      color: AppColors.primaryColor,
+                                    ))
+                              ],
                             ),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: AppSize.screenWidth(context) / 2 - 15,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                controller.topCars[index].price,
+                            FittedBox(
+                              child: Text(
+                                controller.topCars[index].name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .displaySmall!
                                     .copyWith(
-                                      color: AppColors.primaryColor,
+                                      fontSize: 11.5,
                                       fontWeight: FontWeight.bold,
                                     ),
                               ),
-                              InkWell(
-                                  onTap: () => controller.handleFav(index),
-                                  child: Icon(
-                                    controller.topCars[index].isFav
-                                        ? Icons.favorite
-                                        : Icons.favorite_border_outlined,
-                                    color: AppColors.primaryColor,
-                                  ))
-                            ],
-                          ),
-                          FittedBox(
-                            child: Text(
-                              controller.topCars[index].name,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .displaySmall!
-                                  .copyWith(
-                                    fontSize: 11.5,
-                                    fontWeight: FontWeight.bold,
-                                  ),
                             ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

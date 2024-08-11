@@ -15,7 +15,7 @@ class SignUp extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        const CarSliverAppBar(title: "اشتراك"),
+        CarSliverAppBar(title: "اشتراك".tr),
         GetBuilder<SignUpController>(
           builder: (controller) => SliverList(
             delegate: SliverChildBuilderDelegate(
@@ -47,20 +47,20 @@ class SignUp extends StatelessWidget {
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
-                    text: "هل لديك حساب؟ ",
+                    text: "هل لديك حساب؟ ".tr,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.grey,
                         ),
                   ),
                   TextSpan(
-                    text: "أنقر هنا ",
+                    text: "أنقر هنا ".tr,
                     recognizer: controller.signInButtonGesture,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.primaryColor,
                         ),
                   ),
                   TextSpan(
-                    text: "لتسجيل الدخول",
+                    text: "لتسجيل الدخول".tr,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.grey,
                         ),
@@ -72,8 +72,8 @@ class SignUp extends StatelessWidget {
                 child: Hero(
                   tag: "SubmitAuth",
                   child: CustomButton(
-                    buttonBody: "اشتراك",
-                    onTap: () {},
+                    buttonBody: "اشتراك".tr,
+                    onTap: () => Get.toNamed(AppRoutes.otpPageRoute),
                   ),
                 ),
               ),

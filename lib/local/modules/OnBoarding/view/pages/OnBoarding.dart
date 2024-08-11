@@ -48,7 +48,7 @@ class OnBoarding extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
-                                .copyWith(color: AppColors.white),
+                                .copyWith(color: AppColors.white, fontSize: 20),
                           ),
                         )
                       ],
@@ -69,7 +69,8 @@ class OnBoarding extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 20),
                   child: CustomButton(
-                      buttonBody: controller.index < 1 ? "التالي" : "ابدأ",
+                      buttonBody:
+                          controller.index < 1 ? "التالي".tr : "ابدأ".tr,
                       onTap: () => controller.moveToNextPage()),
                 )
               ],

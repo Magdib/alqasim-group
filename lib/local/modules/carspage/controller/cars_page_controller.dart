@@ -29,7 +29,7 @@ class CarsPageController extends GetxController {
     filterValues = [];
     for (int i = 0; i < filters.length; i++) {
       if (filters[i].selectedValue != null &&
-          filters[i].selectedValue != "الجميع") {
+          filters[i].selectedValue != "الجميع".tr) {
         filterValues.add(FilterValuesModel(
             value: filters[i].selectedValue!,
             filterValueType: FilterValueTypes.dropDown,
@@ -153,7 +153,7 @@ class CarsPageController extends GetxController {
         : highestPrice!.clear();
     filters = [
       FilterModel(
-        filterName: "فئة",
+        filterName: "فئة".tr,
         filterValues: [
           "الجميع",
           "رياضيّة",
@@ -167,43 +167,43 @@ class CarsPageController extends GetxController {
         ],
       ),
       FilterModel(
-        filterName: "مدينة",
+        filterName: "مدينة".tr,
         filterValues: ["الجميع", "الشارقة", "مدينة2"],
       ),
       FilterModel(
-        filterName: "المواصفات الإقليمية",
+        filterName: "المواصفات الإقليمية".tr,
         filterValues: ["الجميع", "GCC Space", "خليجي"],
       ),
       FilterModel(
-        filterName: "عدد الأبواب",
+        filterName: "عدد الأبواب".tr,
         filterValues: ["الجميع", "3", "4"],
       ),
       FilterModel(
-        filterName: "عدد المقاعد",
+        filterName: "عدد المقاعد".tr,
         filterValues: ["الجميع", "4", "6"],
       ),
       FilterModel(
-        filterName: "اللون الداخلي",
+        filterName: "اللون الداخلي".tr,
         filterValues: ["الجميع", "بني", "أحمر"],
       ),
       FilterModel(
-        filterName: "اللون الخارجي",
+        filterName: "اللون الخارجي".tr,
         filterValues: ["الجميع", "أسود", "ذهبي"],
       ),
       FilterModel(
-        filterName: "قوة الحصان",
+        filterName: "قوة الحصان".tr,
         filterValues: ["الجميع", "300-399", "700-799"],
       ),
       FilterModel(
-          filterName: "مجربة",
+          filterName: "مجربة".tr,
           filterValues: ["الجميع", "لا", "نعم"],
           selectedValue: "الجميع"),
       FilterModel(
-          filterName: "التأمين",
+          filterName: "التأمين".tr,
           filterValues: ["الجميع", "نعم", "لا"],
           selectedValue: "الجميع"),
       FilterModel(
-        filterName: "أنواع الوقود",
+        filterName: "أنواع الوقود".tr,
         filterValues: [
           "الجميع",
           "بنزين",
@@ -214,7 +214,7 @@ class CarsPageController extends GetxController {
         ],
       ),
       FilterModel(
-        filterName: "شروط",
+        filterName: "شروط".tr,
         filterValues: ["الجميع", "300-399", "700-799"],
       ),
     ];
@@ -246,11 +246,5 @@ class CarsPageController extends GetxController {
       BrandFilterModel(title: "رولز رايز"),
     ];
     update();
-  }
-
-  @override
-  void onInit() {
-    initializeData();
-    super.onInit();
   }
 }

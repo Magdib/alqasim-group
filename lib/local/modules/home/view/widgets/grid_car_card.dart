@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
-import 'package:proj/local/core/routes/routes.dart';
 
-class GridCarCard extends StatelessWidget {
+class GridCarCard extends GetView<MainPageController> {
   const GridCarCard({
     super.key,
     required this.car,
@@ -18,12 +17,11 @@ class GridCarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(AppRoutes.carDetailsPageRoute),
+      onTap: () => controller.goToCarDetailsPage(index),
       child: Stack(
         children: [
           Container(
             width: AppSize.screenWidth(context) / 2 - 30,
-            padding: const EdgeInsets.symmetric(horizontal: 3),
             height: 200,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
@@ -58,6 +56,7 @@ class GridCarCard extends StatelessWidget {
                     width: AppSize.screenWidth(context) / 2 - 40,
                     height: 100,
                     alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 6.5),
                     decoration: const BoxDecoration(
                         color: AppColors.lGrey,
                         borderRadius: BorderRadius.only(
@@ -122,7 +121,7 @@ class GridCarCard extends StatelessWidget {
                               width: 5,
                             ),
                             Text(
-                              "بواسطة ${car.user}",
+                              "${'بواسطة'.tr} ${car.user}",
                               style: Theme.of(context)
                                   .textTheme
                                   .displaySmall!

@@ -18,9 +18,7 @@ class AccountImageView extends StatelessWidget {
       top: 0,
       child: GetBuilder<AccountController>(
         builder: (controller) => GestureDetector(
-          onTap: controller.accountBackImage == null
-              ? () => controller.pickAccountBackImage()
-              : null,
+          onTap: () => controller.pickAccountBackImage(),
           child: Container(
             decoration: BoxDecoration(
               color: controller.accountBackImage == null

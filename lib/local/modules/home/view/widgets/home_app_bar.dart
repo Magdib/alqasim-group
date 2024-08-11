@@ -9,7 +9,7 @@ AppBar homeAppBar(BuildContext context) {
     shadowColor: AppColors.black,
     actions: [
       Padding(
-        padding: const EdgeInsets.only(left: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Image.asset(
           "assets/images/logo2.webp",
           width: AppSize.screenWidth(context) / 2,

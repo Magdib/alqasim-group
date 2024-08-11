@@ -16,7 +16,7 @@ class FilterGridView extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 20, childAspectRatio: 1.3),
+            crossAxisCount: 2, crossAxisSpacing: 20, childAspectRatio: 1.5),
         itemCount: controller.filters.length,
         itemBuilder: (context, index) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,

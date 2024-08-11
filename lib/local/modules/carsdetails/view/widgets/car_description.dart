@@ -93,7 +93,7 @@ class CarDescription extends GetView<CarDetailsController> {
           height: 10,
         ),
         Text(
-          "Current Price : 234500.00 - Previous Price : - Top Speed (KMH) : 306 - Year : 2020 - Mileage : 5456898 - Is Featured : Yes - Latitude : Sharjah - Longitude : - Longitude : - Latitude : Sharjah - Longitude : - Latitude : çΩΩΩ - Latitude : sharjah - Longitude : sharjah - Exterior 3D View Video Link : - Interior 3D View Video Link : - Vendor : admin - Title : bently - Category : Convertible - Condition : Used - Brand : Bentley - Fuel Type : Diesel - Transmission Type : Automatic - Address : sharjah - City : Sharjah - Regional Specifications : GCC Spaces - Door Numbers : 4 - Seat Numbers : 6 - Cylinder Numbers : 6 - Horse Power : 700-799 - Is Warranty : True",
+          controller.car.carDesc!,
           style: Theme.of(context)
               .textTheme
               .displayMedium!

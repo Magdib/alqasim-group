@@ -14,7 +14,7 @@ class DetailsSelectableSlider extends GetView<CarDetailsController> {
       height: 80,
       width: AppSize.screenWidth(context),
       child: ListView.builder(
-        itemCount: controller.images.length,
+        itemCount: controller.car.images!.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () => controller.changeImage(index),
@@ -25,7 +25,7 @@ class DetailsSelectableSlider extends GetView<CarDetailsController> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               image: DecorationImage(
-                  image: AssetImage(controller.images[index]),
+                  image: AssetImage(controller.car.images![index]),
                   fit: BoxFit.cover),
             ),
           ),

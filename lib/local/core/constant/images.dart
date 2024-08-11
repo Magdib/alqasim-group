@@ -5,4 +5,5 @@ class AppImages {
   static const String otpFImage = "$imageRoute/otp1.png";
   static const String otpSImage = "$imageRoute/otp2.png";
   static const String adminImage = "$imageRoute/admin.webp";
+  static const String carOffImage = "$imageRoute/carOff.png";
 }
