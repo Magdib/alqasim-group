@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/core/constant/app_size.dart';
+import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carspage/view/widgets/filters_view.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
@@ -44,7 +46,7 @@ class CarsPage extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10),
                 itemBuilder: (context, index) => GestureDetector(
-                  onTap: () => controller.goToCarDetailsPage(index),
+                  onTap: () => controller.goToDetailsPage(2),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -58,7 +60,7 @@ class CarsPage extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8),
                             image: DecorationImage(
                               image: AssetImage(
-                                controller.topCars[index].image,
+                                "controller.topCars[index].image",
                               ),
                               fit: BoxFit.cover,
                             )),
@@ -75,7 +77,7 @@ class CarsPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  controller.topCars[index].price,
+                                  "  controller.topCars[index].price",
                                   style: Theme.of(context)
                                       .textTheme
                                       .displaySmall!
@@ -87,16 +89,17 @@ class CarsPage extends StatelessWidget {
                                 InkWell(
                                     onTap: () => controller.handleFav(index),
                                     child: Icon(
-                                      controller.topCars[index].isFav
-                                          ? Icons.favorite
-                                          : Icons.favorite_border_outlined,
+                                      // controller.topCars[index].isFav
+                                      //     ? Icons.favorite
+                                      //     :
+                                      Icons.favorite_border_outlined,
                                       color: AppColors.primaryColor,
                                     ))
                               ],
                             ),
                             FittedBox(
                               child: Text(
-                                controller.topCars[index].name,
+                                "controller.topCars[index].name",
                                 style: Theme.of(context)
                                     .textTheme
                                     .displaySmall!

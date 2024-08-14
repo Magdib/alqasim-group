@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_description.dart';
@@ -12,6 +15,7 @@ import 'package:proj/local/modules/carsdetails/view/widgets/details_selectable_s
 import 'package:proj/local/modules/carsdetails/view/widgets/floating_action_dial.dart';
 import 'package:proj/local/view/shared/app_bottom_nav_bar.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/handiling_data_widget.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/modules/carsdetails/view/shared/car_Cards.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -22,92 +26,113 @@ class CarDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: const FloatingActionDial(),
+      floatingActionButton: GetBuilder<CarDetailsController>(
+          builder: (controller) =>
+              controller.statusRequest != StatusRequest.none
+                  ? const SizedBox()
+                  : const FloatingActionDial()),
       bottomNavigationBar: const AppBottomNavBar(),
       body: GetBuilder<CarDetailsController>(
         builder: (controller) => CustomScrollView(
             controller: controller.scrollController,
             slivers: <Widget>[
-              const CarSliverAppBar(title: "تفاصيل السيارة"),
+              CarSliverAppBar(title: "تفاصيل السيارة".tr),
               SliverList(
                   delegate: SliverChildListDelegate([
-                const SizedBox(
-                  height: 10,
-                ),
-                const DetailsImagesSlider(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const DetailsSelectableSlider(),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                HandlingScrollDataRequest(
+                  statusRequest: controller.statusRequest,
+                  onTap: () => controller.getCarData(true),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CarSubDetails(),
-                      const CarDescription(),
-                      Text("الموقع:",
-                          style: Theme.of(context).textTheme.displayLarge!),
-                      const SizedBox(
-                        height: 15,
-                      ),
                       SizedBox(
-                        height: 350,
-                        width: AppSize.screenWidth(context),
-                        child: GoogleMap(
-                          onMapCreated: (googleMapsController) => controller
-                              .googleMapsControl = googleMapsController,
-                          initialCameraPosition: CameraPosition(
-                              target: LatLng(25.347681, 55.455117), zoom: 12),
+                        height: 10.h,
+                      ),
+                      const DetailsImagesSlider(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      const DetailsSelectableSlider(),
+                      SizedBox(
+                        height: 20.h,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const CarSubDetails(),
+                            const CarDescription(),
+                            Text("الموقع:".tr,
+                                style:
+                                    Theme.of(context).textTheme.displayLarge!),
+                            SizedBox(
+                              height: 15.h,
+                            ),
+                            SizedBox(
+                              height: 350.h,
+                              width: AppSize.screenWidth(context),
+                              child: GoogleMap(
+                                onMapCreated: (googleMapsController) =>
+                                    controller.googleMapsControl =
+                                        googleMapsController,
+                                initialCameraPosition: CameraPosition(
+                                    target: LatLng(
+                                        double.parse(controller.car.latitude),
+                                        double.parse(controller.car.longitude)),
+                                    zoom: 12),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Text("السيارات ذات الصلة:".tr,
+                                style:
+                                    Theme.of(context).textTheme.displayLarge!),
+                            SizedBox(
+                              height: 7.5.h,
+                            ),
+                            CarCards(
+                              cars: controller.linkedCars,
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            Text("اتصل بالبائع:".tr,
+                                style:
+                                    Theme.of(context).textTheme.displayLarge),
+                            SizedBox(
+                              height: 15.h,
+                            ),
+                            Row(
+                              children: [
+                                ButtonWithIcon(
+                                  title: "اتصل الآن".tr,
+                                  icon: Icons.call,
+                                  reverse: getLanguage() == Locale("en"),
+                                  onPressed: () => controller.openCallApp(),
+                                ),
+                                SizedBox(
+                                  width: 10.w,
+                                ),
+                                ButtonWithIcon(
+                                  title: "عبر واتساب".tr,
+                                  icon: FontAwesome.whatsapp_brand,
+                                  reverse: getLanguage() == Locale("en"),
+                                  color: AppColors.deepGreen,
+                                  onPressed: () => controller.openWhatsApp(),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                            const CarForms(),
+                            SizedBox(
+                              height: 15.h,
+                            ),
+                          ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text("السيارات ذات الصلة:",
-                          style: Theme.of(context).textTheme.displayLarge!),
-                      const SizedBox(
-                        height: 7.5,
-                      ),
-                      CarCards(
-                        cars: controller.linkedCars,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Text("اتصل بالبائع:",
-                          style: Theme.of(context).textTheme.displayLarge),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Row(
-                        children: [
-                          ButtonWithIcon(
-                            title: "اتصل الآن",
-                            icon: Icons.call,
-                            onPressed: () => controller.openCallApp(),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          ButtonWithIcon(
-                            title: "عبر واتساب",
-                            icon: FontAwesome.whatsapp_brand,
-                            color: AppColors.deepGreen,
-                            onPressed: () => controller.openWhatsApp(),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const CarForms(),
-                      const SizedBox(
-                        height: 15,
-                      ),
+                      )
                     ],
                   ),
                 )

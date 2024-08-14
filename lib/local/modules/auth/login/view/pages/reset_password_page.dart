@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/constant/app_size.dart';
@@ -19,23 +20,23 @@ class ResetPasswordPage extends StatelessWidget {
         GetBuilder<LoginController>(
             builder: (controller) => SliverList(
                     delegate: SliverChildListDelegate([
-                  const SizedBox(
-                    height: 25,
+                  SizedBox(
+                    height: 25.h,
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 17, vertical: 5),
+                        EdgeInsets.symmetric(horizontal: 17.w, vertical: 5.h),
                     child: Text(
                       "كلمة المرور الجديدة:".tr,
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
-                          .copyWith(fontSize: 14),
+                          .copyWith(fontSize: 14.sp),
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
                     child: CustomTextFormField(
                       hint: "أدخل كلمة المرور الجديدة هنا...".tr,
                       obscure: true,
@@ -43,25 +44,25 @@ class ResetPasswordPage extends StatelessWidget {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 17, vertical: 5),
+                        EdgeInsets.symmetric(horizontal: 17.w, vertical: 5.h),
                     child: Text(
                       "تأكيد كلمة المرور:".tr,
                       style: Theme.of(context)
                           .textTheme
                           .displayLarge!
-                          .copyWith(fontSize: 14),
+                          .copyWith(fontSize: 14.sp),
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
                     child: CustomTextFormField(
                       hint: "أعد إدخال كلمة المرور الجديدة هنا...".tr,
                       obscure: true,
                     ),
                   ),
-                  const SizedBox(
-                    height: 10,
+                  SizedBox(
+                    height: 10.h,
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(
@@ -69,7 +70,7 @@ class ResetPasswordPage extends StatelessWidget {
                     child: ButtonWithIcon(
                       title: "إعادة التعيين".tr,
                       icon: MingCute.key_2_line,
-                      iconSize: 28,
+                      iconSize: 28.r,
                       reverse: true,
                       onPressed: () => Get.offNamedUntil(
                         AppRoutes.signInPageRoute,

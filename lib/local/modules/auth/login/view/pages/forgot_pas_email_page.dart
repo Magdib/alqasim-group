@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/constant/app_size.dart';
@@ -20,17 +21,17 @@ class ForgotPassEmailPage extends StatelessWidget {
         CarSliverAppBar(title: "التحقق من الحساب".tr),
         SliverList(
             delegate: SliverChildListDelegate([
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: 80.h,
           ),
           Image.asset(
             AppImages.otpFImage,
-            height: 120,
-            width: 60,
+            height: 120.h,
+            width: 60.w,
             fit: BoxFit.fitHeight,
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             "التحقق من الحساب".tr,
@@ -38,13 +39,13 @@ class ForgotPassEmailPage extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(color: AppColors.primaryColor, fontSize: 18),
+                .copyWith(color: AppColors.primaryColor, fontSize: 18.sp),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Text(
               "الرجاء إدخال الحساب المراد استعادة كلمة المرور له في الحقل التالي:"
                   .tr,
@@ -54,19 +55,19 @@ class ForgotPassEmailPage extends StatelessWidget {
                   .copyWith(color: AppColors.grey, height: 1.5),
             ),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: CustomTextFormField(
               hint: "أدخل الحساب هنا من فضلك...".tr,
               textAlign: TextAlign.center,
               inputType: TextInputType.emailAddress,
             ),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: 15.h,
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -76,8 +77,8 @@ class ForgotPassEmailPage extends StatelessWidget {
                 icon: MingCute.telegram_line,
                 onPressed: () => Get.toNamed(AppRoutes.otpPageRoute)),
           ),
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: 40.h,
           )
         ]))
       ],

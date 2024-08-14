@@ -17,6 +17,7 @@ import 'package:proj/local/modules/carspage/view/pages/cars_page.dart';
 import 'package:proj/local/modules/favoritepage/controller/favorite_Page_controller.dart';
 import 'package:proj/local/modules/favoritepage/view/pages/favorite_page.dart';
 import 'package:proj/local/modules/home/data/home_data.dart';
+import 'package:proj/local/modules/home/model/api/top_car_model.dart';
 import 'package:proj/local/modules/home/model/drawer_model.dart';
 import 'package:proj/local/modules/home/model/home_services_model.dart';
 import 'package:proj/local/modules/home/view/pages/home_page.dart';
@@ -26,37 +27,8 @@ import 'package:url_launcher/url_launcher.dart';
 import '../model/api/categories_model.dart';
 import '../model/api/home_slider_model.dart';
 
-class CarModel {
-  final String image;
-  final String price;
-  final String type;
-  final String name;
-  final String user;
-  final String? category;
-  final String? date;
-  final String? meters;
-  final int? speed;
-  final List<String>? images;
-  final String? carDesc;
-  bool isFav;
-  CarModel({
-    required this.image,
-    required this.price,
-    required this.type,
-    required this.name,
-    required this.user,
-    this.carDesc,
-    this.images,
-    this.category,
-    this.isFav = false,
-    this.date,
-    this.meters,
-    this.speed,
-  });
-}
-
 class MainPageController extends GetxController {
-  int index = 2;
+  late int pageIndex;
   int? selectedServices;
   int? drawerSelectedServices;
   late double carPadding;
@@ -79,68 +51,35 @@ class MainPageController extends GetxController {
   StatusRequest categoriesStatusRequest = StatusRequest.loading;
   List<IconData> pagesIcons = [Icons.home, Icons.favorite, Icons.person];
   List<HomeSliderModel> sliderData = [];
-  List<HomeSliderModel> sliderListView = [];
   List<CategoriesModel> categoriesData = [];
-  List<CategoriesModel> categoriesListView = [];
   String? catNextPageUrl;
-  List<CarModel> topCars = [
-    CarModel(
-        image: "assets/images/car2.webp",
-        price: "234,500 AED",
-        type: "بينتلي 2020",
-        images: [
-          "assets/images/car11.webp",
-          "assets/images/car13.webp",
-          "assets/images/car14.webp",
-          "assets/images/car15.webp",
-          "assets/images/car12.webp",
-        ],
-        carDesc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        category: "قابلة للتحويل",
-        name: "Bentley",
-        user: "admin"),
-    CarModel(
-        image: "assets/images/car1.webp",
-        price: "5,844,480 AED",
-        type: "بينتلي 2020",
-        images: [
-          "assets/images/car21.webp",
-          "assets/images/car22.webp",
-          "assets/images/car23.webp",
-          "assets/images/car24.webp",
-          "assets/images/car25.webp",
-          "assets/images/car26.webp",
-          "assets/images/car27.webp",
-        ],
-        carDesc:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        category: "قابلة للتحويل",
-        name: "Bentley Bentayga Speed",
-        user: "admin"),
-  ];
+  List<TopCarModel> topCars = [];
   defineLists() {
     homeServicesList = [
       HomeServicesModel(
-          title: "شراء سيارة".tr,
+          title: "التمويل والتأمين".tr,
           icon: Icons.monetization_on_outlined,
-          text: "نوع الخدمة: شراء سيارة\n".tr),
+          text: "نوع الخدمة: خيارات التمويل والتأمين المرنة.\n".tr),
       HomeServicesModel(
-          title: "تصدير سيارة".tr,
-          icon: Icons.shopping_cart_checkout,
-          text: "نوع الخدمة: تصدير سيارة\n".tr),
-      HomeServicesModel(
-          title: "بيع سيارة".tr,
+          title: "المبيعات والدعم".tr,
           icon: Icons.sell_outlined,
-          text: "نوع الخدمة: بيع سيارة\n".tr),
+          text: "نوع الخدمة: مبيعات الخبراء ودعم ما بعد البيع.\n".tr),
       HomeServicesModel(
-          title: "غير معرّفة",
-          icon: Icons.question_mark_outlined,
-          text: "نوع الخدمة: غير معرّفة\n"),
+          title: "مساعدة في \nتسجيل السيارة".tr,
+          icon: Icons.contact_page_outlined,
+          text:
+              "نوع الخدمة: المساعدة في تسجيل السيارة. (تأمين - امتحان - تسجيل).\n"
+                  .tr),
       HomeServicesModel(
-          title: "غير معرّفة",
-          icon: Icons.question_mark_outlined,
-          text: "نوع الخدمة: غير معرّفة\n"),
+          title: "صفقات التصدير".tr,
+          icon: Icons.shopping_cart_checkout,
+          text: "نوع الخدمة: صفقات التصدير والخدمات المتاحة.\n".tr),
+      HomeServicesModel(
+          title: "تسليم سيارة".tr,
+          icon: Icons.car_rental_outlined,
+          text:
+              "نوع الخدمة: تسليم السيارة إلى أي مكان في الإمارات العربية المتحدة\n"
+                  .tr),
     ];
     drawerItems = [
       DrawerModel(title: "الرئيسية".tr, route: AppRoutes.mainRoute, index: 2),
@@ -163,7 +102,8 @@ class MainPageController extends GetxController {
   }
 
   onPageChanged(value) async {
-    if ((value == (index + 1) || value == (index - 1)) &&
+    log("$pageIndex");
+    if ((value == (pageIndex + 1) || value == (pageIndex - 1)) &&
         Get.currentRoute == AppRoutes.homePageRoute) {
       pageController.animateToPage(value,
           curve: Curves.easeIn, duration: const Duration(milliseconds: 500));
@@ -172,7 +112,7 @@ class MainPageController extends GetxController {
         value,
       );
     }
-    index = value;
+    pageIndex = value;
     if (value == 3) {
       CarsPageController carsPageController = Get.put(CarsPageController());
       carsPageController.initializeData();
@@ -203,11 +143,15 @@ class MainPageController extends GetxController {
   }
 
   openWhatsApp([String text = ""]) async {
-    if (!await launchUrl(
-      Uri.parse("https://wa.me/+971542222307?text=$text"),
-      mode: LaunchMode.externalApplication,
-    )) {
-      AppToasts.errorToast("حدث خطأ ما!");
+    try {
+      if (!await launchUrl(
+        Uri.parse("https://wa.me/+971542222307?text=$text"),
+        mode: LaunchMode.externalApplication,
+      )) {
+        AppToasts.errorToast("...حدث خطأ ما".tr);
+      }
+    } catch (e) {
+      AppToasts.errorToast("...حدث خطأ ما".tr);
     }
   }
 
@@ -224,10 +168,10 @@ class MainPageController extends GetxController {
   swipeImages() async {
     while (true) {
       await Future.delayed(const Duration(seconds: 6));
-      if (index == 2 &&
+      if (pageIndex == 2 &&
           Get.currentRoute == AppRoutes.homePageRoute &&
           scrollController.offset < 100) {
-        if (sliderController.page! < sliderListView.length - 1) {
+        if (sliderController.page! < sliderData.length - 1) {
           sliderController.animateToPage(sliderController.page!.round() + 1,
               duration: const Duration(seconds: 1), curve: Curves.easeIn);
         } else {
@@ -239,7 +183,7 @@ class MainPageController extends GetxController {
   }
 
   handleFav(int index) {
-    topCars[index].isFav = !topCars[index].isFav;
+    // topCars[index].isFav = !topCars[index].isFav;
     update();
   }
 
@@ -264,13 +208,8 @@ class MainPageController extends GetxController {
   openSocial(int index) async {
     if (!await launchUrl(Uri.parse(AppStatics.alQassimSocials[index].link),
         mode: LaunchMode.externalApplication)) {
-      AppToasts.errorToast("حدث خطأ ما!");
+      AppToasts.errorToast("...حدث خطأ ما".tr);
     }
-  }
-
-  goToCarDetailsPage(int index) {
-    Get.toNamed(AppRoutes.carDetailsPageRoute,
-        arguments: {ArgumentsNames.carData: topCars[index]});
   }
 
   askForService(int index) {
@@ -295,10 +234,8 @@ class MainPageController extends GetxController {
     await Get.updateLocale(newLocale);
 
     defineLists();
-    filterSliderData();
-    filterCategoriesData();
-    getCatData();
-    switch (index) {
+    getData(true);
+    switch (pageIndex) {
       case 3:
         CarsPageController carsPageController = Get.find();
         carsPageController.initializeData();
@@ -311,12 +248,13 @@ class MainPageController extends GetxController {
 
   getData(bool isRefresh) async {
     if (isRefresh) {
+      categoriesData.clear();
       statusRequest = StatusRequest.loading;
       update();
     }
-    scrollController = ScrollController();
+    onPageChanged(2);
     HomeData homeData = HomeData(Get.find());
-    var response = await homeData.getSliderData();
+    var response = await homeData.getSliderData(selectedLocal);
     response.fold((l) {
       if (l.runtimeType == NetworkError) {
         statusRequest = StatusRequest.offlineFailure;
@@ -330,53 +268,74 @@ class MainPageController extends GetxController {
       List jsonData = r['data'];
       sliderData = jsonData.map((e) => HomeSliderModel.fromJson(e)).toList();
       log("data $r");
-      filterSliderData();
-      swipeImages();
-      var categoriesResponse = await homeData.getCategoriesData();
-      categoriesResponse.fold((cl) {
-        if (cl.runtimeType == NetworkError) {
+      var topCarsResponse = await homeData.getTopCarsData(selectedLocal);
+      topCarsResponse.fold((tl) {
+        if (tl.runtimeType == NetworkError) {
           statusRequest = StatusRequest.offlineFailure;
         } else {
           statusRequest = StatusRequest.failure;
         }
         update();
-        AppToasts.errorToast(cl.message);
-      }, (cr) {
-        List cJsonData = cr['data'];
-        catNextPageUrl = cr['meta']['nextPageUrl'];
-        if (catNextPageUrl == null) {
-          categoriesStatusRequest = StatusRequest.none;
-        }
-        categoriesData
-            .addAll(cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
-        log("data $cr");
-        filterCategoriesData();
-        scrollController
-          ..addListener(() {
-            if (scrollController.offset > 300 && carPadding != 0) {
-              carPadding = 0;
-              update();
-            }
-          });
-        statusRequest = StatusRequest.none;
-        categoriesScrollController = ScrollController()
-          ..addListener(() => categoriesPagination());
-        update();
+        AppToasts.errorToast(tl.message);
+      }, (tr) async {
+        List jsonData = tr['data'];
+        topCars = jsonData.map((e) => TopCarModel.fromJson(e)).toList();
+        log("data $tr");
+
+        var categoriesResponse =
+            await homeData.getCategoriesData(selectedLocal);
+        categoriesResponse.fold((cl) {
+          if (cl.runtimeType == NetworkError) {
+            statusRequest = StatusRequest.offlineFailure;
+          } else {
+            statusRequest = StatusRequest.failure;
+          }
+          update();
+          AppToasts.errorToast(cl.message);
+        }, (cr) {
+          List cJsonData = cr['data'];
+          catNextPageUrl = cr['meta']['nextPageUrl'];
+          if (catNextPageUrl == null) {
+            categoriesStatusRequest = StatusRequest.none;
+          }
+          categoriesData.addAll(
+              cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
+          log("data $cr");
+          scrollController
+            ..addListener(() {
+              if (scrollController.offset > 600 && carPadding != 0) {
+                carPadding = 0;
+                update();
+              }
+            });
+          statusRequest = StatusRequest.none;
+
+          swipeImages();
+          categoriesScrollController = ScrollController()
+            ..addListener(() => categoriesPagination());
+
+          update();
+        });
       });
     });
   }
 
-  getCatData() async {
+  getCatData(bool keepGettingData) async {
     if (catNextPageUrl != null) {
       HomeData homeData = HomeData(Get.find());
-      var categoriesResponse = await homeData.getCategoriesData(catNextPageUrl);
-      categoriesResponse.fold((l) {
+      var categoriesResponse = await homeData.getCategoriesData(selectedLocal,
+          nextPageUrl: catNextPageUrl!);
+      categoriesResponse.fold((l) async {
         update();
         AppToasts.errorToast(l.message);
         categoriesScrollController.animateTo(
             categoriesScrollController.position.maxScrollExtent - 100,
             duration: Duration(milliseconds: 400),
             curve: Curves.easeIn);
+        if (keepGettingData) {
+          await Future.delayed(Duration(seconds: 10));
+          getCatData(keepGettingData);
+        }
       }, (r) {
         List cJsonData = r['data'];
         catNextPageUrl = r['meta']['nextPageUrl'];
@@ -385,7 +344,7 @@ class MainPageController extends GetxController {
         }
         categoriesData
             .addAll(cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
-        filterCategoriesData();
+        update();
       });
     }
   }
@@ -393,34 +352,21 @@ class MainPageController extends GetxController {
   categoriesPagination() async {
     if (categoriesScrollController.offset ==
         categoriesScrollController.position.maxScrollExtent) {
-      getCatData();
+      getCatData(false);
     }
   }
 
-  filterSliderData() {
-    sliderListView = sliderData
-        .where(
-          (element) => element.language == selectedLocal,
-        )
-        .toList();
-    update();
-  }
-
-  filterCategoriesData() {
-    categoriesListView = categoriesData
-        .where(
-          (element) => element.language == selectedLocal,
-        )
-        .toList();
-    if (categoriesListView.length <= 1) {
-      getCatData();
-    }
-    update();
+  goToDetailsPage(int carId) {
+    Get.toNamed(AppRoutes.carDetailsPageRoute, arguments: {
+      ArgumentsNames.selectedLocal: selectedLocal,
+      ArgumentsNames.carId: carId
+    });
   }
 
   @override
   void onInit() {
-    getData(false);
+    pageIndex = 2;
+    scrollController = ScrollController();
     defineLists();
     super.onInit();
   }
@@ -429,9 +375,12 @@ class MainPageController extends GetxController {
   void onReady() async {
     if (!Hive.isBoxOpen(HiveBoxes.authBox)) {
       authBox = await Hive.openBox(HiveBoxes.authBox);
+    } else {
+      authBox = Hive.box(HiveBoxes.authBox);
     }
     String? local = authBox.get(HiveKeys.language);
     selectedLocal = local == null ? Get.deviceLocale!.languageCode : local;
+    await getData(false);
     super.onReady();
   }
 }

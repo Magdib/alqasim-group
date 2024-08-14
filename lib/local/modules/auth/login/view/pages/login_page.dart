@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/local/core/constant/Colors.dart';
@@ -26,13 +27,16 @@ class LoginPage extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                 padding: EdgeInsets.only(
-                    left: 10, right: 10, top: index == 0 ? 20 : 0, bottom: 5),
+                    left: 10.w,
+                    right: 10.w,
+                    top: index == 0 ? 20.h : 0,
+                    bottom: 5.h),
                 child: CustomTextFormField(
                   textEditingController:
                       controller.formsData[index].textEditingController,
                   obscure: controller.formsData[index].isPassword,
                   contentPadding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
                   hint: controller.formsData[index].hint,
                 ),
               ),
@@ -44,10 +48,7 @@ class LoginPage extends StatelessWidget {
           builder: (controller) => SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
@@ -86,7 +87,7 @@ class LoginPage extends StatelessWidget {
                     )),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10).w,
                 child: Hero(
                   tag: "SubmitAuth",
                   child: CustomButton(
@@ -97,7 +98,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10.w),
                 child: ButtonWithIcon(
                   minWidth: AppSize.screenWidth(context),
                   title: "تسجيل الدخول مع غوغل".tr,
@@ -107,12 +108,12 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10).w,
                 child: ButtonWithIcon(
                   minWidth: AppSize.screenWidth(context),
                   title: "تسجيل الدخول مع فيسبوك".tr,
                   icon: FontAwesome.facebook_brand,
-                  iconTextDist: 10,
+                  iconTextDist: 10.w,
                   color: const Color.fromARGB(255, 1, 26, 68),
                   onPressed: () {},
                 ),

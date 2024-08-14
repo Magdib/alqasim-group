@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
@@ -26,13 +27,14 @@ class CarSliverAppBar extends StatelessWidget {
             fit: BoxFit.cover,
           )),
       leading: IconButton(
+          padding: EdgeInsets.zero,
           onPressed: () => Get.back(),
           icon: const Icon(
             Icons.arrow_back,
             color: AppColors.white,
           )),
-      expandedHeight: 150,
-      collapsedHeight: 60,
+      expandedHeight: 150.h,
+      collapsedHeight: 56,
       backgroundColor: AppColors.primaryColor,
     );
   }

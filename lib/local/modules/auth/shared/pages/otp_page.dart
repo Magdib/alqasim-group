@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -20,17 +21,17 @@ class OtpPage extends StatelessWidget {
         CarSliverAppBar(title: "رمز التحقق".tr),
         SliverList(
             delegate: SliverChildListDelegate([
-          const SizedBox(
-            height: 80,
+          SizedBox(
+            height: 80.h,
           ),
           Image.asset(
             AppImages.otpSImage,
-            height: 120,
-            width: 60,
+            height: 120.h,
+            width: 60.w,
             fit: BoxFit.fitHeight,
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Text(
             "التحقق من الرمز".tr,
@@ -38,13 +39,13 @@ class OtpPage extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(fontSize: 18, color: AppColors.primaryColor),
+                .copyWith(fontSize: 18.sp, color: AppColors.primaryColor),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: Text(
               "الرجاء إدخال رمز التحقق الذي أرسلناه إلى حسابك في الحقل التالي:"
                   .tr,
@@ -54,11 +55,11 @@ class OtpPage extends StatelessWidget {
                   .copyWith(color: AppColors.grey, height: 1.5),
             ),
           ),
-          const SizedBox(
-            height: 20,
+          SizedBox(
+            height: 20.h,
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: CustomTextFormField(
               hint: "XXXXXX",
               maxLength: 6,
@@ -66,8 +67,8 @@ class OtpPage extends StatelessWidget {
               inputType: TextInputType.number,
             ),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: 15.h,
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -82,8 +83,8 @@ class OtpPage extends StatelessWidget {
                         )
                     : () => Get.toNamed(AppRoutes.resetPasswordPageRoute)),
           ),
-          const SizedBox(
-            height: 40,
+          SizedBox(
+            height: 40.h,
           )
         ]))
       ],

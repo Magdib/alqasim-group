@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -18,7 +19,7 @@ class AddTicketPage extends GetView<TicketsPageController> {
       SliverList(
           delegate: SliverChildListDelegate([
         Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text(
@@ -26,41 +27,41 @@ class AddTicketPage extends GetView<TicketsPageController> {
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 14.sp),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 hint: "أدخل البريد الإلكتروني هنا...".tr,
                 textEditingController: controller.emailController,
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               Text(
                 " الموضوع*:".tr,
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 14.sp),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 hint: "أدخل موضوع التذكرة هنا...".tr,
                 textEditingController: controller.subjectController,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               Text(
                 " الرسالة*:".tr,
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 14.sp),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10.h),
               CustomTextFormField(
                 hint: "أدخل رسالتك هنا...".tr,
                 contentPadding:
-                    EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                    EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
                 textEditingController: controller.messageController,
                 numberOfLines: 6,
               ),
@@ -72,18 +73,18 @@ class AddTicketPage extends GetView<TicketsPageController> {
                     style: Theme.of(context).textTheme.displayLarge,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 10.0),
+                    padding: EdgeInsets.only(top: 10.h),
                     child: CustomButton(
                       buttonBody: "تحديد ملف".tr,
                       buttonWidth: AppSize.screenWidth(context) / 3,
-                      height: 40,
+                      height: 40.h,
                       onTap: () => controller.pickFile(),
                     ),
                   )
                 ],
               ),
-              const SizedBox(
-                height: 2.5,
+              SizedBox(
+                height: 2.5.h,
               ),
               GetBuilder<TicketsPageController>(
                 builder: (controller) => controller.isFileSelected == false
@@ -112,15 +113,15 @@ class AddTicketPage extends GetView<TicketsPageController> {
                         ],
                       ),
               ),
-              const SizedBox(
-                height: 15,
+              SizedBox(
+                height: 15.h,
               ),
               Align(
                   alignment: Alignment.center,
                   child: GetBuilder<TicketsPageController>(
                     builder: (controller) => CustomButton(
                         buttonBody: "تقديم الطلب".tr,
-                        height: 45,
+                        height: 45.h,
                         buttonWidth: AppSize.screenWidth(context) / 2,
                         onTap: () => controller.addTicket()),
                   ))

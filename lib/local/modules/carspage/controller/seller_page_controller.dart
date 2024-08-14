@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
+import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 
 class SellerPageController extends GetxController {
@@ -24,29 +26,13 @@ class SellerPageController extends GetxController {
     update();
   }
 
-  List<CarModel> sellerCars = [
-    CarModel(
-        image: "assets/images/car1.webp",
-        price: "5844480AED",
-        type: "بينتلي 2020",
-        name: "Bentley Bentayga Speed",
-        user: "admin",
-        date: "2020",
-        meters: "51,402",
-        speed: 306),
-    CarModel(
-        image: "assets/images/car2.webp",
-        price: "234,500 AED",
-        type: "بينتلي 2020",
-        name: "Bentley",
-        user: "admin",
-        date: "2020",
-        meters: "4,402",
-        speed: 280),
-  ];
+  List<CarModel> sellerCars = [];
   @override
   void onInit() {
     pageController = PageController();
+    CarDetailsController carDetailsController = Get.find();
+    sellerCars.add(carDetailsController.car);
+    sellerCars.add(carDetailsController.car);
     super.onInit();
   }
 

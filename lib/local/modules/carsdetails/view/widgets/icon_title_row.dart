@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
 class IconTitleRow extends StatelessWidget {
@@ -18,16 +19,16 @@ class IconTitleRow extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: index == 2 ? 30 : null,
+          size: index == 2 ? 30.r : null,
           color: AppColors.primaryColor,
         ),
-        const SizedBox(
-          width: 5,
+        SizedBox(
+          width: 5.w,
         ),
         Text(text,
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: AppColors.grey,
-                  fontSize: 12,
+                  fontSize: 12.sp,
                 ))
       ],
     );

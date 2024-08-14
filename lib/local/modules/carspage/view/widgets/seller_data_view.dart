@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
@@ -14,29 +16,29 @@ class SellerDataView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(10),
-      padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      margin: EdgeInsets.all(10).w,
+      padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 10.w),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           color: AppColors.white,
-          boxShadow: const [BoxShadow(color: AppColors.lBlack, blurRadius: 4)]),
+          boxShadow: [BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)]),
       child: Column(
         children: [
           Container(
-            height: 100,
-            width: 100,
+            height: 100.h,
+            width: 100.w,
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppSize.appCustomRadius),
+                borderRadius: BorderRadius.circular(AppSize.appCustomRadius.r),
                 image: const DecorationImage(
                     image: AssetImage(AppImages.adminImage),
                     fit: BoxFit.cover)),
           ),
-          const SizedBox(
-            height: 15,
+          SizedBox(
+            height: 15.h,
           ),
           Text("Admin", style: Theme.of(context).textTheme.displayLarge!),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 5.h,
           ),
           Text(
             "Amjad",
@@ -44,26 +46,26 @@ class SellerDataView extends StatelessWidget {
                   color: AppColors.grey,
                 ),
           ),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 5.h,
           ),
           const CustomHorizontalDivider(),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 5.h,
           ),
-          const CustomTextRow(
-            title: "مجموع السيارات:",
+          CustomTextRow(
+            title: "مجموع السيارات:".tr,
             trailing: "2",
           ),
-          const SizedBox(
-            height: 12,
+          SizedBox(
+            height: 12.h,
           ),
-          const CustomTextRow(
-            title: "عنوان:",
+          CustomTextRow(
+            title: "عنوان:".tr,
             trailing: "Sharjah - UAE",
           ),
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 5.h,
           ),
           const CustomHorizontalDivider(),
         ],

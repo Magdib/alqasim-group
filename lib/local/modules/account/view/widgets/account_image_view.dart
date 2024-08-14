@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/Local/Core/Constant/Colors.dart';
 import 'package:proj/local/core/constant/app_size.dart';
@@ -30,9 +31,7 @@ class AccountImageView extends StatelessWidget {
                       fit: BoxFit.contain,
                     )
                   : null,
-              boxShadow: const [
-                BoxShadow(color: AppColors.lBlack, blurRadius: 4)
-              ],
+              boxShadow: [BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)],
             ),
             height: AppSize.screenHight(context) / 4,
             width: AppSize.screenWidth(context),
@@ -43,32 +42,34 @@ class AccountImageView extends StatelessWidget {
                   onTap: controller.accountImage != null
                       ? () => controller.pickAccountImage()
                       : null,
-                  child: Container(
-                      height: 100,
-                      width: 100,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: controller.accountImage == null
-                              ? AppColors.primaryColor
-                              : AppColors.white,
-                          boxShadow: const [
-                            BoxShadow(color: AppColors.lBlack, blurRadius: 4)
-                          ],
-                          image: controller.accountImage != null
-                              ? DecorationImage(
-                                  image: FileImage(
-                                    File(controller.accountImage!),
-                                  ),
-                                  fit: BoxFit.cover,
-                                )
-                              : null),
+                  child: CircleAvatar(
+                      // height: 100.h,
+                      // width: 100.w,
+                      radius: 50.r,
+                      backgroundColor: AppColors.primaryColor,
+                      // alignment: Alignment.center,
+                      // decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(50.r),
+                      //     color: controller.accountImage == null
+                      //         ? AppColors.primaryColor
+                      //         : AppColors.white,
+                      //     boxShadow: [
+                      //       BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
+                      //     ],
+                      //     image: controller.accountImage != null
+                      //         ? DecorationImage(
+                      //             image: FileImage(
+                      //               File(controller.accountImage!),
+                      //             ),
+                      //             fit: BoxFit.cover,
+                      //           )
+                      //         : null),
                       child:
                           controller.accountImageState == AccountImageState.none
-                              ? const Icon(
+                              ? Icon(
                                   Icons.person_outline,
                                   color: AppColors.white,
-                                  size: 50,
+                                  size: 50.r,
                                 )
                               : controller.accountImageState ==
                                       AccountImageState.login
@@ -80,7 +81,7 @@ class AccountImageView extends StatelessWidget {
                                           .displayLarge!
                                           .copyWith(
                                               color: AppColors.white,
-                                              fontSize: 45),
+                                              fontSize: 45.h),
                                     )
                                   : null),
                 ),
@@ -91,10 +92,10 @@ class AccountImageView extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () => controller.pickAccountImage(),
                         padding: EdgeInsets.zero,
-                        minWidth: 45,
-                        height: 45,
+                        minWidth: 45.w,
+                        height: 45.h,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(45)),
+                            borderRadius: BorderRadius.circular(100.r)),
                         color: AppColors.white,
                         child: const Icon(
                           Icons.edit,

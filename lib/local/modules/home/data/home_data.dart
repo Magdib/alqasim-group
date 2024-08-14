@@ -7,18 +7,30 @@ class HomeData {
   DioCrud crud;
   HomeData(this.crud);
 
-  Future<Either<ApiErrors, Map<dynamic, dynamic>>> getSliderData() async {
+  Future<Either<ApiErrors, Map<dynamic, dynamic>>> getSliderData(
+      String selectedLocal) async {
     return await crud.get(
       linkUrl: ApiLinks.sliderApi,
+      parameters: {"language": selectedLocal},
       isAuthorized: false,
     );
   }
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> getCategoriesData(
-      [String? nextPageUrl]) async {
+      String selectedLocal,
+      {String? nextPageUrl}) async {
     return await crud.get(
       linkUrl: nextPageUrl ?? ApiLinks.categoriesApi,
-      parameters: {"items_per_page": "8"},
+      parameters: {"items_per_page": "5", "language": selectedLocal},
+      isAuthorized: false,
+    );
+  }
+
+  Future<Either<ApiErrors, Map<dynamic, dynamic>>> getTopCarsData(
+      String selectedLocal) async {
+    return await crud.get(
+      linkUrl: ApiLinks.topCarsApi,
+      parameters: {"language": selectedLocal},
       isAuthorized: false,
     );
   }

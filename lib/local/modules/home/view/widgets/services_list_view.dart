@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -13,22 +14,23 @@ class ServicesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<MainPageController>(
       builder: (controller) => SizedBox(
-        height: 80,
+        height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+            ? 110.h
+            : 100,
         width: AppSize.screenWidth(context),
         child: ListView.separated(
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+          padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
           itemCount: controller.homeServicesList.length,
           scrollDirection: Axis.horizontal,
-          separatorBuilder: (context, index) => const SizedBox(
-            width: 15,
+          separatorBuilder: (context, index) => SizedBox(
+            width: 15.w,
           ),
           itemBuilder: (context, index) => Column(
             children: [
               MaterialButton(
-                minWidth: 52.5,
+                minWidth: 52.5.w,
                 onPressed: () => controller.selectService(index),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 0),
                 color: controller.selectedServices == index
                     ? AppColors.primaryColor
                     : AppColors.lGrey,
@@ -42,14 +44,15 @@ class ServicesListView extends StatelessWidget {
                       : AppColors.primaryColor,
                 ),
               ),
-              const SizedBox(
-                height: 5,
+              SizedBox(
+                height: 5.h,
               ),
               Text(
                 controller.homeServicesList[index].title,
+                textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
                     color: AppColors.primaryColor,
-                    fontSize: 12,
+                    fontSize: 12.sp,
                     fontWeight: FontWeight.normal),
               )
             ],

@@ -1,4 +1,4 @@
-import 'package:proj/local/modules/home/controller/main_page_controller.dart';
+import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
 
 class FilteredCarsModel {
   final List<CarModel> cars;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:get/get.dart';
 import 'package:proj/local/modules/OnBoarding/controller/on_boarding_controller.dart';
@@ -39,7 +40,7 @@ class OnBoarding extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                         Positioned(
-                          top: 80,
+                          top: 80.h,
                           left: 40,
                           right: 40,
                           child: Text(
@@ -48,7 +49,8 @@ class OnBoarding extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .displayLarge!
-                                .copyWith(color: AppColors.white, fontSize: 20),
+                                .copyWith(
+                                    color: AppColors.white, fontSize: 20.sp),
                           ),
                         )
                       ],
@@ -61,13 +63,13 @@ class OnBoarding extends StatelessWidget {
                 SmoothPageIndicator(
                     controller: controller.pageController,
                     count: AppStatics.slidablePages.length,
-                    effect: const WormEffect(
+                    effect: WormEffect(
                         activeDotColor: AppColors.primaryColor,
-                        radius: 16,
-                        dotHeight: 6,
-                        dotWidth: 6)),
+                        radius: 16.r,
+                        dotHeight: 6.h,
+                        dotWidth: 6.w)),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: CustomButton(
                       buttonBody:
                           controller.index < 1 ? "التالي".tr : "ابدأ".tr,

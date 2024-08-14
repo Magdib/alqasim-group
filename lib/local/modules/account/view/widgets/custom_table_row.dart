@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -19,8 +20,8 @@ class CustomTableRow extends GetView<MainPageController> {
   Widget build(BuildContext context) {
     return Container(
       alignment: leftRightLangAlign(controller.selectedLocal),
-      height: 40,
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      height: 40.h,
+      padding: EdgeInsets.symmetric(horizontal: 4.w),
       child: isTitles
           ? FittedBox(
               child: Text(
@@ -35,7 +36,7 @@ class CustomTableRow extends GetView<MainPageController> {
               onTap: () => Get.defaultDialog(
                   backgroundColor: AppColors.white,
                   title: title,
-                  radius: AppSize.appCustomRadius,
+                  radius: AppSize.appCustomRadius.r,
                   titleStyle: Theme.of(context).textTheme.displayLarge,
                   middleText: body,
                   middleTextStyle: Theme.of(context).textTheme.displayMedium),

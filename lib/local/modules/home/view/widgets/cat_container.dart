@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/view/shared/custom_cached_net_image.dart';
@@ -14,38 +15,38 @@ class CatContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSize.screenWidth(context) / 2 - 30,
-      height: 160,
+      width: AppSize.screenWidth(context) - 40,
+      height: 170.h,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.r),
           color: AppColors.lGrey,
           boxShadow: [
-            BoxShadow(color: AppColors.grey.withOpacity(0.8), blurRadius: 4)
+            BoxShadow(color: AppColors.grey.withOpacity(0.8), blurRadius: 4.r)
           ]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: EdgeInsets.only(top: 10.h),
             child: CustomCachedNetImage(
               canReDownload: false,
-              width: AppSize.screenWidth(context) / 2 - 40,
-              height: 60,
-              fit: BoxFit.fitWidth,
-              borderRadius: 6,
+              width: AppSize.screenWidth(context) - 50,
+              height: 100.h,
+              fit: BoxFit.fitHeight,
+              borderRadius: 6.r,
               imageUrl: image,
             ),
           ),
           Container(
-            width: AppSize.screenWidth(context) / 2 - 40,
-            height: 50,
-            margin: const EdgeInsets.only(bottom: 5),
+            width: AppSize.screenWidth(context) - 50,
+            height: 45.h,
+            margin: EdgeInsets.only(bottom: 5.h),
             alignment: Alignment.center,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 color: AppColors.white,
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
+                  bottomLeft: Radius.circular(23.r),
+                  bottomRight: Radius.circular(23.r),
                 )),
             child: Text(title,
                 textAlign: TextAlign.center,

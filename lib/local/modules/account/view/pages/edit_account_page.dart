@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/account/controller/edit_account_controller.dart';
@@ -18,8 +19,8 @@ class EditAccountPage extends StatelessWidget {
             builder: (controller) => SliverList(
                     delegate: SliverChildListDelegate([
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 20),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -28,81 +29,81 @@ class EditAccountPage extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 14.sp),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل اسم المستخدم هنا...".tr,
                           textEditingController: controller.userNameController,
                         ),
-                        const SizedBox(
-                          height: 10,
+                        SizedBox(
+                          height: 10.h,
                         ),
                         Text(
                           " الموقع:".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 14.sp),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل موقعك هنا...".tr,
                         ),
-                        const SizedBox(
-                          height: 10,
+                        SizedBox(
+                          height: 10.h,
                         ),
                         Text(
                           " رقم الهاتف:".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 14.sp),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل رقم هاتفك هنا...".tr,
                           inputType: TextInputType.phone,
                         ),
-                        const SizedBox(
-                          height: 10,
+                        SizedBox(
+                          height: 10.h,
                         ),
                         Text(
                           " كلمة المرور*:".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 14.sp),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل كلمة المرور هنا...".tr,
                           obscure: true,
                         ),
-                        const SizedBox(
-                          height: 10,
+                        SizedBox(
+                          height: 10.h,
                         ),
                         Text(
                           " كلمة المرور الجديدة:".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 14),
+                              .copyWith(fontSize: 14.sp),
                         ),
-                        const SizedBox(height: 10),
+                        SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل كلمة المرور الجديدة هنا...".tr,
                           obscure: true,
                         ),
-                        const SizedBox(
-                          height: 15,
+                        SizedBox(
+                          height: 15.h,
                         ),
                         Align(
                           alignment: Alignment.center,
                           child: CustomButton(
                               buttonBody: "تحديث البيانات".tr,
                               buttonWidth: AppSize.screenWidth(context) / 1.8,
-                              height: 42.5,
+                              height: 42.5.h,
                               onTap: () => Get.back()),
                         )
                       ],

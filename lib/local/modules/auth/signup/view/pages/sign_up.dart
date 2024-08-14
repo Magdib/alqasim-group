@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/modules/auth/signup/controller/sign_up_controller.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -21,16 +22,14 @@ class SignUp extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => Padding(
                 padding: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: index == 0 ? 20 : 10,
+                  left: 10.w,
+                  right: 10.w,
+                  top: index == 0 ? 20.h : 10.h,
                 ),
                 child: CustomTextFormField(
                   textEditingController:
                       controller.formsData[index].textEditingController,
                   obscure: controller.formsData[index].isPassword,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   hint: controller.formsData[index].hint,
                 ),
               ),
@@ -42,8 +41,8 @@ class SignUp extends StatelessWidget {
           builder: (controller) => SliverList(
             delegate: SliverChildListDelegate([
               Padding(
-                padding: const EdgeInsets.only(
-                    left: 10, right: 10, bottom: 10, top: 5),
+                padding: EdgeInsets.only(
+                    left: 10.w, right: 10.w, bottom: 10.h, top: 5.h),
                 child: RichText(
                     text: TextSpan(children: [
                   TextSpan(
@@ -68,7 +67,7 @@ class SignUp extends StatelessWidget {
                 ])),
               ),
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: EdgeInsets.all(10).w,
                 child: Hero(
                   tag: "SubmitAuth",
                   child: CustomButton(

@@ -65,6 +65,10 @@ class AccountController extends GetxController {
           icon: Icons.perm_device_info_rounded,
           link: "https://alqassimgroup.net/faq"),
       AccountPagesModel(
+          title: "الصور المحفوظة".tr,
+          icon: Icons.image_outlined,
+          route: AppRoutes.savedImagesPageRoute),
+      AccountPagesModel(
           title: "تذاكر الدعم الفني".tr,
           icon: Bootstrap.ticket_detailed_fill,
           route: AppRoutes.ticketsPageRoute),

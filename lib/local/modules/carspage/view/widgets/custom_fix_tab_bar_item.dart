@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/Local/Core/Constant/Colors.dart';
 import 'package:proj/local/modules/carspage/controller/seller_page_controller.dart';
@@ -16,8 +17,8 @@ class CustomFixTabBarItem extends StatelessWidget {
         children: [
           MaterialButton(
             disabledColor: AppColors.lGreyL,
-            minWidth: 125,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+            minWidth: 125.w,
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
             onPressed: controller.selectedIndex == index
                 ? null
                 : () => controller.changeTabView(index, true),
@@ -28,10 +29,10 @@ class CustomFixTabBarItem extends StatelessWidget {
             ),
           ),
           AnimatedContainer(
-            height: 1.5,
+            height: 1.5.h,
             // margin: fixedTabPad(),
             alignment: Alignment.topRight,
-            width: 125,
+            width: 125.w,
             duration: const Duration(milliseconds: 200),
             color: controller.selectedIndex == index
                 ? AppColors.primaryColor

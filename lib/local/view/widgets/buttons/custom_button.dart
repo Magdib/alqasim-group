@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
@@ -38,10 +39,11 @@ class CustomButton extends StatelessWidget {
           : buttonColor ?? AppColors.primaryColor,
       disabledColor: AppColors.deepGrey,
       disabledTextColor: AppColors.black,
-      height: height ?? 50,
+      height: height ??
+          (AppSize.screenWidth(context) >= AppSize.tabletBreakPoint ? 110 : 50),
       shape: RoundedRectangleBorder(
           borderRadius:
-              BorderRadius.circular(radius ?? AppSize.appCustomRadius),
+              BorderRadius.circular(radius ?? AppSize.appCustomRadius.r),
           side: isReverseColor == true
               ? const BorderSide(color: AppColors.primaryColor)
               : BorderSide(color: buttonColor ?? AppColors.primaryColor)),

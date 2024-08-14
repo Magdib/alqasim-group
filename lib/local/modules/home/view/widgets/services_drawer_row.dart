@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
@@ -21,16 +22,15 @@ class ServicesDrawerRow extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 MaterialButton(
-                  minWidth: 52.5,
+                  minWidth: 52.5.w,
                   onPressed: () => controller.drawerSelectService(index),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 0),
+                  padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 0),
                   color: controller.drawerSelectedServices == index
                       ? AppColors.primaryColor
                       : AppColors.lGrey,
                   shape: RoundedRectangleBorder(
                       borderRadius:
-                          BorderRadius.circular(AppSize.appCustomRadius)),
+                          BorderRadius.circular(AppSize.appCustomRadius.r)),
                   child: Icon(
                     controller.homeServicesList[index].icon,
                     color: controller.drawerSelectedServices == index
@@ -39,18 +39,18 @@ class ServicesDrawerRow extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  controller.homeServicesList[index].title,
+                  controller.homeServicesList[index].title.replaceAll("\n", ""),
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                       color: AppColors.primaryColor,
-                      fontSize: 14,
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold),
                 )
               ],
             ),
           ),
           if (index != 4)
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
         ],
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -21,7 +22,7 @@ class TicketsPage extends StatelessWidget {
           builder: (controller) => SliverList(
                   delegate: SliverChildListDelegate([
                 Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: EdgeInsets.all(10).w,
                   child: Column(
                     children: [
                       Row(
@@ -32,27 +33,30 @@ class TicketsPage extends StatelessWidget {
                             style: Theme.of(context).textTheme.displayLarge,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 10.0),
+                            padding: EdgeInsets.only(top: 10.h),
                             child: CustomButton(
                               buttonBody: "تسجيل تذكرة".tr,
                               buttonWidth: AppSize.screenWidth(context) / 3,
-                              height: 40,
+                              height: 40.h,
                               onTap: () =>
                                   Get.toNamed(AppRoutes.addTicketPageRoute),
                             ),
                           )
                         ],
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 20.h,
                       ),
                       CustomTextFormField(
                         hint: "البحث عن تذكرة...".tr,
-                        icon: Icon(Icons.search),
+                        icon: Icon(
+                          Icons.search,
+                          size: 24.r,
+                        ),
                         textInputAction: TextInputAction.search,
                       ),
-                      const SizedBox(
-                        height: 5,
+                      SizedBox(
+                        height: 5.h,
                       ),
                       ListView.builder(
                         itemCount: controller.tickets.isEmpty
@@ -65,13 +69,13 @@ class TicketsPage extends StatelessWidget {
                                     .tickets.isEmpty &&
                                 index == 1
                             ? Container(
-                                height: 40,
+                                height: 40.h,
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     border: Border.all(color: AppColors.black),
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(4),
-                                      bottomRight: Radius.circular(4),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(4.r),
+                                      bottomRight: Radius.circular(4.r),
                                     )),
                                 child: Text(
                                   "لا يوجد بيانات لعرضها".tr,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -94,7 +96,9 @@ class CustomTextFormField extends StatelessWidget {
                   ? AppColors.primaryColor
                   : Colors.grey),
           contentPadding: contentPadding ??
-              const EdgeInsets.only(left: 15, right: 15, top: 8, bottom: 8),
+              (AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                  ? EdgeInsets.symmetric(vertical: 20.h, horizontal: 10.w)
+                  : EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h)),
           floatingLabelBehavior: FloatingLabelBehavior.always,
           hintText: hint,
           hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
@@ -102,24 +106,22 @@ class CustomTextFormField extends StatelessWidget {
               ),
           labelText: label,
           enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8),
-              borderSide: const BorderSide(color: AppColors.black, width: 1)),
+              borderRadius: BorderRadius.circular(radius ?? 8.r),
+              borderSide: BorderSide(color: AppColors.black, width: 1.w)),
           labelStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
               color: textColor ?? AppColors.primaryColor,
               fontWeight: FontWeight.bold),
           focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8),
+              borderRadius: BorderRadius.circular(radius ?? 8.r),
               borderSide: BorderSide(
-                  color: focusedColor ?? AppColors.primaryColor, width: 2)),
+                  color: focusedColor ?? AppColors.primaryColor, width: 2.w)),
           disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8),
+              borderRadius: BorderRadius.circular(radius ?? 8.r),
               borderSide: const BorderSide(color: AppColors.primaryColor)),
           errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8),
-              borderSide: const BorderSide(color: AppColors.red, width: 2)),
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(radius ?? 8),
-              borderSide: const BorderSide(color: AppColors.grey, width: 2))),
+              borderRadius: BorderRadius.circular(radius ?? 8.r),
+              borderSide: BorderSide(color: AppColors.red, width: 2.w)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(radius ?? 8.r), borderSide: BorderSide(color: AppColors.grey, width: 2.w))),
     );
   }
 }

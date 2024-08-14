@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
@@ -29,8 +30,8 @@ class SettingsPage extends StatelessWidget {
                           dataList: controller.upperList,
                         ),
                       ),
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 20.h,
                       ),
                     ],
                   ),
@@ -51,8 +52,8 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: 20.h,
         ),
       ],
     );

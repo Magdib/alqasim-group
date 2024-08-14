@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
@@ -16,25 +18,25 @@ class AccountCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
       alignment: Alignment.center,
       decoration: BoxDecoration(
           color: AppColors.white,
-          borderRadius: BorderRadius.circular(6),
-          boxShadow: const [BoxShadow(color: AppColors.lBlack, blurRadius: 4)]),
+          borderRadius: BorderRadius.circular(6.r),
+          boxShadow: [BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)]),
       child: Column(
         children: [
           ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            separatorBuilder: (context, index) => const Column(
+            separatorBuilder: (context, index) => Column(
               children: [
                 SizedBox(
-                  height: 4,
+                  height: 4.h,
                 ),
-                CustomHorizontalDivider(),
+                const CustomHorizontalDivider(),
                 SizedBox(
-                  height: 4,
+                  height: 4.h,
                 ),
               ],
             ),
@@ -51,10 +53,10 @@ class AccountCard extends StatelessWidget {
                   Icon(
                     dataList[index].icon,
                     color: AppColors.primaryColor,
-                    size: 25,
+                    size: 25.r,
                   ),
-                  const SizedBox(
-                    width: 10,
+                  SizedBox(
+                    width: 10.w,
                   ),
                   Text(dataList[index].title,
                       style: Theme.of(context)
@@ -66,6 +68,9 @@ class AccountCard extends StatelessWidget {
                 ],
               ),
             ),
+          ),
+          SizedBox(
+            height: 4.h,
           ),
           const CustomHorizontalDivider()
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:proj/global/core/api/status_request.dart';
@@ -16,15 +17,15 @@ class HomeCategoriesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: AppSize.screenWidth(context),
-      height: 170,
-      margin: const EdgeInsets.all(10),
+      height: 175.h,
+      margin: EdgeInsets.all(10).w,
       child: GetBuilder<MainPageController>(
         builder: (controller) => ListView.builder(
             scrollDirection: Axis.horizontal,
             controller: controller.categoriesScrollController,
-            itemCount: controller.categoriesListView.length + 1,
+            itemCount: controller.categoriesData.length + 1,
             itemBuilder: (context, index) =>
-                index == controller.categoriesListView.length
+                index == controller.categoriesData.length
                     ? controller.categoriesStatusRequest == StatusRequest.none
                         ? SizedBox()
                         : Lottie.asset("assets/lottie/loading.json",
@@ -32,21 +33,18 @@ class HomeCategoriesView extends StatelessWidget {
                             fit: BoxFit.fitWidth)
                     : Row(
                         children: [
-                          const SizedBox(
-                            width: 10,
+                          SizedBox(
+                            width: 10.w,
                           ),
                           CatContainer(
-                            image: controller.categoriesListView[index].image,
-                            title: controller.categoriesListView[index].name,
+                            image: controller.categoriesData[index].image,
+                            title: controller.categoriesData[index].name,
                           ),
-                          const SizedBox(
-                            width: 20,
+                          SizedBox(
+                            width: 20.w,
                           ),
                         ],
-                      )
-            //handle when translate
-
-            ),
+                      )),
       ),
     );
   }

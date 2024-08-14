@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -16,16 +17,16 @@ class SocialButton extends GetView<MainPageController> {
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-        minWidth: 55,
+        minWidth: 55.w,
         color: AppColors.primaryColor,
-        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+        padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 15.h),
         onPressed: () => controller.openSocial(index),
         shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.appCustomRadius)),
+            borderRadius: BorderRadius.circular(AppSize.appCustomRadius.r)),
         child: Icon(
           alQassemSocial.icon,
           color: AppColors.white,
-          size: 22,
+          size: 22.r,
         ));
   }
 }

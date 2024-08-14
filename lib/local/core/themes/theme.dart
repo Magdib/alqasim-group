@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../constant/colors.dart';
 import 'dark/dark_theme_text.dart';
@@ -17,6 +18,7 @@ class AppTheme {
       secondary: AppColors.secondaryColor,
       primary: AppColors.primaryColor,
     ),
+    iconTheme: ThemeData.light().iconTheme.copyWith(size: 24.r),
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       elevation: 0,

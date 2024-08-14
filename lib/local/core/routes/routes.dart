@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 import 'package:proj/local/modules/account/controller/account_web_view_controller.dart';
 import 'package:proj/local/modules/account/controller/edit_account_controller.dart';
+import 'package:proj/local/modules/account/controller/saved_images_controller.dart';
 import 'package:proj/local/modules/account/controller/tickets_page_controller.dart';
 import 'package:proj/local/modules/account/view/pages/add_ticket_page.dart';
 import 'package:proj/local/modules/account/view/pages/edit_account_page.dart';
 import 'package:proj/local/modules/account/view/pages/in_app_web_view_page.dart';
+import 'package:proj/local/modules/account/view/pages/saved_images_page.dart';
 import 'package:proj/local/modules/account/view/pages/tickets_page.dart';
 import 'package:proj/local/modules/auth/login/controller/login_controller.dart';
 import 'package:proj/local/modules/auth/login/view/pages/forgot_pas_email_page.dart';
@@ -37,6 +39,7 @@ class AppRoutes {
   static const String inAppWebViewPageRoute = "/InAppWebViewPage";
   static const String ticketsPageRoute = "/TicketsPage";
   static const String addTicketPageRoute = "/AddTicketPage";
+  static const String savedImagesPageRoute = "/savedImagesPage";
 }
 
 List<GetPage> pages = [
@@ -111,6 +114,12 @@ List<GetPage> pages = [
       )),
   GetPage(
     name: AppRoutes.addTicketPageRoute,
-    page: () => const AddTicketPage(),
-  )
+    page: () => AddTicketPage(),
+  ),
+  GetPage(
+      name: AppRoutes.savedImagesPageRoute,
+      page: () => const SavedImagesPage(),
+      binding: BindingsBuilder.put(
+        () => SavedImagesController(),
+      ))
 ];

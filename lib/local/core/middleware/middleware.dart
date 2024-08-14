@@ -13,10 +13,10 @@ class MyMiddleWare extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
     if (myServices.authBox.get(HiveKeys.startState) == "1") {
-      Hive.box(HiveBoxes.authBox).close();
+      // Hive.box(HiveBoxes.authBox).close();
       return const RouteSettings(name: AppRoutes.homePageRoute);
     } else {
-      Hive.box(HiveBoxes.authBox).close();
+      // Hive.box(HiveBoxes.authBox).close();
       return null;
     }
   }

@@ -21,8 +21,10 @@ class AppBottomNavBar extends StatelessWidget {
           child: CurvedNavigationBar(
             animationDuration: const Duration(milliseconds: 400),
             backgroundColor: Colors.transparent,
-            height: 65,
-            index: controller.index,
+            height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                ? 75
+                : 65,
+            index: controller.pageIndex,
             color: AppColors.primaryColor,
             maxWidth: AppSize.screenWidth(context),
             letIndexChange: (value) => controller.handleMainOpenWhatsApp(value),

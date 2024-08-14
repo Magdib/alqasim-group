@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:proj/local/modules/carsdetails/model/car_images_model.dart';
 import '../../../local/core/class/hive_box.dart';
 
 class AppServices extends GetxService {
@@ -10,6 +11,7 @@ class AppServices extends GetxService {
   Future<AppServices> init() async {
     await Hive.initFlutter();
     authBox = await Hive.openBox(HiveBoxes.authBox);
+    Hive.registerAdapter<CarImagesModel>(CarImagesModelAdapter());
     // if (box.get(HiveKeys.userId) != null) {
     //   userId = box.get(HiveKeys.userId);
     //   debugPrint("user id  $userId");

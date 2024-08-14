@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
@@ -45,11 +46,11 @@ class ButtonWithIcon extends StatelessWidget {
                         )
                       : Image.asset(
                           image!,
-                          height: 40,
-                          width: 40,
+                          height: 40.h,
+                          width: 40.w,
                         ),
                   SizedBox(
-                    width: iconTextDist ?? 5,
+                    width: iconTextDist ?? 5.w,
                   ),
                   Text(
                     title,
@@ -71,7 +72,7 @@ class ButtonWithIcon extends StatelessWidget {
                         ),
                   ),
                   SizedBox(
-                    width: iconTextDist ?? 5,
+                    width: iconTextDist ?? 5.w,
                   ),
                   icon != null
                       ? Icon(
@@ -81,8 +82,8 @@ class ButtonWithIcon extends StatelessWidget {
                         )
                       : Image.asset(
                           image!,
-                          height: 40,
-                          width: 40,
+                          height: 40.h,
+                          width: 40.w,
                         )
                 ],
               ));

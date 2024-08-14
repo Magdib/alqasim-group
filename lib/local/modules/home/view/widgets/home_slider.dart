@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -13,34 +14,33 @@ class HomeSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 100.h,
       child: GetBuilder<MainPageController>(
         builder: (controller) => PageView.builder(
-            itemCount: controller.sliderListView.length,
+            itemCount: controller.sliderData.length,
             controller: controller.sliderController,
             itemBuilder: (context, index) {
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
+                margin: EdgeInsets.symmetric(horizontal: 10.w),
                 decoration: BoxDecoration(
                   color: AppColors.black,
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(8.r),
                 ),
                 child: Stack(
                   children: [
                     Opacity(
                       opacity: 0.8,
                       child: CustomCachedNetImage(
-                        imageUrl:
-                            controller.sliderListView[index].backgroundImage,
+                        imageUrl: controller.sliderData[index].backgroundImage,
                         canReDownload: false,
                         width: AppSize.screenWidth(context),
-                        height: 100,
+                        height: 100.h,
                         borderRadius: 8,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Center(
-                      child: Text(controller.sliderListView[index].title,
+                      child: Text(controller.sliderData[index].title,
                           textAlign: TextAlign.center,
                           style: Theme.of(context)
                               .textTheme

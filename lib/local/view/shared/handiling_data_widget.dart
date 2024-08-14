@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:proj/local/core/constant/app_size.dart';
-import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import '../../../global/core/api/status_request.dart';
 import '../../core/constant/colors.dart';
 import 'retry_button.dart';
@@ -99,7 +99,7 @@ class HandlingDataRequest extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "...حدث خطأ ما",
+                          "...حدث خطأ ما".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -107,6 +107,100 @@ class HandlingDataRequest extends StatelessWidget {
                         ),
                         const SizedBox(
                           height: 15,
+                        ),
+                        RetryButton(onTap: onTap)
+                      ],
+                    ),
+                  )
+                : child;
+  }
+}
+
+class HandlingScrollDataRequest extends StatelessWidget {
+  const HandlingScrollDataRequest(
+      {super.key,
+      required this.statusRequest,
+      required this.child,
+      required this.onTap});
+  final StatusRequest statusRequest;
+  final Widget child;
+  final VoidCallback onTap;
+  @override
+  Widget build(BuildContext context) {
+    return statusRequest == StatusRequest.loading
+        ? Container(
+            height: AppSize.screenHight(context) - 150.h,
+            width: AppSize.screenWidth(context),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: AppSize.screenHight(context) / 2 - 200.h,
+                ),
+                Lottie.asset("assets/lottie/loading.json",
+                    width: AppSize.screenWidth(context) / 2.2),
+                SizedBox(
+                  height: 5.h,
+                ),
+                Text(
+                  "...جارٍ التحميل".tr,
+                  style: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(color: AppColors.primaryColor),
+                )
+              ],
+            ),
+          )
+        : statusRequest == StatusRequest.offlineFailure
+            ? Container(
+                height: AppSize.screenHight(context) - 150.h,
+                width: AppSize.screenWidth(context),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: AppSize.screenHight(context) / 8,
+                    ),
+                    Lottie.asset("assets/lottie/offline.json",
+                        width: AppSize.screenWidth(context) / 2.5,
+                        fit: BoxFit.fill),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    Text(
+                      "...لا يوجد اتصال بالإنترنت".tr,
+                      style: Theme.of(context)
+                          .textTheme
+                          .displayLarge!
+                          .copyWith(color: AppColors.primaryColor),
+                    ),
+                    SizedBox(
+                      height: 15.h,
+                    ),
+                    RetryButton(onTap: onTap)
+                  ],
+                ),
+              )
+            : statusRequest == StatusRequest.failure
+                ? Container(
+                    height: AppSize.screenHight(context) - 150.h,
+                    width: AppSize.screenWidth(context),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: AppSize.screenHight(context) / 2 - 200.h,
+                        ),
+                        Text(
+                          "...حدث خطأ ما".tr,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayLarge!
+                              .copyWith(color: AppColors.primaryColor),
+                        ),
+                        SizedBox(
+                          height: 15.h,
                         ),
                         RetryButton(onTap: onTap)
                       ],

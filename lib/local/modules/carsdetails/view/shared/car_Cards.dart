@@ -1,152 +1,154 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
-import 'package:proj/local/modules/home/controller/main_page_controller.dart';
+import 'package:proj/local/core/constant/images.dart';
+import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
+import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
+import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 
 import '../widgets/icon_title_row.dart';
 
-class CarCards extends StatelessWidget {
+class CarCards extends GetView<CarDetailsController> {
   const CarCards({
     super.key,
     required this.cars,
   });
-  final List<CarModel> cars;
+  final List<RelatedCars> cars;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 305,
+      height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+          ? 325.h
+          : 325,
       child: PageView.builder(
         itemCount: cars.length,
-        itemBuilder: (context, index) => Container(
-          width: AppSize.screenWidth(context),
-          margin: const EdgeInsets.symmetric(horizontal: 7.5, vertical: 5),
-          padding: const EdgeInsets.symmetric(horizontal: 3),
-          height: 300,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: AppColors.white,
-              boxShadow: const [
-                BoxShadow(color: AppColors.lBlack, blurRadius: 4)
-              ]),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 5,
-                ),
-                Container(
-                  width: AppSize.screenWidth(context),
-                  height: 140,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      image: DecorationImage(
-                        image: AssetImage(
-                          cars[index].image,
-                        ),
-                        fit: BoxFit.fitWidth,
-                      )),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const SizedBox(
-                      height: 5,
+        itemBuilder: (context, index) => GestureDetector(
+          onTap: () => controller.changeToLinkedCar(index),
+          child: Container(
+            width: AppSize.screenWidth(context),
+            margin: EdgeInsets.symmetric(horizontal: 7.5.w, vertical: 5.h),
+            padding: EdgeInsets.symmetric(horizontal: 3.w),
+            height: 320.h,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8.r),
+                color: AppColors.white,
+                boxShadow: [
+                  BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
+                ]),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 3.w),
+              child: Column(
+                children: [
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Container(
+                    width: AppSize.screenWidth(context),
+                    height: 140.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
-                    Text(
-                      cars[index].type,
-                      style:
-                          Theme.of(context).textTheme.displayMedium!.copyWith(
-                                color: AppColors.grey,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
+                    child: CustomCachedNetImage(
+                      imageUrl: cars[index].featureImage,
+                      canReDownload: false,
+                      fit: BoxFit.fitWidth,
+                      borderRadius: 8.r,
                     ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    FittedBox(
-                      child: Text(
-                        cars[index].name,
+                  ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Text(
+                        "${cars[index].brand} ${cars[index].model}",
                         style:
                             Theme.of(context).textTheme.displayMedium!.copyWith(
-                                  fontSize: 11.5,
+                                  color: AppColors.grey,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.bold,
                                 ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 2.5,
-                    ),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/logo.webp",
-                          width: 30,
-                          fit: BoxFit.fitWidth,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          "بواسطة ${cars[index].user}",
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      FittedBox(
+                        child: Text(
+                          cars[index].productTitle,
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(
-                                color: AppColors.black,
-                                fontSize: 10,
+                                fontSize: 11.5.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 2.5,
-                    ),
-                    Row(
-                      children: [
-                        IconTitleRow(
-                          icon: AppStatics.carCardIcons[0],
-                          text: cars[index].date!,
-                          index: 0,
-                        ),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        IconTitleRow(
-                          icon: AppStatics.carCardIcons[1],
-                          text: cars[index].meters!,
-                          index: 1,
-                        ),
-                        const SizedBox(
-                          width: 20,
-                        ),
-                        IconTitleRow(
-                          icon: AppStatics.carCardIcons[2],
-                          text: "${cars[index].speed!}",
-                          index: 2,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      cars[index].price,
-                      style:
-                          Theme.of(context).textTheme.displayMedium!.copyWith(
-                                fontWeight: FontWeight.bold,
-                              ),
-                    ),
-                  ],
-                )
-              ],
+                      ),
+                      SizedBox(
+                        height: 7.5.h,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          CustomCachedNetImage(
+                            imageUrl: cars[index].vendor.photo,
+                            canReDownload: false,
+                            height: 25.h,
+                            width: 25.w,
+                            borderRadius: 25.r,
+                            fit: BoxFit.cover,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 5.h,
+                      ),
+                      Row(
+                        children: [
+                          IconTitleRow(
+                            icon: AppStatics.carCardIcons[0],
+                            text: cars[index].year,
+                            index: 0,
+                          ),
+                          SizedBox(
+                            width: 30.w,
+                          ),
+                          IconTitleRow(
+                            icon: AppStatics.carCardIcons[1],
+                            text: cars[index].mileage,
+                            index: 1,
+                          ),
+                          SizedBox(
+                            width: 20.w,
+                          ),
+                          IconTitleRow(
+                            icon: AppStatics.carCardIcons[2],
+                            text: "${cars[index].speed}",
+                            index: 2,
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 3.h,
+                      ),
+                      Text(
+                        cars[index].symbolPrice,
+                        style:
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

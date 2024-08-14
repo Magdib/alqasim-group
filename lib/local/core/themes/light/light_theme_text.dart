@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../Constant/Colors.dart';
 
 TextStyle displaySmallLight() {
-  return const TextStyle(
+  return TextStyle(
       color: AppColors.black,
-      fontSize: 12,
+      fontSize: 12.sp,
       fontWeight: FontWeight.w400,
       fontFamily: "DroidArabicKufi");
 }
 
 TextStyle displayMediumLight() {
-  return const TextStyle(
+  return TextStyle(
       color: AppColors.black,
-      fontSize: 14,
+      fontSize: 14.sp,
       fontWeight: FontWeight.w500,
       fontFamily: "DroidArabicKufi");
 }
 
 TextStyle displayLargeLight() {
-  return const TextStyle(
+  return TextStyle(
       color: AppColors.black,
-      fontSize: 16,
+      fontSize: 16.sp,
       fontWeight: FontWeight.bold,
       fontFamily: "DroidArabicKufi");
 }

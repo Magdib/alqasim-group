@@ -68,8 +68,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                                       borderRadius: BorderRadius.circular(8),
                                       image: DecorationImage(
                                         image: AssetImage(
-                                          controller.viewCars[index]
-                                              .cars[subIndex].image,
+                                          "controller.viewCars[index].cars[subIndex].image",
                                         ),
                                         fit: BoxFit.cover,
                                       )),
@@ -88,8 +87,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            controller.viewCars[index]
-                                                .cars[subIndex].price,
+                                            "controller.viewCars[index].cars[subIndex].price",
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .displaySmall!
@@ -103,19 +101,18 @@ class FavoritePage extends GetView<FavoritePageController> {
                                                 // controller.handleFav(index)
                                               },
                                               child: Icon(
-                                                controller.viewCars[index]
-                                                        .cars[subIndex].isFav
-                                                    ? Icons.favorite
-                                                    : Icons
-                                                        .favorite_border_outlined,
+                                                // controller.viewCars[index]
+                                                //         .cars[subIndex].isFav
+                                                //     ? Icons.favorite
+                                                //     :
+                                                Icons.favorite_border_outlined,
                                                 color: AppColors.primaryColor,
                                               ))
                                         ],
                                       ),
                                       FittedBox(
                                         child: Text(
-                                          controller.viewCars[index]
-                                              .cars[subIndex].name,
+                                          "controller.viewCars[index].cars[subIndex].name",
                                           style: Theme.of(context)
                                               .textTheme
                                               .displaySmall!

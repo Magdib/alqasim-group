@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/images.dart';
 import 'package:proj/local/core/functions/language/left_right_lang_align.dart';
@@ -25,7 +26,7 @@ class AnimatedCar extends StatelessWidget {
             alignment: leftRightLangAlign("ar"),
             child: Image.asset(
               "${AppImages.imageRoute}/sideCar.png",
-              height: 200,
+              height: 200.h,
               fit: BoxFit.fitHeight,
             ),
           ),

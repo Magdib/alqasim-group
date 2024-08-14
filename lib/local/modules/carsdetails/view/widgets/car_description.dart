@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/functions/language/left_right_lang_align.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 
 class CarDescription extends GetView<CarDetailsController> {
@@ -14,64 +17,65 @@ class CarDescription extends GetView<CarDetailsController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "المواصفات:",
+          "المواصفات:".tr,
           style: Theme.of(context).textTheme.displayLarge,
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 12.5.h,
         ),
         SizedBox(
-          height: 625,
+          height: 625.h,
           child: GridView.builder(
             itemCount: controller.carDetailsTitle.length,
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              mainAxisExtent: 80,
-              crossAxisSpacing: 20,
+              mainAxisExtent: 80.h,
+              crossAxisSpacing: 20.w,
             ),
             itemBuilder: (context, index) => Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: controller.carDetailsTitle[index].addPadding
-                      ? const EdgeInsets.all(7.5)
+                      ? EdgeInsets.all(7.5).w
                       : null,
                   decoration: BoxDecoration(
                       color: AppColors.lGrey,
-                      borderRadius: BorderRadius.circular(2)),
+                      borderRadius: BorderRadius.circular(2.r)),
                   child: Icon(
                     controller.carDetailsTitle[index].icon,
                     size: controller.carDetailsTitle[index].size,
                     color: AppColors.primaryColor,
                   ),
                 ),
-                const SizedBox(
-                  width: 5,
+                SizedBox(
+                  width: 5.w,
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      width: controller.carDetailsTitle[index].title.length * 6,
+                      width: AppSize.screenWidth(context) / 3.5,
                       child: FittedBox(
-                        alignment: Alignment.centerRight,
+                        alignment: leftRightLangAlign(controller.selectedLocal),
                         fit: BoxFit.scaleDown,
                         child: Text(
                           controller.carDetailsTitle[index].title,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
                               .copyWith(
-                                fontSize: 12,
+                                fontSize: 12.sp,
                                 height: 1.3,
                               ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 2.5,
+                    SizedBox(
+                      height: 2.5.h,
                     ),
                     Text(
                       controller.carDetails[index],
@@ -79,7 +83,7 @@ class CarDescription extends GetView<CarDetailsController> {
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
                                 color: AppColors.grey,
-                                fontSize: 11,
+                                fontSize: 11.sp,
                               ),
                     ),
                   ],
@@ -88,19 +92,19 @@ class CarDescription extends GetView<CarDetailsController> {
             ),
           ),
         ),
-        Text("الوصف:", style: Theme.of(context).textTheme.displayLarge),
-        const SizedBox(
-          height: 10,
+        Text("الوصف:".tr, style: Theme.of(context).textTheme.displayLarge),
+        SizedBox(
+          height: 10.h,
         ),
         Text(
-          controller.car.carDesc!,
+          controller.car.description,
           style: Theme.of(context)
               .textTheme
               .displayMedium!
-              .copyWith(color: AppColors.grey, fontSize: 12),
+              .copyWith(color: AppColors.grey, fontSize: 12.sp),
         ),
-        const SizedBox(
-          height: 15,
+        SizedBox(
+          height: 15.h,
         ),
       ],
     );
