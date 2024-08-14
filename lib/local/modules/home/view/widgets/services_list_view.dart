@@ -16,7 +16,7 @@ class ServicesListView extends StatelessWidget {
       builder: (controller) => SizedBox(
         height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
             ? 110.h
-            : 100,
+            : 95,
         width: AppSize.screenWidth(context),
         child: ListView.separated(
           padding: EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),

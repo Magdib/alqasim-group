@@ -10,30 +10,32 @@ import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 
-class GridCarCard extends GetView<MainPageController> {
+class GridCarCard extends StatelessWidget {
   const GridCarCard({
     super.key,
     required this.car,
     required this.index,
     required this.addToFav,
     this.rightPadding,
+    required this.onTap,
   });
   final CarModel car;
   final int index;
   final VoidCallback addToFav;
   final double? rightPadding;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => controller.goToDetailsPage(2),
+      onTap: onTap,
       child: Stack(
         children: [
           Container(
             width: AppSize.screenWidth(context) / 2 - 30,
-            height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
-                ? 220.h
-                : 190,
-            alignment: leftRightLangAlign(controller.selectedLocal),
+            // height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+            //     ? 220.h
+            //     : 190,
+            alignment: leftRightLangAlign(getLanguage().languageCode),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.r),
                 color: AppColors.white,
@@ -49,25 +51,27 @@ class GridCarCard extends GetView<MainPageController> {
                     height: 5.h,
                   ),
                   Container(
-                      width: AppSize.screenWidth(context) / 2 - 45,
+                      width: AppSize.screenWidth(context) / 2 - 35,
                       height: 80.h,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: CustomCachedNetImage(
                         imageUrl: car.featureImage,
                         canReDownload: false,
-                        fit: BoxFit.fitWidth,
+                        borderRadius: 8.r,
+                        fit: BoxFit.cover,
                       )),
                   SizedBox(
                     height: 10.h,
                   ),
                   Container(
                     width: AppSize.screenWidth(context) / 2 - 40,
-                    height:
-                        AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
-                            ? 120.h
-                            : 90,
+                    // height:
+                    //     AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                    //         ? 120.h
+                    //         : 90,
+                    margin: EdgeInsets.only(bottom: 5.h),
                     alignment: leftRightLangAlign(getLanguage().languageCode),
                     padding: EdgeInsets.symmetric(horizontal: 6.5.w),
                     decoration: BoxDecoration(
@@ -96,7 +100,7 @@ class GridCarCard extends GetView<MainPageController> {
                           height: 5.h,
                         ),
                         Text(
-                          "car.type",
+                          "${car.brand} ${car.model}",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -109,7 +113,7 @@ class GridCarCard extends GetView<MainPageController> {
                         ),
                         FittedBox(
                           child: Text(
-                            " car.name",
+                            car.productTitle,
                             style: Theme.of(context)
                                 .textTheme
                                 .displaySmall!
@@ -122,11 +126,17 @@ class GridCarCard extends GetView<MainPageController> {
                         SizedBox(
                           height: 5.h,
                         ),
-                        Image.asset(
-                          AppImages.adminImage,
-                          height: 25.h,
-                          fit: BoxFit.contain,
-                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 5.w, vertical: 2.5.h),
+                          child: CustomCachedNetImage(
+                              imageUrl: car.vendor.photo,
+                              borderRadius: 25.r,
+                              fit: BoxFit.cover,
+                              height: 25.h,
+                              width: 25.w,
+                              canReDownload: false),
+                        )
                       ],
                     ),
                   )

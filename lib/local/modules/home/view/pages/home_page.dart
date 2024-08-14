@@ -38,18 +38,20 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.w),
-              child: DynamicHeightGridView(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  builder: (context, index) => TopCarCard(
-                        car: controller.topCars[index],
-                        addToFav: () => controller.handleFav(index),
-                        index: index,
-                      ),
-                  itemCount: controller.topCars.length,
-                  crossAxisSpacing: 20.w,
-                  mainAxisSpacing: 10.h,
-                  crossAxisCount: 1),
+              child: ListView.separated(
+                shrinkWrap: true,
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 10.h,
+                ),
+                itemBuilder: (context, index) => TopCarCard(
+                  car: controller.topCars[index],
+                  addToFav: () => controller.handleFav(index),
+                  index: index,
+                ),
+                itemCount: controller.topCars.length,
+              ),
             ),
             SizedBox(height: 30.h),
             const HomeTitle(title: "الخدمات التي نقدّمها"),
@@ -103,6 +105,14 @@ class HomePage extends StatelessWidget {
               SocialButton(
                 alQassemSocial: AppStatics.alQassimSocials[2],
                 index: 2,
+              ),
+              SocialButton(
+                alQassemSocial: AppStatics.alQassimSocials[3],
+                index: 3,
+              ),
+              SocialButton(
+                alQassemSocial: AppStatics.alQassimSocials[4],
+                index: 4,
               ),
             ]),
             SizedBox(height: 20.h),

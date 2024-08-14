@@ -10,6 +10,7 @@ import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_description.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_forms.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_sub_details.dart';
+import 'package:proj/local/modules/carsdetails/view/widgets/contact_vendor_row.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/details_images_slider.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/details_selectable_slider.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/floating_action_dial.dart';
@@ -103,26 +104,7 @@ class CarDetails extends StatelessWidget {
                             SizedBox(
                               height: 15.h,
                             ),
-                            Row(
-                              children: [
-                                ButtonWithIcon(
-                                  title: "اتصل الآن".tr,
-                                  icon: Icons.call,
-                                  reverse: getLanguage() == Locale("en"),
-                                  onPressed: () => controller.openCallApp(),
-                                ),
-                                SizedBox(
-                                  width: 10.w,
-                                ),
-                                ButtonWithIcon(
-                                  title: "عبر واتساب".tr,
-                                  icon: FontAwesome.whatsapp_brand,
-                                  reverse: getLanguage() == Locale("en"),
-                                  color: AppColors.deepGreen,
-                                  onPressed: () => controller.openWhatsApp(),
-                                ),
-                              ],
-                            ),
+                            ContactVendorRow(),
                             SizedBox(
                               height: 20.h,
                             ),

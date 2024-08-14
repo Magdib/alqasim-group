@@ -10,6 +10,8 @@ import 'package:proj/local/modules/carsdetails/controller/car_details_controller
 import 'package:proj/local/modules/carsdetails/data/enums/save_images_state.dart';
 import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 
+import 'contact_vendor_row.dart';
+
 class CarSubDetails extends GetView<CarDetailsController> {
   const CarSubDetails({
     super.key,
@@ -57,6 +59,10 @@ class CarSubDetails extends GetView<CarDetailsController> {
                   borderRadius: 16.r,
                   fit: BoxFit.cover,
                 )),
+            SizedBox(
+              height: 15.h,
+            ),
+            ContactVendorRow(),
             SizedBox(
               height: 15.h,
             ),

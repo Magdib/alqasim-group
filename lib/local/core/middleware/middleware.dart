@@ -14,7 +14,7 @@ class MyMiddleWare extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     if (myServices.authBox.get(HiveKeys.startState) == "1") {
       // Hive.box(HiveBoxes.authBox).close();
-      return const RouteSettings(name: AppRoutes.homePageRoute);
+      return const RouteSettings(name: AppRoutes.splashScreenRoute);
     } else {
       // Hive.box(HiveBoxes.authBox).close();
       return null;

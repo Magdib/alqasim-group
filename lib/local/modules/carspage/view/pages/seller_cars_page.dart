@@ -57,15 +57,19 @@ class SellerCarsPage extends StatelessWidget {
                       //   margin:  EdgeInsets.symmetric(horizontal: 10.w),
                       //   width: AppSize.screenWidth(context) / 2,
                       // child:
-                      DynamicHeightGridView(
-                          itemCount: controller.sellerCars.length,
-                          crossAxisCount: 2,
-                          builder: (context, subIndex) => GridCarCard(
-                              car: controller.sellerCars[subIndex],
-                              index: subIndex,
-                              rightPadding:
-                                  getLanguage() == Locale("en") ? 23.w : null,
-                              addToFav: () {})),
+                      Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w),
+                    child: DynamicHeightGridView(
+                        itemCount: controller.sellerCars.length,
+                        crossAxisCount: 2,
+                        builder: (context, subIndex) => GridCarCard(
+                            car: controller.sellerCars[subIndex],
+                            index: subIndex,
+                            rightPadding:
+                                getLanguage() == Locale("en") ? 23.w : null,
+                            onTap: () {},
+                            addToFav: () {})),
+                  ),
                   // ),
                 ),
               ),

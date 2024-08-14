@@ -8,6 +8,12 @@ class SavedImagesController extends GetxController {
   late Box<CarImagesModel> savedCarImagesBox;
   List<CarImagesModel> cars = [];
   StatusRequest statusRequest = StatusRequest.loading;
+  deleteCarImages(int index) {
+    savedCarImagesBox.deleteAt(index);
+    cars.removeAt(index);
+    update();
+  }
+
   @override
   void onReady() async {
     savedCarImagesBox = await Hive.openBox(HiveBoxes.savedCarsBox);

@@ -24,9 +24,12 @@ import 'package:proj/local/modules/OnBoarding/view/pages/OnBoarding.dart';
 import 'package:proj/local/modules/auth/signup/view/pages/sign_up.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/modules/carsdetails/view/pages/car_details.dart';
+import 'package:proj/local/modules/splashscreen/controller/splash_screen_controller.dart';
+import 'package:proj/local/modules/splashscreen/view/pages/splash_screen.dart';
 
 class AppRoutes {
   static const String mainRoute = "/";
+  static const String splashScreenRoute = "/splashScreenRoute";
   static const String signInPageRoute = "/signInPage";
   static const String signUpPageRoute = "/signUpPage";
   static const String homePageRoute = "/homePage";
@@ -51,6 +54,12 @@ List<GetPage> pages = [
       ),
       middlewares: [MyMiddleWare()]),
   GetPage(
+      name: AppRoutes.splashScreenRoute,
+      page: () => const SplashScreen(),
+      binding: BindingsBuilder.put(
+        () => SplashScreenController(),
+      )),
+  GetPage(
     name: AppRoutes.signUpPageRoute,
     binding: BindingsBuilder.put(() => SignUpController()),
     page: () => const SignUp(),
@@ -63,9 +72,8 @@ List<GetPage> pages = [
   GetPage(
       name: AppRoutes.homePageRoute,
       page: () => const MainPage(),
-      binding: BindingsBuilder.put(
-        () => MainPageController(),
-      )),
+      transitionDuration: Duration(seconds: 1),
+      transition: Transition.leftToRight),
   GetPage(
       name: AppRoutes.carDetailsPageRoute,
       page: () => const CarDetails(),

@@ -54,6 +54,12 @@ class AppStatics {
     AlQassemSocialsModel(FontAwesome.instagram_brand,
         "https://www.instagram.com/alqassem_group_luxury_cars/"),
     AlQassemSocialsModel(
-        FontAwesome.facebook_brand, "https://www.facebook.com/alqaseem.group/")
+        FontAwesome.facebook_brand, "https://www.facebook.com/alqaseem.group/"),
+    AlQassemSocialsModel(
+        MingCute.snapchat_fill, "https://www.snapchat.com/alqassem-group/"),
+    AlQassemSocialsModel(FontAwesome.map_location_solid,
+        "https://www.google.com/maps?ll=25.354601,55.432794&z=14&t=m&hl=en&gl=US&mapclient=embed&q=Sharjah+United+Arab+Emirates"),
   ];
 }
+// 25.354601
+//55.432794

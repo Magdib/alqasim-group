@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/global/core/api/api_errors.dart';
 import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/class/app_toast.dart';
@@ -57,29 +58,25 @@ class MainPageController extends GetxController {
   defineLists() {
     homeServicesList = [
       HomeServicesModel(
-          title: "التمويل والتأمين".tr,
+          title: "شراء سيارة".tr,
           icon: Icons.monetization_on_outlined,
-          text: "نوع الخدمة: خيارات التمويل والتأمين المرنة.\n".tr),
+          text: "نوع الخدمة: شراء سيارة\n".tr),
       HomeServicesModel(
-          title: "المبيعات والدعم".tr,
+          title: "بيع سيارة".tr,
           icon: Icons.sell_outlined,
-          text: "نوع الخدمة: مبيعات الخبراء ودعم ما بعد البيع.\n".tr),
+          text: "نوع الخدمة: بيع سيارة\n".tr),
       HomeServicesModel(
-          title: "مساعدة في \nتسجيل السيارة".tr,
-          icon: Icons.contact_page_outlined,
-          text:
-              "نوع الخدمة: المساعدة في تسجيل السيارة. (تأمين - امتحان - تسجيل).\n"
-                  .tr),
+          title: "تمويل بنكي".tr,
+          icon: MingCute.bank_fill,
+          text: "نوع الخدمة: تمويل بنكي\n".tr),
       HomeServicesModel(
-          title: "صفقات التصدير".tr,
+          title: "تصدير سيارة".tr,
           icon: Icons.shopping_cart_checkout,
-          text: "نوع الخدمة: صفقات التصدير والخدمات المتاحة.\n".tr),
+          text: "نوع الخدمة: تصدير سيارة\n".tr),
       HomeServicesModel(
-          title: "تسليم سيارة".tr,
-          icon: Icons.car_rental_outlined,
-          text:
-              "نوع الخدمة: تسليم السيارة إلى أي مكان في الإمارات العربية المتحدة\n"
-                  .tr),
+          title: "تأمين/ تسجيل\n صفحات".tr,
+          icon: Icons.contact_page_outlined,
+          text: "نوع الخدمة: تأمين/تسجيل صفحات\n".tr),
     ];
     drawerItems = [
       DrawerModel(title: "الرئيسية".tr, route: AppRoutes.mainRoute, index: 2),
@@ -263,7 +260,10 @@ class MainPageController extends GetxController {
       }
       log("$statusRequest");
       update();
-      AppToasts.errorToast(l.message);
+
+      if (Get.currentRoute == AppRoutes.homePageRoute) {
+        AppToasts.errorToast(l.message);
+      }
     }, (r) async {
       List jsonData = r['data'];
       sliderData = jsonData.map((e) => HomeSliderModel.fromJson(e)).toList();
@@ -276,7 +276,10 @@ class MainPageController extends GetxController {
           statusRequest = StatusRequest.failure;
         }
         update();
-        AppToasts.errorToast(tl.message);
+
+        if (Get.currentRoute == AppRoutes.homePageRoute) {
+          AppToasts.errorToast(tl.message);
+        }
       }, (tr) async {
         List jsonData = tr['data'];
         topCars = jsonData.map((e) => TopCarModel.fromJson(e)).toList();
@@ -291,8 +294,11 @@ class MainPageController extends GetxController {
             statusRequest = StatusRequest.failure;
           }
           update();
-          AppToasts.errorToast(cl.message);
-        }, (cr) {
+
+          if (Get.currentRoute == AppRoutes.homePageRoute) {
+            AppToasts.errorToast(cl.message);
+          }
+        }, (cr) async {
           List cJsonData = cr['data'];
           catNextPageUrl = cr['meta']['nextPageUrl'];
           if (catNextPageUrl == null) {
@@ -303,7 +309,7 @@ class MainPageController extends GetxController {
           log("data $cr");
           scrollController
             ..addListener(() {
-              if (scrollController.offset > 600 && carPadding != 0) {
+              if (scrollController.offset > 680 && carPadding != 0) {
                 carPadding = 0;
                 update();
               }
@@ -313,8 +319,14 @@ class MainPageController extends GetxController {
           swipeImages();
           categoriesScrollController = ScrollController()
             ..addListener(() => categoriesPagination());
-
-          update();
+          while (true) {
+            if (Get.currentRoute == AppRoutes.homePageRoute) {
+              update();
+              break;
+            } else {
+              await Future.delayed(Duration(seconds: 3));
+            }
+          }
         });
       });
     });
