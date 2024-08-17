@@ -21,7 +21,7 @@ class CarModel {
     required this.model,
     required this.productTitle,
     required this.images,
-    required this.category,
+    required this.categoryForDetails,
     required this.description,
     required this.fuelType,
     required this.transmissionType,
@@ -58,7 +58,8 @@ class CarModel {
   late final String model;
   late final String productTitle;
   late final List<Images> images;
-  late final String category;
+  late final String categoryForDetails;
+  String? categoryForList;
   late final String description;
   late final String fuelType;
   late final String transmissionType;
@@ -96,7 +97,8 @@ class CarModel {
     model = json['model'];
     productTitle = json['product_title'];
     images = List.from(json['images']).map((e) => Images.fromJson(e)).toList();
-    category = json['category'];
+    categoryForDetails = json['category_for_details'];
+    categoryForList = json["category_for_list"];
     description = json['description'];
     fuelType = json['fuel_type'];
     transmissionType = json['transmission_type'];
@@ -110,9 +112,9 @@ class CarModel {
     outsideColor = json['outside_color'];
     isWarranty = json['is_warranty'];
     vendor = Vendor.fromJson(json['vendor']);
-    relatedCars = List.from(json['related_cars'])
+    relatedCars =json['related_cars'] == null ?[]: List.from(json['related_cars'])
         .map((e) => RelatedCars.fromJson(e))
-        .toList();
+        .toList(); 
   }
 
   Map<String, dynamic> toJson() {
@@ -138,7 +140,8 @@ class CarModel {
     _data['model'] = model;
     _data['product_title'] = productTitle;
     _data['images'] = images.map((e) => e.toJson()).toList();
-    _data['category'] = category;
+    _data['category_for_details'] = categoryForDetails;
+    _data["category_for_list"] = categoryForList;
     _data['description'] = description;
     _data['fuel_type'] = fuelType;
     _data['transmission_type'] = transmissionType;

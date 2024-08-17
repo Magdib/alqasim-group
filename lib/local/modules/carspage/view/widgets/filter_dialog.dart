@@ -3,13 +3,14 @@ import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
+import 'package:proj/local/view/shared/handiling_data_widget.dart';
 import 'package:proj/local/view/widgets/app_bar/custom_app_bar.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
 import 'brand_grid_view_filter.dart';
 import 'filter_form_column.dart';
-import 'filter_list_view.dart';
+import 'filter_grid_view.dart';
 
 filterDialog(BuildContext context) {
   return Get.dialog(GetBuilder<CarsPageController>(
@@ -28,83 +29,87 @@ filterDialog(BuildContext context) {
                   Icons.arrow_back,
                   color: AppColors.white,
                 ))),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            FilterGridView(),
-            FilterFormColumn(
-              title: "عنوان السيارة".tr,
-              hint: "البحث عن طريق عنوان السيارة".tr,
-            ),
-            FilterFormColumn(
-              title: "موقع".tr,
-              hint: "البحث بالموقع".tr,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              "العلامات التجارية:".tr,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayLarge!
-                  .copyWith(fontSize: 14),
-            ),
-            const BrandGridViewFilter(),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              "التسعير:".tr,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayLarge!
-                  .copyWith(fontSize: 14),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                SizedBox(
-                  width: AppSize.screenWidth(context) / 3,
-                  child: CustomTextFormField(
-                    hint: "أقل سعر".tr,
-                    textEditingController: controller.lowestPrice,
-                    inputType: TextInputType.number,
-                    focusedColor: AppColors.green,
-                    textColor: AppColors.green,
-                  ),
-                ),
-                SizedBox(
-                  width: AppSize.screenWidth(context) / 3,
-                  child: CustomTextFormField(
-                    hint: "أعلى سعر".tr,
-                    textEditingController: controller.highestPrice,
-                    inputType: TextInputType.number,
-                    focusedColor: AppColors.red,
-                    textColor: AppColors.red,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Center(
-              child: ButtonWithIcon(
-                minWidth: AppSize.screenWidth(context) / 2,
-                icon: Icons.sync_outlined,
-                title: "إعادة ضبط الجميع".tr,
-                reverse: true,
-                onPressed: () => controller.initializeData(),
+        body: HandlingDataRequest(
+          onTap: () => controller.getData(true),
+          statusRequest: controller.dialogStatusRequest,
+          child: ListView(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            children: [
+              SizedBox(
+                height: 20,
               ),
-            )
-          ],
+              FilterGridView(),
+              FilterFormColumn(
+                title: "عنوان السيارة".tr,
+                hint: "البحث عن طريق عنوان السيارة".tr,
+              ),
+              FilterFormColumn(
+                title: "موقع".tr,
+                hint: "البحث بالموقع".tr,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "العلامات التجارية:".tr,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontSize: 14),
+              ),
+              const BrandGridViewFilter(),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                "التسعير:".tr,
+                style: Theme.of(context)
+                    .textTheme
+                    .displayLarge!
+                    .copyWith(fontSize: 14),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SizedBox(
+                    width: AppSize.screenWidth(context) / 3,
+                    child: CustomTextFormField(
+                      hint: "أقل سعر".tr,
+                      textEditingController: controller.lowestPrice,
+                      inputType: TextInputType.number,
+                      focusedColor: AppColors.green,
+                      textColor: AppColors.green,
+                    ),
+                  ),
+                  SizedBox(
+                    width: AppSize.screenWidth(context) / 3,
+                    child: CustomTextFormField(
+                      hint: "أعلى سعر".tr,
+                      textEditingController: controller.highestPrice,
+                      inputType: TextInputType.number,
+                      focusedColor: AppColors.red,
+                      textColor: AppColors.red,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: ButtonWithIcon(
+                  minWidth: AppSize.screenWidth(context) / 2,
+                  icon: Icons.sync_outlined,
+                  title: "إعادة ضبط الجميع".tr,
+                  reverse: true,
+                  onPressed: () => controller.initializeData(),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     ),

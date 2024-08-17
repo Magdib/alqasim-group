@@ -29,6 +29,7 @@ import '../model/api/categories_model.dart';
 import '../model/api/home_slider_model.dart';
 
 class MainPageController extends GetxController {
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   late int pageIndex;
   int? selectedServices;
   int? drawerSelectedServices;
@@ -38,6 +39,7 @@ class MainPageController extends GetxController {
   late ScrollController scrollController;
   late ScrollController categoriesScrollController;
   late Box authBox;
+  String previousLocal = "";
   String selectedLocal = "";
   List<Widget> pages = [
     const SizedBox(),
@@ -50,10 +52,12 @@ class MainPageController extends GetxController {
   late List<DrawerModel> drawerItems;
   StatusRequest statusRequest = StatusRequest.loading;
   StatusRequest categoriesStatusRequest = StatusRequest.loading;
+  StatusRequest topCarsStatusRequest = StatusRequest.none;
   List<IconData> pagesIcons = [Icons.home, Icons.favorite, Icons.person];
   List<HomeSliderModel> sliderData = [];
   List<CategoriesModel> categoriesData = [];
   String? catNextPageUrl;
+  String? topNextPageUrl;
   List<TopCarModel> topCars = [];
   defineLists() {
     homeServicesList = [
@@ -74,9 +78,9 @@ class MainPageController extends GetxController {
           icon: Icons.shopping_cart_checkout,
           text: "نوع الخدمة: تصدير سيارة\n".tr),
       HomeServicesModel(
-          title: "تأمين/ تسجيل\n صفحات".tr,
-          icon: Icons.contact_page_outlined,
-          text: "نوع الخدمة: تأمين/تسجيل صفحات\n".tr),
+          title: "تأمين/ تسجيل\n ضمان".tr,
+          icon: Icons.car_rental_outlined,
+          text: "نوع الخدمة: تأمين/تسجيل ضمان\n".tr),
     ];
     drawerItems = [
       DrawerModel(title: "الرئيسية".tr, route: AppRoutes.mainRoute, index: 2),
@@ -98,7 +102,12 @@ class MainPageController extends GetxController {
     ];
   }
 
-  onPageChanged(value) async {
+  onPageChanged(value, [String? catId]) async {
+    if (Get.currentRoute != AppRoutes.homePageRoute) {
+      Get.until(
+        (route) => route.isFirst,
+      );
+    }
     log("$pageIndex");
     if ((value == (pageIndex + 1) || value == (pageIndex - 1)) &&
         Get.currentRoute == AppRoutes.homePageRoute) {
@@ -112,22 +121,23 @@ class MainPageController extends GetxController {
     pageIndex = value;
     if (value == 3) {
       CarsPageController carsPageController = Get.put(CarsPageController());
-      carsPageController.initializeData();
+      if (previousLocal != selectedLocal) {
+        carsPageController.clearData();
+        carsPageController.getData(true);
+      }
+      if (catId != null) {
+        carsPageController.filterCars(catId: catId);
+      }
     }
-    if (value == 1 && !FavoritePageController().initialized) {
+    if (value == 1) {
       Get.put(FavoritePageController());
     }
-    if (value == 4 && !AccountController().initialized) {
+    if (value == 4) {
       AccountController accountController = Get.put(AccountController());
 
       accountController.defineLists();
     }
     update();
-    if (Get.currentRoute != AppRoutes.homePageRoute) {
-      Get.until(
-        (route) => route.isFirst,
-      );
-    }
   }
 
   bool handleMainOpenWhatsApp(int index) {
@@ -145,10 +155,10 @@ class MainPageController extends GetxController {
         Uri.parse("https://wa.me/+971542222307?text=$text"),
         mode: LaunchMode.externalApplication,
       )) {
-        AppToasts.errorToast("...حدث خطأ ما".tr);
+        AppToasts.errorToast("حدث خطأ ما...".tr);
       }
     } catch (e) {
-      AppToasts.errorToast("...حدث خطأ ما".tr);
+      AppToasts.errorToast("حدث خطأ ما...".tr);
     }
   }
 
@@ -205,7 +215,7 @@ class MainPageController extends GetxController {
   openSocial(int index) async {
     if (!await launchUrl(Uri.parse(AppStatics.alQassimSocials[index].link),
         mode: LaunchMode.externalApplication)) {
-      AppToasts.errorToast("...حدث خطأ ما".tr);
+      AppToasts.errorToast("حدث خطأ ما...".tr);
     }
   }
 
@@ -218,6 +228,7 @@ class MainPageController extends GetxController {
   }
 
   changeLanguage(String value) async {
+    previousLocal = selectedLocal;
     Locale newLocale;
     if (value == "عربي") {
       selectedLocal = "ar";
@@ -235,7 +246,8 @@ class MainPageController extends GetxController {
     switch (pageIndex) {
       case 3:
         CarsPageController carsPageController = Get.find();
-        carsPageController.initializeData();
+        carsPageController.clearData();
+        carsPageController.getData(true);
 
       case 4:
         AccountController accountController = Get.find();
@@ -249,7 +261,6 @@ class MainPageController extends GetxController {
       statusRequest = StatusRequest.loading;
       update();
     }
-    onPageChanged(2);
     HomeData homeData = HomeData(Get.find());
     var response = await homeData.getSliderData(selectedLocal);
     response.fold((l) {
@@ -268,7 +279,8 @@ class MainPageController extends GetxController {
       List jsonData = r['data'];
       sliderData = jsonData.map((e) => HomeSliderModel.fromJson(e)).toList();
       log("data $r");
-      var topCarsResponse = await homeData.getTopCarsData(selectedLocal);
+      var topCarsResponse =
+          await homeData.getTopCarsData(selectedLocal, topNextPageUrl);
       topCarsResponse.fold((tl) {
         if (tl.runtimeType == NetworkError) {
           statusRequest = StatusRequest.offlineFailure;
@@ -282,6 +294,7 @@ class MainPageController extends GetxController {
         }
       }, (tr) async {
         List jsonData = tr['data'];
+        topNextPageUrl = tr['meta']['nextPageUrl'];
         topCars = jsonData.map((e) => TopCarModel.fromJson(e)).toList();
         log("data $tr");
 
@@ -304,8 +317,8 @@ class MainPageController extends GetxController {
           if (catNextPageUrl == null) {
             categoriesStatusRequest = StatusRequest.none;
           }
-          categoriesData.addAll(
-              cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
+          categoriesData =
+              cJsonData.map((e) => CategoriesModel.fromJson(e)).toList();
           log("data $cr");
           scrollController
             ..addListener(() {
@@ -354,10 +367,34 @@ class MainPageController extends GetxController {
         if (catNextPageUrl == null) {
           categoriesStatusRequest = StatusRequest.none;
         }
-        categoriesData
-            .addAll(cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
+        if (categoriesData.any(
+              (category) => category.id == cJsonData[0]['id'],
+            ) ==
+            false) {
+          categoriesData.addAll(
+              cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
+        }
         update();
       });
+    }
+  }
+
+  getTopCarsData() async {
+    if (topNextPageUrl != null) {
+      topCarsStatusRequest = StatusRequest.loading;
+      update();
+      HomeData homeData = HomeData(Get.find());
+      var topCarsResponse =
+          await homeData.getTopCarsData(selectedLocal, topNextPageUrl);
+      topCarsResponse.fold((tl) {
+        AppToasts.errorToast("حدث خطأ ما...".tr);
+      }, (tr) async {
+        List jsonData = tr['data'];
+        topNextPageUrl = tr['meta']['nextPageUrl'];
+        topCars.addAll(jsonData.map((e) => TopCarModel.fromJson(e)).toList());
+      });
+      topCarsStatusRequest = StatusRequest.none;
+      update();
     }
   }
 
@@ -373,6 +410,10 @@ class MainPageController extends GetxController {
       ArgumentsNames.selectedLocal: selectedLocal,
       ArgumentsNames.carId: carId
     });
+  }
+
+  goCategoryFilter(int index) async {
+    onPageChanged(3, categoriesData[index].id.toString());
   }
 
   @override
@@ -392,6 +433,7 @@ class MainPageController extends GetxController {
     }
     String? local = authBox.get(HiveKeys.language);
     selectedLocal = local == null ? Get.deviceLocale!.languageCode : local;
+    previousLocal = selectedLocal;
     await getData(false);
     super.onReady();
   }

@@ -36,9 +36,12 @@ class HomeCategoriesView extends StatelessWidget {
                           SizedBox(
                             width: 10.w,
                           ),
-                          CatContainer(
-                            image: controller.categoriesData[index].image,
-                            title: controller.categoriesData[index].name,
+                          GestureDetector(
+                            onTap: () => controller.goCategoryFilter(index),
+                            child: CatContainer(
+                              image: controller.categoriesData[index].image,
+                              title: controller.categoriesData[index].name,
+                            ),
                           ),
                           SizedBox(
                             width: 20.w,

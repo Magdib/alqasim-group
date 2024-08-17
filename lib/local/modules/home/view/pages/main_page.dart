@@ -13,11 +13,10 @@ class MainPage extends GetView<MainPageController> {
   @override
   Widget build(BuildContext context) {
     controller.getCarPadding(context);
-    GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return SafeArea(
       child: GetBuilder<MainPageController>(
         builder: (controller) => Scaffold(
-            key: scaffoldKey,
+            key: controller.scaffoldKey,
             appBar: AppBar(
               surfaceTintColor: AppColors.white,
               elevation: 10,
@@ -25,7 +24,8 @@ class MainPage extends GetView<MainPageController> {
               leadingWidth: 44.w,
               leading: IconButton(
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  onPressed: () => scaffoldKey.currentState!.openDrawer(),
+                  onPressed: () =>
+                      controller.scaffoldKey.currentState!.openDrawer(),
                   icon: Icon(Icons.menu_rounded)),
               actions: [
                 Padding(

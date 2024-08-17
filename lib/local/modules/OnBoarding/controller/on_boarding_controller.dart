@@ -18,7 +18,7 @@ class OnBoardingController extends GetxController {
           ),
           curve: Curves.easeIn);
     } else {
-      Get.offAllNamed(AppRoutes.homePageRoute);
+      Get.offAllNamed(AppRoutes.splashScreenRoute);
       authBox.put(HiveKeys.startState, "1");
     }
     index = pageController.page!.toInt();

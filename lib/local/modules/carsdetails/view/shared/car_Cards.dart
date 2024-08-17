@@ -21,8 +21,8 @@ class CarCards extends GetView<CarDetailsController> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
-          ? 325.h
-          : 325,
+          ? 345.h
+          : 340,
       child: PageView.builder(
         itemCount: cars.length,
         itemBuilder: (context, index) => GestureDetector(
@@ -79,17 +79,15 @@ class CarCards extends GetView<CarDetailsController> {
                       SizedBox(
                         height: 5.h,
                       ),
-                      FittedBox(
-                        child: Text(
-                          cars[index].productTitle,
-                          style: Theme.of(context)
-                              .textTheme
-                              .displayMedium!
-                              .copyWith(
-                                fontSize: 11.5.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
-                        ),
+                      Text(
+                        cars[index].productTitle,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style:
+                            Theme.of(context).textTheme.displayMedium!.copyWith(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                       ),
                       SizedBox(
                         height: 7.5.h,

@@ -60,6 +60,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       focusNode: focusNode,
       onChanged: onChange,
+      autofocus: false,
       controller: textEditingController,
       textInputAction: textInputAction,
       validator: validator,

@@ -99,7 +99,7 @@ class HandlingDataRequest extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "...حدث خطأ ما".tr,
+                          "حدث خطأ ما...".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
@@ -129,7 +129,7 @@ class HandlingScrollDataRequest extends StatelessWidget {
   Widget build(BuildContext context) {
     return statusRequest == StatusRequest.loading
         ? Container(
-            height: AppSize.screenHight(context) - 150.h,
+            height: AppSize.screenHight(context) - 140.h,
             width: AppSize.screenWidth(context),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -154,7 +154,7 @@ class HandlingScrollDataRequest extends StatelessWidget {
           )
         : statusRequest == StatusRequest.offlineFailure
             ? Container(
-                height: AppSize.screenHight(context) - 150.h,
+                height: AppSize.screenHight(context) - 140.h,
                 width: AppSize.screenWidth(context),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -184,7 +184,7 @@ class HandlingScrollDataRequest extends StatelessWidget {
               )
             : statusRequest == StatusRequest.failure
                 ? Container(
-                    height: AppSize.screenHight(context) - 150.h,
+                    height: AppSize.screenHight(context) - 140.h,
                     width: AppSize.screenWidth(context),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -193,7 +193,7 @@ class HandlingScrollDataRequest extends StatelessWidget {
                           height: AppSize.screenHight(context) / 2 - 200.h,
                         ),
                         Text(
-                          "...حدث خطأ ما".tr,
+                          "حدث خطأ ما...".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!

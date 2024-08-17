@@ -1,7 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -28,8 +25,14 @@ class CarDetailsController extends GetxController {
   late PageController pageController;
   late ScrollController scrollController;
   late GoogleMapController googleMapsControl;
+  late TextEditingController userNameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneNumController;
+  late TextEditingController messageController;
+
   CarModel car = getStaticCarData();
   StatusRequest statusRequest = StatusRequest.loading;
+  StatusRequest emailStatusRequest = StatusRequest.none;
   String selectedLocal = Get.arguments[ArgumentsNames.selectedLocal];
   SaveImagesState saveImagesState = SaveImagesState.notSaved;
   int carId = Get.arguments[ArgumentsNames.carId];
@@ -111,17 +114,17 @@ class CarDetailsController extends GetxController {
 
   openWhatsApp() async {
     String carText =
-        "${'اسم السيارة:'.tr} ${car.productTitle}\n${'تصنيف السيارة:'.tr} ${car.category}\n${'نوع السيارة:'.tr} ${car.brand}\n${'وصف السيارة:'.tr} ${car.description}\n${'السعر:'.tr} ${car.symbolPrice}";
+        "${'اسم السيارة:'.tr} ${car.productTitle}\n${'تصنيف السيارة:'.tr} ${car.categoryForDetails}\n${'نوع السيارة:'.tr} ${car.brand}\n${'وصف السيارة:'.tr} ${car.description}\n${'السعر:'.tr} ${car.symbolPrice}";
     if (!await launchUrl(
         Uri.parse("https://wa.me/+${car.vendor.phone}?text=$carText"),
         mode: LaunchMode.externalApplication)) {
-      AppToasts.errorToast("...حدث خطأ ما".tr);
+      AppToasts.errorToast("حدث خطأ ما...".tr);
     }
   }
 
   openCallApp() async {
     if (!await launchUrl(Uri.parse("tel:+${car.vendor.phone}"))) {
-      AppToasts.errorToast("...حدث خطأ ما".tr);
+      AppToasts.errorToast("حدث خطأ ما...".tr);
     }
   }
 
@@ -140,13 +143,47 @@ class CarDetailsController extends GetxController {
       saveImagesState = SaveImagesState.saved;
       update();
     } else {
-      AppToasts.errorToast("...حدث خطأ ما".tr);
+      AppToasts.errorToast("حدث خطأ ما...".tr);
     }
   }
 
   changeToLinkedCar(int index) async {
     carId = linkedCars[index].id;
     getCarData(true);
+  }
+
+  sendEmail() async {
+    if (userNameController.text.isNotEmpty &&
+        emailController.text.isNotEmpty &&
+        phoneNumController.text.isNotEmpty &&
+        messageController.text.isNotEmpty) {
+      emailStatusRequest = StatusRequest.loading;
+      update();
+      CarDetailsData carDetailsData = CarDetailsData(Get.find());
+      var response = await carDetailsData.sendEmailToVendorData(
+          userNameController.text,
+          emailController.text,
+          phoneNumController.text,
+          messageController.text,
+          car.vendor.email);
+      response.fold((l) {
+        AppToasts.errorToast(l.message);
+      }, (r) {
+        String state = r['message'];
+        if (state == "Email sent successfully") {
+          emailStatusRequest = StatusRequest.none;
+          AppToasts.successToast("تم إرسال الرسالة بنجاح".tr);
+          messageController.clear();
+        } else {
+          AppToasts.errorToast("حدث خطأ ما...");
+        }
+      });
+
+      emailStatusRequest = StatusRequest.none;
+      update();
+    } else {
+      AppToasts.errorToast("الرجاء ملئ الحقول المطلوبة".tr);
+    }
   }
 
   getCarData([bool isRefresh = false]) async {
@@ -199,11 +236,10 @@ class CarDetailsController extends GetxController {
         car.outsideColor,
         car.isWarranty == "1"
             ? "موجود".tr
-            : car.isWarranty == "2"
+            : car.isWarranty == "-1"
                 ? "غير قابل للتنفيذ".tr
                 : "لا يوجد".tr
       ];
-
       swipeImages();
       update();
     });
@@ -213,6 +249,10 @@ class CarDetailsController extends GetxController {
   void onInit() {
     pageController = PageController();
     scrollController = ScrollController();
+    userNameController = TextEditingController();
+    emailController = TextEditingController();
+    phoneNumController = TextEditingController();
+    messageController = TextEditingController();
     getCarData();
     super.onInit();
   }
@@ -228,6 +268,10 @@ class CarDetailsController extends GetxController {
     pageController.dispose();
     scrollController.dispose();
     googleMapsControl.dispose();
+    userNameController.dispose();
+    emailController.dispose();
+    phoneNumController.dispose();
+    messageController.dispose();
     if (savedCarsBox.isOpen) {
       savedCarsBox.close();
     }

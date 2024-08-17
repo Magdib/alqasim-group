@@ -1,11 +1,11 @@
-import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
-import 'package:proj/local/modules/home/view/widgets/al_qassim_logo_card.dart';
 import 'package:proj/local/modules/home/view/widgets/animated_car.dart';
 import 'package:proj/local/modules/home/view/widgets/home_categories_view.dart';
 import 'package:proj/local/modules/home/view/widgets/home_slider.dart';
@@ -53,6 +53,19 @@ class HomePage extends StatelessWidget {
                 itemCount: controller.topCars.length,
               ),
             ),
+            SizedBox(height: 10.h),
+            if (controller.topNextPageUrl != null)
+              controller.topCarsStatusRequest == StatusRequest.loading
+                  ? Lottie.asset("assets/lottie/loading.json",
+                      height: 50, fit: BoxFit.fitHeight)
+                  : Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: AppSize.screenWidth(context) / 3),
+                      child: ButtonWithIcon(
+                          title: "عرض المزيد".tr,
+                          icon: Icons.keyboard_arrow_down,
+                          onPressed: () => controller.getTopCarsData()),
+                    ),
             SizedBox(height: 30.h),
             const HomeTitle(title: "الخدمات التي نقدّمها"),
             SizedBox(height: 10.h),

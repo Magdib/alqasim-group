@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
 import 'shimmer_loading.dart';
@@ -14,6 +15,7 @@ class CustomCachedNetImage extends StatelessWidget {
     this.reDownload,
     this.fit,
     this.borderRadius,
+    this.errorWidget,
   });
   final String imageUrl;
   final double? height;
@@ -22,7 +24,7 @@ class CustomCachedNetImage extends StatelessWidget {
   final void Function()? reDownload;
   final BoxFit? fit;
   final double? borderRadius;
-
+  final Widget Function(BuildContext, String, Object)? errorWidget;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -40,19 +42,20 @@ class CustomCachedNetImage extends StatelessWidget {
                   borderRadius: borderRadius ?? 0,
                 ),
             //Can Re Get is Getx Controller Variable
-            errorWidget: (context, url, error) => Container(
-                  alignment: Alignment.center,
-                  color: AppColors.grey,
-                  height: height ?? 150,
-                  width: width ?? 100,
-                  child: Center(
-                    child: const Icon(
-                      Icons.error_rounded,
-                      // size: 35,
-                      color: AppColors.white,
-                    ),
-                  ),
-                )),
+            errorWidget: errorWidget ??
+                (context, url, error) => Container(
+                      alignment: Alignment.center,
+                      color: AppColors.grey,
+                      height: height ?? 150,
+                      width: width ?? 100,
+                      child: Center(
+                        child: const Icon(
+                          Icons.error_rounded,
+                          // size: 35,
+                          color: AppColors.white,
+                        ),
+                      ),
+                    )),
       ),
     );
   }

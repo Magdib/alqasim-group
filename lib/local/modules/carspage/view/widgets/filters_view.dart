@@ -17,71 +17,75 @@ class FiltersView extends StatelessWidget {
             height: controller.filterValues.isNotEmpty ? 45 : 0,
             duration: const Duration(milliseconds: 200),
             child: controller.filterValues.isNotEmpty
-                ? Column(
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      SizedBox(
-                        height: 35,
-                        width: AppSize.screenWidth(context),
-                        child: ListView.separated(
-                          itemCount: controller.filterValues.length,
-                          scrollDirection: Axis.horizontal,
-                          separatorBuilder: (context, index) => const SizedBox(
-                            width: 10,
-                          ),
-                          itemBuilder: (context, index) => Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 10,
+                ? FittedBox(
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 35,
+                          width: AppSize.screenWidth(context),
+                          child: ListView.separated(
+                            itemCount: controller.filterValues.length,
+                            scrollDirection: Axis.horizontal,
+                            separatorBuilder: (context, index) =>
+                                const SizedBox(
+                              width: 10,
                             ),
-                            decoration: BoxDecoration(
-                                color: AppColors.lGreyD,
-                                borderRadius: BorderRadius.circular(6)),
-                            child: Row(
-                              children: [
-                                Text(
-                                  controller.filterValues[index].value,
-                                  style:
-                                      Theme.of(context).textTheme.displayMedium,
-                                ),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                controller.filterValues[index]
-                                            .filterValueType ==
-                                        FilterValueTypes.lowPrice
-                                    ? const Icon(
-                                        Icons.arrow_circle_down_sharp,
-                                        color: AppColors.green,
-                                      )
-                                    : controller.filterValues[index]
-                                                .filterValueType ==
-                                            FilterValueTypes.highPrice
-                                        ? const Icon(
-                                            Icons.arrow_circle_up_sharp,
-                                            color: AppColors.red,
-                                          )
-                                        : const SizedBox(),
-                                const SizedBox(
-                                  width: 15,
-                                ),
-                                CircleAvatar(
-                                    radius: 10,
-                                    backgroundColor: AppColors.white,
-                                    child: IconButton(
-                                        padding: EdgeInsets.zero,
-                                        iconSize: 15,
-                                        onPressed: () =>
-                                            controller.deleteFilter(index),
-                                        icon: const Icon(Icons.close,
-                                            color: AppColors.black)))
-                              ],
+                            itemBuilder: (context, index) => Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                              decoration: BoxDecoration(
+                                  color: AppColors.lGreyD,
+                                  borderRadius: BorderRadius.circular(6)),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    controller.filterValues[index].value,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium,
+                                  ),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  controller.filterValues[index]
+                                              .filterValueType ==
+                                          FilterValueTypes.lowPrice
+                                      ? const Icon(
+                                          Icons.arrow_circle_down_sharp,
+                                          color: AppColors.green,
+                                        )
+                                      : controller.filterValues[index]
+                                                  .filterValueType ==
+                                              FilterValueTypes.highPrice
+                                          ? const Icon(
+                                              Icons.arrow_circle_up_sharp,
+                                              color: AppColors.red,
+                                            )
+                                          : const SizedBox(),
+                                  const SizedBox(
+                                    width: 15,
+                                  ),
+                                  CircleAvatar(
+                                      radius: 10,
+                                      backgroundColor: AppColors.white,
+                                      child: IconButton(
+                                          padding: EdgeInsets.zero,
+                                          iconSize: 15,
+                                          onPressed: () =>
+                                              controller.deleteFilter(index),
+                                          icon: const Icon(Icons.close,
+                                              color: AppColors.black)))
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   )
                 : const SizedBox()));
   }

@@ -1,0 +1,131 @@
+# Diff Details
+
+Date : 2024-08-16 17:16:18
+
+Directory c:\\Users\\atlas\\Documents\\Flutter Projects\\proj\\lib
+
+Total : 116 files,  3315 codes, 146 comments, 206 blanks, all 3667 lines
+
+[Summary](results.md) / [Details](details.md) / [Diff Summary](diff.md) / Diff Details
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [lib/global/binding/app_binding.dart](/lib/global/binding/app_binding.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/global/core/api/dio_crud.dart](/lib/global/core/api/dio_crud.dart) | Dart | 3 | 0 | 0 | 3 |
+| [lib/global/core/api/dio_exceptions.dart](/lib/global/core/api/dio_exceptions.dart) | Dart | 1 | 0 | -2 | -1 |
+| [lib/global/core/class/app_toast.dart](/lib/global/core/class/app_toast.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/core/api/api_links.dart](/lib/local/core/api/api_links.dart) | Dart | 4 | 1 | 1 | 6 |
+| [lib/local/core/class/hive_box.dart](/lib/local/core/class/hive_box.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/core/constant/app_statics.dart](/lib/local/core/constant/app_statics.dart) | Dart | -18 | 2 | 0 | -16 |
+| [lib/local/core/constant/arguments_names.dart](/lib/local/core/constant/arguments_names.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/core/functions/hive_null_get.dart](/lib/local/core/functions/hive_null_get.dart) | Dart | 7 | 0 | 2 | 9 |
+| [lib/local/core/functions/language/get_language.dart](/lib/local/core/functions/language/get_language.dart) | Dart | 9 | 0 | 3 | 12 |
+| [lib/local/core/language/ar_en_text.dart](/lib/local/core/language/ar_en_text.dart) | Dart | -20 | -2 | -1 | -23 |
+| [lib/local/core/localization/ar_en_text.dart](/lib/local/core/localization/ar_en_text.dart) | Dart | 357 | 78 | 22 | 457 |
+| [lib/local/core/localization/localization.dart](/lib/local/core/localization/localization.dart) | Dart | 7 | 0 | 2 | 9 |
+| [lib/local/core/middleware/middleware.dart](/lib/local/core/middleware/middleware.dart) | Dart | -2 | 2 | 0 | 0 |
+| [lib/local/core/routes/routes.dart](/lib/local/core/routes/routes.dart) | Dart | 16 | 0 | 0 | 16 |
+| [lib/local/core/themes/light/light_theme_text.dart](/lib/local/core/themes/light/light_theme_text.dart) | Dart | 3 | 3 | 0 | 6 |
+| [lib/local/core/themes/theme.dart](/lib/local/core/themes/theme.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/OnBoarding/view/pages/OnBoarding.dart](/lib/local/modules/OnBoarding/view/pages/OnBoarding.dart) | Dart | 3 | 0 | 0 | 3 |
+| [lib/local/modules/account/controller/account_controller.dart](/lib/local/modules/account/controller/account_controller.dart) | Dart | 56 | 0 | 2 | 58 |
+| [lib/local/modules/account/controller/edit_account_controller.dart](/lib/local/modules/account/controller/edit_account_controller.dart) | Dart | -1 | 0 | 0 | -1 |
+| [lib/local/modules/account/controller/saved_images_controller.dart](/lib/local/modules/account/controller/saved_images_controller.dart) | Dart | 86 | 0 | 5 | 91 |
+| [lib/local/modules/account/controller/tickets_page_controller.dart](/lib/local/modules/account/controller/tickets_page_controller.dart) | Dart | -2 | 0 | -1 | -3 |
+| [lib/local/modules/account/data/account_view_data.dart](/lib/local/modules/account/data/account_view_data.dart) | Dart | -44 | 0 | -2 | -46 |
+| [lib/local/modules/account/view/pages/account_page.dart](/lib/local/modules/account/view/pages/account_page.dart) | Dart | 6 | 0 | 0 | 6 |
+| [lib/local/modules/account/view/pages/add_ticket_page.dart](/lib/local/modules/account/view/pages/add_ticket_page.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/account/view/pages/edit_account_page.dart](/lib/local/modules/account/view/pages/edit_account_page.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/account/view/pages/saved_images_page.dart](/lib/local/modules/account/view/pages/saved_images_page.dart) | Dart | 95 | 0 | 3 | 98 |
+| [lib/local/modules/account/view/pages/tickets_page.dart](/lib/local/modules/account/view/pages/tickets_page.dart) | Dart | 4 | 0 | 0 | 4 |
+| [lib/local/modules/account/view/widgets/account_card.dart](/lib/local/modules/account/view/widgets/account_card.dart) | Dart | 5 | 0 | 0 | 5 |
+| [lib/local/modules/account/view/widgets/account_image_view.dart](/lib/local/modules/account/view/widgets/account_image_view.dart) | Dart | -1 | 2 | 0 | 1 |
+| [lib/local/modules/account/view/widgets/custom_table_row.dart](/lib/local/modules/account/view/widgets/custom_table_row.dart) | Dart | 3 | 0 | 0 | 3 |
+| [lib/local/modules/account/view/widgets/custom_table_widget.dart](/lib/local/modules/account/view/widgets/custom_table_widget.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/auth/login/controller/login_controller.dart](/lib/local/modules/auth/login/controller/login_controller.dart) | Dart | 4 | -151 | -7 | -154 |
+| [lib/local/modules/auth/login/view/pages/forgot_pas_email_page.dart](/lib/local/modules/auth/login/view/pages/forgot_pas_email_page.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/auth/login/view/pages/login_page.dart](/lib/local/modules/auth/login/view/pages/login_page.dart) | Dart | 1 | 1 | 0 | 2 |
+| [lib/local/modules/auth/login/view/pages/reset_password_page.dart](/lib/local/modules/auth/login/view/pages/reset_password_page.dart) | Dart | 3 | 0 | 0 | 3 |
+| [lib/local/modules/auth/shared/pages/otp_page.dart](/lib/local/modules/auth/shared/pages/otp_page.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/auth/signup/view/pages/sign_up.dart](/lib/local/modules/auth/signup/view/pages/sign_up.dart) | Dart | -1 | 0 | 0 | -1 |
+| [lib/local/modules/carsdetails/controller/car_details_controller.dart](/lib/local/modules/carsdetails/controller/car_details_controller.dart) | Dart | 93 | 0 | 8 | 101 |
+| [lib/local/modules/carsdetails/data/car_details_data.dart](/lib/local/modules/carsdetails/data/car_details_data.dart) | Dart | 34 | 0 | 4 | 38 |
+| [lib/local/modules/carsdetails/data/enums/save_images_state.dart](/lib/local/modules/carsdetails/data/enums/save_images_state.dart) | Dart | 1 | 0 | 1 | 2 |
+| [lib/local/modules/carsdetails/data/static/get_static_car_data.dart](/lib/local/modules/carsdetails/data/static/get_static_car_data.dart) | Dart | 100 | 0 | 2 | 102 |
+| [lib/local/modules/carsdetails/model/api/car_model.dart](/lib/local/modules/carsdetails/model/api/car_model.dart) | Dart | 321 | 0 | 12 | 333 |
+| [lib/local/modules/carsdetails/model/car_images_model.dart](/lib/local/modules/carsdetails/model/car_images_model.dart) | Dart | 16 | 0 | 4 | 20 |
+| [lib/local/modules/carsdetails/model/car_images_model.g.dart](/lib/local/modules/carsdetails/model/car_images_model.g.dart) | Dart | 36 | 4 | 8 | 48 |
+| [lib/local/modules/carsdetails/view/pages/car_details.dart](/lib/local/modules/carsdetails/view/pages/car_details.dart) | Dart | -7 | 14 | 0 | 7 |
+| [lib/local/modules/carsdetails/view/widgets/car_description.dart](/lib/local/modules/carsdetails/view/widgets/car_description.dart) | Dart | -5 | 0 | 0 | -5 |
+| [lib/local/modules/carsdetails/view/widgets/car_forms.dart](/lib/local/modules/carsdetails/view/widgets/car_forms.dart) | Dart | 8 | 0 | 0 | 8 |
+| [lib/local/modules/carsdetails/view/widgets/car_sub_details.dart](/lib/local/modules/carsdetails/view/widgets/car_sub_details.dart) | Dart | 33 | 0 | 1 | 34 |
+| [lib/local/modules/carsdetails/view/widgets/contact_vendor_row.dart](/lib/local/modules/carsdetails/view/widgets/contact_vendor_row.dart) | Dart | 36 | 0 | 3 | 39 |
+| [lib/local/modules/carsdetails/view/widgets/details_images_slider.dart](/lib/local/modules/carsdetails/view/widgets/details_images_slider.dart) | Dart | 7 | 0 | 0 | 7 |
+| [lib/local/modules/carsdetails/view/widgets/details_selectable_slider.dart](/lib/local/modules/carsdetails/view/widgets/details_selectable_slider.dart) | Dart | 6 | 0 | 0 | 6 |
+| [lib/local/modules/carsdetails/view/widgets/icon_title_row.dart](/lib/local/modules/carsdetails/view/widgets/icon_title_row.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/carspage/controller/cars_page_controller.dart](/lib/local/modules/carspage/controller/cars_page_controller.dart) | Dart | 196 | 0 | 11 | 207 |
+| [lib/local/modules/carspage/controller/filters_controller.dart](/lib/local/modules/carspage/controller/filters_controller.dart) | Dart | 470 | 0 | 16 | 486 |
+| [lib/local/modules/carspage/controller/seller_page_controller.dart](/lib/local/modules/carspage/controller/seller_page_controller.dart) | Dart | -14 | 0 | 0 | -14 |
+| [lib/local/modules/carspage/data/api/cars_page_data.dart](/lib/local/modules/carspage/data/api/cars_page_data.dart) | Dart | 158 | 0 | 16 | 174 |
+| [lib/local/modules/carspage/model/api/brands_model.dart](/lib/local/modules/carspage/model/api/brands_model.dart) | Dart | 37 | 0 | 4 | 41 |
+| [lib/local/modules/carspage/model/api/car_condition.dart](/lib/local/modules/carspage/model/api/car_condition.dart) | Dart | 15 | 0 | 4 | 19 |
+| [lib/local/modules/carspage/model/api/city_model.dart](/lib/local/modules/carspage/model/api/city_model.dart) | Dart | 24 | 0 | 4 | 28 |
+| [lib/local/modules/carspage/model/api/doors_number_model.dart](/lib/local/modules/carspage/model/api/doors_number_model.dart) | Dart | 12 | 0 | 4 | 16 |
+| [lib/local/modules/carspage/model/api/fuel_type.dart](/lib/local/modules/carspage/model/api/fuel_type.dart) | Dart | 15 | 0 | 4 | 19 |
+| [lib/local/modules/carspage/model/api/horse_power_mode.dart](/lib/local/modules/carspage/model/api/horse_power_mode.dart) | Dart | 12 | 0 | 4 | 16 |
+| [lib/local/modules/carspage/model/api/inside_color_model.dart](/lib/local/modules/carspage/model/api/inside_color_model.dart) | Dart | 12 | 0 | 4 | 16 |
+| [lib/local/modules/carspage/model/api/outside_color.dart](/lib/local/modules/carspage/model/api/outside_color.dart) | Dart | 12 | 0 | 4 | 16 |
+| [lib/local/modules/carspage/model/api/regional_spec_model.dart](/lib/local/modules/carspage/model/api/regional_spec_model.dart) | Dart | 25 | 0 | 4 | 29 |
+| [lib/local/modules/carspage/model/api/seats_number_model.dart](/lib/local/modules/carspage/model/api/seats_number_model.dart) | Dart | 12 | 0 | 4 | 16 |
+| [lib/local/modules/carspage/model/api/transmission_type_model.dart](/lib/local/modules/carspage/model/api/transmission_type_model.dart) | Dart | 15 | 0 | 4 | 19 |
+| [lib/local/modules/carspage/model/brand_filter_model.dart](/lib/local/modules/carspage/model/brand_filter_model.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/carspage/model/filter_values_model.dart](/lib/local/modules/carspage/model/filter_values_model.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/carspage/view/pages/cars_page.dart](/lib/local/modules/carspage/view/pages/cars_page.dart) | Dart | 36 | 4 | -1 | 39 |
+| [lib/local/modules/carspage/view/pages/seller_cars_page.dart](/lib/local/modules/carspage/view/pages/seller_cars_page.dart) | Dart | 6 | 6 | 0 | 12 |
+| [lib/local/modules/carspage/view/widgets/custom_fix_tab_bar_item.dart](/lib/local/modules/carspage/view/widgets/custom_fix_tab_bar_item.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/carspage/view/widgets/empty_search_widget.dart](/lib/local/modules/carspage/view/widgets/empty_search_widget.dart) | Dart | 37 | 0 | 3 | 40 |
+| [lib/local/modules/carspage/view/widgets/filter_dialog.dart](/lib/local/modules/carspage/view/widgets/filter_dialog.dart) | Dart | 5 | 0 | 0 | 5 |
+| [lib/local/modules/carspage/view/widgets/filter_grid_view.dart](/lib/local/modules/carspage/view/widgets/filter_grid_view.dart) | Dart | 82 | 0 | 3 | 85 |
+| [lib/local/modules/carspage/view/widgets/filter_list_view.dart](/lib/local/modules/carspage/view/widgets/filter_list_view.dart) | Dart | -79 | 0 | -3 | -82 |
+| [lib/local/modules/carspage/view/widgets/filters_view.dart](/lib/local/modules/carspage/view/widgets/filters_view.dart) | Dart | 4 | 0 | 0 | 4 |
+| [lib/local/modules/carspage/view/widgets/seller_data_view.dart](/lib/local/modules/carspage/view/widgets/seller_data_view.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/favoritepage/controller/favorite_Page_controller.dart](/lib/local/modules/favoritepage/controller/favorite_Page_controller.dart) | Dart | -31 | 0 | 0 | -31 |
+| [lib/local/modules/favoritepage/model/filtered_cars_model.dart](/lib/local/modules/favoritepage/model/filtered_cars_model.dart) | Dart | -2 | 0 | 0 | -2 |
+| [lib/local/modules/favoritepage/view/pages/favorite_page.dart](/lib/local/modules/favoritepage/view/pages/favorite_page.dart) | Dart | -3 | 4 | 0 | 1 |
+| [lib/local/modules/home/controller/main_page_controller.dart](/lib/local/modules/home/controller/main_page_controller.dart) | Dart | 128 | 1 | 10 | 139 |
+| [lib/local/modules/home/data/home_data.dart](/lib/local/modules/home/data/home_data.dart) | Dart | 39 | 0 | 5 | 44 |
+| [lib/local/modules/home/model/api/categories_model.dart](/lib/local/modules/home/model/api/categories_model.dart) | Dart | 38 | 0 | 3 | 41 |
+| [lib/local/modules/home/model/api/home_slider_model.dart](/lib/local/modules/home/model/api/home_slider_model.dart) | Dart | 30 | 0 | 3 | 33 |
+| [lib/local/modules/home/model/api/top_car_model.dart](/lib/local/modules/home/model/api/top_car_model.dart) | Dart | 140 | 0 | 6 | 146 |
+| [lib/local/modules/home/view/pages/home_page.dart](/lib/local/modules/home/view/pages/home_page.dart) | Dart | 22 | 5 | 0 | 27 |
+| [lib/local/modules/home/view/pages/main_page.dart](/lib/local/modules/home/view/pages/main_page.dart) | Dart | 22 | 0 | 0 | 22 |
+| [lib/local/modules/home/view/widgets/al_qassim_logo_card.dart](/lib/local/modules/home/view/widgets/al_qassim_logo_card.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/home/view/widgets/animated_car.dart](/lib/local/modules/home/view/widgets/animated_car.dart) | Dart | 6 | 0 | 0 | 6 |
+| [lib/local/modules/home/view/widgets/cat_container.dart](/lib/local/modules/home/view/widgets/cat_container.dart) | Dart | 5 | 0 | 0 | 5 |
+| [lib/local/modules/home/view/widgets/grid_car_card.dart](/lib/local/modules/home/view/widgets/grid_car_card.dart) | Dart | -2 | 8 | 0 | 6 |
+| [lib/local/modules/home/view/widgets/home_app_bar.dart](/lib/local/modules/home/view/widgets/home_app_bar.dart) | Dart | -23 | 0 | -2 | -25 |
+| [lib/local/modules/home/view/widgets/home_categories_view.dart](/lib/local/modules/home/view/widgets/home_categories_view.dart) | Dart | -15 | -1 | 0 | -16 |
+| [lib/local/modules/home/view/widgets/home_drawer.dart](/lib/local/modules/home/view/widgets/home_drawer.dart) | Dart | 14 | 0 | 0 | 14 |
+| [lib/local/modules/home/view/widgets/home_slider.dart](/lib/local/modules/home/view/widgets/home_slider.dart) | Dart | 19 | 0 | 0 | 19 |
+| [lib/local/modules/home/view/widgets/home_title.dart](/lib/local/modules/home/view/widgets/home_title.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/home/view/widgets/services_drawer_row.dart](/lib/local/modules/home/view/widgets/services_drawer_row.dart) | Dart | -1 | 0 | 0 | -1 |
+| [lib/local/modules/home/view/widgets/services_list_view.dart](/lib/local/modules/home/view/widgets/services_list_view.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/modules/home/view/widgets/social_button.dart](/lib/local/modules/home/view/widgets/social_button.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/modules/home/view/widgets/top_car_card.dart](/lib/local/modules/home/view/widgets/top_car_card.dart) | Dart | 144 | 164 | 3 | 311 |
+| [lib/local/modules/splashscreen/controller/splash_screen_controller.dart](/lib/local/modules/splashscreen/controller/splash_screen_controller.dart) | Dart | 27 | 0 | 4 | 31 |
+| [lib/local/modules/splashscreen/view/pages/splash_screen.dart](/lib/local/modules/splashscreen/view/pages/splash_screen.dart) | Dart | 24 | 0 | 3 | 27 |
+| [lib/local/view/shared/app_bottom_nav_bar.dart](/lib/local/view/shared/app_bottom_nav_bar.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/view/shared/car_sliver_app_bar.dart](/lib/local/view/shared/car_sliver_app_bar.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/view/shared/custom_cached_net_image.dart](/lib/local/view/shared/custom_cached_net_image.dart) | Dart | 58 | 2 | 3 | 63 |
+| [lib/local/view/shared/empty_data_widget.dart](/lib/local/view/shared/empty_data_widget.dart) | Dart | 42 | 0 | 3 | 45 |
+| [lib/local/view/shared/handiling_data_widget.dart](/lib/local/view/shared/handiling_data_widget.dart) | Dart | 163 | -1 | 1 | 163 |
+| [lib/local/view/shared/retry_button.dart](/lib/local/view/shared/retry_button.dart) | Dart | 21 | 0 | 3 | 24 |
+| [lib/local/view/shared/shimmer_loading.dart](/lib/local/view/shared/shimmer_loading.dart) | Dart | 50 | 0 | 2 | 52 |
+| [lib/local/view/widgets/buttons/button_with_icon.dart](/lib/local/view/widgets/buttons/button_with_icon.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/view/widgets/buttons/custom_button.dart](/lib/local/view/widgets/buttons/custom_button.dart) | Dart | 2 | 0 | 0 | 2 |
+| [lib/local/view/widgets/dividers/custom_horizontal_divider.dart](/lib/local/view/widgets/dividers/custom_horizontal_divider.dart) | Dart | 1 | 0 | 0 | 1 |
+| [lib/local/view/widgets/fields/custom_text_form_field.dart](/lib/local/view/widgets/fields/custom_text_form_field.dart) | Dart | 3 | 0 | 0 | 3 |
+| [lib/main.dart](/lib/main.dart) | Dart | 5 | 0 | 0 | 5 |
+
+[Summary](results.md) / [Details](details.md) / [Diff Summary](diff.md) / Diff Details

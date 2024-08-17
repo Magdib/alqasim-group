@@ -78,7 +78,7 @@ class TicketsPage extends StatelessWidget {
                                       bottomRight: Radius.circular(4.r),
                                     )),
                                 child: Text(
-                                  "لا يوجد بيانات لعرضها".tr,
+                                  "لا يوجد سيارات لعرضها".tr,
                                   textAlign: TextAlign.center,
                                   style: Theme.of(context)
                                       .textTheme

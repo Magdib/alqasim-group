@@ -15,4 +15,23 @@ class CarDetailsData {
       isAuthorized: false,
     );
   }
+
+  Future<Either<ApiErrors, Map<dynamic, dynamic>>> sendEmailToVendorData(
+      String name,
+      String email,
+      String phone,
+      String message,
+      String toEmail) async {
+    return await crud.post(
+      linkUrl: ApiLinks.sendEmailToVendorApi,
+      data: {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "message": message,
+        "to_email": toEmail
+      },
+      isAuthorized: false,
+    );
+  }
 }

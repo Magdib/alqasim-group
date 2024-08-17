@@ -1,16 +1,13 @@
-import 'dart:developer';
-
 import 'package:get/get.dart';
+import 'package:proj/local/modules/carsdetails/data/static/get_static_car_data.dart';
 import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
 import 'package:proj/local/modules/favoritepage/model/filtered_cars_model.dart';
-import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 
 class FavoritePageController extends GetxController {
   List<FilteredCarsModel> viewCars = [];
-  List<CarModel> cars = [];
+  List<CarModel> cars = [getStaticCarData(0), getStaticCarData(1)];
 
   filterCars(String value) {
-    log("${value.length}");
     if (value.isNotEmpty) {
       List<CarModel> filterCars = cars
           .where((car) => car.productTitle.isCaseInsensitiveContains(value))
@@ -26,14 +23,15 @@ class FavoritePageController extends GetxController {
     viewCars.clear();
     for (int i = 0; i < selectedCars.length; i++) {
       int categoryIndex = viewCars.indexWhere(
-        (viewCars) => viewCars.filterTitle == selectedCars[i].category,
+        (viewCars) =>
+            viewCars.filterTitle == selectedCars[i].categoryForDetails,
       );
       if (categoryIndex != -1) {
         viewCars[categoryIndex].cars.add(selectedCars[i]);
       } else {
         viewCars.add(FilteredCarsModel(
           cars: [selectedCars[i]],
-          filterTitle: selectedCars[i].category!,
+          filterTitle: selectedCars[i].categoryForDetails,
         ));
       }
     }

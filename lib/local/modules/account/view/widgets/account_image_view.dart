@@ -42,28 +42,28 @@ class AccountImageView extends StatelessWidget {
                   onTap: controller.accountImage != null
                       ? () => controller.pickAccountImage()
                       : null,
-                  child: CircleAvatar(
-                      // height: 100.h,
-                      // width: 100.w,
-                      radius: 50.r,
-                      backgroundColor: AppColors.primaryColor,
-                      // alignment: Alignment.center,
-                      // decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(50.r),
-                      //     color: controller.accountImage == null
-                      //         ? AppColors.primaryColor
-                      //         : AppColors.white,
-                      //     boxShadow: [
-                      //       BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
-                      //     ],
-                      //     image: controller.accountImage != null
-                      //         ? DecorationImage(
-                      //             image: FileImage(
-                      //               File(controller.accountImage!),
-                      //             ),
-                      //             fit: BoxFit.cover,
-                      //           )
-                      //         : null),
+                  child: Container(
+                      height: 90.h,
+                      width: 100.w,
+                      // radius: 50.r,
+                      // backgroundColor: AppColors.primaryColor,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: controller.accountImage == null
+                              ? AppColors.primaryColor
+                              : AppColors.white,
+                          boxShadow: [
+                            BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
+                          ],
+                          image: controller.accountImage != null
+                              ? DecorationImage(
+                                  image: FileImage(
+                                    File(controller.accountImage!),
+                                  ),
+                                  fit: BoxFit.cover,
+                                )
+                              : null),
                       child:
                           controller.accountImageState == AccountImageState.none
                               ? Icon(

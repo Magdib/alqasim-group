@@ -62,7 +62,7 @@ class DioCrud {
   Future<Either<ApiErrors, Map>> get({
     required String linkUrl,
     required bool isAuthorized,
-    Map<String, String>? parameters,
+    Map<String, String?>? parameters,
   }) async {
     try {
       if (await checkInternet()) {

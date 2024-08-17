@@ -70,10 +70,9 @@ List<GetPage> pages = [
     page: () => const LoginPage(),
   ),
   GetPage(
-      name: AppRoutes.homePageRoute,
-      page: () => const MainPage(),
-      transitionDuration: Duration(seconds: 1),
-      transition: Transition.leftToRight),
+    name: AppRoutes.homePageRoute,
+    page: () => const MainPage(),
+  ),
   GetPage(
       name: AppRoutes.carDetailsPageRoute,
       page: () => const CarDetails(),

@@ -100,7 +100,7 @@ class GridCarCard extends StatelessWidget {
                           height: 5.h,
                         ),
                         Text(
-                          "${car.brand} ${car.model}",
+                          "${car.productTitle}",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!

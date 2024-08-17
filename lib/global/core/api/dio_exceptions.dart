@@ -40,18 +40,18 @@ class DioExceptions {
       case DioExceptionType.cancel:
         //error on body parameter
         apiErrors = ApiErrors(
-            message: "...حدث خطأ ما".tr, statusRequest: StatusRequest.failure);
+            message: "حدث خطأ ما...".tr, statusRequest: StatusRequest.failure);
         break;
       case DioExceptionType.badResponse:
         //error on body parameter
         apiErrors = ApiErrors(
             message:
-                "${dioException.response?.data['message'] ?? "...حدث خطأ ما".tr}",
+                "${dioException.response?.data['message'] ?? "حدث خطأ ما...".tr}",
             statusRequest: StatusRequest.failure);
         break;
       default:
         apiErrors = ApiErrors(
-            message: "...حدث خطأ ما".tr, statusRequest: StatusRequest.failure);
+            message: "حدث خطأ ما...".tr, statusRequest: StatusRequest.failure);
       // }
     }
     return apiErrors;

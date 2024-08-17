@@ -18,19 +18,25 @@ class HomeData {
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> getCategoriesData(
       String selectedLocal,
-      {String? nextPageUrl}) async {
+      {String? nextPageUrl,
+      bool withPagination = true}) async {
     return await crud.get(
       linkUrl: nextPageUrl ?? ApiLinks.categoriesApi,
-      parameters: {"items_per_page": "5", "language": selectedLocal},
+      parameters: {
+        "items_per_page": withPagination ? "5" : "",
+        "language": selectedLocal
+      },
       isAuthorized: false,
     );
   }
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> getTopCarsData(
-      String selectedLocal) async {
+    String selectedLocal,
+    String? nextPageUrl,
+  ) async {
     return await crud.get(
-      linkUrl: ApiLinks.topCarsApi,
-      parameters: {"language": selectedLocal},
+      linkUrl: nextPageUrl ?? ApiLinks.topCarsApi,
+      parameters: {"language": selectedLocal, "items_per_page": "2"},
       isAuthorized: false,
     );
   }

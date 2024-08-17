@@ -18,7 +18,7 @@ class AppTheme {
       secondary: AppColors.secondaryColor,
       primary: AppColors.primaryColor,
     ),
-    iconTheme: ThemeData.light().iconTheme.copyWith(size: 24.r),
+    iconTheme: ThemeData.light().iconTheme.copyWith(size: 24),
     appBarTheme: const AppBarTheme(
       systemOverlayStyle: SystemUiOverlayStyle.dark,
       elevation: 0,

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/Local/Core/Constant/Colors.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/favoritepage/controller/favorite_Page_controller.dart';
+import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
 class FavoritePage extends GetView<FavoritePageController> {
@@ -47,7 +49,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                           height: 10,
                         ),
                         SizedBox(
-                          height: 160,
+                          height: 181,
                           child: ListView.separated(
                             separatorBuilder: (context, subIndex) =>
                                 const SizedBox(
@@ -62,17 +64,19 @@ class FavoritePage extends GetView<FavoritePageController> {
                                   height: 5,
                                 ),
                                 Container(
-                                  width: AppSize.screenWidth(context) / 2 - 15,
-                                  height: 100,
-                                  decoration: BoxDecoration(
+                                    width:
+                                        AppSize.screenWidth(context) / 2 - 15,
+                                    height: 100,
+                                    decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                          "controller.viewCars[index].cars[subIndex].image",
-                                        ),
-                                        fit: BoxFit.cover,
-                                      )),
-                                ),
+                                    ),
+                                    child: CustomCachedNetImage(
+                                      imageUrl: controller.viewCars[index]
+                                          .cars[subIndex].featureImage,
+                                      canReDownload: false,
+                                      fit: BoxFit.cover,
+                                      borderRadius: 8.r,
+                                    )),
                                 const SizedBox(
                                   height: 10,
                                 ),
@@ -87,7 +91,8 @@ class FavoritePage extends GetView<FavoritePageController> {
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Text(
-                                            "controller.viewCars[index].cars[subIndex].price",
+                                            controller.viewCars[index]
+                                                .cars[subIndex].symbolPrice,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .displaySmall!
@@ -110,17 +115,18 @@ class FavoritePage extends GetView<FavoritePageController> {
                                               ))
                                         ],
                                       ),
-                                      FittedBox(
-                                        child: Text(
-                                          "controller.viewCars[index].cars[subIndex].name",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .displaySmall!
-                                              .copyWith(
-                                                fontSize: 11.5,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
+                                      Text(
+                                        controller.viewCars[index]
+                                            .cars[subIndex].productTitle,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall!
+                                            .copyWith(
+                                              fontSize: 11.5,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                       ),
                                     ],
                                   ),

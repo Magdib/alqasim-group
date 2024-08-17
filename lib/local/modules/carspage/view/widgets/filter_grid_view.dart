@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -48,10 +49,10 @@ class FilterGridView extends StatelessWidget {
                   value: controller.filters[index].selectedValue,
                   borderRadius: BorderRadius.circular(6),
                   hint: Text(
-                    "الجميع",
+                    "الجميع".tr,
                     style: Theme.of(context)
                         .textTheme
-                        .displayMedium!
+                        .displaySmall!
                         .copyWith(color: AppColors.grey),
                   ),
                   items: controller.filters[index].filterValues
@@ -62,8 +63,10 @@ class FilterGridView extends StatelessWidget {
                             e,
                             style: Theme.of(context)
                                 .textTheme
-                                .displayMedium!
-                                .copyWith(color: AppColors.grey),
+                                .displaySmall!
+                                .copyWith(
+                                    color: AppColors.grey,
+                                    fontSize: e.length > 18 ? 8.sp : null),
                           ),
                         ),
                       )

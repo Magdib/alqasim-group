@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
@@ -93,18 +94,8 @@ class CarDescription extends GetView<CarDetailsController> {
           ),
         ),
         Text("الوصف:".tr, style: Theme.of(context).textTheme.displayLarge),
-        SizedBox(
-          height: 10.h,
-        ),
-        Text(
-          controller.car.description,
-          style: Theme.of(context)
-              .textTheme
-              .displayMedium!
-              .copyWith(color: AppColors.grey, fontSize: 12.sp),
-        ),
-        SizedBox(
-          height: 15.h,
+        Html(
+          data: """${controller.car.description}""",
         ),
       ],
     );

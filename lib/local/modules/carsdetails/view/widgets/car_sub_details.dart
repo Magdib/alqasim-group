@@ -19,36 +19,35 @@ class CarSubDetails extends GetView<CarDetailsController> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Text(
+          controller.car.categoryForDetails,
+          style: Theme.of(context).textTheme.displayMedium,
+        ),
+        SizedBox(
+          height: 10.h,
+        ),
+        Text("${controller.car.productTitle}",
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(fontSize: 16.sp)),
+        SizedBox(
+          height: 7.5.h,
+        ),
+        Text(controller.car.symbolPrice,
+            style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.sp,
+                )),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              controller.car.category,
-              style: Theme.of(context).textTheme.displayMedium,
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            Text("${controller.car.brand} ${controller.car.model}",
-                style: Theme.of(context)
-                    .textTheme
-                    .displayLarge!
-                    .copyWith(fontSize: 16.sp)),
-            SizedBox(
-              height: 7.5.h,
-            ),
-            Text(controller.car.symbolPrice,
-                style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      color: AppColors.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16.sp,
-                    )),
-            SizedBox(
-              height: 10.h,
-            ),
             GestureDetector(
                 onTap: () => Get.toNamed(AppRoutes.sellerCarsPageRoute),
                 child: CustomCachedNetImage(
@@ -59,65 +58,61 @@ class CarSubDetails extends GetView<CarDetailsController> {
                   borderRadius: 16.r,
                   fit: BoxFit.cover,
                 )),
-            SizedBox(
-              height: 15.h,
-            ),
-            ContactVendorRow(),
-            SizedBox(
-              height: 15.h,
-            ),
+            GetBuilder<CarDetailsController>(
+                builder: (controller) =>
+                    controller.saveImagesState != SaveImagesState.saved
+                        ? Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 7.5.w),
+                            child: Column(
+                              children: [
+                                MaterialButton(
+                                  minWidth: 50.w,
+                                  onPressed: controller.saveImagesState ==
+                                          SaveImagesState.notSaved
+                                      ? () => controller.saveImages()
+                                      : () {},
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 10.h, horizontal: 0),
+                                  color: AppColors.lGrey,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(
+                                          AppSize.appCustomRadius.r)),
+                                  child: controller.saveImagesState ==
+                                          SaveImagesState.notSaved
+                                      ? Icon(
+                                          Icons.save_alt_rounded,
+                                          color: AppColors.primaryColor,
+                                        )
+                                      : SpinKitFadingCircle(
+                                          color: AppColors.primaryColor,
+                                          size: 24.r,
+                                        ),
+                                ),
+                                SizedBox(
+                                  height: 5.h,
+                                ),
+                                if (controller.saveImagesState ==
+                                    SaveImagesState.notSaved)
+                                  Text(
+                                    "حفظ".tr,
+                                    textAlign: TextAlign.center,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium!
+                                        .copyWith(
+                                            color: AppColors.primaryColor,
+                                            fontSize: 12.sp,
+                                            fontWeight: FontWeight.normal),
+                                  )
+                              ],
+                            ),
+                          )
+                        : const SizedBox())
           ],
         ),
-        GetBuilder<CarDetailsController>(
-            builder: (controller) =>
-                controller.saveImagesState != SaveImagesState.saved
-                    ? Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 7.5.w),
-                        child: Column(
-                          children: [
-                            MaterialButton(
-                              minWidth: 50.w,
-                              onPressed: controller.saveImagesState ==
-                                      SaveImagesState.notSaved
-                                  ? () => controller.saveImages()
-                                  : () {},
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 10.h, horizontal: 0),
-                              color: AppColors.lGrey,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      AppSize.appCustomRadius.r)),
-                              child: controller.saveImagesState ==
-                                      SaveImagesState.notSaved
-                                  ? Icon(
-                                      Icons.save_alt_rounded,
-                                      color: AppColors.primaryColor,
-                                    )
-                                  : SpinKitFadingCircle(
-                                      color: AppColors.primaryColor,
-                                      size: 24.r,
-                                    ),
-                            ),
-                            SizedBox(
-                              height: 5.h,
-                            ),
-                            if (controller.saveImagesState ==
-                                SaveImagesState.notSaved)
-                              Text(
-                                "حفظ".tr,
-                                textAlign: TextAlign.center,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                        color: AppColors.primaryColor,
-                                        fontSize: 12.sp,
-                                        fontWeight: FontWeight.normal),
-                              )
-                          ],
-                        ),
-                      )
-                    : const SizedBox())
+        SizedBox(
+          height: 15.h,
+        ),
       ],
     );
   }

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:icons_plus/icons_plus.dart';
 import 'package:proj/global/core/api/status_request.dart';
-import 'package:proj/local/core/constant/colors.dart';
-import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_description.dart';
@@ -17,7 +14,6 @@ import 'package:proj/local/modules/carsdetails/view/widgets/floating_action_dial
 import 'package:proj/local/view/shared/app_bottom_nav_bar.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
 import 'package:proj/local/view/shared/handiling_data_widget.dart';
-import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/modules/carsdetails/view/shared/car_Cards.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -62,6 +58,10 @@ class CarDetails extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const CarSubDetails(),
+                            ContactVendorRow(),
+                            SizedBox(
+                              height: 15.h,
+                            ),
                             const CarDescription(),
                             Text("الموقع:".tr,
                                 style:
@@ -77,9 +77,10 @@ class CarDetails extends StatelessWidget {
                                     controller.googleMapsControl =
                                         googleMapsController,
                                 initialCameraPosition: CameraPosition(
-                                    target: LatLng(
-                                        double.parse(controller.car.latitude),
-                                        double.parse(controller.car.longitude)),
+                                    target: LatLng(25.347681, 55.455117
+                                        // double.parse(controller.car.latitude),
+                                        // double.parse(controller.car.longitude)
+                                        ),
                                     zoom: 12),
                               ),
                             ),

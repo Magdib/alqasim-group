@@ -97,7 +97,7 @@ class TopCarCard extends GetView<MainPageController> {
                           height: 5.h,
                         ),
                         Text(
-                          "${car.brand} ${car.model}",
+                          "${car.productTitle}",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -109,9 +109,7 @@ class TopCarCard extends GetView<MainPageController> {
                           height: 5.h,
                         ),
                         Text(
-                          car.specification == ""
-                              ? "Accident Free | Low Kms | Free Insurance + Registration | Under Warranty 3 Years | Ref#A012223"
-                              : "${car.specification}",
+                          "${car.productTitle}",
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!

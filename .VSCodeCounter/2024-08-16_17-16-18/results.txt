@@ -1,0 +1,278 @@
+Date : 2024-08-16 17:16:18
+Directory : c:\Users\atlas\Documents\Flutter Projects\proj\lib
+Total : 156 files,  9720 codes, 441 comments, 596 blanks, all 10757 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |        156 |      9,720 |        441 |        596 |     10,757 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                     | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                        |        156 |      9,720 |        441 |        596 |     10,757 |
+| . (Files)                                                                                                                |          1 |         41 |          0 |          4 |         45 |
+| global                                                                                                                   |          9 |        288 |         18 |         31 |        337 |
+| global\binding                                                                                                           |          1 |         10 |          1 |          2 |         13 |
+| global\core                                                                                                              |          8 |        278 |         17 |         29 |        324 |
+| global\core\api                                                                                                          |          4 |        183 |         10 |         19 |        212 |
+| global\core\class                                                                                                        |          1 |         26 |          0 |          3 |         29 |
+| global\core\functions                                                                                                    |          2 |         50 |          1 |          4 |         55 |
+| global\core\services                                                                                                     |          1 |         19 |          6 |          3 |         28 |
+| local                                                                                                                    |        146 |      9,391 |        423 |        561 |     10,375 |
+| local\core                                                                                                               |         24 |        894 |        119 |         80 |      1,093 |
+| local\core\api                                                                                                           |          1 |         29 |          6 |          4 |         39 |
+| local\core\class                                                                                                         |          3 |         26 |         19 |          6 |         51 |
+| local\core\constant                                                                                                      |          7 |        150 |          9 |         19 |        178 |
+| local\core\functions                                                                                                     |          6 |         59 |          0 |         11 |         70 |
+| local\core\functions (Files)                                                                                             |          3 |         24 |          0 |          4 |         28 |
+| local\core\functions\language                                                                                            |          3 |         35 |          0 |          7 |         42 |
+| local\core\localization                                                                                                  |          2 |        364 |         78 |         24 |        466 |
+| local\core\middleware                                                                                                    |          1 |         20 |          2 |          2 |         24 |
+| local\core\routes                                                                                                        |          1 |        130 |          0 |          3 |        133 |
+| local\core\themes                                                                                                        |          3 |        116 |          5 |         11 |        132 |
+| local\core\themes (Files)                                                                                                |          1 |         67 |          2 |          3 |         72 |
+| local\core\themes\dark                                                                                                   |          1 |         23 |          0 |          4 |         27 |
+| local\core\themes\light                                                                                                  |          1 |         26 |          3 |          4 |         33 |
+| local\modules                                                                                                            |        104 |      7,522 |        218 |        435 |      8,175 |
+| local\modules\OnBoarding                                                                                                 |          2 |        126 |          0 |         10 |        136 |
+| local\modules\OnBoarding\controller                                                                                      |          1 |         44 |          0 |          6 |         50 |
+| local\modules\OnBoarding\view                                                                                            |          1 |         82 |          0 |          4 |         86 |
+| local\modules\OnBoarding\view\pages                                                                                      |          1 |         82 |          0 |          4 |         86 |
+| local\modules\account                                                                                                    |         18 |      1,174 |          4 |         63 |      1,241 |
+| local\modules\account\controller                                                                                         |          5 |        289 |          0 |         27 |        316 |
+| local\modules\account\model                                                                                              |          3 |         21 |          0 |          5 |         26 |
+| local\modules\account\model (Files)                                                                                      |          2 |         20 |          0 |          4 |         24 |
+| local\modules\account\model\enums                                                                                        |          1 |          1 |          0 |          1 |          2 |
+| local\modules\account\view                                                                                               |         10 |        864 |          4 |         31 |        899 |
+| local\modules\account\view\pages                                                                                         |          6 |        571 |          2 |         20 |        593 |
+| local\modules\account\view\widgets                                                                                       |          4 |        293 |          2 |         11 |        306 |
+| local\modules\auth                                                                                                       |          8 |        562 |          1 |         22 |        585 |
+| local\modules\auth\login                                                                                                 |          4 |        331 |          1 |         12 |        344 |
+| local\modules\auth\login\controller                                                                                      |          1 |         39 |          0 |          3 |         42 |
+| local\modules\auth\login\view                                                                                            |          3 |        292 |          1 |          9 |        302 |
+| local\modules\auth\login\view\pages                                                                                      |          3 |        292 |          1 |          9 |        302 |
+| local\modules\auth\shared                                                                                                |          2 |        102 |          0 |          4 |        106 |
+| local\modules\auth\shared\model                                                                                          |          1 |         10 |          0 |          2 |         12 |
+| local\modules\auth\shared\pages                                                                                          |          1 |         92 |          0 |          2 |         94 |
+| local\modules\auth\signup                                                                                                |          2 |        129 |          0 |          6 |        135 |
+| local\modules\auth\signup\controller                                                                                     |          1 |         46 |          0 |          3 |         49 |
+| local\modules\auth\signup\view                                                                                           |          1 |         83 |          0 |          3 |         86 |
+| local\modules\auth\signup\view\pages                                                                                     |          1 |         83 |          0 |          3 |         86 |
+| local\modules\carsdetails                                                                                                |         18 |      1,565 |         18 |         80 |      1,663 |
+| local\modules\carsdetails\controller                                                                                     |          1 |        256 |          0 |         16 |        272 |
+| local\modules\carsdetails\data                                                                                           |          3 |        135 |          0 |          7 |        142 |
+| local\modules\carsdetails\data (Files)                                                                                   |          1 |         34 |          0 |          4 |         38 |
+| local\modules\carsdetails\data\enums                                                                                     |          1 |          1 |          0 |          1 |          2 |
+| local\modules\carsdetails\data\static                                                                                    |          1 |        100 |          0 |          2 |        102 |
+| local\modules\carsdetails\model                                                                                          |          4 |        386 |          4 |         26 |        416 |
+| local\modules\carsdetails\model (Files)                                                                                  |          3 |         65 |          4 |         14 |         83 |
+| local\modules\carsdetails\model\api                                                                                      |          1 |        321 |          0 |         12 |        333 |
+| local\modules\carsdetails\view                                                                                           |         10 |        788 |         14 |         31 |        833 |
+| local\modules\carsdetails\view\pages                                                                                     |          1 |        110 |         14 |          3 |        127 |
+| local\modules\carsdetails\view\shared                                                                                    |          1 |        154 |          0 |          3 |        157 |
+| local\modules\carsdetails\view\widgets                                                                                   |          8 |        524 |          0 |         25 |        549 |
+| local\modules\carspage                                                                                                   |         30 |      2,113 |         11 |        145 |      2,269 |
+| local\modules\carspage\controller                                                                                        |          3 |        948 |          0 |         47 |        995 |
+| local\modules\carspage\data                                                                                              |          2 |        159 |          0 |         17 |        176 |
+| local\modules\carspage\data\api                                                                                          |          1 |        158 |          0 |         16 |        174 |
+| local\modules\carspage\data\enums                                                                                        |          1 |          1 |          0 |          1 |          2 |
+| local\modules\carspage\model                                                                                             |         14 |        219 |          0 |         50 |        269 |
+| local\modules\carspage\model (Files)                                                                                     |          3 |         28 |          0 |          6 |         34 |
+| local\modules\carspage\model\api                                                                                         |         11 |        191 |          0 |         44 |        235 |
+| local\modules\carspage\view                                                                                              |         11 |        787 |         11 |         31 |        829 |
+| local\modules\carspage\view\pages                                                                                        |          2 |        229 |         10 |          6 |        245 |
+| local\modules\carspage\view\widgets                                                                                      |          9 |        558 |          1 |         25 |        584 |
+| local\modules\favoritepage                                                                                               |          3 |        184 |          5 |         11 |        200 |
+| local\modules\favoritepage\controller                                                                                    |          1 |         41 |          0 |          5 |         46 |
+| local\modules\favoritepage\model                                                                                         |          1 |          9 |          0 |          3 |         12 |
+| local\modules\favoritepage\view                                                                                          |          1 |        134 |          5 |          3 |        142 |
+| local\modules\favoritepage\view\pages                                                                                    |          1 |        134 |          5 |          3 |        142 |
+| local\modules\home                                                                                                       |         23 |      1,747 |        179 |         97 |      2,023 |
+| local\modules\home\controller                                                                                            |          1 |        401 |          1 |         31 |        433 |
+| local\modules\home\data                                                                                                  |          1 |         39 |          0 |          5 |         44 |
+| local\modules\home\model                                                                                                 |          7 |        241 |          0 |         22 |        263 |
+| local\modules\home\model (Files)                                                                                         |          4 |         33 |          0 |         10 |         43 |
+| local\modules\home\model\api                                                                                             |          3 |        208 |          0 |         12 |        220 |
+| local\modules\home\view                                                                                                  |         14 |      1,066 |        178 |         39 |      1,283 |
+| local\modules\home\view\pages                                                                                            |          2 |        184 |          5 |          6 |        195 |
+| local\modules\home\view\widgets                                                                                          |         12 |        882 |        173 |         33 |      1,088 |
+| local\modules\splashscreen                                                                                               |          2 |         51 |          0 |          7 |         58 |
+| local\modules\splashscreen\controller                                                                                    |          1 |         27 |          0 |          4 |         31 |
+| local\modules\splashscreen\view                                                                                          |          1 |         24 |          0 |          3 |         27 |
+| local\modules\splashscreen\view\pages                                                                                    |          1 |         24 |          0 |          3 |         27 |
+| local\view                                                                                                               |         18 |        975 |         86 |         46 |      1,107 |
+| local\view\shared                                                                                                        |          7 |        474 |          4 |         20 |        498 |
+| local\view\widgets                                                                                                       |         11 |        501 |         82 |         26 |        609 |
+| local\view\widgets\app_bar                                                                                               |          1 |         32 |          0 |          2 |         34 |
+| local\view\widgets\buttons                                                                                               |          4 |        176 |         46 |          9 |        231 |
+| local\view\widgets\dividers                                                                                              |          2 |         53 |          0 |          5 |         58 |
+| local\view\widgets\fields                                                                                                |          2 |        224 |          0 |          5 |        229 |
+| local\view\widgets\pop_up                                                                                                |          2 |         16 |         36 |          5 |         57 |
++--------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                                                                 | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\binding\app_binding.dart                                       | Dart     |         10 |          1 |          2 |         13 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\api\api_errors.dart                                       | Dart     |         29 |          0 |          9 |         38 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\api\dio_crud.dart                                         | Dart     |         94 |          3 |          5 |        102 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\api\dio_exceptions.dart                                   | Dart     |         50 |          6 |          4 |         60 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\api\status_request.dart                                   | Dart     |         10 |          1 |          1 |         12 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\class\app_toast.dart                                      | Dart     |         26 |          0 |          3 |         29 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\functions\check_internet_connection.dart                  | Dart     |         12 |          1 |          1 |         14 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\functions\validation.dart                                 | Dart     |         38 |          0 |          3 |         41 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\global\core\services\services.dart                                    | Dart     |         19 |          6 |          3 |         28 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\api\api_links.dart                                         | Dart     |         29 |          6 |          4 |         39 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\class\custom_icons.dart                                    | Dart     |         18 |         17 |          4 |         39 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\class\hive_box.dart                                        | Dart     |          4 |          1 |          1 |          6 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\class\hive_keys.dart                                       | Dart     |          4 |          1 |          1 |          6 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\app_size.dart                                     | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\app_statics.dart                                  | Dart     |         61 |          2 |          2 |         65 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\arguments_names.dart                              | Dart     |          6 |          0 |          1 |          7 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\colors.dart                                       | Dart     |         22 |          5 |          2 |         29 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\custom_icons.dart                                 | Dart     |          8 |          0 |          4 |         12 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\images.dart                                       | Dart     |          9 |          0 |          1 |         10 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\constant\text_styles.dart                                  | Dart     |         32 |          2 |          5 |         39 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\close_key_board.dart                             | Dart     |          4 |          0 |          1 |          5 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\convert_to_arabic_number.dart                    | Dart     |         13 |          0 |          1 |         14 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\hive_null_get.dart                               | Dart     |          7 |          0 |          2 |          9 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\language\get_language.dart                       | Dart     |          9 |          0 |          3 |         12 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\language\left_right_lang_align.dart              | Dart     |          4 |          0 |          2 |          6 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\functions\language\left_right_lang_pad.dart                | Dart     |         22 |          0 |          2 |         24 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\localization\ar_en_text.dart                               | Dart     |        357 |         78 |         22 |        457 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\localization\localization.dart                             | Dart     |          7 |          0 |          2 |          9 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\middleware\middleware.dart                                 | Dart     |         20 |          2 |          2 |         24 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\routes\routes.dart                                         | Dart     |        130 |          0 |          3 |        133 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\themes\dark\dark_theme_text.dart                           | Dart     |         23 |          0 |          4 |         27 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\themes\light\light_theme_text.dart                         | Dart     |         26 |          3 |          4 |         33 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\core\themes\theme.dart                                          | Dart     |         67 |          2 |          3 |         72 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\OnBoarding\controller\on_boarding_controller.dart       | Dart     |         44 |          0 |          6 |         50 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\OnBoarding\view\pages\OnBoarding.dart                   | Dart     |         82 |          0 |          4 |         86 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\controller\account_controller.dart              | Dart     |         84 |          0 |          5 |         89 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\controller\account_web_view_controller.dart     | Dart     |         57 |          0 |         10 |         67 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\controller\edit_account_controller.dart         | Dart     |         15 |          0 |          3 |         18 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\controller\saved_images_controller.dart         | Dart     |         86 |          0 |          5 |         91 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\controller\tickets_page_controller.dart         | Dart     |         47 |          0 |          4 |         51 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\model\account_pages_model.dart                  | Dart     |          9 |          0 |          2 |         11 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\model\enums\account_image_state.dart            | Dart     |          1 |          0 |          1 |          2 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\model\tickets_model.dart                        | Dart     |         11 |          0 |          2 |         13 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\account_page.dart                    | Dart     |         59 |          0 |          3 |         62 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\add_ticket_page.dart                 | Dart     |        130 |          0 |          3 |        133 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\edit_account_page.dart               | Dart     |        114 |          0 |          3 |        117 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\in_app_web_view_page.dart            | Dart     |         67 |          2 |          5 |         74 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\saved_images_page.dart               | Dart     |         95 |          0 |          3 |         98 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\pages\tickets_page.dart                    | Dart     |        106 |          0 |          3 |        109 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\widgets\account_card.dart                  | Dart     |         79 |          0 |          2 |         81 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\widgets\account_image_view.dart            | Dart     |        107 |          2 |          4 |        113 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\widgets\custom_table_row.dart              | Dart     |         50 |          0 |          2 |         52 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\account\view\widgets\custom_table_widget.dart           | Dart     |         57 |          0 |          3 |         60 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\login\controller\login_controller.dart             | Dart     |         39 |          0 |          3 |         42 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\login\view\pages\forgot_pas_email_page.dart        | Dart     |         85 |          0 |          3 |         88 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\login\view\pages\login_page.dart                   | Dart     |        124 |          1 |          3 |        128 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\login\view\pages\reset_password_page.dart          | Dart     |         83 |          0 |          3 |         86 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\shared\model\forms_data_model.dart                 | Dart     |         10 |          0 |          2 |         12 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\shared\pages\otp_page.dart                         | Dart     |         92 |          0 |          2 |         94 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\signup\controller\sign_up_controller.dart          | Dart     |         46 |          0 |          3 |         49 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\auth\signup\view\pages\sign_up.dart                     | Dart     |         83 |          0 |          3 |         86 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\controller\car_details_controller.dart      | Dart     |        256 |          0 |         16 |        272 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\data\car_details_data.dart                  | Dart     |         34 |          0 |          4 |         38 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\data\enums\save_images_state.dart           | Dart     |          1 |          0 |          1 |          2 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\data\static\get_static_car_data.dart        | Dart     |        100 |          0 |          2 |        102 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\model\api\car_model.dart                    | Dart     |        321 |          0 |         12 |        333 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\model\car_images_model.dart                 | Dart     |         16 |          0 |          4 |         20 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\model\car_images_model.g.dart               | Dart     |         36 |          4 |          8 |         48 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\model\details_titles_model.dart             | Dart     |         13 |          0 |          2 |         15 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\pages\car_details.dart                 | Dart     |        110 |         14 |          3 |        127 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\shared\car_Cards.dart                  | Dart     |        154 |          0 |          3 |        157 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\car_description.dart           | Dart     |        101 |          0 |          3 |        104 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\car_forms.dart                 | Dart     |        100 |          0 |          3 |        103 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\car_sub_details.dart           | Dart     |        116 |          0 |          4 |        120 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\contact_vendor_row.dart        | Dart     |         36 |          0 |          3 |         39 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\details_images_slider.dart     | Dart     |         38 |          0 |          3 |         41 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\details_selectable_slider.dart | Dart     |         40 |          0 |          3 |         43 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\floating_action_dial.dart      | Dart     |         59 |          0 |          3 |         62 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carsdetails\view\widgets\icon_title_row.dart            | Dart     |         34 |          0 |          3 |         37 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\controller\cars_page_controller.dart           | Dart     |        437 |          0 |         27 |        464 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\controller\filters_controller.dart             | Dart     |        470 |          0 |         16 |        486 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\controller\seller_page_controller.dart         | Dart     |         41 |          0 |          4 |         45 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\data\api\cars_page_data.dart                   | Dart     |        158 |          0 |         16 |        174 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\data\enums\filter_value_types.dart             | Dart     |          1 |          0 |          1 |          2 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\brands_model.dart                    | Dart     |         37 |          0 |          4 |         41 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\car_condition.dart                   | Dart     |         15 |          0 |          4 |         19 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\city_model.dart                      | Dart     |         24 |          0 |          4 |         28 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\doors_number_model.dart              | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\fuel_type.dart                       | Dart     |         15 |          0 |          4 |         19 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\horse_power_mode.dart                | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\inside_color_model.dart              | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\outside_color.dart                   | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\regional_spec_model.dart             | Dart     |         25 |          0 |          4 |         29 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\seats_number_model.dart              | Dart     |         12 |          0 |          4 |         16 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\api\transmission_type_model.dart         | Dart     |         15 |          0 |          4 |         19 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\brand_filter_model.dart                  | Dart     |          6 |          0 |          2 |          8 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\filter_model.dart                        | Dart     |          9 |          0 |          2 |         11 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\model\filter_values_model.dart                 | Dart     |         13 |          0 |          2 |         15 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\pages\cars_page.dart                      | Dart     |        155 |          4 |          3 |        162 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\pages\seller_cars_page.dart               | Dart     |         74 |          6 |          3 |         83 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\brand_grid_view_filter.dart       | Dart     |         42 |          0 |          3 |         45 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\custom_fix_tab_bar_item.dart      | Dart     |         43 |          1 |          2 |         46 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\custom_text_row.dart              | Dart     |         33 |          0 |          2 |         35 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\empty_search_widget.dart          | Dart     |         37 |          0 |          3 |         40 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\filter_dialog.dart                | Dart     |        115 |          0 |          3 |        118 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\filter_form_column.dart           | Dart     |         44 |          0 |          2 |         46 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\filter_grid_view.dart             | Dart     |         82 |          0 |          3 |         85 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\filters_view.dart                 | Dart     |         90 |          0 |          3 |         93 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\carspage\view\widgets\seller_data_view.dart             | Dart     |         72 |          0 |          4 |         76 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\favoritepage\controller\favorite_Page_controller.dart   | Dart     |         41 |          0 |          5 |         46 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\favoritepage\model\filtered_cars_model.dart             | Dart     |          9 |          0 |          3 |         12 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\favoritepage\view\pages\favorite_page.dart              | Dart     |        134 |          5 |          3 |        142 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\controller\main_page_controller.dart               | Dart     |        401 |          1 |         31 |        433 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\data\home_data.dart                                | Dart     |         39 |          0 |          5 |         44 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\al_qassem_socials_model.dart                 | Dart     |          6 |          0 |          3 |          9 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\api\categories_model.dart                    | Dart     |         38 |          0 |          3 |         41 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\api\home_slider_model.dart                   | Dart     |         30 |          0 |          3 |         33 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\api\top_car_model.dart                       | Dart     |        140 |          0 |          6 |        146 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\bottom_nav_bar_model.dart                    | Dart     |          6 |          0 |          3 |          9 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\drawer_model.dart                            | Dart     |         13 |          0 |          1 |         14 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\model\home_services_model.dart                     | Dart     |          8 |          0 |          3 |         11 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\pages\home_page.dart                          | Dart     |        132 |          5 |          3 |        140 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\pages\main_page.dart                          | Dart     |         52 |          0 |          3 |         55 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\al_qassim_logo_card.dart              | Dart     |         23 |          0 |          3 |         26 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\animated_car.dart                     | Dart     |         34 |          1 |          3 |         38 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\cat_container.dart                    | Dart     |         60 |          0 |          2 |         62 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\grid_car_card.dart                    | Dart     |        152 |          8 |          2 |        162 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\home_categories_view.dart             | Dart     |         48 |          0 |          4 |         52 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\home_drawer.dart                      | Dart     |        193 |          0 |          4 |        197 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\home_slider.dart                      | Dart     |         57 |          0 |          3 |         60 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\home_title.dart                       | Dart     |         20 |          0 |          2 |         22 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\services_drawer_row.dart              | Dart     |         58 |          0 |          2 |         60 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\services_list_view.dart               | Dart     |         62 |          0 |          3 |         65 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\social_button.dart                    | Dart     |         31 |          0 |          2 |         33 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\home\view\widgets\top_car_card.dart                     | Dart     |        144 |        164 |          3 |        311 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\splashscreen\controller\splash_screen_controller.dart   | Dart     |         27 |          0 |          4 |         31 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\modules\splashscreen\view\pages\splash_screen.dart              | Dart     |         24 |          0 |          3 |         27 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\app_bottom_nav_bar.dart                             | Dart     |         57 |          0 |          3 |         60 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\car_sliver_app_bar.dart                             | Dart     |         40 |          0 |          2 |         42 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\custom_cached_net_image.dart                        | Dart     |         58 |          2 |          3 |         63 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\empty_data_widget.dart                              | Dart     |         42 |          0 |          3 |         45 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\handiling_data_widget.dart                          | Dart     |        206 |          2 |          4 |        212 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\retry_button.dart                                   | Dart     |         21 |          0 |          3 |         24 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\shared\shimmer_loading.dart                                | Dart     |         50 |          0 |          2 |         52 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\app_bar\custom_app_bar.dart                        | Dart     |         32 |          0 |          2 |         34 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\buttons\button_with_icon.dart                      | Dart     |         89 |          0 |          3 |         92 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\buttons\custom_back_button.dart                    | Dart     |         22 |          0 |          2 |         24 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\buttons\custom_button.dart                         | Dart     |         65 |          3 |          2 |         70 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\buttons\custom_delete_button.dart                  | Dart     |          0 |         43 |          2 |         45 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\dividers\custom_horizontal_divider.dart            | Dart     |         27 |          0 |          3 |         30 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\dividers\custom_vertical_divider.dart              | Dart     |         26 |          0 |          2 |         28 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\fields\custom_text_form_field.dart                 | Dart     |        127 |          0 |          2 |        129 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\fields\search_text_field.dart                      | Dart     |         97 |          0 |          3 |        100 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\pop_up\custom_bottom_sheet.dart                    | Dart     |         16 |          0 |          2 |         18 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\local\view\widgets\pop_up\custom_dialog.dart                          | Dart     |          0 |         36 |          3 |         39 |
+| c:\Users\atlas\Documents\Flutter Projects\proj\lib\main.dart                                                             | Dart     |         41 |          0 |          4 |         45 |
+| Total                                                                                                                    |          |      9,720 |        441 |        596 |     10,757 |
++--------------------------------------------------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
