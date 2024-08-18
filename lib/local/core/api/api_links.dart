@@ -34,5 +34,9 @@ class ApiLinks {
   static const String carConditionApi = "$serverLink/car/car_conditions";
   static const String brandsApi = "$serverLink/car/brands";
   static const String carsList = "$serverLink/car/cars_list";
+  //Seller Data
+  static const String sellerDataApi = "$serverLink/car/vendor_details";
   //auth
+  static const String signUpApi = "$serverLink/register";
+  static const String signInApi = "$serverLink/login";
 }

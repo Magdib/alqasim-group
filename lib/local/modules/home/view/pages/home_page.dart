@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
             if (controller.topNextPageUrl != null)
               controller.topCarsStatusRequest == StatusRequest.loading
                   ? Lottie.asset("assets/lottie/loading.json",
-                      height: 50, fit: BoxFit.fitHeight)
+                      height: 50.h, fit: BoxFit.fitHeight)
                   : Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: AppSize.screenWidth(context) / 3),

@@ -44,12 +44,15 @@ class AccountImageView extends StatelessWidget {
                       : null,
                   child: Container(
                       height: 90.h,
-                      width: 100.w,
+                      width: AppSize.screenWidth(context) >=
+                              AppSize.tabletBreakPoint
+                          ? 68.w
+                          : 100.w,
                       // radius: 50.r,
                       // backgroundColor: AppColors.primaryColor,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
+                          borderRadius: BorderRadius.circular(50.r),
                           color: controller.accountImage == null
                               ? AppColors.primaryColor
                               : AppColors.white,
@@ -92,14 +95,18 @@ class AccountImageView extends StatelessWidget {
                       child: MaterialButton(
                         onPressed: () => controller.pickAccountImage(),
                         padding: EdgeInsets.zero,
-                        minWidth: 45.w,
+                        minWidth: AppSize.screenWidth(context) >=
+                                AppSize.tabletBreakPoint
+                            ? 32.w
+                            : 45.w,
                         height: 45.h,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100.r)),
                         color: AppColors.white,
-                        child: const Icon(
+                        child: Icon(
                           Icons.edit,
                           color: AppColors.primaryColor,
+                          size: 24.r,
                         ),
                       ))
               ],

@@ -26,7 +26,10 @@ class MainPage extends GetView<MainPageController> {
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
                   onPressed: () =>
                       controller.scaffoldKey.currentState!.openDrawer(),
-                  icon: Icon(Icons.menu_rounded)),
+                  icon: Icon(
+                    Icons.menu_rounded,
+                    size: 24.r,
+                  )),
               actions: [
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 5.w),

@@ -35,7 +35,7 @@ class HomeSlider extends StatelessWidget {
                         canReDownload: false,
                         width: AppSize.screenWidth(context),
                         height: 100.h,
-                        borderRadius: 8,
+                        borderRadius: 8.r,
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -47,6 +47,7 @@ class HomeSlider extends StatelessWidget {
                               .displayMedium!
                               .copyWith(
                                   color: AppColors.white,
+                                  fontSize: 14.sp,
                                   fontWeight: FontWeight.bold)),
                     ),
                   ],

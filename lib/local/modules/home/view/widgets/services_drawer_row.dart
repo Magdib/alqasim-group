@@ -36,6 +36,7 @@ class ServicesDrawerRow extends StatelessWidget {
                     color: controller.drawerSelectedServices == index
                         ? AppColors.white
                         : AppColors.primaryColor,
+                    size: 24.r,
                   ),
                 ),
                 Text(

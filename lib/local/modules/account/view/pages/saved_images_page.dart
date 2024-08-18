@@ -43,7 +43,11 @@ class SavedImagesPage extends StatelessWidget {
                               MaterialButton(
                                 onPressed: () =>
                                     controller.deleteCarImages(index),
-                                minWidth: 40,
+                                minWidth: 40.w,
+                                height: AppSize.screenWidth(context) >=
+                                        AppSize.tabletBreakPoint
+                                    ? 50.h
+                                    : null,
                                 padding: EdgeInsets.zero,
                                 color: AppColors.red,
                                 shape: RoundedRectangleBorder(
@@ -53,11 +57,20 @@ class SavedImagesPage extends StatelessWidget {
                                 child: Icon(
                                   Icons.close,
                                   color: AppColors.white,
+                                  size: 24.r,
                                 ),
                               ),
-                              Text(
-                                ":${controller.cars[index].carName}",
-                                style: Theme.of(context).textTheme.displayLarge,
+                              SizedBox(
+                                width: AppSize.screenWidth(context) - 70.w,
+                                child: Text(
+                                  "${controller.cars[index].carName}:",
+                                  maxLines: 3,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displayLarge!
+                                      .copyWith(fontSize: 16.sp),
+                                ),
                               ),
                             ],
                           ),
@@ -75,16 +88,23 @@ class SavedImagesPage extends StatelessWidget {
                                     childAspectRatio: 1.5,
                                     mainAxisSpacing: 10,
                                     crossAxisSpacing: 10),
-                            itemBuilder: (context, subIndex) =>
-                                CustomCachedNetImage(
-                              imageUrl: controller.cars[index].images[subIndex],
-                              errorWidget: (p0, p1, p2) =>
-                                  controller.handleDeleteCar(context, index),
-                              canReDownload: false,
-                              width: AppSize.screenWidth(context) / 3,
-                              height: 100.h,
-                              borderRadius: 8.r,
-                              fit: BoxFit.cover,
+                            itemBuilder: (context, subIndex) => GestureDetector(
+                              onTap: () =>
+                                  controller.showImage(index, subIndex),
+                              child: Hero(
+                                tag: "showImage${index}${subIndex}",
+                                child: CustomCachedNetImage(
+                                  imageUrl:
+                                      controller.cars[index].images[subIndex],
+                                  errorWidget: (p0, p1, p2) => controller
+                                      .handleDeleteCar(context, index),
+                                  canReDownload: false,
+                                  width: AppSize.screenWidth(context) / 3,
+                                  height: 100.h,
+                                  borderRadius: 8.r,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                             ),
                           )
                         ],

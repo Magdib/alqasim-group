@@ -70,7 +70,10 @@ class AddTicketPage extends GetView<TicketsPageController> {
                 children: [
                   Text(
                     "إرفاق ملف:".tr,
-                    style: Theme.of(context).textTheme.displayLarge,
+                    style: Theme.of(context)
+                        .textTheme
+                        .displayLarge!
+                        .copyWith(fontSize: 16.sp),
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10.h),
@@ -95,7 +98,7 @@ class AddTicketPage extends GetView<TicketsPageController> {
                         style: Theme.of(context)
                             .textTheme
                             .displaySmall!
-                            .copyWith(color: AppColors.red),
+                            .copyWith(color: AppColors.red, fontSize: 12.sp),
                       )
                     : Row(
                         children: [
@@ -104,11 +107,14 @@ class AddTicketPage extends GetView<TicketsPageController> {
                             style: Theme.of(context)
                                 .textTheme
                                 .displaySmall!
-                                .copyWith(color: AppColors.primaryColor),
+                                .copyWith(
+                                    color: AppColors.primaryColor,
+                                    fontSize: 12.sp),
                           ),
-                          const Icon(
+                          Icon(
                             Icons.check_circle_outline_outlined,
                             color: AppColors.primaryColor,
+                            size: 24.r,
                           )
                         ],
                       ),

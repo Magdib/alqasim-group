@@ -1,45 +1,81 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proj/global/core/class/app_toast.dart';
+import 'package:proj/local/core/class/hive_box.dart';
+import 'package:proj/local/core/class/hive_keys.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/model/account_pages_model.dart';
 import 'package:proj/local/modules/account/model/enums/account_image_state.dart';
+import 'package:proj/local/modules/auth/login/model/login_model.dart';
+import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 
 class AccountController extends GetxController {
   String? accountImage;
   String? accountBackImage;
   AccountImageState accountImageState = AccountImageState.none;
   AccountImageState accountBackImageState = AccountImageState.none;
-  String userName = "Magd";
+  late String userName;
   late List<AccountPagesModel> upperList;
   late List<AccountPagesModel> lowerList;
+  Box authBox = Hive.box(HiveBoxes.authBox);
+  Box<LoginModel> loginDataBox = Hive.box(HiveBoxes.loginDataBox);
+  late LoginModel loginData;
+  String? token;
   pickAccountImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      accountImage = image.path;
-      accountImageState = AccountImageState.image;
+    if (token != null) {
+      final ImagePicker picker = ImagePicker();
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        accountImage = image.path;
+        accountImageState = AccountImageState.image;
+      }
+      update();
+    } else {
+      Get.toNamed(AppRoutes.signInPageRoute);
+      AppToasts.errorToast("قم بتسجيل الدخول للمتابعة".tr);
     }
-    update();
   }
 
   pickAccountBackImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      accountBackImage = image.path;
-      accountBackImageState = AccountImageState.image;
+    if (token != null) {
+      final ImagePicker picker = ImagePicker();
+      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      if (image != null) {
+        accountBackImage = image.path;
+        accountBackImageState = AccountImageState.image;
+      }
+      update();
+    } else {
+      Get.toNamed(AppRoutes.signInPageRoute);
+      AppToasts.errorToast("قم بتسجيل الدخول للمتابعة".tr);
     }
-    update();
   }
 
   defineLists() {
+    token = authBox.get(HiveKeys.token);
+    loginDataBox = Hive.box(HiveBoxes.loginDataBox);
+    log("$token");
+    if (token != null) {
+      log("ssssssss==== ${loginDataBox.length}");
+      loginData = loginDataBox.getAt(0)!;
+      userName = loginData.username;
+      if (loginData.image.isEmpty) {
+        accountImageState = AccountImageState.login;
+      }
+    }
+    log("$token");
     upperList = [
       AccountPagesModel(
           title: "إعدادات الحساب".tr,
           icon: Icons.account_circle_outlined,
-          route: AppRoutes.editAccountPageRoute),
+          route: token != null
+              ? AppRoutes.editAccountPageRoute
+              : AppRoutes.signInPageRoute),
       AccountPagesModel(
           title: "مدوّنة".tr,
           icon: Icons.people_alt_outlined,
@@ -53,13 +89,11 @@ class AccountController extends GetxController {
       AccountPagesModel(
           title: "الأحكام والشروط".tr,
           icon: Icons.policy,
-          link:
-              "https://alqassimgroup.net/%D8%A7%D9%84%D8%A3%D8%AD%D9%83%D8%A7%D9%85-%D9%88%D8%A7%D9%84%D8%B4%D8%B1%D9%88%D8%B7"),
+          link: "https://alqassimgroup.net/terms-&-condition"),
       AccountPagesModel(
           title: "سياسة الخصوصية".tr,
           icon: Icons.lock_outline,
-          link:
-              "https://alqassimgroup.net/%D8%B3%D9%8A%D8%A7%D8%B3%D8%A9-%D8%A7%D9%84%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%D8%A9"),
+          link: "https://alqassimgroup.net/privacy-policy"),
       AccountPagesModel(
           title: "التعليمات".tr,
           icon: Icons.perm_device_info_rounded,
@@ -72,12 +106,29 @@ class AccountController extends GetxController {
           title: "تذاكر الدعم الفني".tr,
           icon: Bootstrap.ticket_detailed_fill,
           route: AppRoutes.ticketsPageRoute),
-      AccountPagesModel(
-        title: "تسجيل الخروج".tr,
-        icon: Icons.logout,
-      ),
     ];
+    if (token != null) {
+      lowerList.add(
+        AccountPagesModel(
+          title: "تسجيل الخروج".tr,
+          icon: Icons.logout,
+        ),
+      );
+    }
     update();
+  }
+
+  logout() {
+    authBox.delete(HiveKeys.token);
+    loginDataBox.clear();
+    accountBackImage = null;
+    accountBackImageState = AccountImageState.none;
+    accountImage = null;
+    accountImageState = AccountImageState.none;
+    defineLists();
+    MainPageController mainPageController = Get.find();
+    mainPageController.handleAfterLogout();
+    AppToasts.successToast("تم تسجيل الخروج بنجاح".tr);
   }
 
   @override

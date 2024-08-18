@@ -72,6 +72,7 @@ class CustomTextFormField extends StatelessWidget {
           const SizedBox(),
       style: Theme.of(context).textTheme.displayMedium!.copyWith(
           color: textColor ?? AppColors.primaryColor,
+          fontSize: 14.sp,
           fontWeight: FontWeight.bold),
       textAlign: textAlign ?? TextAlign.start,
       obscureText: obscure,
@@ -104,6 +105,7 @@ class CustomTextFormField extends StatelessWidget {
           hintText: hint,
           hintStyle: Theme.of(context).textTheme.displayMedium!.copyWith(
                 color: AppColors.grey,
+                fontSize: 14.sp,
               ),
           labelText: label,
           enabledBorder: OutlineInputBorder(

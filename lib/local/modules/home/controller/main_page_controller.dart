@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:icons_plus/icons_plus.dart';
@@ -11,8 +12,10 @@ import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/class/hive_keys.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
+import 'package:proj/local/core/functions/hive_null_get.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
+import 'package:proj/local/modules/auth/login/model/login_model.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 import 'package:proj/local/modules/carspage/view/pages/cars_page.dart';
 import 'package:proj/local/modules/favoritepage/controller/favorite_Page_controller.dart';
@@ -39,6 +42,7 @@ class MainPageController extends GetxController {
   late ScrollController scrollController;
   late ScrollController categoriesScrollController;
   late Box authBox;
+  late Box<LoginModel> loginDataBox;
   String previousLocal = "";
   String selectedLocal = "";
   List<Widget> pages = [
@@ -59,6 +63,7 @@ class MainPageController extends GetxController {
   String? catNextPageUrl;
   String? topNextPageUrl;
   List<TopCarModel> topCars = [];
+  late bool showLoginData;
   defineLists() {
     homeServicesList = [
       HomeServicesModel(
@@ -346,7 +351,8 @@ class MainPageController extends GetxController {
   }
 
   getCatData(bool keepGettingData) async {
-    if (catNextPageUrl != null) {
+    if (catNextPageUrl != null &&
+        categoriesStatusRequest != StatusRequest.loading) {
       HomeData homeData = HomeData(Get.find());
       var categoriesResponse = await homeData.getCategoriesData(selectedLocal,
           nextPageUrl: catNextPageUrl!);
@@ -354,7 +360,7 @@ class MainPageController extends GetxController {
         update();
         AppToasts.errorToast(l.message);
         categoriesScrollController.animateTo(
-            categoriesScrollController.position.maxScrollExtent - 100,
+            categoriesScrollController.position.maxScrollExtent - 100.w,
             duration: Duration(milliseconds: 400),
             curve: Curves.easeIn);
         if (keepGettingData) {
@@ -416,6 +422,23 @@ class MainPageController extends GetxController {
     onPageChanged(3, categoriesData[index].id.toString());
   }
 
+  handleAfterLogin() async {
+    showLoginData = false;
+    scaffoldKey.currentState!.closeDrawer();
+    if (pageIndex == 4) {
+      AccountController accountController = Get.find();
+      await accountController.loginDataBox.close();
+      accountController.loginDataBox =
+          await Hive.openBox(HiveBoxes.loginDataBox);
+    }
+    onPageChanged(2);
+  }
+
+  handleAfterLogout() {
+    showLoginData = true;
+    update();
+  }
+
   @override
   void onInit() {
     pageIndex = 2;
@@ -434,6 +457,8 @@ class MainPageController extends GetxController {
     String? local = authBox.get(HiveKeys.language);
     selectedLocal = local == null ? Get.deviceLocale!.languageCode : local;
     previousLocal = selectedLocal;
+    showLoginData = authBox.get(HiveKeys.token) == null ? true : false;
+    loginDataBox = await Hive.openBox<LoginModel>(HiveBoxes.loginDataBox);
     await getData(false);
     super.onReady();
   }

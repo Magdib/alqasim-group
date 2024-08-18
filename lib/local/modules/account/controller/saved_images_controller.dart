@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/functions/check_internet_connection.dart';
 import 'package:proj/local/core/class/hive_box.dart';
@@ -71,6 +73,36 @@ class SavedImagesController extends GetxController {
         );
       }
     }
+  }
+
+  showImage(int index, int subIndex) {
+    Get.dialog(
+        Stack(
+          children: [
+            PhotoView(
+              imageProvider:
+                  CachedNetworkImageProvider(cars[index].images[subIndex]),
+              initialScale: PhotoViewComputedScale.contained,
+              minScale: PhotoViewComputedScale.contained,
+              heroAttributes: PhotoViewHeroAttributes(
+                tag: "showImage${index}${subIndex}",
+              ),
+            ),
+            Positioned(
+                top: 30.h,
+                right: 10.w,
+                child: Hero(
+                  tag: "arrowBack",
+                  child: IconButton(
+                      onPressed: () => Get.back(),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: AppColors.white,
+                      )),
+                ))
+          ],
+        ),
+        useSafeArea: false);
   }
 
   @override

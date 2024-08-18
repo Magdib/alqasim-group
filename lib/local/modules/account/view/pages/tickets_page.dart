@@ -30,7 +30,10 @@ class TicketsPage extends StatelessWidget {
                         children: [
                           Text(
                             "تذاكر الدعم الفني:".tr,
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayLarge!
+                                .copyWith(fontSize: 16.sp),
                           ),
                           Padding(
                             padding: EdgeInsets.only(top: 10.h),
@@ -85,6 +88,7 @@ class TicketsPage extends StatelessWidget {
                                       .displayMedium!
                                       .copyWith(
                                           color: AppColors.grey,
+                                          fontSize: 14.sp,
                                           fontWeight: FontWeight.bold),
                                 ),
                               )

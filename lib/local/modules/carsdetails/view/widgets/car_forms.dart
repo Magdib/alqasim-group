@@ -28,11 +28,18 @@ class CarForms extends GetView<CarDetailsController> {
           children: [
             CustomCachedNetImage(
               imageUrl: controller.car.vendor.photo,
-              height: 80.h,
-              width: 90.w,
+              height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                  ? 120.h
+                  : 80.h,
+              width: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                  ? 85.w
+                  : 90.w,
+              borderRadius:
+                  AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                      ? 100.r
+                      : 60.r,
               canReDownload: false,
               fit: BoxFit.cover,
-              borderRadius: 60.r,
             ),
             SizedBox(
               height: 5.h,
@@ -106,7 +113,7 @@ class CarForms extends GetView<CarDetailsController> {
               builder: (controller) => controller.emailStatusRequest ==
                       StatusRequest.loading
                   ? Container(
-                      height: 50,
+                      height: 50.h,
                       width: AppSize.screenWidth(context) * 0.8,
                       decoration: BoxDecoration(
                           borderRadius:
@@ -122,6 +129,7 @@ class CarForms extends GetView<CarDetailsController> {
                                 .displayMedium!
                                 .copyWith(
                                   fontWeight: FontWeight.bold,
+                                  fontSize: 14.sp,
                                   color: AppColors.white,
                                 ),
                           ),

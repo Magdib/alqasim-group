@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
@@ -16,9 +17,10 @@ AppBar customAppBar(
       centerTitle: true,
       title: Text(
         title,
-        style: Theme.of(context).textTheme.displayLarge?.copyWith(
-              color: AppColors.white,
-            ),
+        style: Theme.of(context)
+            .textTheme
+            .displayLarge
+            ?.copyWith(color: AppColors.white, fontSize: 16.sp),
       ),
       actions: actions,
       leading: leading,

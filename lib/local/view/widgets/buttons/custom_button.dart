@@ -60,6 +60,7 @@ class CustomButton extends StatelessWidget {
                             .displayMedium!
                             .copyWith(
                                 color: textColor ?? AppColors.white,
+                                fontSize: 14.sp,
                                 fontWeight: FontWeight.bold))
                 // : const LoadingPoint(),
                 ),

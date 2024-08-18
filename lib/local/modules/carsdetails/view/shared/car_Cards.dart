@@ -21,7 +21,7 @@ class CarCards extends GetView<CarDetailsController> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
-          ? 345.h
+          ? 370.h
           : 340,
       child: PageView.builder(
         itemCount: cars.length,
@@ -98,9 +98,18 @@ class CarCards extends GetView<CarDetailsController> {
                           CustomCachedNetImage(
                             imageUrl: cars[index].vendor.photo,
                             canReDownload: false,
-                            height: 25.h,
-                            width: 25.w,
-                            borderRadius: 25.r,
+                            height: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 40.h
+                                : 25.h,
+                            width: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 30.w
+                                : 25.w,
+                            borderRadius: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 40.r
+                                : 25.r,
                             fit: BoxFit.cover,
                           ),
                         ],
@@ -138,10 +147,11 @@ class CarCards extends GetView<CarDetailsController> {
                       ),
                       Text(
                         cars[index].symbolPrice,
-                        style:
-                            Theme.of(context).textTheme.displayMedium!.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                fontWeight: FontWeight.bold, fontSize: 14.sp),
                       ),
                     ],
                   )

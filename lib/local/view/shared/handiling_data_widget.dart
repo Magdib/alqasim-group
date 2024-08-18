@@ -62,7 +62,7 @@ class HandlingDataRequest extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
-                      .copyWith(color: AppColors.primaryColor),
+                      .copyWith(color: AppColors.primaryColor, fontSize: 16.sp),
                 )
               ],
             ),
@@ -81,10 +81,8 @@ class HandlingDataRequest extends StatelessWidget {
                     ),
                     Text(
                       "...لا يوجد اتصال بالإنترنت".tr,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(color: AppColors.primaryColor),
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          color: AppColors.primaryColor, fontSize: 16.sp),
                     ),
                     const SizedBox(
                       height: 15,
@@ -103,7 +101,9 @@ class HandlingDataRequest extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(color: AppColors.primaryColor),
+                              .copyWith(
+                                  color: AppColors.primaryColor,
+                                  fontSize: 16.sp),
                         ),
                         const SizedBox(
                           height: 15,
@@ -147,7 +147,7 @@ class HandlingScrollDataRequest extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .displayLarge!
-                      .copyWith(color: AppColors.primaryColor),
+                      .copyWith(color: AppColors.primaryColor, fontSize: 16.sp),
                 )
               ],
             ),
@@ -170,10 +170,8 @@ class HandlingScrollDataRequest extends StatelessWidget {
                     ),
                     Text(
                       "...لا يوجد اتصال بالإنترنت".tr,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayLarge!
-                          .copyWith(color: AppColors.primaryColor),
+                      style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                          color: AppColors.primaryColor, fontSize: 16.sp),
                     ),
                     SizedBox(
                       height: 15.h,
@@ -197,7 +195,9 @@ class HandlingScrollDataRequest extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(color: AppColors.primaryColor),
+                              .copyWith(
+                                  color: AppColors.primaryColor,
+                                  fontSize: 16.sp),
                         ),
                         SizedBox(
                           height: 15.h,

@@ -16,8 +16,13 @@ class FilterGridView extends StatelessWidget {
       builder: (controller) => GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, crossAxisSpacing: 20, childAspectRatio: 1.5),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 20.w,
+            childAspectRatio:
+                AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
+                    ? 1.3.h
+                    : 1.5.h),
         itemCount: controller.filters.length,
         itemBuilder: (context, index) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,17 +30,17 @@ class FilterGridView extends StatelessWidget {
             Text(
               controller.filters[index].filterName,
               style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                   ),
             ),
-            const SizedBox(
-              height: 10,
+            SizedBox(
+              height: 10.h,
             ),
             DropdownButtonHideUnderline(
               child: Container(
                 width: AppSize.screenWidth(context) / 2.2,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
+                padding: EdgeInsets.symmetric(
+                  horizontal: 10.w,
                 ),
                 decoration: BoxDecoration(
                     border: Border.all(
@@ -43,9 +48,10 @@ class FilterGridView extends StatelessWidget {
                     ),
                     borderRadius: BorderRadius.circular(6)),
                 child: DropdownButton(
+                  itemHeight: 48.h,
                   isExpanded: false,
                   dropdownColor: AppColors.white,
-                  menuMaxHeight: 160,
+                  menuMaxHeight: 160.h,
                   value: controller.filters[index].selectedValue,
                   borderRadius: BorderRadius.circular(6),
                   hint: Text(
@@ -53,7 +59,7 @@ class FilterGridView extends StatelessWidget {
                     style: Theme.of(context)
                         .textTheme
                         .displaySmall!
-                        .copyWith(color: AppColors.grey),
+                        .copyWith(color: AppColors.grey, fontSize: 12.sp),
                   ),
                   items: controller.filters[index].filterValues
                       .map(
@@ -66,7 +72,7 @@ class FilterGridView extends StatelessWidget {
                                 .displaySmall!
                                 .copyWith(
                                     color: AppColors.grey,
-                                    fontSize: e.length > 18 ? 8.sp : null),
+                                    fontSize: e.length > 18 ? 8.sp : 12.sp),
                           ),
                         ),
                       )

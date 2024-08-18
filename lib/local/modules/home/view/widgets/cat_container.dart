@@ -15,7 +15,7 @@ class CatContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppSize.screenWidth(context) - 40,
+      width: AppSize.screenWidth(context) - 40.w,
       height: 170.h,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.r),
@@ -30,7 +30,7 @@ class CatContainer extends StatelessWidget {
             padding: EdgeInsets.only(top: 10.h),
             child: CustomCachedNetImage(
               canReDownload: false,
-              width: AppSize.screenWidth(context) - 50,
+              width: AppSize.screenWidth(context) - 50.w,
               height: 100.h,
               fit: BoxFit.fitHeight,
               borderRadius: 6.r,
@@ -51,6 +51,7 @@ class CatContainer extends StatelessWidget {
             child: Text(title,
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.bold,
                     )),
           ),

@@ -26,11 +26,14 @@ class DetailsImagesSlider extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8.r),
             ),
-            child: CustomCachedNetImage(
-              imageUrl: controller.car.images[index].image,
-              canReDownload: false,
-              fit: BoxFit.cover,
-              borderRadius: 8.r,
+            child: GestureDetector(
+              onTap: () => controller.showImage(index),
+              child: CustomCachedNetImage(
+                imageUrl: controller.car.images[index].image,
+                canReDownload: false,
+                fit: BoxFit.cover,
+                borderRadius: 8.r,
+              ),
             ),
           ),
         ),

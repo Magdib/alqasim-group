@@ -22,12 +22,12 @@ class CarsPage extends GetView<CarsPageController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10).w,
       child: ListView(
         controller: controller.scrollController,
         children: [
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           CustomTextFormField(
             hint: "أدخل اسم السيارة هنا...".tr,
@@ -36,17 +36,21 @@ class CarsPage extends GetView<CarsPageController> {
             onFieldSubmitted: controller.filterValues.isEmpty
                 ? (p0) => controller.filterByName()
                 : (val) => controller.filterCars(),
-            icon: const Icon(
+            icon: Icon(
               Icons.search,
+              size: 24.r,
             ),
             textInputAction: TextInputAction.search,
             suffixIcon: IconButton(
                 onPressed: () => filterDialog(context),
-                icon: const Icon(CustomIcons.filter)),
+                icon: Icon(
+                  CustomIcons.filter,
+                  size: 24.r,
+                )),
           ),
           const FiltersView(),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           GetBuilder<CarsPageController>(
             builder: (controller) => HandlingScrollDataRequest(
@@ -60,22 +64,22 @@ class CarsPage extends GetView<CarsPageController> {
                           itemCount: controller.carsView.length,
                           shrinkWrap: true,
                           crossAxisCount: 2,
-                          crossAxisSpacing: 10,
-                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10.w,
+                          mainAxisSpacing: 10.h,
                           builder: (context, index) => GestureDetector(
                             onTap: () => controller
                                 .goToDetailsPage(controller.carsView[index].id),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(
-                                  height: 5,
+                                SizedBox(
+                                  height: 5.h,
                                 ),
                                 Container(
                                   width: AppSize.screenWidth(context) / 2 - 15,
-                                  height: 100,
+                                  height: 100.h,
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.circular(8.r),
                                   ),
                                   child: CustomCachedNetImage(
                                     imageUrl:
@@ -85,8 +89,8 @@ class CarsPage extends GetView<CarsPageController> {
                                     borderRadius: 8.r,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 10,
+                                SizedBox(
+                                  height: 10.h,
                                 ),
                                 SizedBox(
                                   width: AppSize.screenWidth(context) / 2 - 15,
@@ -105,9 +109,10 @@ class CarsPage extends GetView<CarsPageController> {
                                                 .textTheme
                                                 .displaySmall!
                                                 .copyWith(
-                                                  color: AppColors.primaryColor,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                    color:
+                                                        AppColors.primaryColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 12.sp),
                                           ),
                                           InkWell(
                                               // onTap: () => controller.handleFav(index),
@@ -117,6 +122,7 @@ class CarsPage extends GetView<CarsPageController> {
                                             //     :
                                             Icons.favorite_border_outlined,
                                             color: AppColors.primaryColor,
+                                            size: 24.r,
                                           ))
                                         ],
                                       ),
@@ -128,7 +134,7 @@ class CarsPage extends GetView<CarsPageController> {
                                             .textTheme
                                             .displaySmall!
                                             .copyWith(
-                                              fontSize: 11.5,
+                                              fontSize: 11.5.sp,
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),
@@ -145,7 +151,7 @@ class CarsPage extends GetView<CarsPageController> {
                         controller.paginationStatusRequest ==
                                 StatusRequest.loading
                             ? Lottie.asset("assets/lottie/loading.json",
-                                height: 50, fit: BoxFit.fitHeight)
+                                height: 50.h, fit: BoxFit.fitHeight)
                             : const SizedBox()
                       ],
                     )

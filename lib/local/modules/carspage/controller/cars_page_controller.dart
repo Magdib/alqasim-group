@@ -406,6 +406,7 @@ class CarsPageController extends GetxController with FiltersController {
       dialogStatusRequest = StatusRequest.loading;
       update();
     }
+    filters.clear();
     if (await getCategoriesData()) {
       if (await getCitiesData() == true) {
         if (await getRegionalSpecData() == true) {

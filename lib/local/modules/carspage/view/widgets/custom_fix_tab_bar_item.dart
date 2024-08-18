@@ -21,11 +21,13 @@ class CustomFixTabBarItem extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 12.h),
             onPressed: controller.selectedIndex == index
                 ? null
-                : () => controller.changeTabView(index, true),
+                : () => controller.changeTabView(index),
             child: Text(
-              controller.fixedTabBarItems[index],
+              controller.catCars[index].categoryName,
               style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                  color: AppColors.primaryColor, fontWeight: FontWeight.bold),
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14.sp),
             ),
           ),
           AnimatedContainer(

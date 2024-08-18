@@ -103,7 +103,10 @@ class EditAccountPage extends StatelessWidget {
                           child: CustomButton(
                               buttonBody: "تحديث البيانات".tr,
                               buttonWidth: AppSize.screenWidth(context) / 1.8,
-                              height: 42.5.h,
+                              height: AppSize.screenWidth(context) >=
+                                      AppSize.tabletBreakPoint
+                                  ? 50.h
+                                  : 42.5.h,
                               onTap: () => Get.back()),
                         )
                       ],

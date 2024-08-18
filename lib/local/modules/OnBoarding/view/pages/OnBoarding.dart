@@ -57,8 +57,8 @@ class OnBoarding extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20,
+                SizedBox(
+                  height: 20.h,
                 ),
                 SmoothPageIndicator(
                     controller: controller.pageController,

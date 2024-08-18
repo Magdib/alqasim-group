@@ -42,7 +42,7 @@ class ButtonWithIcon extends StatelessWidget {
                       ? Icon(
                           icon,
                           color: AppColors.white,
-                          size: iconSize,
+                          size: iconSize ?? 24.r,
                         )
                       : Image.asset(
                           image!,
@@ -56,6 +56,7 @@ class ButtonWithIcon extends StatelessWidget {
                     title,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.white,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -68,6 +69,7 @@ class ButtonWithIcon extends StatelessWidget {
                     title,
                     style: Theme.of(context).textTheme.displayMedium!.copyWith(
                           color: AppColors.white,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.bold,
                         ),
                   ),
@@ -78,7 +80,7 @@ class ButtonWithIcon extends StatelessWidget {
                       ? Icon(
                           icon,
                           color: AppColors.white,
-                          size: iconSize,
+                          size: iconSize ?? 24.r,
                         )
                       : Image.asset(
                           image!,

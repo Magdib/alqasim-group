@@ -29,7 +29,7 @@ class CustomTableRow extends GetView<MainPageController> {
                 style: Theme.of(context)
                     .textTheme
                     .displayMedium!
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold, fontSize: 14.sp),
               ),
             )
           : InkWell(
@@ -37,13 +37,22 @@ class CustomTableRow extends GetView<MainPageController> {
                   backgroundColor: AppColors.white,
                   title: title,
                   radius: AppSize.appCustomRadius.r,
-                  titleStyle: Theme.of(context).textTheme.displayLarge,
+                  titleStyle: Theme.of(context)
+                      .textTheme
+                      .displayLarge!
+                      .copyWith(fontSize: 16.sp),
                   middleText: body,
-                  middleTextStyle: Theme.of(context).textTheme.displayMedium),
+                  middleTextStyle: Theme.of(context)
+                      .textTheme
+                      .displayMedium!
+                      .copyWith(fontSize: 14.sp)),
               child: Text(
                 body,
                 overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.displaySmall!.copyWith(),
+                style: Theme.of(context)
+                    .textTheme
+                    .displaySmall!
+                    .copyWith(fontSize: 12.sp),
               ),
             ),
     );

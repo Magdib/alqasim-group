@@ -19,7 +19,10 @@ class CarDescription extends GetView<CarDetailsController> {
       children: [
         Text(
           "المواصفات:".tr,
-          style: Theme.of(context).textTheme.displayLarge,
+          style: Theme.of(context)
+              .textTheme
+              .displayLarge!
+              .copyWith(fontSize: 16.sp),
         ),
         SizedBox(
           height: 12.5.h,
@@ -47,7 +50,7 @@ class CarDescription extends GetView<CarDetailsController> {
                       borderRadius: BorderRadius.circular(2.r)),
                   child: Icon(
                     controller.carDetailsTitle[index].icon,
-                    size: controller.carDetailsTitle[index].size,
+                    size: controller.carDetailsTitle[index].size ?? 24.r,
                     color: AppColors.primaryColor,
                   ),
                 ),
@@ -70,7 +73,7 @@ class CarDescription extends GetView<CarDetailsController> {
                               .displayMedium!
                               .copyWith(
                                 fontSize: 12.sp,
-                                height: 1.3,
+                                height: 1.3.h,
                               ),
                         ),
                       ),
@@ -93,7 +96,11 @@ class CarDescription extends GetView<CarDetailsController> {
             ),
           ),
         ),
-        Text("الوصف:".tr, style: Theme.of(context).textTheme.displayLarge),
+        Text("الوصف:".tr,
+            style: Theme.of(context)
+                .textTheme
+                .displayLarge!
+                .copyWith(fontSize: 16.sp)),
         Html(
           data: """${controller.car.description}""",
         ),

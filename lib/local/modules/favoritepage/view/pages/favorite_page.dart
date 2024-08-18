@@ -12,27 +12,28 @@ class FavoritePage extends GetView<FavoritePageController> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(padding: const EdgeInsets.all(10), children: [
-      const SizedBox(
-        height: 10,
+    return ListView(padding: EdgeInsets.all(10).w, children: [
+      SizedBox(
+        height: 10.h,
       ),
       CustomTextFormField(
         hint: "أدخل اسم السيارة هنا...".tr,
-        icon: const Icon(
+        icon: Icon(
           Icons.search,
+          size: 24.r,
         ),
         textInputAction: TextInputAction.search,
         onChange: (value) => controller.filterCars(value),
       ),
-      const SizedBox(
-        height: 20,
+      SizedBox(
+        height: 20.h,
       ),
       GetBuilder<FavoritePageController>(
           builder: (controller) => ListView.separated(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              separatorBuilder: (context, index) => const SizedBox(
-                    height: 20,
+              separatorBuilder: (context, index) => SizedBox(
+                    height: 20.h,
                   ),
               itemCount: controller.viewCars.length,
               itemBuilder: (context, index) => Column(
@@ -43,30 +44,29 @@ class FavoritePage extends GetView<FavoritePageController> {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontSize: 16),
-                        ),
-                        const SizedBox(
-                          height: 10,
+                              .copyWith(fontSize: 16.sp),
                         ),
                         SizedBox(
-                          height: 181,
+                          height: 10.h,
+                        ),
+                        SizedBox(
+                          height: 184.h,
                           child: ListView.separated(
-                            separatorBuilder: (context, subIndex) =>
-                                const SizedBox(
-                              width: 10,
+                            separatorBuilder: (context, subIndex) => SizedBox(
+                              width: 10.w,
                             ),
                             scrollDirection: Axis.horizontal,
                             itemCount: controller.viewCars[index].cars.length,
                             itemBuilder: (context, subIndex) => Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const SizedBox(
-                                  height: 5,
+                                SizedBox(
+                                  height: 5.h,
                                 ),
                                 Container(
                                     width:
                                         AppSize.screenWidth(context) / 2 - 15,
-                                    height: 100,
+                                    height: 100.h,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
                                     ),
@@ -77,8 +77,8 @@ class FavoritePage extends GetView<FavoritePageController> {
                                       fit: BoxFit.cover,
                                       borderRadius: 8.r,
                                     )),
-                                const SizedBox(
-                                  height: 10,
+                                SizedBox(
+                                  height: 10.h,
                                 ),
                                 SizedBox(
                                   width: AppSize.screenWidth(context) / 2 - 15,
@@ -97,9 +97,10 @@ class FavoritePage extends GetView<FavoritePageController> {
                                                 .textTheme
                                                 .displaySmall!
                                                 .copyWith(
-                                                  color: AppColors.primaryColor,
-                                                  fontWeight: FontWeight.bold,
-                                                ),
+                                                    color:
+                                                        AppColors.primaryColor,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 12.sp),
                                           ),
                                           InkWell(
                                               onTap: () {
@@ -111,6 +112,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                                                 //     ? Icons.favorite
                                                 //     :
                                                 Icons.favorite_border_outlined,
+                                                size: 24.r,
                                                 color: AppColors.primaryColor,
                                               ))
                                         ],
@@ -124,7 +126,7 @@ class FavoritePage extends GetView<FavoritePageController> {
                                             .textTheme
                                             .displaySmall!
                                             .copyWith(
-                                              fontSize: 11.5,
+                                              fontSize: 11.5.sp,
                                               fontWeight: FontWeight.bold,
                                             ),
                                       ),

@@ -1,16 +1,19 @@
 import 'dart:developer';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:photo_view/photo_view.dart';
 import 'package:proj/global/core/api/api_errors.dart';
 import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
+import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carsdetails/data/car_details_data.dart';
 import 'package:proj/local/modules/carsdetails/data/enums/save_images_state.dart';
@@ -29,6 +32,35 @@ class CarDetailsController extends GetxController {
   late TextEditingController emailController;
   late TextEditingController phoneNumController;
   late TextEditingController messageController;
+  showImage(int index) {
+    Get.dialog(
+        Stack(
+          children: [
+            PhotoView(
+              imageProvider:
+                  CachedNetworkImageProvider(car.images[index].image),
+              initialScale: PhotoViewComputedScale.contained,
+              minScale: PhotoViewComputedScale.contained,
+              heroAttributes: PhotoViewHeroAttributes(
+                tag: "showImage${index}",
+              ),
+            ),
+            Positioned(
+                top: 30.h,
+                right: 10.w,
+                child: Hero(
+                  tag: "arrowBack",
+                  child: IconButton(
+                      onPressed: () => Get.back(),
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: AppColors.white,
+                      )),
+                ))
+          ],
+        ),
+        useSafeArea: false);
+  }
 
   CarModel car = getStaticCarData();
   StatusRequest statusRequest = StatusRequest.loading;

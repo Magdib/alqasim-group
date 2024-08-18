@@ -47,7 +47,9 @@ class HomeDrawer extends GetView<MainPageController> {
                               style: Theme.of(context)
                                   .textTheme
                                   .displayMedium!
-                                  .copyWith(fontWeight: FontWeight.w500),
+                                  .copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.sp),
                             ),
                           )
                         : ExpansionTile(
@@ -58,7 +60,9 @@ class HomeDrawer extends GetView<MainPageController> {
                               style: Theme.of(context)
                                   .textTheme
                                   .displayMedium!
-                                  .copyWith(fontWeight: FontWeight.w500),
+                                  .copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14.sp),
                             ),
                             shape: const Border(),
                             childrenPadding:
@@ -138,7 +142,10 @@ class HomeDrawer extends GetView<MainPageController> {
                           height: kMinInteractiveDimension.h,
                           child: Text(
                             "عربي",
-                            style: Theme.of(context).textTheme.displayMedium,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(fontSize: 14.sp),
                           ),
                         ),
                         PopupMenuItem(
@@ -146,7 +153,10 @@ class HomeDrawer extends GetView<MainPageController> {
                           height: kMinInteractiveDimension.h,
                           child: Text(
                             "English",
-                            style: Theme.of(context).textTheme.displayMedium,
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(fontSize: 14.sp),
                           ),
                         ),
                       ],
@@ -154,8 +164,9 @@ class HomeDrawer extends GetView<MainPageController> {
                   splashRadius: 0,
                   tooltip: "",
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    const Icon(
+                    Icon(
                       Icons.language_outlined,
+                      size: 24.r,
                     ),
                     SizedBox(
                       width: 10.w,
@@ -163,33 +174,42 @@ class HomeDrawer extends GetView<MainPageController> {
                     GetBuilder<MainPageController>(
                       builder: (controller) => Text(
                         controller.selectedLocal == "en" ? "English" : "عربي",
-                        style: Theme.of(context).textTheme.displayMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(fontSize: 14.sp),
                       ),
                     ),
                   ])),
               SizedBox(
                 height: 20.h,
               ),
-              Row(
-                children: [
-                  CustomButton(
-                      buttonBody: "تسجيل الدخول".tr,
-                      buttonWidth: AppSize.screenWidth(context) / 2.5,
-                      buttonColor: AppColors.white,
-                      textColor: AppColors.primaryColor,
-                      isReverseColor: true,
-                      onTap: () => Get.toNamed(AppRoutes.signInPageRoute)),
-                  SizedBox(
-                    width: 12.w,
-                  ),
-                  CustomButton(
-                      buttonBody: "اشتراك".tr,
-                      buttonWidth: AppSize.screenWidth(context) / 4,
-                      buttonColor: AppColors.white,
-                      textColor: AppColors.primaryColor,
-                      isReverseColor: true,
-                      onTap: () => Get.toNamed(AppRoutes.signUpPageRoute)),
-                ],
+              GetBuilder<MainPageController>(
+                builder: (controller) => controller.showLoginData
+                    ? Row(
+                        children: [
+                          CustomButton(
+                              buttonBody: "تسجيل الدخول".tr,
+                              buttonWidth: AppSize.screenWidth(context) / 2.5,
+                              buttonColor: AppColors.white,
+                              textColor: AppColors.primaryColor,
+                              isReverseColor: true,
+                              onTap: () =>
+                                  Get.toNamed(AppRoutes.signInPageRoute)),
+                          SizedBox(
+                            width: 12.w,
+                          ),
+                          CustomButton(
+                              buttonBody: "اشتراك".tr,
+                              buttonWidth: AppSize.screenWidth(context) / 4,
+                              buttonColor: AppColors.white,
+                              textColor: AppColors.primaryColor,
+                              isReverseColor: true,
+                              onTap: () =>
+                                  Get.toNamed(AppRoutes.signUpPageRoute)),
+                        ],
+                      )
+                    : const SizedBox(),
               )
             ]));
   }

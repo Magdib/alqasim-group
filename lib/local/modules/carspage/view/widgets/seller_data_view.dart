@@ -4,11 +4,14 @@ import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
+import 'package:proj/local/modules/carspage/controller/seller_page_controller.dart';
+import 'package:proj/local/modules/carspage/model/api/seller_model.dart';
+import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 import 'package:proj/local/view/widgets/dividers/custom_horizontal_divider.dart';
 
 import 'custom_text_row.dart';
 
-class SellerDataView extends StatelessWidget {
+class SellerDataView extends GetView<SellerPageController> {
   const SellerDataView({
     super.key,
   });
@@ -27,21 +30,32 @@ class SellerDataView extends StatelessWidget {
           Container(
             height: 100.h,
             width: 100.w,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppSize.appCustomRadius.r),
-                image: const DecorationImage(
-                    image: AssetImage(AppImages.adminImage),
-                    fit: BoxFit.cover)),
+            child: CustomCachedNetImage(
+              imageUrl: controller.vendorData.runtimeType == AdminVendor
+                  ? controller.vendorData.image
+                  : controller.vendorData.photo,
+              canReDownload: false,
+              height: 100.h,
+              width: 100.w,
+              borderRadius: AppSize.appCustomRadius.r,
+              fit: BoxFit.cover,
+            ),
           ),
           SizedBox(
             height: 15.h,
           ),
-          Text("Admin", style: Theme.of(context).textTheme.displayLarge!),
+          Text(
+              controller.vendorData.runtimeType == AdminVendor
+                  ? controller.vendorData.firstName
+                  : controller.vendorData.username,
+              style: Theme.of(context).textTheme.displayLarge!),
           SizedBox(
             height: 5.h,
           ),
           Text(
-            "Amjad",
+            controller.vendorData.runtimeType == AdminVendor
+                ? controller.vendorData.username
+                : controller.vendorData.email,
             style: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: AppColors.grey,
                 ),
@@ -55,14 +69,18 @@ class SellerDataView extends StatelessWidget {
           ),
           CustomTextRow(
             title: "مجموع السيارات:".tr,
-            trailing: "2",
+            trailing: controller.vendorData.runtimeType == AdminVendor
+                ? "${controller.sellerResponseData.totalCarsCount}"
+                : "${controller.vendorData.totalCars}",
           ),
           SizedBox(
             height: 12.h,
           ),
           CustomTextRow(
             title: "عنوان:".tr,
-            trailing: "Sharjah - UAE",
+            trailing: controller.vendorData.runtimeType == AdminVendor
+                ? "${controller.vendorData.address}"
+                : "${controller.sellerResponseData.vendorInfo!.address}",
           ),
           SizedBox(
             height: 5.h,

@@ -19,7 +19,7 @@ class GridCarCard extends StatelessWidget {
     this.rightPadding,
     required this.onTap,
   });
-  final CarModel car;
+  final dynamic car;
   final int index;
   final VoidCallback addToFav;
   final double? rightPadding;
@@ -31,7 +31,7 @@ class GridCarCard extends StatelessWidget {
       child: Stack(
         children: [
           Container(
-            width: AppSize.screenWidth(context) / 2 - 30,
+            // width: AppSize.screenWidth(context) / 2 - 30,
             // height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
             //     ? 220.h
             //     : 190,
@@ -51,7 +51,7 @@ class GridCarCard extends StatelessWidget {
                     height: 5.h,
                   ),
                   Container(
-                      width: AppSize.screenWidth(context) / 2 - 35,
+                      width: AppSize.screenWidth(context) / 2 - 20.w,
                       height: 80.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
@@ -66,7 +66,7 @@ class GridCarCard extends StatelessWidget {
                     height: 10.h,
                   ),
                   Container(
-                    width: AppSize.screenWidth(context) / 2 - 40,
+                    width: AppSize.screenWidth(context) / 2 - 30.w,
                     // height:
                     //     AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
                     //         ? 120.h
@@ -93,6 +93,7 @@ class GridCarCard extends StatelessWidget {
                               .displaySmall!
                               .copyWith(
                                 color: AppColors.primaryColor,
+                                fontSize: 12.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
@@ -100,28 +101,29 @@ class GridCarCard extends StatelessWidget {
                           height: 5.h,
                         ),
                         Text(
-                          "${car.productTitle}",
+                          "${car.brand} ${car.model}",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
                               .copyWith(
                                   color: AppColors.grey,
+                                  fontSize: 12.sp,
                                   fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 5.h,
                         ),
-                        FittedBox(
-                          child: Text(
-                            car.productTitle,
-                            style: Theme.of(context)
-                                .textTheme
-                                .displaySmall!
-                                .copyWith(
-                                  fontSize: 11.5.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                          ),
+                        Text(
+                          car.productTitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displaySmall!
+                              .copyWith(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 12.sp,
+                              ),
                         ),
                         SizedBox(
                           height: 5.h,
@@ -134,7 +136,7 @@ class GridCarCard extends StatelessWidget {
                               borderRadius: 25.r,
                               fit: BoxFit.cover,
                               height: 25.h,
-                              width: 25.w,
+                              width: 28.w,
                               canReDownload: false),
                         )
                       ],
@@ -147,7 +149,7 @@ class GridCarCard extends StatelessWidget {
           Positioned(
               top: 7.h,
               right: rightPadding ?? 7.w,
-              child: InkWell(
+              child: GestureDetector(
                   onTap: addToFav,
                   child: Icon(
                     // car.isFav ? Icons.favorite :

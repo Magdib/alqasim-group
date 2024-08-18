@@ -27,7 +27,7 @@ class TopCarCard extends GetView<MainPageController> {
       child: Stack(
         children: [
           Container(
-            width: AppSize.screenWidth(context) - 30,
+            width: AppSize.screenWidth(context) - 30.w,
             // height:
             //  AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
             // ? 200.h + 41
@@ -55,6 +55,10 @@ class TopCarCard extends GetView<MainPageController> {
                     child: CustomCachedNetImage(
                       imageUrl: car.featureImage,
                       canReDownload: false,
+                      height: AppSize.screenWidth(context) >=
+                              AppSize.tabletBreakPoint
+                          ? 400
+                          : null,
                       borderRadius: 12.r,
                       fit: BoxFit.cover,
                     ),
@@ -64,10 +68,6 @@ class TopCarCard extends GetView<MainPageController> {
                   ),
                   Container(
                     width: AppSize.screenWidth(context) - 40.w,
-                    // height:
-                    //     AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
-                    //         ? 140.h
-                    //         : 120,
                     alignment: leftRightLangAlign(controller.selectedLocal),
                     padding: EdgeInsets.symmetric(horizontal: 6.5.w),
                     margin: EdgeInsets.only(bottom: 5.h),
@@ -89,6 +89,7 @@ class TopCarCard extends GetView<MainPageController> {
                               .textTheme
                               .displaySmall!
                               .copyWith(
+                                fontSize: 12.sp,
                                 color: AppColors.primaryColor,
                                 fontWeight: FontWeight.bold,
                               ),
@@ -102,6 +103,7 @@ class TopCarCard extends GetView<MainPageController> {
                               .textTheme
                               .displaySmall!
                               .copyWith(
+                                  fontSize: 12.sp,
                                   color: AppColors.grey,
                                   fontWeight: FontWeight.bold),
                         ),
@@ -113,7 +115,8 @@ class TopCarCard extends GetView<MainPageController> {
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!
-                              .copyWith(fontWeight: FontWeight.bold),
+                              .copyWith(
+                                  fontSize: 16.r, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 5.h,
@@ -124,9 +127,18 @@ class TopCarCard extends GetView<MainPageController> {
                           child: CustomCachedNetImage(
                             imageUrl: car.vendor.photo,
                             canReDownload: false,
-                            height: 25.h,
-                            width: 25.w,
-                            borderRadius: 25.r,
+                            height: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 40.h
+                                : 25.h,
+                            width: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 30.w
+                                : 25.w,
+                            borderRadius: AppSize.screenWidth(context) >=
+                                    AppSize.tabletBreakPoint
+                                ? 40.r
+                                : 25.r,
                             fit: BoxFit.cover,
                           ),
                         )
@@ -147,6 +159,7 @@ class TopCarCard extends GetView<MainPageController> {
                     //  Icons.favorite :
                     Icons.favorite_border_outlined,
                     color: AppColors.primaryColor,
+                    size: 24.r,
                   ))),
         ],
       ),

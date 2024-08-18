@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/account/model/account_pages_model.dart';
 import 'package:proj/local/view/widgets/dividers/custom_horizontal_divider.dart';
 
@@ -26,46 +28,59 @@ class AccountCard extends StatelessWidget {
           boxShadow: [BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)]),
       child: Column(
         children: [
-          ListView.separated(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            separatorBuilder: (context, index) => Column(
-              children: [
-                SizedBox(
-                  height: 4.h,
-                ),
-                const CustomHorizontalDivider(),
-                SizedBox(
-                  height: 4.h,
-                ),
-              ],
-            ),
-            itemCount: dataList.length,
-            itemBuilder: (context, index) => GestureDetector(
-              onTap: dataList[index].link == null
-                  ? () => Get.toNamed(dataList[index].route!)
-                  : () =>
-                      Get.toNamed(AppRoutes.inAppWebViewPageRoute, arguments: {
-                        ArgumentsNames.webViewLink: dataList[index].link,
-                      }),
-              child: Row(
+          GetBuilder<AccountController>(
+            builder: (controller) => ListView.separated(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (context, index) => Column(
                 children: [
-                  Icon(
-                    dataList[index].icon,
-                    color: AppColors.primaryColor,
-                    size: 25.r,
-                  ),
                   SizedBox(
-                    width: 10.w,
+                    height: 4.h,
                   ),
-                  Text(dataList[index].title,
-                      style: Theme.of(context)
-                          .textTheme
-                          .displayMedium!
-                          .copyWith(
-                              color: AppColors.primaryColor,
-                              fontWeight: FontWeight.bold))
+                  const CustomHorizontalDivider(),
+                  SizedBox(
+                    height: 4.h,
+                  ),
                 ],
+              ),
+              itemCount: dataList.length,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: dataList[index].title == "تسجيل الخروج".tr
+                    ? () => controller.logout()
+                    : dataList[index].link == null
+                        ? () {
+                            if (dataList[index].route! ==
+                                AppRoutes.signInPageRoute) {
+                              AppToasts.errorToast(
+                                  "قم بتسجيل الدخول للمتابعة".tr);
+                            }
+                            Get.toNamed(dataList[index].route!);
+                          }
+                        : () => Get.toNamed(AppRoutes.inAppWebViewPageRoute,
+                                arguments: {
+                                  ArgumentsNames.webViewLink:
+                                      dataList[index].link,
+                                }),
+                child: Row(
+                  children: [
+                    Icon(
+                      dataList[index].icon,
+                      color: AppColors.primaryColor,
+                      size: 25.r,
+                    ),
+                    SizedBox(
+                      width: 10.w,
+                    ),
+                    Text(dataList[index].title,
+                        style: Theme.of(context)
+                            .textTheme
+                            .displayMedium!
+                            .copyWith(
+                                color: AppColors.primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14.sp))
+                  ],
+                ),
               ),
             ),
           ),

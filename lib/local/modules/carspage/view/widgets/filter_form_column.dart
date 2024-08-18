@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
@@ -18,25 +19,25 @@ class FilterFormColumn extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 3.5),
+            padding: EdgeInsets.symmetric(horizontal: 3.5.w),
             child: Text(
               title,
               style: Theme.of(context)
                   .textTheme
                   .displayLarge!
-                  .copyWith(fontSize: 14),
+                  .copyWith(fontSize: 14.sp),
             ),
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
           CustomTextFormField(
             hint: hint,
             textEditingController:
                 title == "موقع" ? controller.carLocation : controller.carTitle,
           ),
-          const SizedBox(
-            height: 10,
+          SizedBox(
+            height: 10.h,
           ),
         ],
       ),

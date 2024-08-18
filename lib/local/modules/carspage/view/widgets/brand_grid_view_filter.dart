@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/modules/carspage/controller/cars_page_controller.dart';
 
@@ -13,8 +14,8 @@ class BrandGridViewFilter extends StatelessWidget {
       builder: (controller) => GridView.builder(
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3, childAspectRatio: 2),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, childAspectRatio: 2.h),
         itemCount: controller.brands.length,
         itemBuilder: (context, index) => Row(
           children: [
@@ -24,7 +25,7 @@ class BrandGridViewFilter extends StatelessWidget {
                 onChanged: (value) =>
                     controller.brandCheckValue(index, value!)),
             SizedBox(
-              width: 60,
+              width: 60.w,
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
@@ -32,7 +33,7 @@ class BrandGridViewFilter extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium!
-                      .copyWith(fontWeight: FontWeight.bold, fontSize: 12),
+                      .copyWith(fontWeight: FontWeight.bold, fontSize: 12.sp),
                 ),
               ),
             )

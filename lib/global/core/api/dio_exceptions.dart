@@ -15,6 +15,7 @@ class DioExceptions {
     //   apiErrors =ApiErrors(message: "Un authorized", statusRequest: StatusRequest.failure);
     // } else {
     log("exception is ${dioException.type}");
+    log("exception is ${dioException.response}");
     switch (dioException.type) {
       case DioExceptionType.receiveTimeout:
         apiErrors = ApiErrors(
@@ -46,7 +47,7 @@ class DioExceptions {
         //error on body parameter
         apiErrors = ApiErrors(
             message:
-                "${dioException.response?.data['message'] ?? "حدث خطأ ما...".tr}",
+                "${dioException.response!.data['message'] ?? "حدث خطأ ما...".tr}",
             statusRequest: StatusRequest.failure);
         break;
       default:

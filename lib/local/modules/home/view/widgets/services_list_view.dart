@@ -42,6 +42,7 @@ class ServicesListView extends StatelessWidget {
                   color: controller.selectedServices == index
                       ? AppColors.white
                       : AppColors.primaryColor,
+                  size: 24.r,
                 ),
               ),
               SizedBox(

@@ -19,7 +19,7 @@ class IconTitleRow extends StatelessWidget {
       children: [
         Icon(
           icon,
-          size: index == 2 ? 30.r : null,
+          size: index == 2 ? 30.r : 24.r,
           color: AppColors.primaryColor,
         ),
         SizedBox(

@@ -35,7 +35,7 @@ class EmptyDataWidget extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(color: AppColors.primaryColor),
+                .copyWith(color: AppColors.primaryColor, fontSize: 16.sp),
           ),
         ],
       ),

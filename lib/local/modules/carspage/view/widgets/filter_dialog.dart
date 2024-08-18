@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -25,18 +26,19 @@ filterDialog(BuildContext context) {
                   controller.handlePop();
                   Get.back();
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back,
                   color: AppColors.white,
+                  size: 24.r,
                 ))),
         body: HandlingDataRequest(
           onTap: () => controller.getData(true),
           statusRequest: controller.dialogStatusRequest,
           child: ListView(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
             children: [
               SizedBox(
-                height: 20,
+                height: 20.h,
               ),
               FilterGridView(),
               FilterFormColumn(
@@ -55,21 +57,21 @@ filterDialog(BuildContext context) {
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 14.sp),
               ),
               const BrandGridViewFilter(),
-              const SizedBox(
-                height: 10,
+              SizedBox(
+                height: 10.h,
               ),
               Text(
                 "التسعير:".tr,
                 style: Theme.of(context)
                     .textTheme
                     .displayLarge!
-                    .copyWith(fontSize: 14),
+                    .copyWith(fontSize: 14.sp),
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -96,8 +98,8 @@ filterDialog(BuildContext context) {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               Center(
                 child: ButtonWithIcon(

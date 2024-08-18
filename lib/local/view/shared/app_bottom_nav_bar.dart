@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
@@ -32,22 +33,27 @@ class AppBottomNavBar extends StatelessWidget {
               Icon(
                 AppStatics.navBarData[0].icon,
                 color: AppColors.white,
+                size: 24.r,
               ),
               Icon(
                 AppStatics.navBarData[1].icon,
                 color: AppColors.white,
+                size: 24.r,
               ),
               Icon(
                 AppStatics.navBarData[2].icon,
                 color: AppColors.white,
+                size: 24.r,
               ),
               Icon(
                 AppStatics.navBarData[3].icon,
                 color: AppColors.white,
+                size: 24.r,
               ),
               Icon(
                 AppStatics.navBarData[4].icon,
                 color: AppColors.white,
+                size: 24.r,
               ),
             ],
             onTap: (index) => controller.onPageChanged(index),

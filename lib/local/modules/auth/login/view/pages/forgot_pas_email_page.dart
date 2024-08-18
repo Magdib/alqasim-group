@@ -49,10 +49,8 @@ class ForgotPassEmailPage extends StatelessWidget {
             child: Text(
               "الرجاء إدخال الحساب المراد استعادة كلمة المرور له في الحقل التالي:"
                   .tr,
-              style: Theme.of(context)
-                  .textTheme
-                  .displayMedium!
-                  .copyWith(color: AppColors.grey, height: 1.5),
+              style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                  color: AppColors.grey, fontSize: 14.sp, height: 1.5),
             ),
           ),
           SizedBox(

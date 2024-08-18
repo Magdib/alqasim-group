@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 
 class CarSliverAppBar extends StatelessWidget {
@@ -19,22 +20,24 @@ class CarSliverAppBar extends StatelessWidget {
       flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
           title: Text(title,
-              style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    color: AppColors.white,
-                  )),
+              style: Theme.of(context)
+                  .textTheme
+                  .displayLarge!
+                  .copyWith(color: AppColors.white, fontSize: 16.sp)),
           background: Image.asset(
             "assets/images/sliver.webp",
             fit: BoxFit.cover,
           )),
-      leading: IconButton(
-          padding: EdgeInsets.zero,
-          onPressed: () => Get.back(),
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.white,
-          )),
+      leading: Hero(
+        tag: "arrowBack",
+        child: IconButton(
+            padding: EdgeInsets.zero,
+            onPressed: () => Get.back(),
+            icon: Icon(Icons.arrow_back, color: AppColors.white, size: 24.r)),
+      ),
       expandedHeight: 150.h,
-      collapsedHeight: 56,
+      collapsedHeight:
+          AppSize.screenWidth(context) >= AppSize.tabletBreakPoint ? 56.h : 56,
       backgroundColor: AppColors.primaryColor,
     );
   }

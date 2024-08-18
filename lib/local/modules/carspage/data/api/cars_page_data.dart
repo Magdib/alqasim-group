@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dartz/dartz.dart';
 import 'package:proj/global/core/api/api_errors.dart';
 import 'package:proj/global/core/api/dio_crud.dart';
