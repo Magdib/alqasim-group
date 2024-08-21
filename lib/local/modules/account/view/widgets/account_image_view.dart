@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:proj/Local/Core/Constant/Colors.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/account/model/enums/account_image_state.dart';
@@ -39,7 +41,8 @@ class AccountImageView extends StatelessWidget {
             child: Stack(
               children: [
                 GestureDetector(
-                  onTap: controller.accountImage != null
+                  onTap: controller.accountImage != null &&
+                          controller.imageStatusRequest != StatusRequest.loading
                       ? () => controller.pickAccountImage()
                       : null,
                   child: Container(
@@ -68,27 +71,34 @@ class AccountImageView extends StatelessWidget {
                                 )
                               : null),
                       child:
-                          controller.accountImageState == AccountImageState.none
-                              ? Icon(
-                                  Icons.person_outline,
-                                  color: AppColors.white,
+                          controller.imageStatusRequest == StatusRequest.loading
+                              ? SpinKitFadingCircle(
                                   size: 50.r,
+                                  color: AppColors.white,
                                 )
-                              : controller.accountImageState ==
-                                      AccountImageState.login
-                                  ? Text(
-                                      controller.userName[0],
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayLarge!
-                                          .copyWith(
-                                              color: AppColors.white,
-                                              fontSize: 45.h),
+                              : (controller.accountImageState ==
+                                      AccountImageState.none
+                                  ? Icon(
+                                      Icons.person_outline,
+                                      color: AppColors.white,
+                                      size: 50.r,
                                     )
-                                  : null),
+                                  : controller.accountImageState ==
+                                          AccountImageState.login
+                                      ? Text(
+                                          controller.userName[0],
+                                          textAlign: TextAlign.center,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayLarge!
+                                              .copyWith(
+                                                  color: AppColors.white,
+                                                  fontSize: 45.h),
+                                        )
+                                      : null)),
                 ),
-                if (controller.accountImage == null)
+                if (controller.accountImage == null &&
+                    controller.imageStatusRequest != StatusRequest.loading)
                   Positioned(
                       right: 0,
                       bottom: 0,

@@ -5,10 +5,14 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:proj/global/core/api/api_errors.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/class/hive_keys.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/modules/account/data/account_data.dart';
 import 'package:proj/local/modules/account/model/account_pages_model.dart';
 import 'package:proj/local/modules/account/model/enums/account_image_state.dart';
 import 'package:proj/local/modules/auth/login/model/login_model.dart';
@@ -19,6 +23,8 @@ class AccountController extends GetxController {
   String? accountBackImage;
   AccountImageState accountImageState = AccountImageState.none;
   AccountImageState accountBackImageState = AccountImageState.none;
+  StatusRequest imageStatusRequest = StatusRequest.none;
+  StatusRequest backImageStatusRequest = StatusRequest.none;
   late String userName;
   late List<AccountPagesModel> upperList;
   late List<AccountPagesModel> lowerList;
@@ -31,7 +37,26 @@ class AccountController extends GetxController {
       final ImagePicker picker = ImagePicker();
       final XFile? image = await picker.pickImage(source: ImageSource.gallery);
       if (image != null) {
-        accountImage = image.path;
+        imageStatusRequest = StatusRequest.loading;
+        update();
+        AccountData signInData = AccountData(Get.find());
+        var response = await signInData.uploadUserImage(
+            getLanguage().languageCode, image.path, token!);
+        response.fold((l) {
+          if (l.runtimeType == NetworkError) {
+            AppToasts.errorToast("...لا يوجد اتصال بالإنترنت".tr);
+          } else {
+            AppToasts.errorToast(l.message);
+          }
+          imageStatusRequest = StatusRequest.none;
+
+          update();
+        }, (r) {
+          imageStatusRequest = StatusRequest.none;
+          update();
+          log(r['message']);
+// loginData.image =
+        });
         accountImageState = AccountImageState.image;
       }
       update();
@@ -58,6 +83,7 @@ class AccountController extends GetxController {
 
   defineLists() {
     token = authBox.get(HiveKeys.token);
+
     loginDataBox = Hive.box(HiveBoxes.loginDataBox);
     if (token != null) {
       loginData = loginDataBox.getAt(0)!;
