@@ -8,6 +8,7 @@ class SignUpData {
   SignUpData(this.crud);
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> signup(
+    String language,
     String email,
     String username,
     String password,
@@ -16,6 +17,7 @@ class SignUpData {
     return await crud.post(
       linkUrl: ApiLinks.signUpApi,
       data: {
+        "language": language,
         "username": username,
         "email": email,
         "password": password,

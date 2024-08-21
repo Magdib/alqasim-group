@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
-import 'package:proj/local/modules/account/model/tickets_model.dart';
+import 'package:proj/local/modules/account/model/api/support_tickets_model.dart';
 
 import 'custom_table_row.dart';
 
@@ -12,7 +12,7 @@ class CustomTableWidget extends StatelessWidget {
       {super.key, required this.isTitles, this.body, this.isEnd});
   final bool isTitles;
   final bool? isEnd;
-  final TicketModel? body;
+  final SupportTicketsModel? body;
   @override
   Widget build(BuildContext context) {
     return Table(
@@ -33,22 +33,22 @@ class CustomTableWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(6.r)),
             children: [
               CustomTableRow(
-                body: isTitles ? "معرّف التذكرة".tr : body!.ticketId,
+                body: isTitles ? "معرّف التذكرة".tr : body!.id.toString(),
                 isTitles: isTitles,
                 title: "معرّف التذكرة".tr,
               ),
               CustomTableRow(
-                body: isTitles ? "الموضوع".tr : body!.subject,
+                body: isTitles ? "الموضوع".tr : body!.subject!,
                 isTitles: isTitles,
                 title: "الموضوع".tr,
               ),
               CustomTableRow(
-                body: isTitles ? "الحالة".tr : body!.status,
+                body: isTitles ? "الحالة".tr : (body!.status == "1" ? "" : ""),
                 isTitles: isTitles,
                 title: "الحالة".tr,
               ),
               CustomTableRow(
-                body: isTitles ? "الرسالة".tr : body!.message,
+                body: isTitles ? "الرسالة".tr : body!.description!,
                 isTitles: isTitles,
                 title: "الرسالة".tr,
               ),

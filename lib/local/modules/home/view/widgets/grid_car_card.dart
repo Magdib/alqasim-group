@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:proj/local/core/constant/images.dart';
 import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/functions/language/left_right_lang_align.dart';
-import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
-import 'package:proj/local/modules/home/controller/main_page_controller.dart';
+import 'package:proj/local/modules/carspage/controller/seller_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/view/shared/custom_cached_net_image.dart';
@@ -146,16 +145,23 @@ class GridCarCard extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-              top: 7.h,
-              right: rightPadding ?? 7.w,
-              child: GestureDetector(
-                  onTap: addToFav,
-                  child: Icon(
-                    // car.isFav ? Icons.favorite :
-                    Icons.favorite_border_outlined,
-                    color: AppColors.primaryColor,
-                  ))),
+          GetBuilder<SellerPageController>(
+            builder: (controller) => Positioned(
+                top: 7.h,
+                right: rightPadding ?? 7.w,
+                child: controller.wishlistLoadingList[index]
+                    ? SpinKitPumpingHeart(
+                        color: AppColors.primaryColor,
+                        size: 24.r,
+                      )
+                    : GestureDetector(
+                        onTap: addToFav,
+                        child: Icon(
+                          // car.isFav ? Icons.favorite :
+                          Icons.favorite_border_outlined,
+                          color: AppColors.primaryColor,
+                        ))),
+          ),
         ],
       ),
     );

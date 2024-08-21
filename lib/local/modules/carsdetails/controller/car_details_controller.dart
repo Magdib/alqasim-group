@@ -14,6 +14,7 @@ import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/functions/wishlist/add_to_wishlist.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carsdetails/data/car_details_data.dart';
 import 'package:proj/local/modules/carsdetails/data/enums/save_images_state.dart';
@@ -112,14 +113,9 @@ class CarDetailsController extends GetxController {
   List<String> carDetails = [];
   List<RelatedCars> linkedCars = [];
   bool isFav = false;
-  addToFav() {
-    isFav = !isFav;
-    if (isFav) {
-      AppToasts.successToast("تمت الإضافة إلى قائمة الرغبات".tr);
-    } else {
-      AppToasts.successToast("تم الحذف من قائمة الرغبات".tr);
-    }
-    update();
+  addToFav() async {
+    // await removeFromWishList(topCars[index].id.toString());
+    await addToWishList(car.id.toString());
   }
 
   changeImage(int index) {
@@ -207,7 +203,7 @@ class CarDetailsController extends GetxController {
           AppToasts.successToast("تم إرسال الرسالة بنجاح".tr);
           messageController.clear();
         } else {
-          AppToasts.errorToast("حدث خطأ ما...");
+          AppToasts.errorToast("حدث خطأ ما...".tr);
         }
       });
 

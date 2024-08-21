@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/modules/auth/login/controller/login_controller.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/checking_container.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
-class OtpPage extends StatelessWidget {
+class OtpPage extends GetView<LoginController> {
   const OtpPage({
     super.key,
   });
@@ -59,8 +62,9 @@ class OtpPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
             child: CustomTextFormField(
-              hint: "XXXXXX",
-              maxLength: 6,
+              hint: "X-X-X-X",
+              textEditingController: controller.otpController,
+              maxLength: 4,
               textAlign: TextAlign.center,
               inputType: TextInputType.number,
             ),
@@ -71,18 +75,31 @@ class OtpPage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: AppSize.screenWidth(context) / 4),
-            child: ButtonWithIcon(
-                title: "تحقق من الرمز ".tr,
-                icon: Icons.check_circle_outline_sharp,
-                onPressed: Get.previousRoute == AppRoutes.signUpPageRoute
-                    ? () => Get.offNamedUntil(
-                          AppRoutes.signInPageRoute,
-                          (route) => route.isFirst,
-                        )
-                    : () => Get.toNamed(AppRoutes.resetPasswordPageRoute)),
+            child: GetBuilder<LoginController>(
+              builder: (controller) =>
+                  controller.checkOTPStatusRequest == StatusRequest.loading
+                      ? const CheckingContainer()
+                      : ButtonWithIcon(
+                          title: "تحقق من الرمز ".tr,
+                          icon: Icons.check_circle_outline_sharp,
+                          onPressed: () => controller.checkOtp()),
+            ),
           ),
           SizedBox(
-            height: 40.h,
+            height: 10.h,
+          ),
+          Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppSize.screenWidth(context) / 4),
+              child: TextButton(
+                  onPressed: () => controller.checkEmail(false),
+                  child: Text(
+                    "إرسال الرمز مجدداً".tr,
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                        color: AppColors.primaryColor, fontSize: 14.sp),
+                  ))),
+          SizedBox(
+            height: 20.h,
           )
         ]))
       ],

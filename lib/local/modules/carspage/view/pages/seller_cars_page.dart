@@ -4,6 +4,7 @@ import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/functions/language/get_language.dart';
@@ -14,7 +15,9 @@ import 'package:proj/local/modules/carspage/view/widgets/seller_data_view.dart';
 import 'package:proj/local/modules/home/view/widgets/grid_car_card.dart';
 import 'package:proj/local/view/shared/app_bottom_nav_bar.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/checking_container.dart';
 import 'package:proj/local/view/shared/handiling_data_widget.dart';
+import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 
 class SellerCarsPage extends StatelessWidget {
   const SellerCarsPage({super.key});
@@ -47,7 +50,7 @@ class SellerCarsPage extends StatelessWidget {
                             builder: (controller) => ListView.builder(
                               scrollDirection: Axis.horizontal,
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
-                              itemCount: controller.catCars.length,
+                              itemCount: controller.catCars.length + 1,
                               itemBuilder: (context, index) =>
                                   CustomFixTabBarItem(
                                 index: index,
@@ -59,44 +62,70 @@ class SellerCarsPage extends StatelessWidget {
                           builder: (controller) => Padding(
                             padding: EdgeInsets.only(
                                 left: 10.w, right: 10.w, bottom: 20.h),
-                            child: DynamicHeightGridView(
-                                physics: const NeverScrollableScrollPhysics(),
-                                shrinkWrap: true,
-                                itemCount: controller
-                                    .catCars[controller.selectedIndex]
-                                    .cars
-                                    .length,
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 10,
-                                builder: (context, subIndex) => GridCarCard(
-                                    car: controller
-                                        .catCars[controller.selectedIndex]
-                                        .cars[subIndex],
-                                    index: subIndex,
-                                    rightPadding:
-                                        getLanguage().languageCode == "ar"
-                                            ? null
-                                            : 23.w,
-                                    onTap: () {
-                                      Get.toNamed(
-                                        AppRoutes.carDetailsPageRoute,
-                                        arguments: {
-                                          ArgumentsNames.carId: controller
-                                              .catCars[controller.selectedIndex]
-                                              .cars[subIndex]
-                                              .id,
-                                          ArgumentsNames.selectedLocal:
-                                              getLanguage().languageCode
-                                        },
-                                      );
-                                    },
-                                    addToFav: () {})),
+                            child: Column(children: [
+                              DynamicHeightGridView(
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: controller.selectedIndex != 0
+                                      ? controller
+                                          .catCars[controller.selectedIndex - 1]
+                                          .cars
+                                          .length
+                                      : controller.totalSellerCars.length,
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 10,
+                                  builder: (context, index) => GridCarCard(
+                                      car: controller.selectedIndex != 0
+                                          ? controller
+                                              .catCars[
+                                                  controller.selectedIndex - 1]
+                                              .cars[index]
+                                          : controller.totalSellerCars[index],
+                                      index: index,
+                                      rightPadding:
+                                          getLanguage().languageCode == "ar"
+                                              ? null
+                                              : 23.w,
+                                      onTap: () {
+                                        Get.toNamed(
+                                          AppRoutes.carDetailsPageRoute,
+                                          arguments: {
+                                            ArgumentsNames.carId:
+                                                controller.selectedIndex != 0
+                                                    ? controller
+                                                        .catCars[controller
+                                                                .selectedIndex -
+                                                            1]
+                                                        .cars[index]
+                                                        .id
+                                                    : controller
+                                                        .totalSellerCars[index],
+                                            ArgumentsNames.selectedLocal:
+                                                getLanguage().languageCode
+                                          },
+                                        );
+                                      },
+                                      addToFav: () =>
+                                          controller.handleWishlist(index))),
+                              SizedBox(
+                                height: 15.h,
+                              ),
+                              if (controller.vendorPagination!.currentPage !=
+                                  controller.vendorPagination!.lastPage)
+                                (controller.paginationStatusRequest !=
+                                        StatusRequest.loading
+                                    ? CustomButton(
+                                        buttonBody: "جلب المزيد من السيارات",
+                                        onTap: () =>
+                                            controller.handlePagination())
+                                    : CheckingContainer())
+                            ]),
                           ),
                         ),
                         // ),
                       ],
                     ),
-                    onTap: () => controller.getData()))
+                    onTap: () => controller.getData(false)))
           ]))
         ],
       ),

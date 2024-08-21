@@ -49,6 +49,7 @@ class EditAccountPage extends StatelessWidget {
                         SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل موقعك هنا...".tr,
+                          textEditingController: controller.locationController,
                         ),
                         SizedBox(
                           height: 10.h,
@@ -63,6 +64,8 @@ class EditAccountPage extends StatelessWidget {
                         SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل رقم هاتفك هنا...".tr,
+                          textEditingController:
+                              controller.phoneNumberController,
                           inputType: TextInputType.phone,
                         ),
                         SizedBox(
@@ -78,6 +81,7 @@ class EditAccountPage extends StatelessWidget {
                         SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل كلمة المرور هنا...".tr,
+                          textEditingController: controller.passwordController,
                           obscure: true,
                         ),
                         SizedBox(
@@ -93,6 +97,8 @@ class EditAccountPage extends StatelessWidget {
                         SizedBox(height: 10.h),
                         CustomTextFormField(
                           hint: "أدخل كلمة المرور الجديدة هنا...".tr,
+                          textEditingController:
+                              controller.confirmPasswordController,
                           obscure: true,
                         ),
                         SizedBox(

@@ -22,7 +22,7 @@ class CarCards extends GetView<CarDetailsController> {
     return SizedBox(
       height: AppSize.screenWidth(context) >= AppSize.tabletBreakPoint
           ? 370.h
-          : 340,
+          : 350,
       child: PageView.builder(
         itemCount: cars.length,
         itemBuilder: (context, index) => GestureDetector(

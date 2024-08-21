@@ -1,11 +1,11 @@
-import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
+import 'api/favorite_model.dart';
 
 class FilteredCarsModel {
-  final List<CarModel> cars;
+  final List<FavoriteModel> cars;
   final String filterTitle;
-
-  FilteredCarsModel({
-    required this.cars,
-    required this.filterTitle,
-  });
+  final List<bool> isLoadingList;
+  FilteredCarsModel(
+      {required this.cars,
+      required this.filterTitle,
+      required this.isLoadingList});
 }

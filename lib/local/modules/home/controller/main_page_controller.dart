@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,8 @@ import 'package:proj/local/core/class/hive_keys.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/functions/hive_null_get.dart';
+import 'package:proj/local/core/functions/wishlist/add_to_wishlist.dart';
+import 'package:proj/local/core/functions/wishlist/remove_from_wishlist.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/auth/login/model/login_model.dart';
@@ -38,6 +41,7 @@ class MainPageController extends GetxController {
   int? drawerSelectedServices;
   late double carPadding;
   PageController sliderController = PageController();
+  bool isSwipingImages = false;
   PageController pageController = PageController(initialPage: 2);
   late ScrollController scrollController;
   late ScrollController categoriesScrollController;
@@ -54,8 +58,10 @@ class MainPageController extends GetxController {
   ];
   late List<HomeServicesModel> homeServicesList;
   late List<DrawerModel> drawerItems;
+  List<bool> wishlistLoadingList = [];
   StatusRequest statusRequest = StatusRequest.loading;
   StatusRequest categoriesStatusRequest = StatusRequest.loading;
+  bool isGettingCatData = false;
   StatusRequest topCarsStatusRequest = StatusRequest.none;
   List<IconData> pagesIcons = [Icons.home, Icons.favorite, Icons.person];
   List<HomeSliderModel> sliderData = [];
@@ -135,7 +141,13 @@ class MainPageController extends GetxController {
       }
     }
     if (value == 1) {
-      Get.put(FavoritePageController());
+      FavoritePageController favoritePageController =
+          Get.put(FavoritePageController());
+      if (favoritePageController.cars.isNotEmpty) {
+        favoritePageController.initializeData(false);
+      } else {
+        favoritePageController.initializeData(true);
+      }
     }
     if (value == 4) {
       AccountController accountController = Get.put(AccountController());
@@ -179,7 +191,7 @@ class MainPageController extends GetxController {
 
   swipeImages() async {
     while (true) {
-      await Future.delayed(const Duration(seconds: 6));
+      await Future.delayed(const Duration(seconds: 10));
       if (pageIndex == 2 &&
           Get.currentRoute == AppRoutes.homePageRoute &&
           scrollController.offset < 100) {
@@ -194,8 +206,12 @@ class MainPageController extends GetxController {
     }
   }
 
-  handleFav(int index) {
-    // topCars[index].isFav = !topCars[index].isFav;
+  handleWishList(int index) async {
+    wishlistLoadingList[index] = true;
+    update();
+    // await removeFromWishList(topCars[index].id.toString());
+    await addToWishList(topCars[index].id.toString());
+    wishlistLoadingList[index] = false;
     update();
   }
 
@@ -302,7 +318,10 @@ class MainPageController extends GetxController {
         topNextPageUrl = tr['meta']['nextPageUrl'];
         topCars = jsonData.map((e) => TopCarModel.fromJson(e)).toList();
         log("data $tr");
-
+        wishlistLoadingList.clear();
+        for (int i = 0; i < topCars.length; i++) {
+          wishlistLoadingList.add(false);
+        }
         var categoriesResponse =
             await homeData.getCategoriesData(selectedLocal);
         categoriesResponse.fold((cl) {
@@ -333,8 +352,10 @@ class MainPageController extends GetxController {
               }
             });
           statusRequest = StatusRequest.none;
-
-          swipeImages();
+          if (isSwipingImages == false) {
+            swipeImages();
+            isSwipingImages = true;
+          }
           categoriesScrollController = ScrollController()
             ..addListener(() => categoriesPagination());
           while (true) {
@@ -351,8 +372,8 @@ class MainPageController extends GetxController {
   }
 
   getCatData(bool keepGettingData) async {
-    if (catNextPageUrl != null &&
-        categoriesStatusRequest != StatusRequest.loading) {
+    if (catNextPageUrl != null && isGettingCatData == false) {
+      isGettingCatData = true;
       HomeData homeData = HomeData(Get.find());
       var categoriesResponse = await homeData.getCategoriesData(selectedLocal,
           nextPageUrl: catNextPageUrl!);
@@ -363,6 +384,8 @@ class MainPageController extends GetxController {
             categoriesScrollController.position.maxScrollExtent - 100.w,
             duration: Duration(milliseconds: 400),
             curve: Curves.easeIn);
+
+        isGettingCatData = false;
         if (keepGettingData) {
           await Future.delayed(Duration(seconds: 10));
           getCatData(keepGettingData);
@@ -380,6 +403,8 @@ class MainPageController extends GetxController {
           categoriesData.addAll(
               cJsonData.map((e) => CategoriesModel.fromJson(e)).toList());
         }
+
+        isGettingCatData = false;
         update();
       });
     }
@@ -398,6 +423,10 @@ class MainPageController extends GetxController {
         List jsonData = tr['data'];
         topNextPageUrl = tr['meta']['nextPageUrl'];
         topCars.addAll(jsonData.map((e) => TopCarModel.fromJson(e)).toList());
+        wishlistLoadingList.clear();
+        for (int i = 0; i < topCars.length; i++) {
+          wishlistLoadingList.add(false);
+        }
       });
       topCarsStatusRequest = StatusRequest.none;
       update();
@@ -425,13 +454,16 @@ class MainPageController extends GetxController {
   handleAfterLogin() async {
     showLoginData = false;
     scaffoldKey.currentState!.closeDrawer();
+    onPageChanged(2);
     if (pageIndex == 4) {
       AccountController accountController = Get.find();
       await accountController.loginDataBox.close();
       accountController.loginDataBox =
           await Hive.openBox(HiveBoxes.loginDataBox);
+    } else {
+      await loginDataBox.close();
+      loginDataBox = await Hive.openBox(HiveBoxes.loginDataBox);
     }
-    onPageChanged(2);
   }
 
   handleAfterLogout() {
@@ -460,6 +492,9 @@ class MainPageController extends GetxController {
     showLoginData = authBox.get(HiveKeys.token) == null ? true : false;
     loginDataBox = await Hive.openBox<LoginModel>(HiveBoxes.loginDataBox);
     await getData(false);
+    // UserCredential userCredential =
+    //     await FirebaseAuth.instance.signInAnonymously();
+    // log(userCredential.user!.uid.toString());
     super.onReady();
   }
 }

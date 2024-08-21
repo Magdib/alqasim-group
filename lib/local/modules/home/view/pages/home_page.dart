@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                 ),
                 itemBuilder: (context, index) => TopCarCard(
                   car: controller.topCars[index],
-                  addToFav: () => controller.handleFav(index),
+                  addToFav: () => controller.handleWishList(index),
                   index: index,
                 ),
                 itemCount: controller.topCars.length,
@@ -88,11 +88,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             const AnimatedCar(),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 15.w),
-            //   child: AlQassemLogoCard(),
-            // ),
-            // const SizedBox(height: 20),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Text(

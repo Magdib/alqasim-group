@@ -110,27 +110,31 @@ class LoginPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(10.w),
-                child: ButtonWithIcon(
-                  minWidth: AppSize.screenWidth(context),
-                  title: "تسجيل الدخول مع غوغل".tr,
-                  image: AppImages.googleLogo,
-                  color: const Color.fromARGB(255, 6, 36, 87),
-                  onPressed: () {},
+              GetBuilder<LoginController>(
+                builder: (controller) => Padding(
+                  padding: EdgeInsets.all(10.w),
+                  child: controller.googleStatusRequest == StatusRequest.loading
+                      ? CheckingContainer()
+                      : ButtonWithIcon(
+                          minWidth: AppSize.screenWidth(context),
+                          title: "تسجيل الدخول مع غوغل".tr,
+                          image: AppImages.googleLogo,
+                          color: const Color.fromARGB(255, 1, 26, 68),
+                          onPressed: () => controller.signInWithGoogleRequest(),
+                        ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(10).w,
-                child: ButtonWithIcon(
-                  minWidth: AppSize.screenWidth(context),
-                  title: "تسجيل الدخول مع فيسبوك".tr,
-                  icon: FontAwesome.facebook_brand,
-                  iconTextDist: 10.w,
-                  color: const Color.fromARGB(255, 1, 26, 68),
-                  onPressed: () {},
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.all(10).w,
+              //   child: ButtonWithIcon(
+              //     minWidth: AppSize.screenWidth(context),
+              //     title: "تسجيل الدخول مع فيسبوك".tr,
+              //     icon: FontAwesome.facebook_brand,
+              //     iconTextDist: 10.w,
+              //     color: const Color.fromARGB(255, 1, 26, 68),
+              //     onPressed: () {},
+              //   ),
+              // ),
             ]),
           ),
         )

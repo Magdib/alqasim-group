@@ -9,7 +9,6 @@ import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/localization/localization.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/core/themes/theme.dart';
-
 import 'global/core/services/services.dart';
 
 void main() async {

@@ -47,7 +47,7 @@ class AccountImageView extends StatelessWidget {
                       width: AppSize.screenWidth(context) >=
                               AppSize.tabletBreakPoint
                           ? 68.w
-                          : 100.w,
+                          : 95.w,
                       // radius: 50.r,
                       // backgroundColor: AppColors.primaryColor,
                       alignment: Alignment.center,

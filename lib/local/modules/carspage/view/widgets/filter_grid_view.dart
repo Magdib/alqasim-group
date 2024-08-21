@@ -72,7 +72,7 @@ class FilterGridView extends StatelessWidget {
                                 .displaySmall!
                                 .copyWith(
                                     color: AppColors.grey,
-                                    fontSize: e.length > 18 ? 8.sp : 12.sp),
+                                    fontSize: e.length > 18 ? 10.sp : 12.sp),
                           ),
                         ),
                       )

@@ -7,48 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590915919372:android:369308bd3bc097ff4e1829",
-        "android_client_info": {
-          "package_name": "com.alqassim.echovision"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "590915919372-ifhp5cdu909gh2nrnbh09kgr567iuuso.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBrKcdCkITMwW-DfBXiO3njO_0j1FqHdd4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "590915919372-ifhp5cdu909gh2nrnbh09kgr567iuuso.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "590915919372-ul0lufuu8sotakincrvoimjnob120du5.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.proj"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
         "mobilesdk_app_id": "1:590915919372:android:c1d80c2ec1117cf44e1829",
         "android_client_info": {
           "package_name": "com.alqassimcars.echovision"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "590915919372-pdeukc595e7425vqdaghr20l33jo0e6c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alqassimcars.echovision",
+            "certificate_hash": "cba9463c287abcddabeb59bd71a98a0e80003ea0"
+          }
+        },
         {
           "client_id": "590915919372-ifhp5cdu909gh2nrnbh09kgr567iuuso.apps.googleusercontent.com",
           "client_type": 3

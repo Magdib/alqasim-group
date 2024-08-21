@@ -59,16 +59,13 @@ class AccountController extends GetxController {
   defineLists() {
     token = authBox.get(HiveKeys.token);
     loginDataBox = Hive.box(HiveBoxes.loginDataBox);
-    log("$token");
     if (token != null) {
-      log("ssssssss==== ${loginDataBox.length}");
       loginData = loginDataBox.getAt(0)!;
       userName = loginData.username;
       if (loginData.image.isEmpty) {
         accountImageState = AccountImageState.login;
       }
     }
-    log("$token");
     upperList = [
       AccountPagesModel(
           title: "إعدادات الحساب".tr,
@@ -105,7 +102,9 @@ class AccountController extends GetxController {
       AccountPagesModel(
           title: "تذاكر الدعم الفني".tr,
           icon: Bootstrap.ticket_detailed_fill,
-          route: AppRoutes.ticketsPageRoute),
+          route: token != null
+              ? AppRoutes.ticketsPageRoute
+              : AppRoutes.signInPageRoute),
     ];
     if (token != null) {
       lowerList.add(

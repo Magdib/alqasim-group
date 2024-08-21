@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/controller/tickets_page_controller.dart';
 import 'package:proj/local/modules/account/view/widgets/custom_table_widget.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/handiling_data_widget.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
-class TicketsPage extends StatelessWidget {
+class TicketsPage extends GetView<TicketsPageController> {
   const TicketsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: CustomScrollView(slivers: <Widget>[
-      CarSliverAppBar(title: "تذاكر الدعم الفني".tr),
-      GetBuilder<TicketsPageController>(
-          builder: (controller) => SliverList(
-                  delegate: SliverChildListDelegate([
-                Padding(
+        body: CustomScrollView(
+            controller: controller.scrollController,
+            slivers: <Widget>[
+          CarSliverAppBar(title: "تذاكر الدعم الفني".tr),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            GetBuilder<TicketsPageController>(
+              builder: (controller) => HandlingScrollDataRequest(
+                onTap: () => controller.getTickets(true),
+                statusRequest: controller.statusRequest,
+                child: Padding(
                   padding: EdgeInsets.all(10).w,
                   child: Column(
                     children: [
@@ -81,7 +88,7 @@ class TicketsPage extends StatelessWidget {
                                       bottomRight: Radius.circular(4.r),
                                     )),
                                 child: Text(
-                                  "لا يوجد سيارات لعرضها".tr,
+                                  "لا يوجد تذاكر لعرضها".tr,
                                   textAlign: TextAlign.center,
                                   style: Theme.of(context)
                                       .textTheme
@@ -102,11 +109,19 @@ class TicketsPage extends StatelessWidget {
                                     ? null
                                     : controller.tickets[index - 1],
                               ),
-                      )
+                      ),
+                      SizedBox(
+                        height: 10.h,
+                      ),
+                      if (controller.nextPageUrl != null)
+                        Lottie.asset("assets/lottie/loading.json",
+                            height: 50.h, fit: BoxFit.fitHeight)
                     ],
                   ),
-                )
-              ])))
-    ]));
+                ),
+              ),
+            )
+          ]))
+        ]));
   }
 }

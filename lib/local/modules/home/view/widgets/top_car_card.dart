@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/functions/language/left_right_lang_align.dart';
+import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
@@ -98,7 +101,7 @@ class TopCarCard extends GetView<MainPageController> {
                           height: 5.h,
                         ),
                         Text(
-                          "${car.productTitle}",
+                          "${car.brand} ${car.model}",
                           style: Theme.of(context)
                               .textTheme
                               .displaySmall!
@@ -124,22 +127,29 @@ class TopCarCard extends GetView<MainPageController> {
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: 5.w, vertical: 2.5.h),
-                          child: CustomCachedNetImage(
-                            imageUrl: car.vendor.photo,
-                            canReDownload: false,
-                            height: AppSize.screenWidth(context) >=
-                                    AppSize.tabletBreakPoint
-                                ? 40.h
-                                : 25.h,
-                            width: AppSize.screenWidth(context) >=
-                                    AppSize.tabletBreakPoint
-                                ? 30.w
-                                : 25.w,
-                            borderRadius: AppSize.screenWidth(context) >=
-                                    AppSize.tabletBreakPoint
-                                ? 40.r
-                                : 25.r,
-                            fit: BoxFit.cover,
+                          child: GestureDetector(
+                            onTap: () => Get.toNamed(
+                                AppRoutes.sellerCarsPageRoute,
+                                arguments: {
+                                  ArgumentsNames.vendorName: car.vendor.username
+                                }),
+                            child: CustomCachedNetImage(
+                              imageUrl: car.vendor.photo,
+                              canReDownload: false,
+                              height: AppSize.screenWidth(context) >=
+                                      AppSize.tabletBreakPoint
+                                  ? 40.h
+                                  : 25.h,
+                              width: AppSize.screenWidth(context) >=
+                                      AppSize.tabletBreakPoint
+                                  ? 30.w
+                                  : 25.w,
+                              borderRadius: AppSize.screenWidth(context) >=
+                                      AppSize.tabletBreakPoint
+                                  ? 40.r
+                                  : 25.r,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         )
                       ],
@@ -149,18 +159,25 @@ class TopCarCard extends GetView<MainPageController> {
               ),
             ),
           ),
-          Positioned(
-              top: 7.h,
-              right: rightPadding != null ? rightPadding!.w : 7.w,
-              child: InkWell(
-                  onTap: addToFav,
-                  child: Icon(
-                    // car.isFav ?
-                    //  Icons.favorite :
-                    Icons.favorite_border_outlined,
-                    color: AppColors.primaryColor,
-                    size: 24.r,
-                  ))),
+          GetBuilder<MainPageController>(
+            builder: (controller) => Positioned(
+                top: 7.h,
+                right: rightPadding != null ? rightPadding!.w : 7.w,
+                child: controller.wishlistLoadingList[index]
+                    ? SpinKitPumpingHeart(
+                        color: AppColors.primaryColor,
+                        size: 24.r,
+                      )
+                    : InkWell(
+                        onTap: addToFav,
+                        child: Icon(
+                          // car.isFav ?
+                          //  Icons.favorite :
+                          Icons.favorite_border_outlined,
+                          color: AppColors.primaryColor,
+                          size: 24.r,
+                        ))),
+          ),
         ],
       ),
     );

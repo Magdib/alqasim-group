@@ -8,13 +8,16 @@ class SellerData {
   SellerData(this.crud);
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> getSellerData(
-      String selectedLocal, String username, bool isAdmin) async {
+      String selectedLocal, String username, bool isAdmin,
+      {String? page}) async {
     return await crud.get(
       linkUrl: ApiLinks.sellerDataApi,
       parameters: {
         "language": selectedLocal,
         "username": username,
-        "admin": isAdmin ? "$isAdmin" : ""
+        "admin": isAdmin ? "$isAdmin" : "",
+        "items_per_page": "8",
+        "page": page ?? ""
       },
       isAuthorized: false,
     );

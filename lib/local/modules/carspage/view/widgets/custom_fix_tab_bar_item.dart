@@ -23,7 +23,9 @@ class CustomFixTabBarItem extends StatelessWidget {
                 ? null
                 : () => controller.changeTabView(index),
             child: Text(
-              controller.catCars[index].categoryName,
+              index == 0
+                  ? "جميع السيارات".tr
+                  : controller.catCars[index - 1].categoryName,
               style: Theme.of(context).textTheme.displayMedium!.copyWith(
                   color: AppColors.primaryColor,
                   fontWeight: FontWeight.bold,

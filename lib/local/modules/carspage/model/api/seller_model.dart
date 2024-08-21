@@ -7,7 +7,13 @@ class SellerModel {
   List<VendorCarModel>? allCars;
   VendorInfo? vendorInfo;
   int? totalCarsCount;
-  SellerModel({this.vendor, this.vendorInfo, this.categories, this.allCars});
+  late final VendorPagination vendorPagination;
+  SellerModel(
+      {this.vendor,
+      this.vendorInfo,
+      this.categories,
+      this.allCars,
+      required this.vendorPagination});
 
   SellerModel.fromJson(Map<String, dynamic> json) {
     json["vendor"]['username'] == "admin"
@@ -32,6 +38,7 @@ class SellerModel {
             .toList();
     this.totalCarsCount =
         json["total_cars_count"] == null ? null : json["total_cars_count"];
+    this.vendorPagination = VendorPagination.fromJson(json['pagination']);
   }
 
   Map<String, dynamic> toJson() {
@@ -260,6 +267,31 @@ class VendorInfo {
     data["zip_code"] = this.zipCode;
     data["address"] = this.address;
     data["details"] = this.details;
+    return data;
+  }
+}
+
+class VendorPagination {
+  int? currentPage;
+  int? perPage;
+  int? total;
+  int? lastPage;
+
+  VendorPagination({this.currentPage, this.perPage, this.total, this.lastPage});
+
+  VendorPagination.fromJson(Map<String, dynamic> json) {
+    this.currentPage = json["current_page"];
+    this.perPage = json["per_page"];
+    this.total = json["total"];
+    this.lastPage = json["last_page"];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data["current_page"] = this.currentPage;
+    data["per_page"] = this.perPage;
+    data["total"] = this.total;
+    data["last_page"] = this.lastPage;
     return data;
   }
 }

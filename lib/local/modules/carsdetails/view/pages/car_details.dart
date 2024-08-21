@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:proj/global/core/api/status_request.dart';
+import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/carsdetails/controller/car_details_controller.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_description.dart';
 import 'package:proj/local/modules/carsdetails/view/widgets/car_forms.dart';
@@ -69,21 +71,20 @@ class CarDetails extends StatelessWidget {
                             SizedBox(
                               height: 15.h,
                             ),
-                            // SizedBox(
-                            //   height: 350.h,
-                            //   width: AppSize.screenWidth(context),
-                            //   child: GoogleMap(
-                            //     onMapCreated: (googleMapsController) =>
-                            //         controller.googleMapsControl =
-                            //             googleMapsController,
-                            //     initialCameraPosition: CameraPosition(
-                            //         target: LatLng(
-                            //             double.parse(controller.car.latitude),
-                            //             double.parse(controller.car.longitude)
-                            //             ),
-                            //         zoom: 12),
-                            //   ),
-                            // ),
+                            SizedBox(
+                              height: 350.h,
+                              width: AppSize.screenWidth(context),
+                              child: GoogleMap(
+                                onMapCreated: (googleMapsController) =>
+                                    controller.googleMapsControl =
+                                        googleMapsController,
+                                initialCameraPosition: CameraPosition(
+                                    target: LatLng(
+                                        double.parse(controller.car.latitude),
+                                        double.parse(controller.car.longitude)),
+                                    zoom: 12),
+                              ),
+                            ),
                             SizedBox(
                               height: 20.h,
                             ),

@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/constant/images.dart';
 import 'package:proj/local/core/routes/routes.dart';
+import 'package:proj/local/modules/auth/login/controller/login_controller.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/checking_container.dart';
 import 'package:proj/local/view/widgets/buttons/button_with_icon.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
-class ForgotPassEmailPage extends StatelessWidget {
+class ForgotPassEmailPage extends GetView<LoginController> {
   const ForgotPassEmailPage({super.key});
 
   @override
@@ -62,18 +65,23 @@ class ForgotPassEmailPage extends StatelessWidget {
               hint: "أدخل الحساب هنا من فضلك...".tr,
               textAlign: TextAlign.center,
               inputType: TextInputType.emailAddress,
+              textEditingController: controller.emailCheckController,
             ),
           ),
           SizedBox(
             height: 15.h,
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppSize.screenWidth(context) / 4),
-            child: ButtonWithIcon(
-                title: "إرسال الرمز ".tr,
-                icon: MingCute.telegram_line,
-                onPressed: () => Get.toNamed(AppRoutes.otpPageRoute)),
+          GetBuilder<LoginController>(
+            builder: (controller) => Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: AppSize.screenWidth(context) / 4),
+              child: controller.checkEmailStatusRequest == StatusRequest.loading
+                  ? const CheckingContainer()
+                  : ButtonWithIcon(
+                      title: "إرسال الرمز ".tr,
+                      icon: MingCute.telegram_line,
+                      onPressed: () => controller.checkEmail()),
+            ),
           ),
           SizedBox(
             height: 40.h,

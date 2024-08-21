@@ -39,4 +39,16 @@ class ApiLinks {
   //auth
   static const String signUpApi = "$serverLink/register";
   static const String signInApi = "$serverLink/login";
+  static const String sendOtpApi = "$serverLink/send_otp";
+  static const String verifyOtpResetPasswordApi = "$serverLink/verified_otp";
+  //Wishlist
+  static const String wishlistApi = "$serverLink/wishlist";
+  static const String addToWishlistApi = "$serverLink/wishlist/add/";
+  static const String removeFromWishlistApi = "$serverLink/wishlist/remove/";
+  //Account
+  static const String uploadUserImageApi = "$serverLink/upload_user_image";
+
+  //Tickets
+  static const String getSupportTickets = "$serverLink/support_tickets";
+  static const String addSupportTicket = "$serverLink/add_support_ticket";
 }

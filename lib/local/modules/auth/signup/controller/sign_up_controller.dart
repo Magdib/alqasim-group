@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:proj/global/core/api/api_errors.dart';
 import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/class/app_toast.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/auth/shared/model/forms_data_model.dart';
 import 'package:proj/local/modules/auth/signup/data/sign_up_data.dart';
@@ -36,7 +37,7 @@ class SignUpController extends GetxController {
           textEditingController: emailController),
       FormsDataModel(
           hint: "كلمة المرور".tr,
-          validation: "لا يمكن لكلمة المرور أن تكون أصغر من 6 خانات".tr,
+          validation: "لا يمكن لكلمة المرور أن تكون أصغر من 8 خانات".tr,
           isPassword: true,
           textEditingController: passwordController),
       FormsDataModel(
@@ -61,7 +62,7 @@ class SignUpController extends GetxController {
         }
         break;
       case 2:
-        if (passwordController.text.length < 6) {
+        if (passwordController.text.length < 8) {
           return formsData[2].validation;
         }
         break;
@@ -81,6 +82,7 @@ class SignUpController extends GetxController {
       statusRequest = StatusRequest.loading;
       update();
       var response = await signUpData.signup(
+        getLanguage().languageCode,
         emailController.text,
         userNameController.text,
         passwordController.text,
@@ -97,12 +99,10 @@ class SignUpController extends GetxController {
         update();
       }, (r) {
         statusRequest = StatusRequest.none;
-        String state = r['message'];
-        if (state ==
-            "User registered successfully. A verification email has been sent.") {
-          Get.offNamed(AppRoutes.signInPageRoute);
-          AppToasts.successToast("تم إرسال رابط التأكيد إلى حسابك");
-        }
+        String message = r['message'];
+        Get.offNamed(AppRoutes.signInPageRoute);
+        AppToasts.successToast(message);
+
         //  else if (state ==
         //     "The email has already been taken. (and 1 more error)") {
         //   AppToasts.errorToast(

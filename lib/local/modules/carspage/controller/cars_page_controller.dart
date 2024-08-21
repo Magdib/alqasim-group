@@ -8,6 +8,7 @@ import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/class/app_toast.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/functions/language/get_language.dart';
+import 'package:proj/local/core/functions/wishlist/add_to_wishlist.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carsdetails/model/api/car_model.dart';
 import 'package:proj/local/modules/carspage/controller/filters_controller.dart';
@@ -19,6 +20,7 @@ import 'package:proj/local/modules/carspage/model/filter_values_model.dart';
 class CarsPageController extends GetxController with FiltersController {
   List<FilterValuesModel> filterValues = [];
   List<FilterModel> filters = [];
+  List<bool> wishlistLoadingList = [];
   TextEditingController? carTitle;
   TextEditingController? carLocation;
   TextEditingController? lowestPrice;
@@ -27,6 +29,22 @@ class CarsPageController extends GetxController with FiltersController {
   StatusRequest paginationStatusRequest = StatusRequest.none;
   ScrollController scrollController = ScrollController();
   List<CarModel> carsView = [];
+  handleWishlist(index) async {
+    wishlistLoadingList[index] = true;
+    update();
+    // await removeFromWishList(topCars[index].id.toString());
+    await addToWishList(carsView[index].id.toString());
+    wishlistLoadingList[index] = false;
+    update();
+  }
+
+  handleWishListLoading() {
+    wishlistLoadingList.clear();
+    for (int i = 0; i < carsView.length; i++) {
+      wishlistLoadingList.add(false);
+    }
+  }
+
   changeFilterValue(int index, String selectedValue) {
     filters[index].selectedValue = selectedValue;
     update();
@@ -234,6 +252,7 @@ class CarsPageController extends GetxController with FiltersController {
       nextPageUrl = r['meta']['nextPageUrl'];
       carsView = data.map((e) => CarModel.fromJson(e)).toList();
       statusRequest = StatusRequest.none;
+      handleWishListLoading();
       update();
     });
   }
@@ -375,6 +394,7 @@ class CarsPageController extends GetxController with FiltersController {
           statusRequest = StatusRequest.none;
           update();
         }
+        handleWishListLoading();
       });
     }
   }
