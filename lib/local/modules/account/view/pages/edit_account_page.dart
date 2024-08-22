@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/account/controller/edit_account_controller.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/checking_container.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
@@ -106,14 +108,23 @@ class EditAccountPage extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.center,
-                          child: CustomButton(
-                              buttonBody: "تحديث البيانات".tr,
-                              buttonWidth: AppSize.screenWidth(context) / 1.8,
-                              height: AppSize.screenWidth(context) >=
-                                      AppSize.tabletBreakPoint
-                                  ? 50.h
-                                  : 42.5.h,
-                              onTap: () => Get.back()),
+                          child:
+                              controller.statusRequest == StatusRequest.loading
+                                  ? Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              AppSize.screenWidth(context) / 5),
+                                      child: const CheckingContainer(),
+                                    )
+                                  : CustomButton(
+                                      buttonBody: "تحديث البيانات".tr,
+                                      buttonWidth:
+                                          AppSize.screenWidth(context) / 1.8,
+                                      height: AppSize.screenWidth(context) >=
+                                              AppSize.tabletBreakPoint
+                                          ? 50.h
+                                          : 42.5.h,
+                                      onTap: () => controller.updateProfile()),
                         )
                       ],
                     ),

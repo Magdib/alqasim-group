@@ -16,7 +16,7 @@ final dio = Dio();
 class DioCrud {
   Future<Either<ApiErrors, Map>> post({
     required String linkUrl,
-    Map? data,
+    data,
     Map<String, dynamic>? parameters,
     String? token,
     required bool isAuthorized,
@@ -68,6 +68,7 @@ class DioCrud {
   Future<Either<ApiErrors, Map>> put({
     required String linkUrl,
     Map? data,
+    Map<String, dynamic>? parameters,
     String? token,
     required bool isAuthorized,
   }) async {

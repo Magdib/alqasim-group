@@ -13,32 +13,30 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        SizedBox(
-          child: Stack(
-            children: [
-              const AccountImageView(),
-              Align(
-                alignment: Alignment.topCenter,
-                child: Container(
-                  margin:
-                      EdgeInsets.only(top: AppSize.screenHight(context) / 4.6),
-                  width: AppSize.screenWidth(context) / 1.1,
-                  child: Column(
-                    children: [
-                      GetBuilder<AccountController>(
-                        builder: (controller) => AccountCard(
-                          dataList: controller.upperList,
-                        ),
+        Stack(
+          children: [
+            const AccountImageView(),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                margin:
+                    EdgeInsets.only(top: AppSize.screenHight(context) / 4.6),
+                width: AppSize.screenWidth(context) / 1.1,
+                child: Column(
+                  children: [
+                    GetBuilder<AccountController>(
+                      builder: (controller) => AccountCard(
+                        dataList: controller.upperList,
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         Padding(
           padding: EdgeInsets.symmetric(

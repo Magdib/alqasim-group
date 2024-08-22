@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/core/routes/routes.dart';
@@ -63,20 +64,21 @@ class TicketsPage extends GetView<TicketsPageController> {
                           Icons.search,
                           size: 24.r,
                         ),
+                        onChange: (val) => controller.searchTickets(val),
                         textInputAction: TextInputAction.search,
                       ),
                       SizedBox(
                         height: 5.h,
                       ),
                       ListView.builder(
-                        itemCount: controller.tickets.isEmpty
+                        itemCount: controller.ticketsView.isEmpty
                             ? 2
-                            : controller.tickets.length + 1,
+                            : controller.ticketsView.length + 1,
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) => controller
-                                    .tickets.isEmpty &&
+                                    .ticketsView.isEmpty &&
                                 index == 1
                             ? Container(
                                 height: 40.h,
@@ -101,19 +103,22 @@ class TicketsPage extends GetView<TicketsPageController> {
                               )
                             : CustomTableWidget(
                                 isTitles: index == 0 ? true : false,
-                                isEnd: (index == controller.tickets.length &&
-                                        controller.tickets.isNotEmpty)
-                                    ? true
-                                    : false,
+                                isEnd:
+                                    (index == controller.ticketsView.length &&
+                                            controller.ticketsView.isNotEmpty)
+                                        ? true
+                                        : false,
                                 body: index == 0
                                     ? null
-                                    : controller.tickets[index - 1],
+                                    : controller.ticketsView[index - 1],
                               ),
                       ),
                       SizedBox(
                         height: 10.h,
                       ),
-                      if (controller.nextPageUrl != null)
+                      if (controller.nextPageUrl != null &&
+                          controller.paginationStatusRequest ==
+                              StatusRequest.loading)
                         Lottie.asset("assets/lottie/loading.json",
                             height: 50.h, fit: BoxFit.fitHeight)
                     ],

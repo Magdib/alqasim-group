@@ -15,6 +15,7 @@ class ApiLinks {
   static const String sliderApi = "$serverLink/car/sliders";
   static const String categoriesApi = '$serverLink/car/categories';
   static const String topCarsApi = "$serverLink/car/top_cars";
+  static const String addFirebaseTokenApi = "$serverLink/add_firebase_token";
 
   //Details
   static const String carDetailsApi = "$serverLink/car/details/";
@@ -47,8 +48,10 @@ class ApiLinks {
   static const String removeFromWishlistApi = "$serverLink/wishlist/remove/";
   //Account
   static const String uploadUserImageApi = "$serverLink/upload_user_image";
-
+  static const String uploadUserBackImageApi =
+      "$serverLink/upload_background_image";
+  static const String updateProfileApi = "$serverLink/update_profile";
   //Tickets
   static const String getSupportTickets = "$serverLink/support_tickets";
-  static const String addSupportTicket = "$serverLink/add_support_ticket";
+  static const String addSupportTicketApi = "$serverLink/add_support_ticket";
 }

@@ -1,6 +1,4 @@
 import 'dart:developer';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,9 +11,7 @@ import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/class/hive_keys.dart';
 import 'package:proj/local/core/constant/app_statics.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
-import 'package:proj/local/core/functions/hive_null_get.dart';
 import 'package:proj/local/core/functions/wishlist/add_to_wishlist.dart';
-import 'package:proj/local/core/functions/wishlist/remove_from_wishlist.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/auth/login/model/login_model.dart';
@@ -491,10 +487,8 @@ class MainPageController extends GetxController {
     previousLocal = selectedLocal;
     showLoginData = authBox.get(HiveKeys.token) == null ? true : false;
     loginDataBox = await Hive.openBox<LoginModel>(HiveBoxes.loginDataBox);
+    log("Getting data");
     await getData(false);
-    // UserCredential userCredential =
-    //     await FirebaseAuth.instance.signInAnonymously();
-    // log(userCredential.user!.uid.toString());
     super.onReady();
   }
 }

@@ -11,6 +11,7 @@ import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/modules/account/data/support_ticket_data.dart';
 import 'package:proj/local/modules/account/model/api/support_tickets_model.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:proj/local/modules/auth/login/model/login_model.dart';
 
 class TicketsPageController extends GetxController {
   late TextEditingController emailController;
@@ -18,19 +19,25 @@ class TicketsPageController extends GetxController {
   late TextEditingController messageController;
   late ScrollController scrollController;
   List<SupportTicketsModel> tickets = [];
+  List<SupportTicketsModel> ticketsView = [];
   StatusRequest statusRequest = StatusRequest.loading;
   StatusRequest paginationStatusRequest = StatusRequest.loading;
+  StatusRequest addTicketStatusRequest = StatusRequest.none;
   bool gettingData = false;
   bool isFileSelected = false;
   String? nextPageUrl;
   String token = Hive.box(HiveBoxes.authBox).get(HiveKeys.token);
+  File? attachmentFile;
+  LoginModel loginData = Hive.box<LoginModel>(HiveBoxes.loginDataBox).getAt(0)!;
   pickFile() async {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.custom, allowedExtensions: ["zip"]);
     if (result != null) {
-      File file = File(result.files.single.path!);
+      File file = File(result.xFiles.single.path);
       if (await file.length() <= 20971520) {
         isFileSelected = true;
+
+        attachmentFile = file;
       } else {
         AppToasts.errorToast("حجم الملف أكبر من الحد المسموح".tr);
       }
@@ -38,23 +45,61 @@ class TicketsPageController extends GetxController {
     }
   }
 
-  addTicket() {
+  addTicket() async {
     if (subjectController.text.isNotEmpty &&
         messageController.text.isNotEmpty &&
         emailController.text.isNotEmpty) {
-      Get.back();
-      // tickets.add(TicketModel(
-      //     ticketId: "${tickets.length + 1}",
-      //     subject: subjectController.text,
-      //     status: "قيد المراجعة".tr,
-      //     message: messageController.text));
-      subjectController.clear();
-      messageController.clear();
-      isFileSelected = false;
+      addTicketStatusRequest = StatusRequest.loading;
       update();
+
+      SupportTicketData supportTicketData = SupportTicketData(Get.find());
+      var response = await supportTicketData.addSupportTicket(
+          getLanguage().languageCode,
+          emailController.text,
+          subjectController.text,
+          messageController.text,
+          isFileSelected ? attachmentFile!.path : null,
+          token);
+      response.fold((tl) {
+        addTicketStatusRequest = StatusRequest.none;
+        update();
+        AppToasts.errorToast(tl.message);
+      }, (tr) async {
+        Map<String, dynamic> jsonData = tr['data'];
+        if (nextPageUrl == null) {
+          tickets.add(SupportTicketsModel.fromJson(jsonData));
+          ticketsView.add(SupportTicketsModel.fromJson(jsonData));
+        }
+        addTicketStatusRequest = StatusRequest.none;
+        AppToasts.successToast(tr['message']);
+
+        subjectController.clear();
+        messageController.clear();
+        isFileSelected = false;
+        Get.back();
+        update();
+      });
     } else {
       AppToasts.errorToast("الرجاء ملئ الحقول المطلوبة".tr);
     }
+  }
+
+  searchTickets(String val) {
+    if (val.isNotEmpty) {
+      paginationStatusRequest = StatusRequest.none;
+      ticketsView = tickets
+          .where(
+            (ticket) =>
+                ticket.description!.isCaseInsensitiveContains(val) ||
+                ticket.subject!.isCaseInsensitiveContains(val),
+          )
+          .toList();
+    } else {
+      ticketsView = tickets;
+
+      paginationStatusRequest = StatusRequest.loading;
+    }
+    update();
   }
 
   getTickets([bool showLoading = false]) async {
@@ -77,9 +122,11 @@ class TicketsPageController extends GetxController {
       List jsonData = tr['data'];
       nextPageUrl = tr['meta']['nextPageUrl'];
       tickets = jsonData.map((e) => SupportTicketsModel.fromJson(e)).toList();
+      ticketsView =
+          jsonData.map((e) => SupportTicketsModel.fromJson(e)).toList();
       statusRequest = StatusRequest.none;
       update();
-      scrollController.addListener(()=> handlePagination());
+      scrollController.addListener(() => handlePagination());
     });
   }
 
@@ -93,21 +140,22 @@ class TicketsPageController extends GetxController {
         var response = await supportTicketData.getSupportTickets(
             getLanguage().languageCode, token, nextPageUrl);
         response.fold((tl) {
-          if (tl.runtimeType == NetworkError) {
-            statusRequest = StatusRequest.offlineFailure;
-          } else {
-            statusRequest = StatusRequest.failure;
-          }
-          update();
+          scrollController.animateTo(
+              scrollController.position.maxScrollExtent - 120,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeIn);
           AppToasts.errorToast(tl.message);
         }, (tr) async {
           List jsonData = tr['data'];
           nextPageUrl = tr['meta']['nextPageUrl'];
           tickets.addAll(
               jsonData.map((e) => SupportTicketsModel.fromJson(e)).toList());
+          ticketsView.addAll(
+              jsonData.map((e) => SupportTicketsModel.fromJson(e)).toList());
           if (nextPageUrl == null) {
             paginationStatusRequest = StatusRequest.none;
           }
+
           update();
         });
       }
@@ -116,7 +164,7 @@ class TicketsPageController extends GetxController {
 
   @override
   void onInit() {
-    emailController = TextEditingController();
+    emailController = TextEditingController(text: loginData.email);
     subjectController = TextEditingController();
     messageController = TextEditingController();
     scrollController = ScrollController();

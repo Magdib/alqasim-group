@@ -1,9 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:developer';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:proj/firebase_options.dart';
 import 'package:proj/global/binding/app_binding.dart';
 import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/localization/localization.dart';
@@ -11,12 +11,12 @@ import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/core/themes/theme.dart';
 import 'global/core/services/services.dart';
 
+Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  log("Handling a background message: ${message.messageId}");
+}
+
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   await initialServices();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
 }
 
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
                 GlobalCupertinoLocalizations.delegate,
               ],
               localeResolutionCallback: (deviceLocale, supportedLocales) =>
-                  const Locale("en"),
+                  getLanguage(),
               theme: AppTheme.lightsTheme);
         });
   }

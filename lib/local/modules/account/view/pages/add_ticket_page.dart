@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/core/constant/colors.dart';
 import 'package:proj/local/modules/account/controller/tickets_page_controller.dart';
 import 'package:proj/local/view/shared/car_sliver_app_bar.dart';
+import 'package:proj/local/view/shared/checking_container.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 import 'package:proj/local/view/widgets/fields/custom_text_form_field.dart';
 
@@ -125,11 +127,19 @@ class AddTicketPage extends GetView<TicketsPageController> {
               Align(
                   alignment: Alignment.center,
                   child: GetBuilder<TicketsPageController>(
-                    builder: (controller) => CustomButton(
-                        buttonBody: "تقديم الطلب".tr,
-                        height: 45.h,
-                        buttonWidth: AppSize.screenWidth(context) / 2,
-                        onTap: () => controller.addTicket()),
+                    builder: (controller) => controller
+                                .addTicketStatusRequest ==
+                            StatusRequest.loading
+                        ? Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: AppSize.screenWidth(context) / 4),
+                            child: const CheckingContainer(),
+                          )
+                        : CustomButton(
+                            buttonBody: "تقديم الطلب".tr,
+                            height: 45.h,
+                            buttonWidth: AppSize.screenWidth(context) / 2,
+                            onTap: () => controller.addTicket()),
                   ))
             ]))
       ]))

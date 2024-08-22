@@ -139,7 +139,8 @@ class AppLanguagesText {
     "أدخل كلمة المرور هنا...": "أدخل كلمة المرور هنا...",
     " كلمة المرور الجديدة:": " كلمة المرور الجديدة:",
     "تحديث البيانات": "تحديث البيانات",
-
+    "البيانات مطابقة للبيانات القديمة": "البيانات مطابقة للبيانات القديمة",
+    "الرجاء إدخال رقم هاتف صحيح": "الرجاء إدخال رقم هاتف صحيح",
     //Support Ticket
     //
     //Main Support Ticket Page
@@ -151,7 +152,8 @@ class AppLanguagesText {
     "الحالة": "الحالة",
     "الرسالة": "الرسالة",
     "لا يوجد سيارات لعرضها": "لا يوجد سيارات لعرضها",
-    "لا يوجد تذاكر لعرضها": "لا يوجد تذاكر لعرضها",
+    "لا يوجد تذاكر لعرضها": "لا يوجد تذاكر لعرضها", "معلّقة": "معلّقة",
+    "مغلقة": "مغلقة", "مفتوحة": "مفتوحة",
     //
     //Add Support Ticket Page
 
@@ -282,7 +284,7 @@ class AppLanguagesText {
     "نوع الخدمة: تمويل بنكي\n": "Service type: Bank finance\n",
     "تصدير سيارة": "Car export",
     "نوع الخدمة: تصدير سيارة\n": "Service type: Car export\n",
-    "تأمين/ تسجيل\n ضمان": "Insurance/Registration\nWarranty",
+    "تأمين/ تسجيل\n ضمان": "Insurance/Registration\n Warranty",
     "نوع الخدمة: تأمين/تسجيل ضمان\n":
         "Service type: Insurance/Registration Warranty\n",
     "طلب الخدمة": "Ask for service",
@@ -401,7 +403,8 @@ class AppLanguagesText {
     "أدخل كلمة المرور هنا...": "Enter password here...",
     " كلمة المرور الجديدة:": " New password",
     "تحديث البيانات": "Update profile",
-
+    "البيانات مطابقة للبيانات القديمة": "This data matches the previous one",
+    "الرجاء إدخال رقم هاتف صحيح": "Invalid phone number",
     //Support Ticket
     //
     //Main Support Ticket Page
@@ -415,6 +418,7 @@ class AppLanguagesText {
     "لا يوجد سيارات لعرضها": "No Cars are available to show",
     "لا يوجد تذاكر لعرضها": "No tickets available to show",
     "حجم الملف أكبر من الحد المسموح": "File size is larger than 20Mbs",
+    "معلّقة": "Pending", "مغلقة": "Closed", "مفتوحة": "Opened",
     //
     //Add Support Ticket Page
 

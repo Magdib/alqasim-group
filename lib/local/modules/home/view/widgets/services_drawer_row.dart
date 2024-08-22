@@ -40,8 +40,7 @@ class ServicesDrawerRow extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  controller.homeServicesList[index].title
-                      .replaceAll("\n", " "),
+                  controller.homeServicesList[index].title.replaceAll("\n", ""),
                   style: Theme.of(context).textTheme.displayMedium!.copyWith(
                       color: AppColors.primaryColor,
                       fontSize: 14.sp,

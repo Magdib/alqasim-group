@@ -43,7 +43,7 @@ class CustomTableWidget extends StatelessWidget {
                 title: "الموضوع".tr,
               ),
               CustomTableRow(
-                body: isTitles ? "الحالة".tr : (body!.status == "1" ? "" : ""),
+                body: isTitles ? "الحالة".tr : body!.status!,
                 isTitles: isTitles,
                 title: "الحالة".tr,
               ),

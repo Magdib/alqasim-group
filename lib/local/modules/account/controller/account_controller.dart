@@ -81,10 +81,11 @@ class AccountController extends GetxController {
     }
   }
 
-  defineLists() {
+  defineLists() async {
     token = authBox.get(HiveKeys.token);
 
     loginDataBox = Hive.box(HiveBoxes.loginDataBox);
+
     if (token != null) {
       loginData = loginDataBox.getAt(0)!;
       userName = loginData.username;

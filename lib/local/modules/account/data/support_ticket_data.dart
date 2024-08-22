@@ -19,15 +19,35 @@ class SupportTicketData {
   }
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> addSupportTicket(
-      String language, String image, String token) async {
+    String language,
+    String email,
+    String subject,
+    String description,
+    String? attachment,
+    String token,
+  ) async {
+    FormData? data;
+    if (attachment != null) {
+      data = FormData.fromMap({
+        "email": email,
+        "subject": subject,
+        "description": description,
+        'attachment': await MultipartFile.fromFile(
+          attachment,
+          filename: attachment.split('/').last,
+        )
+      });
+    }
     return await crud.post(
-      linkUrl: ApiLinks.uploadUserImageApi,
+      linkUrl: ApiLinks.addSupportTicketApi,
       parameters: {"language": language},
-      data: {
-        "image": await MultipartFile.fromFile(
-          image,
-        ),
-      },
+      data: attachment != null
+          ? data
+          : {
+              "email": email,
+              "subject": subject,
+              "description": description,
+            },
       token: token,
       isAuthorized: true,
     );

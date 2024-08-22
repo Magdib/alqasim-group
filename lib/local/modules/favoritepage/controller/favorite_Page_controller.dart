@@ -28,12 +28,15 @@ class FavoritePageController extends GetxController {
   String? nextPageUrl;
   filterCars(String value) {
     if (value.isNotEmpty) {
+      paginationStatusRequest = StatusRequest.none;
       List<FavoriteModel> filterCars = cars
           .where((car) => car.productTitle.isCaseInsensitiveContains(value))
           .toList();
       initializeCars(filterCars);
     } else {
       initializeCars(cars);
+
+      paginationStatusRequest = StatusRequest.loading;
     }
     update();
   }
@@ -132,6 +135,10 @@ class FavoritePageController extends GetxController {
         WishlistData wishlistData = WishlistData(Get.find());
         var response = await wishlistData.getWishListData(token!, nextPageUrl);
         response.fold((tl) {
+          scrollController.animateTo(
+              scrollController.position.maxScrollExtent - 120,
+              duration: Duration(milliseconds: 300),
+              curve: Curves.easeIn);
           AppToasts.errorToast(tl.message);
         }, (tr) async {
           List jsonData = tr['data'];

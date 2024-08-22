@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class SupportTicketsModel {
   int? id;
   int? userId;
@@ -5,7 +7,7 @@ class SupportTicketsModel {
   String? subject;
   String? description;
   String? attachment;
-  int? status;
+  String? status;
   String? lastMessage;
 
   SupportTicketsModel(
@@ -22,10 +24,14 @@ class SupportTicketsModel {
     this.id = json["id"];
     this.userId = json["user_id"];
     this.email = json["email"];
-    this.subject = json["subject"];
-    this.description = json["description"];
+    this.subject = json["subject"] ?? "";
+    this.description = json["description"] ?? "";
     this.attachment = json["attachment"];
-    this.status = json["status"];
+    this.status = json["status"] == 1
+        ? "معلّقة".tr
+        : json["status"] == 0
+            ? "مغلقة".tr
+            : "مفتوحة".tr;
     this.lastMessage = json["last_message"];
   }
 

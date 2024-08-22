@@ -210,7 +210,10 @@ class HomeDrawer extends GetView<MainPageController> {
                         ],
                       )
                     : const SizedBox(),
-              )
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
             ]));
   }
 }
