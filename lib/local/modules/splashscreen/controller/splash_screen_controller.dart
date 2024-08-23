@@ -29,21 +29,21 @@ class SplashScreenController extends GetxController {
     String? fireBaseToken = await FirebaseMessaging.instance.getToken();
     final _flutterDeviceIdPlugin = FlutterDeviceId();
     String? deviceId = await _flutterDeviceIdPlugin.getDeviceId();
-    // var response;
-    // if (deviceId != null && fireBaseToken != null) {
-    //   if (loginDataBox.isEmpty) {
-    //     response = await homeData.sendFirebaseToken(
-    //         getLanguage().languageCode, fireBaseToken, deviceId);
-    //   } else {
-    //     response = await homeData.sendFirebaseToken(getLanguage().languageCode,
-    //         fireBaseToken, deviceId, loginDataBox.getAt(0)!.id.toString());
-    //   }
-    // }
-    // response.fold((l) {
-    //   log(l);
-    // }, (r) async {
-    //   log(r);
-    // });
+    var response;
+    if (deviceId != null && fireBaseToken != null) {
+      if (loginDataBox.isEmpty) {
+        response = await homeData.sendFirebaseToken(
+            getLanguage().languageCode, fireBaseToken, deviceId);
+      } else {
+        response = await homeData.sendFirebaseToken(getLanguage().languageCode,
+            fireBaseToken, deviceId, loginDataBox.getAt(0)!.id.toString());
+      }
+    }
+    response.fold((l) {
+      log(l.toString());
+    }, (r) async {
+      log(r.toString());
+    });
   }
 
   @override

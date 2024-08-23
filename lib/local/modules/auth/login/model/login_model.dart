@@ -2,87 +2,91 @@ import 'package:hive/hive.dart';
 
 part 'login_model.g.dart';
 
-@HiveType(typeId: 2)
+@HiveType(typeId: 3)
 class LoginModel {
-  LoginModel({
-    required this.id,
-    required this.name,
-    required this.username,
-    required this.email,
-    required this.image,
-    required this.status,
-    required this.provider,
-    required this.providerId,
-    required this.phone,
-    required this.country,
-    required this.city,
-    required this.state,
-    required this.zipCode,
-    required this.address,
-  });
   @HiveField(0)
-  late final int id;
-
+  int? id;
   @HiveField(1)
-  late final String name;
+  String? name;
   @HiveField(2)
-  late final String username;
+  String? username;
   @HiveField(3)
-  late final String email;
+  String? email;
   @HiveField(4)
-  late final String image;
+  String? image;
   @HiveField(5)
-  late final bool status;
+  String? backgroundImage;
   @HiveField(6)
-  late final String provider;
+  bool? status;
   @HiveField(7)
-  late final String providerId;
+  String? provider;
   @HiveField(8)
-  late final String phone;
+  String? providerId;
   @HiveField(9)
-  late final String country;
+  String? phone;
   @HiveField(10)
-  late final String city;
+  String? country;
   @HiveField(11)
-  late final String state;
+  String? city;
   @HiveField(12)
-  late final String zipCode;
+  String? state;
   @HiveField(13)
-  late final String address;
+  String? zipCode;
+  @HiveField(14)
+  String? address;
+
+  LoginModel(
+      {this.id,
+      this.name,
+      this.username,
+      this.email,
+      this.image,
+      this.backgroundImage,
+      this.status,
+      this.provider,
+      this.providerId,
+      this.phone,
+      this.country,
+      this.city,
+      this.state,
+      this.zipCode,
+      this.address});
 
   LoginModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-    username = json['username'];
-    email = json['email'];
-    image = json['image'];
-    status = json['status'];
-    provider = json['provider'];
-    providerId = json['provider_id'];
-    phone = json['phone'];
-    country = json['country'];
-    city = json['city'];
-    state = json['state'];
-    zipCode = json['zip_code'];
-    address = json['address'];
+    this.id = json["id"];
+    this.name = json["name"];
+    this.username = json["username"];
+    this.email = json["email"];
+    this.image = json["image"];
+    this.backgroundImage = json["background_image"];
+    this.status = json["status"];
+    this.provider = json["provider"];
+    this.providerId = json["provider_id"];
+    this.phone = json["phone"];
+    this.country = json["country"];
+    this.city = json["city"];
+    this.state = json["state"];
+    this.zipCode = json["zip_code"];
+    this.address = json["address"];
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['username'] = username;
-    _data['email'] = email;
-    _data['image'] = image;
-    _data['status'] = status;
-    _data['provider'] = provider;
-    _data['provider_id'] = providerId;
-    _data['phone'] = phone;
-    _data['country'] = country;
-    _data['city'] = city;
-    _data['state'] = state;
-    _data['zip_code'] = zipCode;
-    _data['address'] = address;
-    return _data;
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data["id"] = this.id;
+    data["name"] = this.name;
+    data["username"] = this.username;
+    data["email"] = this.email;
+    data["image"] = this.image;
+    data["background_image"] = this.backgroundImage;
+    data["status"] = this.status;
+    data["provider"] = this.provider;
+    data["provider_id"] = this.providerId;
+    data["phone"] = this.phone;
+    data["country"] = this.country;
+    data["city"] = this.city;
+    data["state"] = this.state;
+    data["zip_code"] = this.zipCode;
+    data["address"] = this.address;
+    return data;
   }
 }

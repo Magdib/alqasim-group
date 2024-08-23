@@ -27,7 +27,7 @@ class EditAccountPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          " اسم المستخدم:".tr,
+                          " اسم المستخدم*:".tr,
                           style: Theme.of(context)
                               .textTheme
                               .displayLarge!

@@ -8,6 +8,7 @@ import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/global/core/functions/check_internet_connection.dart';
 import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/modules/carsdetails/model/car_images_model.dart';
 import 'package:proj/local/view/widgets/buttons/custom_button.dart';
 
@@ -90,7 +91,8 @@ class SavedImagesController extends GetxController {
             ),
             Positioned(
                 top: 30.h,
-                right: 10.w,
+                right: getLanguage().languageCode == "ar" ? 10.w : null,
+                left: getLanguage().languageCode == "en" ? 10.w : null,
                 child: Hero(
                   tag: "arrowBack",
                   child: IconButton(

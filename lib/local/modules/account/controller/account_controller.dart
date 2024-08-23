@@ -17,6 +17,7 @@ import 'package:proj/local/modules/account/model/account_pages_model.dart';
 import 'package:proj/local/modules/account/model/enums/account_image_state.dart';
 import 'package:proj/local/modules/auth/login/model/login_model.dart';
 import 'package:proj/local/modules/home/controller/main_page_controller.dart';
+import 'package:path/path.dart';
 
 class AccountController extends GetxController {
   String? accountImage;
@@ -32,32 +33,58 @@ class AccountController extends GetxController {
   Box<LoginModel> loginDataBox = Hive.box(HiveBoxes.loginDataBox);
   late LoginModel loginData;
   String? token;
+  getUserData() async {
+    if (token != null) {
+      AccountData accountData = AccountData(Get.find());
+      var response = await accountData.getUserData(token!);
+      response.fold((l) {}, (r) async {
+        await loginDataBox.clear();
+        loginData = LoginModel.fromJson(r['data']);
+        loginDataBox.add(loginData);
+        handleImages();
+        log(r['data'].toString());
+      });
+    }
+  }
+
   pickAccountImage() async {
     if (token != null) {
       final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-      if (image != null) {
-        imageStatusRequest = StatusRequest.loading;
-        update();
-        AccountData signInData = AccountData(Get.find());
-        var response = await signInData.uploadUserImage(
-            getLanguage().languageCode, image.path, token!);
-        response.fold((l) {
-          if (l.runtimeType == NetworkError) {
-            AppToasts.errorToast("...لا يوجد اتصال بالإنترنت".tr);
-          } else {
-            AppToasts.errorToast(l.message);
-          }
-          imageStatusRequest = StatusRequest.none;
+      final XFile? image = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
 
+      if (image != null) {
+        if (image.name.isCaseInsensitiveContains(".png") ||
+            image.name.isCaseInsensitiveContains(".jpg") ||
+            image.name.isCaseInsensitiveContains(".jpeg")) {
+          imageStatusRequest = StatusRequest.loading;
           update();
-        }, (r) {
-          imageStatusRequest = StatusRequest.none;
-          update();
-          log(r['message']);
-// loginData.image =
-        });
-        accountImageState = AccountImageState.image;
+          AccountData accountData = AccountData(Get.find());
+          var response = await accountData.uploadUserImage(
+              getLanguage().languageCode, image.path, token!);
+          response.fold((l) {
+            if (l.runtimeType == NetworkError) {
+              AppToasts.errorToast("...لا يوجد اتصال بالإنترنت".tr);
+            } else {
+              AppToasts.errorToast(l.message);
+            }
+            imageStatusRequest = StatusRequest.none;
+
+            update();
+          }, (r) {
+            imageStatusRequest = StatusRequest.none;
+            update();
+            log(r['message']);
+            loginData.image = LoginModel.fromJson(r['data']).image;
+            loginDataBox.clear();
+            loginDataBox.add(loginData);
+            accountImage = loginData.image;
+          });
+          accountImageState = AccountImageState.image;
+        } else {
+          AppToasts.errorToast("صيغة الصورة غير مدعومة".tr);
+        }
       }
       update();
     } else {
@@ -69,15 +96,54 @@ class AccountController extends GetxController {
   pickAccountBackImage() async {
     if (token != null) {
       final ImagePicker picker = ImagePicker();
-      final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+      final XFile? image = await picker.pickImage(
+        source: ImageSource.gallery,
+      );
+
       if (image != null) {
-        accountBackImage = image.path;
-        accountBackImageState = AccountImageState.image;
+        if (image.name.isCaseInsensitiveContains(".png") ||
+            image.name.isCaseInsensitiveContains(".jpg") ||
+            image.name.isCaseInsensitiveContains(".jpeg")) {
+          AccountData accountData = AccountData(Get.find());
+          var response = await accountData.uploadUserBackImage(
+              getLanguage().languageCode, image.path, token!);
+          response.fold((l) {
+            if (l.runtimeType == NetworkError) {
+              AppToasts.errorToast("...لا يوجد اتصال بالإنترنت".tr);
+            } else {
+              AppToasts.errorToast(l.message);
+            }
+            update();
+          }, (r) {
+            update();
+            log(r['message']);
+            loginData.backgroundImage =
+                LoginModel.fromJson(r['data']).backgroundImage;
+            loginDataBox.clear();
+            loginDataBox.add(loginData);
+            accountBackImage = loginData.backgroundImage;
+          });
+          accountBackImageState = AccountImageState.image;
+        } else {
+          AppToasts.errorToast("صيغة الصورة غير مدعومة".tr);
+        }
       }
       update();
     } else {
       Get.toNamed(AppRoutes.signInPageRoute);
       AppToasts.errorToast("قم بتسجيل الدخول للمتابعة".tr);
+    }
+  }
+
+  handleImages() {
+    if (loginData.image!.isEmpty) {
+      accountImageState = AccountImageState.login;
+    } else {
+      accountImageState = AccountImageState.image;
+      accountImage = loginData.image;
+    }
+    if (loginData.backgroundImage != null) {
+      accountBackImage = loginData.backgroundImage;
     }
   }
 
@@ -87,11 +153,10 @@ class AccountController extends GetxController {
     loginDataBox = Hive.box(HiveBoxes.loginDataBox);
 
     if (token != null) {
+      getUserData();
       loginData = loginDataBox.getAt(0)!;
-      userName = loginData.username;
-      if (loginData.image.isEmpty) {
-        accountImageState = AccountImageState.login;
-      }
+      userName = loginData.username!;
+      handleImages();
     }
     upperList = [
       AccountPagesModel(
@@ -160,6 +225,7 @@ class AccountController extends GetxController {
   @override
   void onInit() {
     defineLists();
+
     super.onInit();
   }
 }

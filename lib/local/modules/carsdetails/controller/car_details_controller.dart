@@ -14,6 +14,7 @@ import 'package:proj/local/core/class/custom_icons.dart';
 import 'package:proj/local/core/class/hive_box.dart';
 import 'package:proj/local/core/constant/arguments_names.dart';
 import 'package:proj/local/core/constant/colors.dart';
+import 'package:proj/local/core/functions/language/get_language.dart';
 import 'package:proj/local/core/functions/wishlist/add_to_wishlist.dart';
 import 'package:proj/local/core/routes/routes.dart';
 import 'package:proj/local/modules/carsdetails/data/car_details_data.dart';
@@ -48,7 +49,8 @@ class CarDetailsController extends GetxController {
             ),
             Positioned(
                 top: 30.h,
-                right: 10.w,
+                right: getLanguage().languageCode == "ar" ? 10.w : null,
+                left: getLanguage().languageCode == "en" ? 10.w : null,
                 child: Hero(
                   tag: "arrowBack",
                   child: IconButton(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:proj/global/core/api/api_errors.dart';
@@ -7,17 +9,24 @@ import 'package:proj/local/core/api/api_links.dart';
 class AccountData {
   DioCrud crud;
   AccountData(this.crud);
+  Future<Either<ApiErrors, Map<dynamic, dynamic>>> getUserData(
+      String token) async {
+    return await crud.get(
+      linkUrl: ApiLinks.getUserDataApi,
+      token: token,
+      isAuthorized: true,
+    );
+  }
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> uploadUserImage(
       String language, String image, String token) async {
     FormData data = FormData.fromMap({
-      'image': await MultipartFile.fromFile(
+      "image": await MultipartFile.fromFile(
         image,
       ),
     });
     return await crud.post(
       linkUrl: ApiLinks.uploadUserImageApi,
-      parameters: {"language": language},
       data: data,
       token: token,
       isAuthorized: true,

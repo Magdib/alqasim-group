@@ -102,7 +102,6 @@ class LoginController extends GetxController {
         googleStatusRequest = StatusRequest.loading;
         update();
         SignInData signInData = SignInData(Get.find());
-        await Future.delayed(Duration(seconds: 5));
         var response = await signInData.signIn(
             getLanguage().languageCode, userCredential.user!.email!,
             provider: "google",
@@ -117,11 +116,14 @@ class LoginController extends GetxController {
           update();
         }, (r) async {
           Map<String, dynamic> data = r['data'];
-          LoginModel loginData = LoginModel.fromJson(data);
+          log(data.toString());
           String token = r['token'];
           await loginBox.clear();
+
+          LoginModel loginData = LoginModel.fromJson(data);
           await loginBox.add(loginData);
           authBox.put(HiveKeys.token, token);
+          log(loginData.email!);
           log("data= $data");
           AppToasts.successToast("تم تسجيل الدخول بنجاح".tr);
           MainPageController mainPageController = Get.find();

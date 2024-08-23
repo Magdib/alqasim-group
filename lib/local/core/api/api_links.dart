@@ -47,6 +47,7 @@ class ApiLinks {
   static const String addToWishlistApi = "$serverLink/wishlist/add/";
   static const String removeFromWishlistApi = "$serverLink/wishlist/remove/";
   //Account
+  static const String getUserDataApi = "$serverLink/current_profile";
   static const String uploadUserImageApi = "$serverLink/upload_user_image";
   static const String uploadUserBackImageApi =
       "$serverLink/upload_background_image";

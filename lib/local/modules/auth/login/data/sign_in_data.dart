@@ -9,7 +9,10 @@ class SignInData {
 
   Future<Either<ApiErrors, Map<dynamic, dynamic>>> signIn(
       String language, String email,
-      {String? password, String? provider, String? providerId}) async {
+      {String? password,
+      String? username,
+      String? provider,
+      String? providerId}) async {
     return await crud.post(
       linkUrl: ApiLinks.signInApi,
       parameters: {
@@ -20,7 +23,12 @@ class SignInData {
               "email": email,
               "password": password ?? "",
             }
-          : {"email": email, "provider": provider, "provider_id": providerId},
+          : {
+              "email": email,
+              "username": username,
+              "provider": provider,
+              "provider_id": providerId
+            },
       isAuthorized: false,
     );
   }

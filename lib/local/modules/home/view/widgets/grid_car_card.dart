@@ -148,7 +148,7 @@ class GridCarCard extends StatelessWidget {
           GetBuilder<SellerPageController>(
             builder: (controller) => Positioned(
                 top: 7.h,
-                right: rightPadding ?? 7.w,
+                right: 7.w,
                 child: controller.wishlistLoadingList[index]
                     ? SpinKitPumpingHeart(
                         color: AppColors.primaryColor,

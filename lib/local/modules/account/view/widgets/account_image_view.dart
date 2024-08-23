@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -9,6 +10,7 @@ import 'package:proj/global/core/api/status_request.dart';
 import 'package:proj/local/core/constant/app_size.dart';
 import 'package:proj/local/modules/account/controller/account_controller.dart';
 import 'package:proj/local/modules/account/model/enums/account_image_state.dart';
+import 'package:proj/local/view/shared/custom_cached_net_image.dart';
 
 class AccountImageView extends StatelessWidget {
   const AccountImageView({
@@ -29,9 +31,8 @@ class AccountImageView extends StatelessWidget {
                   : AppColors.lGrey,
               image: controller.accountBackImage != null
                   ? DecorationImage(
-                      image: FileImage(File(controller.accountBackImage!)),
-                      fit: BoxFit.contain,
-                    )
+                      image: CachedNetworkImageProvider(
+                          controller.accountBackImage!))
                   : null,
               boxShadow: [BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)],
             ),
@@ -55,21 +56,14 @@ class AccountImageView extends StatelessWidget {
                       // backgroundColor: AppColors.primaryColor,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50.r),
-                          color: controller.accountImage == null
-                              ? AppColors.primaryColor
-                              : AppColors.white,
-                          boxShadow: [
-                            BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
-                          ],
-                          image: controller.accountImage != null
-                              ? DecorationImage(
-                                  image: FileImage(
-                                    File(controller.accountImage!),
-                                  ),
-                                  fit: BoxFit.cover,
-                                )
-                              : null),
+                        borderRadius: BorderRadius.circular(50.r),
+                        color: controller.accountImage == null
+                            ? AppColors.primaryColor
+                            : AppColors.white,
+                        boxShadow: [
+                          BoxShadow(color: AppColors.lBlack, blurRadius: 4.r)
+                        ],
+                      ),
                       child:
                           controller.imageStatusRequest == StatusRequest.loading
                               ? SpinKitFadingCircle(
@@ -95,7 +89,17 @@ class AccountImageView extends StatelessWidget {
                                                   color: AppColors.white,
                                                   fontSize: 45.h),
                                         )
-                                      : null)),
+                                      : CustomCachedNetImage(
+                                          imageUrl: controller.accountImage!,
+                                          height: 90.h,
+                                          width: AppSize.screenWidth(context) >=
+                                                  AppSize.tabletBreakPoint
+                                              ? 68.w
+                                              : 95.w,
+                                          borderRadius: 50.r,
+                                          fit: BoxFit.cover,
+                                          canReDownload: false,
+                                        ))),
                 ),
                 if (controller.accountImage == null &&
                     controller.imageStatusRequest != StatusRequest.loading)

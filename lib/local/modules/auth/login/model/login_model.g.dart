@@ -8,7 +8,7 @@ part of 'login_model.dart';
 
 class LoginModelAdapter extends TypeAdapter<LoginModel> {
   @override
-  final int typeId = 2;
+  final int typeId = 3;
 
   @override
   LoginModel read(BinaryReader reader) {
@@ -17,27 +17,28 @@ class LoginModelAdapter extends TypeAdapter<LoginModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return LoginModel(
-      id: fields[0] as int,
-      name: fields[1] as String,
-      username: fields[2] as String,
-      email: fields[3] as String,
-      image: fields[4] as String,
-      status: fields[5] as bool,
-      provider: fields[6] as String,
-      providerId: fields[7] as String,
-      phone: fields[8] as String,
-      country: fields[9] as String,
-      city: fields[10] as String,
-      state: fields[11] as String,
-      zipCode: fields[12] as String,
-      address: fields[13] as String,
+      id: fields[0] as int?,
+      name: fields[1] as String?,
+      username: fields[2] as String?,
+      email: fields[3] as String?,
+      image: fields[4] as String?,
+      backgroundImage: fields[5] as String?,
+      status: fields[6] as bool?,
+      provider: fields[7] as String?,
+      providerId: fields[8] as String?,
+      phone: fields[9] as String?,
+      country: fields[10] as String?,
+      city: fields[11] as String?,
+      state: fields[12] as String?,
+      zipCode: fields[13] as String?,
+      address: fields[14] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, LoginModel obj) {
     writer
-      ..writeByte(14)
+      ..writeByte(15)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -49,22 +50,24 @@ class LoginModelAdapter extends TypeAdapter<LoginModel> {
       ..writeByte(4)
       ..write(obj.image)
       ..writeByte(5)
-      ..write(obj.status)
+      ..write(obj.backgroundImage)
       ..writeByte(6)
-      ..write(obj.provider)
+      ..write(obj.status)
       ..writeByte(7)
-      ..write(obj.providerId)
+      ..write(obj.provider)
       ..writeByte(8)
-      ..write(obj.phone)
+      ..write(obj.providerId)
       ..writeByte(9)
-      ..write(obj.country)
+      ..write(obj.phone)
       ..writeByte(10)
-      ..write(obj.city)
+      ..write(obj.country)
       ..writeByte(11)
-      ..write(obj.state)
+      ..write(obj.city)
       ..writeByte(12)
-      ..write(obj.zipCode)
+      ..write(obj.state)
       ..writeByte(13)
+      ..write(obj.zipCode)
+      ..writeByte(14)
       ..write(obj.address);
   }
 

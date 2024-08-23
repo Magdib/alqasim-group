@@ -32,7 +32,8 @@ class EditAccountController extends GetxController {
         passwordController.text == confirmPasswordController.text) {
       AppToasts.errorToast("البيانات مطابقة للبيانات القديمة".tr);
     } else {
-      if (passwordController.text.isNotEmpty) {
+      if (passwordController.text.isNotEmpty &&
+          userNameController.text.isNotEmpty) {
         if (phoneNumberController.text.isNotEmpty &&
             phoneNumberController.text.length < 9) {
           AppToasts.errorToast("الرجاء إدخال رقم هاتف صحيح".tr);
